@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'Jost';
+  src: url('../../shared/assets/fonts/Jost/Jost-VariableFont_wght.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('../../shared/assets/fonts/Jost/Jost-Italic-VariableFont.woff2') format('woff2');
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../../shared/assets/fonts/Roboto/Roboto-VariableFont.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../../shared/assets/fonts/Roboto/Roboto-VariableFont.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
