@@ -5,17 +5,22 @@
   letter-spacing: -0.011em;
 }
 
-.lg {
+.xl {
   font-size: 32px;
   line-height: 40px;
 }
 
-.md {
+.lg {
   font-size: 24px;
   line-height: 28px;
 }
 
-.sm {
+.md {
   font-size: 20px;
+  line-height: 24px;
+}
+
+.sm {
+  font-size: 16px;
   line-height: 24px;
 }
