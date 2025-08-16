@@ -1,12 +1,13 @@
 import React from 'react';
-import { ButtonProps } from './type';
+import { ButtonProps } from './types';
+import styles from './Button.module.css';
 import cn from 'classnames';
 
 export const Button: React.FC<ButtonProps> = ({
   type = 'primary',
   size = 'medium',
   onClick,
-  extraClass = '',
+  className = '',
   htmlType = 'button',
   icon,
   iconPosition = 'left',
@@ -22,28 +23,38 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const buttonClasses = cn(
-    'button',
-    `button_type_${type}`,
-    `button_size_${size}`,
+    styles.button,
+    styles[`button_type_${type}`],
+    styles[`button_size_${size}`],
     {
-      'button_full-width': fullWidth,
-      button_disabled: disabled,
-      'button_with-icon': !!icon
+      [styles.button_fullWidth]: fullWidth,
+      [styles.button_disabled]: disabled,
+      [styles.button_withIcon]: !!icon
     },
-    extraClass
+    className
   );
 
   const renderContent = () => {
     return (
       <>
         {icon && iconPosition === 'left' && (
-          <span className='button__icon button__icon_position_left'>
+          <span
+            className={cn(
+              styles.button__icon,
+              styles.button__icon_position_left
+            )}
+          >
             {icon}
           </span>
         )}
-        <span className='button__content'>{children}</span>
+        <span className={styles.button__content}>{children}</span>
         {icon && iconPosition === 'right' && (
-          <span className='button__icon button__icon_position_right'>
+          <span
+            className={cn(
+              styles.button__icon,
+              styles.button__icon_position_right
+            )}
+          >
             {icon}
           </span>
         )}

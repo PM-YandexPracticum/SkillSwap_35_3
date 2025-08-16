@@ -10,7 +10,7 @@ export interface ButtonProps
   type?: ButtonType;
   size?: ButtonSize;
   onClick?: (() => void) | ((e: SyntheticEvent) => void);
-  extraClass?: string;
+  className?: string;
   htmlType?: ButtonHtmlType;
   icon?: ReactNode;
   iconPosition?: ButtonIconPosition;
