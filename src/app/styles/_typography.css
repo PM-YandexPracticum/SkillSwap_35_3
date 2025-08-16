@@ -1,0 +1,39 @@
+/* src/styles/fonts.css */
+
+:root {
+  /* Семейства шрифтов */
+  --font-family-title: "Jost", sans-serif;
+  --font-family-text: 'Roboto', sans-serif;
+
+  /* Размеры шрифтов и интерльньяж */
+
+  --font-size-xs: 12px; /* календарь, описание скилов, город проживания */
+  --font-line-xs: 16px; /* Высота строки для --font-size-xs */
+  --font-size-s: 16px; /* основной текст */
+  --font-size-s-usernames: 20px; /* имена */
+  --font-line-s: 24px; 
+  --font-size-m: 24px; /* pop-up и лого */
+  --font-line-m: 28px;
+  --font-line-m-logo: 32px; /* высота строки лого */
+  --font-size-l: 32px; /* заголовки карточек */
+  --font-line-l: 40px;
+
+  /* Переменные для letter-spacing */
+  --letter-spacing-tight: -1.1%;     /* Более плотное расстояние */
+  --letter-spacing-wide: 2%;        /* Более широкое расстояние */
+
+  /* Переменные для веса */
+  --font-weight-light: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Шрифты для текста с указанием размера, интервала и семейства */
+  --font-xs: var(--font-size-xs) / var(--font-line-xs) var(--font-family-text); /* календарь, описание скилов, город проживания */
+  --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-text); /* основной текст */
+  --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-title);  
+  --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-title); 
+
+  /* Стили для конкретных элементов */
+  --logo-font:  var(--font-size-m) / var(--font-line-m-logo) var(--font-family-title); 
+  --usernames-font: var(--font-size-s-usernames) / var(--font-line-s) var(--font-family-text);
+}
