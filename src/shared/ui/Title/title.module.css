@@ -1,0 +1,21 @@
+.title {
+  color: var(--title-color, #253017);
+  font-family: Jost, Roboto, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.011em;
+}
+
+.lg {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.md {
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.sm {
+  font-size: 20px;
+  line-height: 24px;
+}
