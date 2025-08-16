@@ -1,6 +1,8 @@
+import React from "react";
+
 export interface IRadioOption {
   value: string;
-  label: string;
+  label: React.ReactNode;
   disabled?: boolean;
 }
 
@@ -9,4 +11,6 @@ export interface IRadioProps {
   options: IRadioOption[];
   value?: string;
   onChange?: (value: string) => void;
+  className?: string;
+  itemClassName?: string;
 }
