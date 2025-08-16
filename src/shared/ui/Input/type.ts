@@ -6,7 +6,8 @@ export interface InputProps {
   max?: number;
   name?: string;
   required?: boolean;
-  style?: string;
+  icon?: string;
+  iconPosition?: 'left' | 'right'
   value?: string | number;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
