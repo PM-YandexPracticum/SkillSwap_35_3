@@ -1,0 +1,21 @@
+.checkbox {}
+
+.checkboxItem {}
+
+.checkboxInput {}
+
+.checkboxControl {}
+
+.checkboxLabel {}
+
+.checkboxChecked .checkboxControl {}
+
+.checkboxDisabled {}
+
+.checkboxVariantCheck .checkboxItem.checkboxChecked .checkboxControl::after {}
+
+.checkboxVariantDash .checkboxItem.checkboxChecked .checkboxControl::after {}
+
+.checkboxItem:hover .checkboxControl {}
+
+.checkboxInput:focus-visible + .checkboxControl {}
