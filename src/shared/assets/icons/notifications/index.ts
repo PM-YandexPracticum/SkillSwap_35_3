@@ -1,3 +1,3 @@
-import NotificationSVG from './notification.svg';
+import NotificationIcon from './notification.svg?react';
 
-export { NotificationSVG as NotificationIcon };
+export { NotificationIcon };

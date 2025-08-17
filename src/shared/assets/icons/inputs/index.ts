@@ -1,9 +1,6 @@
-import AddAvatarSvg from './add-avatar.svg';
-import CalendarSvg from './calendar.svg';
-import EyeSvg from './eye.svg';
-import SearchSvg from './search.svg';
+import AddAvatarIcon from './add-avatar.svg?react';
+import CalendarIcon from './calendar.svg?react';
+import EyeIcon from './eye.svg?react';
+import SearchIcon from './search.svg?react';
 
-export { AddAvatarSvg as AddAvatarIcon };
-export { CalendarSvg as CalendarIcon };
-export { EyeSvg as EyeIcon };
-export { SearchSvg as SearchIcon };
+export { AddAvatarIcon, CalendarIcon, EyeIcon, SearchIcon };
