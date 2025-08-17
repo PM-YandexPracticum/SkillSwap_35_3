@@ -1,9 +1,9 @@
-import React from "react";
-import styles from "./Radio.module.css";
-import { IRadioProps } from "./types";
+import React from 'react';
+import styles from './Radio.module.css';
+import { IRadioProps } from './types';
 
 function cx(...parts: Array<string | undefined | false>) {
-  return parts.filter(Boolean).join(" ");
+  return parts.filter(Boolean).join(' ');
 }
 
 export const RadioUI: React.FC<IRadioProps> = ({
@@ -12,13 +12,13 @@ export const RadioUI: React.FC<IRadioProps> = ({
   value,
   onChange,
   className,
-  itemClassName,
+  itemClassName
 }) => {
   return (
     <div className={cx(styles.radio, className)}>
       {options.map((option) => {
         const isChecked = value === option.value;
-        
+
         const itemCls = cx(
           styles.radioItem,
           isChecked && styles.radioChecked,
@@ -30,7 +30,7 @@ export const RadioUI: React.FC<IRadioProps> = ({
           <label key={option.value} className={itemCls}>
             <input
               className={styles.radioInput}
-              type="radio"
+              type='radio'
               name={name}
               value={option.value}
               checked={isChecked}

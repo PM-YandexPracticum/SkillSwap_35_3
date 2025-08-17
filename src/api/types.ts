@@ -22,7 +22,7 @@ export interface IUser {
 export enum RequestStatus {
   PENDING = 'pending',
   ACCEPTED = 'accepted',
-  REJECTED = 'rejected',
+  REJECTED = 'rejected'
 }
 
 export interface IRequest {
