@@ -1,13 +1,15 @@
-import ChevronDownSvg from './chevron-down.svg';
-import ChevronRightSvg from './chevron-right.svg';
-import ChevronUpSvg from './chevron-up.svg';
-import CrossSvg from './cross.svg';
-import MoonSvg from './moon.svg';
-import SortSvg from './sort.svg';
+import ArrorDownIcon from './chevron-down.svg?react';
+import ArrorRightIcon from './chevron-right.svg?react';
+import ArrorUpIcon from './chevron-up.svg?react';
+import CrossIcon from './cross.svg?react';
+import MoonIcon from './moon.svg?react';
+import SortIcon from './sort.svg?react';
 
-export { ChevronDownSvg as ChevronDownIcon };
-export { ChevronRightSvg as ChevronRightIcon };
-export { ChevronUpSvg as ChevronUpIcon };
-export { CrossSvg as CrossIcon };
-export { MoonSvg as MoonIcon };
-export { SortSvg as SortIcon };
+export {
+  ArrorDownIcon,
+  ArrorRightIcon,
+  ArrorUpIcon,
+  CrossIcon,
+  MoonIcon,
+  SortIcon
+};

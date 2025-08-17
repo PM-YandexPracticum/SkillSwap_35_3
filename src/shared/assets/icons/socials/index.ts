@@ -1,5 +1,4 @@
-import AppleSvg from './apple.svg';
-import GoogleSvg from './google.svg';
+import AppleIcon from './apple.svg?react';
+import GoogleIcon from './google.svg?react';
 
-export { AppleSvg as AppleIcon };
-export { GoogleSvg as GoogleIcon };
+export { AppleIcon, GoogleIcon };

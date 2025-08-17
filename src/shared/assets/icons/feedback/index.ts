@@ -1,3 +1,3 @@
-import DoneSvg from './done.svg';
+import DoneIcon from './done.svg?react';
 
-export { DoneSvg as DoneIcon };
+export { DoneIcon };

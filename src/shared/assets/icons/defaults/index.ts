@@ -1,3 +1,3 @@
-import UserCircleSVG from './user-circle.svg';
+import UserCircleIcon from './user-circle.svg?react';
 
-export { UserCircleSVG as UserCircleIcon };
+export { UserCircleIcon };
