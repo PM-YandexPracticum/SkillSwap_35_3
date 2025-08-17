@@ -32,23 +32,25 @@
   --usernames-font: var(--font-size-s-usernames) / var(--font-line-s) var(--font-family-text);
 
   /* переменные для цвета */
-  --color-text: #253017; /* Text */
-  --color-caption: #69735D; /* Caption */
-  --color-disabled: #E4E8DF; /* Disabled */
-  --color-textlink-buttonpressed: #508826; /* Text link, Button pressed */
-  --color-accent: #ABD27A; /* Accent */
-  --color-buttonhover: #DEEBC5; /* Button hovef */
-  --color-tag-business: #EEE7F7; /* Tag_Бизнес и карьера */
-  --color-tag-art: #F7E7F2; /* Tag_Творчество и искусство */
-  --colog-tag-language: #EBE5C5; /* Tag_Иностранные языки  */
-  --colog-tag-education: #E7F2F6; /* Tag_Образование и развитие  */
-  --color-tag-household: #F7EBE5; /* Tag_Дом и уют  */
-  --colog-tag-lifestyle: #E9F7E7; /* Tag_Здоровье и лайфстайл */
-  --color-tag-plus: #E8ECF7; /* Tag_+  */
-  --color-background: #F9FAF7; /* Background */
-  --color-card-input: #FFFFFF; /* Card, input */
-  --color-overlay: #8E8E8E99; /* overlay */
-  --color-error: #BF3920; /* Error */
+  --background-color-primary: #F9FAF7; /* цвет страницы, Background */
+  --background-color-secondary: #FFF; /* цвет для основных компонентов Card, input */
+  --font-color-primary: #253017; /* Основной цвет текста, Text */
+  --font-color-secondary: #69735D; /* Цвет текста на неактивных кнопках Caption */
+  --font-color-accent: #508826; /* Цвет активной кнопки, текстовой ссылки Text link, Button pressed */
+  --button-color-accent: #ABD27A; /* Accent */ 
+  --button-color-disabled: #E4E8DF; /* Цвет неактивной кнопки Disabled */
+  --button-color-hover: #DEEBC5; /* Button hover */
+  --tag-color-business: #EEE7F7; /* Tag_Бизнес и карьера */
+  --tag-color-art: #F7E7F2; /* Tag_Творчество и искусство */
+  --tag-colog-language: #EBE5C5; /* Tag_Иностранные языки  */
+  --tag-colog-education: #E7F2F6; /* Tag_Образование и развитие  */
+  --tag-color-household: #F7EBE5; /* Tag_Дом и уют  */
+  --tag-colog-lifestyle: #E9F7E7; /* Tag_Здоровье и лайфстайл */
+  --tag-color-plus: #E8ECF7; /* Tag_+  */
+  --overlay-color: #8E8E8E99; /* overlay */
+  --error-color: #BF3920; /* Error */
+
+
 
   /* переменные для рамок и скруглений */
   --border-radius-big: 24px; /* sidebar, userinfo */
@@ -67,5 +69,4 @@
   --gap-medium: 40px; /* filtres */
   --gap-small: 20px; /* cards */
   --gap-extrasmall: 4px; /* tags */
-  
 }
