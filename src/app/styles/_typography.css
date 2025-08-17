@@ -2,7 +2,7 @@ body {
       font-family: Roboto, sans-serif;
       font-size: 12px;
       line-height: 16px;
-      letter-spacing: 2%;
+      letter-spacing: 0.02em;
       font-weight: 400;
       background-color: #253017;
     }

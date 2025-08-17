@@ -3,24 +3,18 @@
 :root {
   /* Семейства шрифтов */
   --font-family-title: "Jost", sans-serif;
-  --font-family-text: 'Roboto', sans-serif;
 
   /* Размеры шрифтов и интерльньяж */
-
-  --font-size-xs: 12px; /* календарь, описание скилов, город проживания */
-  --font-line-xs: 16px; 
-  --font-size-s: 16px; /* основной текст */
-  --font-size-s-usernames: 20px; /* имена */
-  --font-line-s: 24px; 
-  --font-size-m: 24px; /* pop-up и лого */
-  --font-line-m: 28px;
-  --font-line-m-logo: 32px; /* высота строки лого */
-  --font-size-l: 32px; /* заголовки карточек */
-  --font-line-l: 40px;
+  --font-size-xl: 32px; /* заголовки карточек */
+  --font-line-xl: 40px;
+  --font-size-lg: 24px; /* pop-up и лого */
+  --font-line-lg: 28px;
+  --font-size-md: 20px; /* имена */
+  --font-size-sm: 16px; /* основной текст */
+  --font-line-sm-md: 24px; 
 
   /* Переменные для letter-spacing */
-  --letter-spacing-tight: -1.1%;     /* Более плотное расстояние */
-  --letter-spacing-wide: 2%;        /* Более широкое расстояние */
+  --letter-spacing-tight: -0.011em;     /* Более плотное расстояние */
 
   /* Переменные для веса */
   --font-weight-light: 400;
@@ -28,12 +22,50 @@
   --font-weight-semibold: 600;
 
   /* Шрифты для текста с указанием размера, интервала и семейства */
-  --font-xs: var(--font-size-xs) / var(--font-line-xs) var(--font-family-text); /* календарь, описание скилов, город проживания */
-  --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-text); /* основной текст */
-  --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-title);  
-  --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-title); 
+  --font-sm: var(--font-size-sm) / var(--font-line-sm-md) var(--font-family-text); /* календарь, описание скилов, город проживания */
+  --font-md: var(--font-size-md) / var(--font-line-sm-md) var(--font-family-text); /* основной текст */
+  --font-lg: var(--font-size-lg) / var(--font-line-lg) var(--font-family-title);  
+  --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-title); 
 
   /* Стили для конкретных элементов */
   --logo-font:  var(--font-size-m) / var(--font-line-m-logo) var(--font-family-title); 
   --usernames-font: var(--font-size-s-usernames) / var(--font-line-s) var(--font-family-text);
+
+  /* переменные для цвета */
+  --color-text: #253017; /* Text */
+  --color-caption: #69735D; /* Caption */
+  --color-disabled: #E4E8DF; /* Disabled */
+  --color-textlink-buttonpressed: #508826; /* Text link, Button pressed */
+  --color-accent: #ABD27A; /* Accent */
+  --color-buttonhover: #DEEBC5; /* Button hovef */
+  --color-tag-business: #EEE7F7; /* Tag_Бизнес и карьера */
+  --color-tag-art: #F7E7F2; /* Tag_Творчество и искусство */
+  --colog-tag-language: #EBE5C5; /* Tag_Иностранные языки  */
+  --colog-tag-education: #E7F2F6; /* Tag_Образование и развитие  */
+  --color-tag-household: #F7EBE5; /* Tag_Дом и уют  */
+  --colog-tag-lifestyle: #E9F7E7; /* Tag_Здоровье и лайфстайл */
+  --color-tag-plus: #E8ECF7; /* Tag_+  */
+  --color-background: #F9FAF7; /* Background */
+  --color-card-input: #FFFFFF; /* Card, input */
+  --color-overlay: #8E8E8E99; /* overlay */
+  --color-error: #BF3920; /* Error */
+
+  /* переменные для рамок и скруглений */
+  --border-radius-big: 24px; /* sidebar, userinfo */
+  --border-radius-small: 12px; /* button, input, card */
+  --border-radius-tag: 20px; /* tags */
+  --border-input-button: 1px;
+  
+  /* переменные для padding */
+  --padding-big: 40px; /* sidebar, userinfo */
+  --padding-medium: 20px; /*filtres, cards */
+  --padding-small: 12px 20px 12px 20px; /* button, input, card */
+  --padding-tag: 8px 12px 8px 12px;
+
+  /* переменные для gap */
+  --gap-big: 60px; /* sidebar, userinfo */
+  --gap-medium: 40px; /* filtres */
+  --gap-small: 20px; /* cards */
+  --gap-extrasmall: 4px; /* tags */
+  
 }
