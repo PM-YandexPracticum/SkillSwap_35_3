@@ -12,27 +12,27 @@ import { NotFoundPage } from '@/pages/NotFoundPage';
 
 export const routeConfig: RouteProps[] = [
   {
-    path: pathConstants.MAIN,
+    path: pathConstants.MAIN
     // element: <HomePage />,
   },
   {
-    path: pathConstants.REGISTER,
+    path: pathConstants.REGISTER
     // element: <RegistrationPage />,
   },
   {
-    path: pathConstants.CARD,
+    path: pathConstants.CARD
     // element: <CardDetailPage />,
   },
   {
-    path: pathConstants.PROFILE,
+    path: pathConstants.PROFILE
     // element: <ProfilePage />,
   },
   {
-    path: pathConstants.ERROR_PAGE,
+    path: pathConstants.ERROR_PAGE
     // element: <ErrorPage />,
   },
   {
-    path: pathConstants.NOT_FOUND,
+    path: pathConstants.NOT_FOUND
     // element: <NotFoundPage />,
-  },
+  }
 ];

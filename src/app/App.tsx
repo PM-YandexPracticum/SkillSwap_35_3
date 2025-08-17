@@ -6,9 +6,9 @@ import { routeConfig } from './providers/router/config/routeConfig';
 
 export const App = () => {
   return (
-    <div className="app">
+    <div className='app'>
       {/*<Header /> */}
-      <main className="main-content">
+      <main className='main-content'>
         <Routes>
           {routeConfig.map((route) => (
             <Route
