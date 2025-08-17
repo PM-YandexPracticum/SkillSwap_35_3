@@ -1,17 +1,53 @@
-.radio {}
+@import url('@/app/styles/_variables.css');
 
-.radioItem {}
+.radio {
+  display: grid;
+  gap: 12px;
+}
 
-.radioInput {}
+.radioItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
 
-.radioControl {}
+.radioInput {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
 
-.radioControl::after {}
+.radioControl {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
 
-.radioChecked .radioControl {}
+.radioControl::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: transparent;
+}
 
-.radioChecked .radioControl::after {}
+.radioChecked .radioControl {
+  border-color: var(--font-color-accent)
+}
 
-.radioLabel {}
+.radioChecked .radioControl::after {
+  background: var(--font-color-accent)
+}
 
-.radioDisabled {}
+.radioLabel {
+  line-height: 1;
+}
+
+.radioDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

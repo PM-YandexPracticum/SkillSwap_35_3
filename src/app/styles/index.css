@@ -1,4 +1,4 @@
-@import url('./reset.css');
-@import url('./variables.css');
-@import url('./fonts.css');
-@import url('./typography.css');
+@import url('./_reset.css');
+@import url('./_fonts.css');
+@import url('./_fonts.css');
+@import url('./_typography.css');
