@@ -2,6 +2,7 @@ import React from 'react';
 import { ButtonProps } from './types';
 import styles from './Button.module.css';
 import cn from 'classnames';
+import { Icon } from '@/shared/ui/Icon'; // ДОБАВИЛ ИМПОРТ ICON
 
 export const Button: React.FC<ButtonProps> = ({
   type = 'primary',
@@ -10,6 +11,8 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   htmlType = 'button',
   icon,
+  iconName,
+  iconSize = 24,
   iconPosition = 'left',
   fullWidth = false,
   children,
@@ -29,7 +32,7 @@ export const Button: React.FC<ButtonProps> = ({
     {
       [styles.button_fullWidth]: fullWidth,
       [styles.button_disabled]: disabled,
-      [styles.button_withIcon]: !!icon
+      [styles.button_withIcon]: !!icon || !!iconName
     },
     className
   );
@@ -37,7 +40,17 @@ export const Button: React.FC<ButtonProps> = ({
   const renderContent = () => {
     return (
       <>
-        {icon && iconPosition === 'left' && (
+        {iconName && iconPosition === 'left' && (
+          <span
+            className={cn(
+              styles.button__icon,
+              styles.button__icon_position_left
+            )}
+          >
+            <Icon name={iconName} size={iconSize} />
+          </span>
+        )}
+        {icon && !iconName && iconPosition === 'left' && (
           <span
             className={cn(
               styles.button__icon,
@@ -47,8 +60,20 @@ export const Button: React.FC<ButtonProps> = ({
             {icon}
           </span>
         )}
+
         <span className={styles.button__content}>{children}</span>
-        {icon && iconPosition === 'right' && (
+
+        {iconName && iconPosition === 'right' && (
+          <span
+            className={cn(
+              styles.button__icon,
+              styles.button__icon_position_right
+            )}
+          >
+            <Icon name={iconName} size={iconSize} />
+          </span>
+        )}
+        {icon && !iconName && iconPosition === 'right' && (
           <span
             className={cn(
               styles.button__icon,

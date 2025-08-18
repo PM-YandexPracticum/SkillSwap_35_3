@@ -14,6 +14,16 @@ const meta: Meta<typeof Button> = {
       control: { type: 'select' },
       options: ['small', 'medium', 'large']
     },
+    iconName: {
+      control: { type: 'select' },
+      options: [
+        'arrow-right-icon',
+        'close-icon',
+        'edit-icon',
+        'like-icon',
+        'category-art-icon'
+      ]
+    },
     iconPosition: {
       control: { type: 'select' },
       options: ['left', 'right']
@@ -57,7 +67,7 @@ export const WithLeftIcon: Story = {
   args: {
     type: 'primary',
     children: 'With Icon',
-    icon: <div>+</div>,
+    iconName: 'arrow-right-icon',
     iconPosition: 'left'
   }
 };
@@ -66,8 +76,27 @@ export const WithRightIcon: Story = {
   args: {
     type: 'primary',
     children: 'With Icon',
-    icon: <div>+</div>,
+    iconName: 'arrow-right-icon',
     iconPosition: 'right'
+  }
+};
+
+export const WithCustomIconSize: Story = {
+  args: {
+    type: 'primary',
+    children: 'Edit',
+    iconName: 'edit-icon',
+    iconSize: 32,
+    iconPosition: 'right'
+  }
+};
+
+export const WithOldIcon: Story = {
+  args: {
+    type: 'primary',
+    children: 'Legacy Icon',
+    icon: <div style={{ fontSize: 20 }}>★</div>,
+    iconPosition: 'left'
   }
 };
 
@@ -108,7 +137,7 @@ export const FullWidth: Story = {
 
 export const IconOnly: Story = {
   args: {
-    icon: <div>+</div>,
+    iconName: 'like-icon',
     children: null
   }
 };

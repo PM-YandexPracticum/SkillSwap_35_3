@@ -1,4 +1,4 @@
-@import url('@/app/styles/_variables.css');
+@import '@/app/styles/_variables.css';
 
 .button {
   display: flex;
