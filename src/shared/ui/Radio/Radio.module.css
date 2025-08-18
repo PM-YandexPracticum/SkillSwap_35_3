@@ -5,20 +5,20 @@
   gap: 12px;
 }
 
-.radioItem {
+.radio__item {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
 }
 
-.radioInput {
+.radio__input {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-.radioControl {
+.radio__control {
   width: 20px;
   height: 20px;
   border: 2px solid #000;
@@ -27,7 +27,7 @@
   position: relative;
 }
 
-.radioControl::after {
+.radio__control::after {
   content: "";
   position: absolute;
   inset: 4px;
@@ -35,19 +35,19 @@
   background: transparent;
 }
 
-.radioChecked .radioControl {
+.radio__checked .radio__control {
   border-color: var(--font-color-accent)
 }
 
-.radioChecked .radioControl::after {
+.radio__checked .radio__control::after {
   background: var(--font-color-accent)
 }
 
-.radioLabel {
+.radio__label {
   line-height: 1;
 }
 
-.radioDisabled {
+.radio__disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
+} 
