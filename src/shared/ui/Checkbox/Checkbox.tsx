@@ -17,7 +17,7 @@ export const CheckboxUI: React.FC<ICheckboxProps> = ({
 }) => {
   const rootCls = cx(
     styles.checkbox,
-    variant === "dash" ? styles.checkboxVariantDash : styles.checkboxVariantCheck,
+    variant === "dash" ? styles.checkbox__variant_dash : styles.checkbox__variant_check,
     className
   );
 
@@ -26,16 +26,16 @@ export const CheckboxUI: React.FC<ICheckboxProps> = ({
       {options.map(opt => {
         const isChecked = !!values?.includes(opt.value);
         const itemCls = cx(
-          styles.checkboxItem,
-          isChecked && styles.checkboxChecked,
-          opt.disabled && styles.checkboxDisabled,
+          styles.checkbox__item,
+          isChecked && styles.checkbox__checked,
+          opt.disabled && styles.checkbox__disabled,
           itemClassName
         );
 
         return (
           <label key={opt.value} className={itemCls}>
             <input
-              className={styles.checkboxInput}
+              className={styles.checkbox__input}
               type="checkbox"
               name={name}
               value={opt.value}
@@ -43,8 +43,8 @@ export const CheckboxUI: React.FC<ICheckboxProps> = ({
               disabled={opt.disabled}
               onChange={() => onChange?.(opt.value, !isChecked)}
             />
-            <span className={styles.checkboxControl} aria-hidden />
-            <span className={styles.checkboxLabel}>{opt.label}</span>
+            <span className={styles.checkbox__control} aria-hidden />
+            <span className={styles.checkbox__label}>{opt.label}</span>
           </label>
         );
       })}

@@ -1,21 +1,21 @@
 .checkbox {}
 
-.checkboxItem {}
+.checkbox__item {}
 
-.checkboxInput {}
+.checkbox__input {}
 
-.checkboxControl {}
+.checkbox__control {}
 
-.checkboxLabel {}
+.checkbox__label {}
 
-.checkboxChecked .checkboxControl {}
+.checkbox__checked .checkbox__control {}
 
-.checkboxDisabled {}
+.checkbox__disabled {}
 
-.checkboxVariantCheck .checkboxItem.checkboxChecked .checkboxControl::after {}
+.checkbox__variant_check .checkbox__item.checkbox__checked .checkbox__control::after {}
 
-.checkboxVariantDash .checkboxItem.checkboxChecked .checkboxControl::after {}
+.checkbox__variant_dash .checkbox__item.checkbox__checked .checkbox__control::after {}
 
-.checkboxItem:hover .checkboxControl {}
+.checkbox__item:hover .checkbox__control {}
 
-.checkboxInput:focus-visible + .checkboxControl {}
+.checkbox__input:focus-visible + .checkbox__control {}
