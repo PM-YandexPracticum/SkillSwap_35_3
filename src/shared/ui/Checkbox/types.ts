@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-export type TCheckboxVariant = "check" | "dash";
+export type TCheckboxVariant = 'check' | 'dash';
 
 export interface ICheckboxOption {
   value: string;
@@ -16,4 +16,4 @@ export interface ICheckboxProps {
   className?: string;
   itemClassName?: string;
   variant?: TCheckboxVariant;
-};
+}

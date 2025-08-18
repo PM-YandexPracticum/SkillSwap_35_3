@@ -3,6 +3,7 @@
 :root {
   /* Семейства шрифтов */
   --font-family-title: "Jost", sans-serif;
+  --font-family-text: 'Roboto', sans-serif;
 
   /* Размеры шрифтов и интерльньяж */
   --font-size-xl: 32px; /* заголовки карточек */
