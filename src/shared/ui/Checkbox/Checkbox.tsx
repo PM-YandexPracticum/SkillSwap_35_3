@@ -1,9 +1,9 @@
-import React from "react";
-import styles from "./Checkbox.module.css";
-import { ICheckboxProps } from "./types";
+import React from 'react';
+import styles from './Checkbox.module.css';
+import { ICheckboxProps } from './types';
 
 function cx(...parts: Array<string | false | undefined>) {
-  return parts.filter(Boolean).join(" ");
+  return parts.filter(Boolean).join(' ');
 }
 
 export const CheckboxUI: React.FC<ICheckboxProps> = ({
@@ -13,17 +13,19 @@ export const CheckboxUI: React.FC<ICheckboxProps> = ({
   onChange,
   className,
   itemClassName,
-  variant = "check",
+  variant = 'check'
 }) => {
   const rootCls = cx(
     styles.checkbox,
-    variant === "dash" ? styles.checkbox__variant_dash : styles.checkbox__variant_check,
+    variant === 'dash'
+      ? styles.checkbox__variant_dash
+      : styles.checkbox__variant_check,
     className
   );
 
   return (
     <div className={rootCls}>
-      {options.map(opt => {
+      {options.map((opt) => {
         const isChecked = !!values?.includes(opt.value);
         const itemCls = cx(
           styles.checkbox__item,
@@ -36,7 +38,7 @@ export const CheckboxUI: React.FC<ICheckboxProps> = ({
           <label key={opt.value} className={itemCls}>
             <input
               className={styles.checkbox__input}
-              type="checkbox"
+              type='checkbox'
               name={name}
               value={opt.value}
               checked={isChecked}

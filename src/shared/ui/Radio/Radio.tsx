@@ -30,7 +30,7 @@ export const RadioUI: React.FC<IRadioProps> = ({
           <label key={option.value} className={itemCls}>
             <input
               className={styles.radio__input}
-              type="radio"
+              type='radio'
               name={name}
               value={option.value}
               checked={isChecked}
