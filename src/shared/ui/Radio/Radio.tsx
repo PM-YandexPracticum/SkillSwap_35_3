@@ -20,25 +20,25 @@ export const RadioUI: React.FC<IRadioProps> = ({
         const isChecked = value === option.value;
 
         const itemCls = cx(
-          styles.radioItem,
-          isChecked && styles.radioChecked,
-          option.disabled && styles.radioDisabled,
+          styles.radio__item,
+          isChecked && styles.radio__checked,
+          option.disabled && styles.radio__disabled,
           itemClassName
         );
 
         return (
           <label key={option.value} className={itemCls}>
             <input
-              className={styles.radioInput}
-              type='radio'
+              className={styles.radio__input}
+              type="radio"
               name={name}
               value={option.value}
               checked={isChecked}
               disabled={option.disabled}
               onChange={() => onChange?.(option.value)}
             />
-            <span className={styles.radioControl} aria-hidden />
-            <span className={styles.radioLabel}>{option.label}</span>
+            <span className={styles.radio__control} aria-hidden />
+            <span className={styles.radio__label}>{option.label}</span>
           </label>
         );
       })}
