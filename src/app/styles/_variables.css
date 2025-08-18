@@ -3,7 +3,7 @@
 :root {
   /* Семейства шрифтов */
   --font-family-title: "Jost", sans-serif;
-  --font-family-text: 'Roboto', sans-serif;
+  --font-family-text: "Roboto", sans-serif;
 
   /* Размеры шрифтов и интерльньяж */
   --font-size-xl: 32px; /* заголовки карточек */
@@ -61,7 +61,7 @@
   
   /* переменные для padding */
   --padding-big: 40px; /* sidebar, userinfo */
-  --padding-medium: 20px; /*filtres, cards */
+  --padding-medium: 20px; /* filtres, cards */
   --padding-small: 12px 20px 12px 20px; /* button, input, card */
   --padding-tag: 8px 12px 8px 12px;
 

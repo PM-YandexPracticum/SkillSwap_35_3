@@ -9,7 +9,7 @@ const meta: Meta<typeof RadioUI> = {
   args: {
     name: 'demo',
     options: [
-      { value: 'Не имеет значения', label: 'Не имеет значения' },
+      { value: 'Не имеет значения', label: 'Не имеет значения' },
       { value: 'Мужской', label: 'Мужской' },
       { value: 'Женский', label: 'Женский' }
     ] as IRadioOption[]
@@ -28,10 +28,10 @@ type Story = StoryObj<typeof RadioUI>;
 
 export const Basic: Story = {
   render: (args) => {
-    const [value, setValue] = useState<string>('Не имеет значения');
+    const [value, setValue] = useState<string>('Не имеет значения');
     return (
       <div>
-        <span style={{ fontSize: 20, fontWeight: 550 }}>Пол автора</span>
+        <span style={{ fontSize: 20, fontWeight: 550 }}>Пол автора</span>
         <div style={{ marginTop: 20 }}>
           <RadioUI {...args} value={value} onChange={setValue} />
         </div>
@@ -45,8 +45,8 @@ export const DisabledItems: Story = {
   args: {
     options: [
       {
-        value: 'Не имеет значения',
-        label: 'Не имеет значения',
+        value: 'Не имеет значения',
+        label: 'Не имеет значения',
         disabled: true
       },
       { value: 'Мужской', label: 'Мужской' },
