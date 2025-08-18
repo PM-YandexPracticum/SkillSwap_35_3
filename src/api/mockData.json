@@ -3,7 +3,6 @@
     {
       "id": 1,
       "title": "Техника Pomodoro",
-      "description": "Техника Pomodoro — это методика управления временем, которая предполагает разделение рабочих периодов на 25-минутные интервалы, называемые «помидорами». После каждого «помидора» следует короткий перерыв, который помогает сохранить концентрацию и избежать выгорания. Этот метод идеально подходит для задач, требующих высокой сосредоточенности.",
       "category": "Бизнес и карьера",
       "subcategory": "Тайм-менеджмент",
       "images": [
@@ -17,7 +16,6 @@
     {
       "id": 2,
       "title": "Матрица Эйзенхауэра",
-      "description": "Матрица Эйзенхауэра — это инструмент для приоритизации задач, который помогает разделить их на четыре категории: срочные и важные (сделать немедленно), не срочные, но важные (запланировать), срочные, но не важные (делегировать), и не срочные и не важные (удалить). Помогает сфокусироваться на том, что действительно имеет значение.",
       "category": "Бизнес и карьера",
       "subcategory": "Тайм-менеджмент",
       "images": [
@@ -30,7 +28,6 @@
     {
       "id": 3,
       "title": "Работа с возражениями",
-      "description": "Набор техник и методов для эффективной работы с сомнениями и отказами клиентов, превращая их в возможность заключения сделки.",
       "category": "Бизнес и карьера",
       "subcategory": "Продажи и переговоры",
       "images": [
@@ -42,7 +39,6 @@
     {
       "id": 4,
       "title": "Техники убеждения",
-      "description": "Психологические и риторические стратегии для убеждения собеседника в своей точке зрения, основанные на принципах социальной психологии.",
       "category": "Бизнес и карьера",
       "subcategory": "Продажи и переговоры",
       "images": [
@@ -55,7 +51,6 @@
     {
       "id": 5,
       "title": "Основы Agile и Scrum",
-      "description": "Гибкие методы управления проектами, повышение эффективности работы команды через спринты, роли и артефакты Scrum.",
       "category": "Бизнес и карьера",
       "subcategory": "Проектное управление",
       "images": [
@@ -69,7 +64,6 @@
     {
       "id": 6,
       "title": "Планирование спринтов",
-      "description": "Оптимизация задач и целей совместно с командой в рамках коротких итераций (спринтов) для последовательного достижения результатов.",
       "category": "Бизнес и карьера",
       "subcategory": "Проектное управление",
       "images": [
@@ -83,7 +77,6 @@
     {
       "id": 7,
       "title": "Финансовая грамотность для начинающих",
-      "description": "Основы управления личным бюджетом, понимание доходов и расходов, создание 'подушки безопасности'.",
       "category": "Бизнес и карьера",
       "subcategory": "Личные финансы",
       "images": [
@@ -97,7 +90,6 @@
     {
       "id": 8,
       "title": "Публичные выступления",
-      "description": "Как уверенно выступать перед аудиторией, преодолевать волнение и повышать убедительность.",
       "category": "Бизнес и карьера",
       "subcategory": "Коммуникации",
       "images": [
@@ -111,7 +103,6 @@
     {
       "id": 9,
       "title": "Деловая переписка",
-      "description": "Правила эффективной деловой коммуникации по e-mail: структура письма, формулировки, этикет.",
       "category": "Бизнес и карьера",
       "subcategory": "Коммуникации",
       "images": [
@@ -125,7 +116,6 @@
     {
       "id": 10,
       "title": "Разговорный английский",
-      "description": "Практика устной речи для преодоления языкового барьера и общения на повседневные темы.",
       "category": "Иностранные языки",
       "subcategory": "Английский",
       "images": [
@@ -139,7 +129,6 @@
     {
       "id": 11,
       "title": "Академический английский",
-      "description": "Фокус на специальной лексике, письме и чтении научных текстов для учебы и работы.",
       "category": "Иностранные языки",
       "subcategory": "Английский",
       "images": [
@@ -153,7 +142,6 @@
     {
       "id": 12,
       "title": "Подготовка к IELTS",
-      "description": "Комплексная подготовка ко всем частям экзамена IELTS: Listening, Reading, Writing, Speaking.",
       "category": "Иностранные языки",
       "subcategory": "Английский",
       "images": [
@@ -167,7 +155,6 @@
     {
       "id": 13,
       "title": "Базовый немецкий (A1-A2)",
-      "description": "Изучение грамматики, лексики и произношения для простых бытовых диалогов на немецком.",
       "category": "Иностранные языки",
       "subcategory": "Немецкий",
       "images": [
@@ -181,7 +168,6 @@
     {
       "id": 14,
       "title": "Разговорный французский",
-      "description": "Основы устной речи для общения в путешествиях и повседневных ситуациях.",
       "category": "Иностранные языки",
       "subcategory": "Французский",
       "images": [
@@ -195,7 +181,6 @@
     {
       "id": 15,
       "title": "Итальянский для путешествий",
-      "description": "Ключевая лексика, фразы и произношение для уверенного общения в поездке по Италии.",
       "category": "Иностранные языки",
       "subcategory": "Итальянский",
       "images": [
@@ -209,7 +194,6 @@
     {
       "id": 16,
       "title": "Цифровой рисунок в Procreate",
-      "description": "Основы цифрового рисования на iPad: интерфейс, слои, кисти и эффекты.",
       "category": "Творчество и искусство",
       "subcategory": "Рисование и иллюстрация",
       "images": [
@@ -223,7 +207,6 @@
     {
       "id": 17,
       "title": "Базовые аккорды на укулеле",
-      "description": "Учимся играть простые песни на укулеле, основные аккорды и ритмы.",
       "category": "Творчество и искусство",
       "subcategory": "Музыка и звук",
       "images": [
@@ -237,7 +220,6 @@
     {
       "id": 18,
       "title": "Игра на гитаре: старт",
-      "description": "Изучаем постановку рук, переборы, простые аккорды и популярные песни.",
       "category": "Творчество и искусство",
       "subcategory": "Музыка и звук",
       "images": [
@@ -251,7 +233,6 @@
     {
       "id": 19,
       "title": "Основы мобильной фотографии",
-      "description": "Как делать качественные и интересные снимки на камеру смартфона.",
       "category": "Творчество и искусство",
       "subcategory": "Фотография",
       "images": [
@@ -267,7 +248,6 @@
     {
       "id": 20,
       "title": "Фотосъёмка портретов",
-      "description": "Настройка света, позирование и работа с моделью для выразительных портретов.",
       "category": "Творчество и искусство",
       "subcategory": "Фотография",
       "images": [
@@ -281,7 +261,6 @@
     {
       "id": 21,
       "title": "Обработка фото на смартфоне",
-      "description": "Фишки мобильных приложений для быстрой и эффектной обработки снимков.",
       "category": "Творчество и искусство",
       "subcategory": "Фотография",
       "images": [
@@ -295,7 +274,6 @@
     {
       "id": 22,
       "title": "Старт в видеоблогинге",
-      "description": "Как начать вести видеоблог, подборка тем и простая видеосъёмка без сложной техники.",
       "category": "Творчество и искусство",
       "subcategory": "Видеоконтент",
       "images": [
@@ -309,7 +287,6 @@
     {
       "id": 23,
       "title": "Видео-монтаж для новичков",
-      "description": "Основы монтажа видеороликов, работа с простым ПО, эффекты и экспорт.",
       "category": "Творчество и искусство",
       "subcategory": "Видеоконтент",
       "images": [
@@ -323,7 +300,6 @@
     {
       "id": 24,
       "title": "Скетчинг для начинающих",
-      "description": "Быстрое создание набросков от идеи до результата, основы композиции.",
       "category": "Творчество и искусство",
       "subcategory": "Рисование и иллюстрация",
       "images": [
@@ -341,165 +317,240 @@
       "name": "Мария",
       "gender": "female",
       "email": "maria@example.com",
-      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=687&auto=format&fit=crop",
       "city": "Москва",
       "birthDate": "1995-10-28",
       "teachingSkillId": 1,
-      "learningSkillIds": [4, 12, 21, 3]
+      "learningSkillIds": [2, 3, 5],
+      "about": "Опытный специалист по Pomodoro, делюсь лайфхаками продуктивности."
     },
     {
       "id": 2,
       "name": "Иван",
       "gender": "male",
       "email": "ivan@example.com",
-      "avatar": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "avatar": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=687&auto=format&fit=crop",
       "city": "Санкт-Петербург",
       "birthDate": "1992-05-15",
-      "teachingSkillId": 11,
-      "learningSkillIds": [1, 10, 22]
+      "teachingSkillId": 2,
+      "learningSkillIds": [1, 4, 10],
+      "about": "Эксперт по матрице Эйзенхауэра, учу работать с приоритетами."
     },
     {
       "id": 3,
       "name": "Елена",
       "gender": "female",
       "email": "elena@example.com",
-      "avatar": "https://plus.unsplash.com/premium_photo-1689551671541-31a345ce6ae0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "avatar": "https://plus.unsplash.com/premium_photo-1689551671541-31a345ce6ae0?q=80&w=687&auto=format&fit=crop",
       "city": "Новосибирск",
       "birthDate": "1998-02-11",
-      "teachingSkillId": 12,
-      "learningSkillIds": [10, 5, 1]
+      "teachingSkillId": 3,
+      "learningSkillIds": [1, 4, 6],
+      "about": "Профессионально обучаю техникам работы с возражениями."
     },
     {
       "id": 4,
       "name": "Алексей",
       "gender": "male",
       "email": "aleksey@example.com",
-      "avatar": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "avatar": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=870&auto=format&fit=crop",
       "city": "Екатеринбург",
       "birthDate": "1988-08-12",
       "teachingSkillId": 4,
-      "learningSkillIds": [3, 20, 1]
+      "learningSkillIds": [2, 5, 7],
+      "about": "Учу убеждать и вести сложные переговоры."
     },
     {
       "id": 5,
       "name": "Ольга",
       "gender": "female",
       "email": "olga@example.com",
-      "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=761&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=761&auto=format&fit=crop",
       "city": "Казань",
       "birthDate": "1994-11-05",
-      "teachingSkillId": 2,
-      "learningSkillIds": [1, 22, 21]
+      "teachingSkillId": 5,
+      "learningSkillIds": [1, 3, 10],
+      "about": "Наставник по Scrum и гибким методологиям управления проектами."
     },
     {
       "id": 6,
       "name": "Дмитрий",
       "gender": "male",
       "email": "dmitry@example.com",
-      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=687&auto=format&fit=crop",
       "city": "Нижний Новгород",
       "birthDate": "1990-03-22",
-      "teachingSkillId": 21,
-      "learningSkillIds": [4, 3, 20]
+      "teachingSkillId": 6,
+      "learningSkillIds": [2, 4, 8],
+      "about": "Объясняю, как делать эффективное спринт-планирование."
     },
     {
       "id": 7,
       "name": "Анна",
       "gender": "female",
       "email": "anna@example.com",
-      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1470&auto=format&fit=crop",
       "city": "Самара",
       "birthDate": "1997-07-30",
-      "teachingSkillId": 1,
-      "learningSkillIds": [11, 12, 5]
+      "teachingSkillId": 7,
+      "learningSkillIds": [3, 9, 5],
+      "about": "Рассказываю о первых шагах в финансовой грамотности."
     },
     {
       "id": 8,
       "name": "Сергей",
       "gender": "male",
       "email": "sergey@example.com",
-      "avatar": "https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=721&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "avatar": "https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=721&auto=format&fit=crop",
       "city": "Омск",
       "birthDate": "1985-01-18",
-      "teachingSkillId": 5,
-      "learningSkillIds": [2, 5, 1]
+      "teachingSkillId": 8,
+      "learningSkillIds": [2, 5, 10],
+      "about": "Помогаю преодолеть страх публичных выступлений."
     },
     {
       "id": 9,
       "name": "Татьяна",
       "gender": "female",
       "email": "tatiana@example.com",
-      "avatar": "https://images.unsplash.com/photo-1521146764736-56c929d59c83?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "avatar": "https://images.unsplash.com/photo-1521146764736-56c929d59c83?q=80&w=687&auto=format&fit=crop",
       "city": "Челябинск",
       "birthDate": "1993-09-14",
-      "teachingSkillId": 22,
-      "learningSkillIds": [10, 20, 3]
+      "teachingSkillId": 9,
+      "learningSkillIds": [1, 6, 11],
+      "about": "Провожу мини-курсы по деловой переписке."
     },
     {
       "id": 10,
       "name": "Павел",
       "gender": "male",
       "email": "pavel@example.com",
-      "avatar": "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "avatar": "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?q=80&w=880&auto=format&fit=crop",
       "city": "Ростов-на-Дону",
       "birthDate": "1989-12-01",
-      "teachingSkillId": 11,
-      "learningSkillIds": [1, 2, 3]
+      "teachingSkillId": 10,
+      "learningSkillIds": [2, 4, 8],
+      "about": "Разрабатываю эффективные методы для развития разговорного английского."
     },
     {
       "id": 11,
       "name": "Виктория",
       "gender": "female",
       "email": "viktoria@example.com",
-      "avatar": "https://plus.unsplash.com/premium_photo-1689551671548-79ff30459d2a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "avatar": "https://plus.unsplash.com/premium_photo-1689551671548-79ff30459d2a?q=80&w=687&auto=format&fit=crop",
       "city": "Краснодар",
       "birthDate": "1996-02-15",
-      "teachingSkillId": 12,
-      "learningSkillIds": [4, 22, 21]
+      "teachingSkillId": 11,
+      "learningSkillIds": [3, 7, 14],
+      "about": "Подготавливаю студентов к академическому английскому."
     },
     {
       "id": 12,
       "name": "Андрей",
       "gender": "male",
       "email": "andrey@example.com",
-      "avatar": "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=689&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "avatar": "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=689&auto=format&fit=crop",
       "city": "Владивосток",
       "birthDate": "1991-11-21",
-      "teachingSkillId": 5,
-      "learningSkillIds": [3, 10, 1]
+      "teachingSkillId": 12,
+      "learningSkillIds": [2, 11, 20],
+      "about": "Готовлю к IELTS по всем направлениям экзамена."
     },
     {
       "id": 13,
       "name": "Оксана",
       "gender": "female",
       "email": "oksana@example.com",
-      "avatar": "https://images.unsplash.com/photo-1604004555489-723a93d6ce74?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "avatar": "https://images.unsplash.com/photo-1604004555489-723a93d6ce74?q=80&w=687&auto=format&fit=crop",
       "city": "Пермь",
       "birthDate": "1997-07-10",
-      "teachingSkillId": 20,
-      "learningSkillIds": [1, 10, 11]
+      "teachingSkillId": 13,
+      "learningSkillIds": [2, 14, 19],
+      "about": "Объясню основы разговорного немецкого для поездок и работы."
     },
     {
       "id": 14,
       "name": "Денис",
       "gender": "male",
       "email": "denis@example.com",
-      "avatar": "https://images.unsplash.com/photo-1639747280804-dd2d6b3d88ac?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "avatar": "https://images.unsplash.com/photo-1639747280804-dd2d6b3d88ac?q=80&w=687&auto=format&fit=crop",
       "city": "Иркутск",
       "birthDate": "1988-04-30",
-      "teachingSkillId": 21,
-      "learningSkillIds": [2, 5, 12]
+      "teachingSkillId": 14,
+      "learningSkillIds": [13, 10, 3],
+      "about": "Научу свободно общаться на французском в путешествиях."
     },
     {
       "id": 15,
       "name": "Ирина",
       "gender": "female",
       "email": "irina@example.com",
-      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=688&auto=format&fit=crop",
       "city": "Тюмень",
       "birthDate": "1995-05-26",
-      "teachingSkillId": 11,
-      "learningSkillIds": [20, 21, 22]
+      "teachingSkillId": 15,
+      "learningSkillIds": [11, 17, 20],
+      "about": "Раскрою секреты простого итальянского для путешественников."
+    },
+    {
+      "id": 16,
+      "name": "Максим",
+      "gender": "male",
+      "email": "maxim@example.com",
+      "avatar": "https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Москва",
+      "birthDate": "1993-02-16",
+      "teachingSkillId": 16,
+      "learningSkillIds": [15, 17, 6],
+      "about": "Специалист по цифровому рисованию, обучаю Procreate."
+    },
+    {
+      "id": 17,
+      "name": "Валерия",
+      "gender": "female",
+      "email": "valeria@example.com",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Новосибирск",
+      "birthDate": "1996-08-09",
+      "teachingSkillId": 17,
+      "learningSkillIds": [16, 18, 11],
+      "about": "Покажу базовые аккорды на укулеле даже с нуля."
+    },
+    {
+      "id": 18,
+      "name": "Артём",
+      "gender": "male",
+      "email": "artem@example.com",
+      "avatar": "https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=687&auto=format&fit=crop",
+      "city": "Сочи",
+      "birthDate": "1991-06-25",
+      "teachingSkillId": 18,
+      "learningSkillIds": [12, 17, 20],
+      "about": "Обучу основам игры на гитаре и подбору аккордов."
+    },
+    {
+      "id": 19,
+      "name": "Юлия",
+      "gender": "female",
+      "email": "yulia@example.com",
+      "avatar": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=687&auto=format&fit=crop",
+      "city": "Калуга",
+      "birthDate": "1994-07-13",
+      "teachingSkillId": 19,
+      "learningSkillIds": [15, 13, 2],
+      "about": "Повышаю мастерство мобильной фотографии легко и творчески."
+    },
+    {
+      "id": 20,
+      "name": "Роман",
+      "gender": "male",
+      "email": "roman@example.com",
+      "avatar": "https://images.unsplash.com/photo-1636041246170-9278569b9c36?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Уфа",
+      "birthDate": "1989-09-10",
+      "teachingSkillId": 20,
+      "learningSkillIds": [19, 14, 4],
+      "about": "Объясню всё про свет и позирование в портретной фотографии."
     }
   ]
 }
