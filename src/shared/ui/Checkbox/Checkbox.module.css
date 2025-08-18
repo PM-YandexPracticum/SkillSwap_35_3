@@ -1,0 +1,21 @@
+.checkbox {}
+
+.checkbox__item {}
+
+.checkbox__input {}
+
+.checkbox__control {}
+
+.checkbox__label {}
+
+.checkbox__checked .checkbox__control {}
+
+.checkbox__disabled {}
+
+.checkbox__variant_check .checkbox__item.checkbox__checked .checkbox__control::after {}
+
+.checkbox__variant_dash .checkbox__item.checkbox__checked .checkbox__control::after {}
+
+.checkbox__item:hover .checkbox__control {}
+
+.checkbox__input:focus-visible + .checkbox__control {}
