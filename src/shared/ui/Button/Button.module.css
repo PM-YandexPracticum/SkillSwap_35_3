@@ -1,0 +1,100 @@
+@import url('@/app/styles/_variables.css');
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-small);
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-light);
+  line-height: 1.5;
+  border: none;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+}
+
+.button_type_primary {
+  color: var(--font-color-primary);
+  background-color: var(--button-color-accent);
+}
+
+.button_type_primary:hover {
+  background-color: var(--button-color-hover);
+}
+
+.button_type_primary:active {
+  color: var(--background-color-secondary);
+  background-color: var(--font-color-accent);
+}
+
+.button_type_primary:disabled {
+  color: var(--font-color-secondary);
+  background-color: var(--button-color-disabled);
+  cursor: auto;
+}
+
+.button_type_secondary {
+  color: var(--font-color-primary);
+  background-color: var(--background-color-secondary);
+  border: var(--border-input-button) solid var(--button-color-accent);
+}
+
+.button_type_secondary:hover {
+  color: var(--font-color-secondary);
+  background-color: var(--background-color-secondary);
+  border: var(--border-input-button) solid var(--button-color-hover);
+}
+
+.button_type_secondary:active {
+  color: var(--font-color-primary);
+  background-color: var(--background-color-secondary);
+  border: var(--border-input-button) solid var(--font-color-accent);
+}
+
+.button_type_secondary:disabled {
+  color: var(--font-color-secondary);
+  background-color: var(--background-color-secondary);
+  border: var(--border-input-button) solid var(--button-color-disabled);
+  cursor: auto;
+}
+
+.button_type_tertiary {
+  color: var(--font-color-primary);
+  background-color: var(--background-color-secondary);
+  border: none;
+}
+
+.button_size_small {
+  padding-inline: 23px;
+}
+
+.button_size_medium {
+  padding-inline: 99px;
+}
+
+.button_size_large {
+  padding-inline: 194px;
+}
+
+.button_full-width {
+  width: 100%;
+}
+
+.button__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button__icon_position_left {
+  margin-right: 8px;
+}
+
+.button__icon_position_right {
+  margin-left: 8px;
+}
+
+.button__content {
+  display: inline-block;
+}
