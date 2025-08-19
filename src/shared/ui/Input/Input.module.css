@@ -1,0 +1,64 @@
+.input__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 500px;
+}
+
+.input {
+  border-radius: 12px;
+  border: 1px solid var(--font-color-secondary);
+  width: 100%;
+  padding: 12px 20px;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-light);
+  font-style: normal;
+  font-size: var(--font-size-sm);
+  line-height: var(--font-line-sm-md);
+  letter-spacing: 2%;
+  color: var(--font-color-primary);
+}
+
+.input[type='date']::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  display: none;
+}
+
+.input[type='date']::placeholder {
+  color: var(--font-color-secondary);
+}
+
+.input_search {
+  border-color: var(--background-color-secondary);
+  background: var(--background-color-secondary);
+  padding-left: 44px;
+}
+
+.input__icon_container {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.input__icon_left {
+  left: 12px;
+}
+
+.input__icon_right {
+  right: 20px;
+}
+
+
+.input::placeholder {
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-light);
+  font-style: normal;
+  font-size: var(--font-size-sm);
+  line-height: var(--font-line-sm-md);
+  letter-spacing: 2%;
+  color: var(--font-color-secondary);
+}
+
