@@ -15,13 +15,15 @@ export const Email = {
 export const Search = {
   args: {
     placeholder: 'Искать навык',
-    search: true
+    search: true,
+    icon: <Icon name='search-icon' />,
+    iconPosition: 'left'
   }
 };
 
 export const Data = {
   args: {
-    data: true,
+    icon: <Icon name='calendar-icon' />,
     iconPosition: 'right',
     placeholder: 'дд.мм.гггг'
   }
