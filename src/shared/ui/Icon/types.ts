@@ -41,8 +41,8 @@ export type IconName =
   | 'google-icon'
 
   // Другое
-  | 'user-circle-icon';  
-  | 'logo-icon';
+  | 'user-circle-icon'
+  | 'logo-icon'
 
 export interface IconProps {
   name: IconName;
