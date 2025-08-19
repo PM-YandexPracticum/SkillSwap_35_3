@@ -1,4 +1,3 @@
-// import clsx from 'clsx';
 import type { ITitleProps } from './types';
 import styles from './title.module.css';
 
