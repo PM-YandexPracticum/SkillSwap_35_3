@@ -4,7 +4,7 @@ import { RadioUI } from './Radio';
 import type { IRadioOption } from './types';
 
 const meta: Meta<typeof RadioUI> = {
-  title: 'Form/Radio',
+  title: 'UI/Radio',
   component: RadioUI,
   args: {
     name: 'demo',
