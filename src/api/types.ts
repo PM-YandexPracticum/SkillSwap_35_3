@@ -1,7 +1,6 @@
 export interface ISkill {
   id: number;
   title: string;
-  description: string;
   category: string;
   subcategory: string;
   images: string[];
@@ -11,6 +10,7 @@ export interface IUser {
   id: number;
   name: string;
   gender: 'male' | 'female';
+  about: string;
   email: string;
   avatar: string;
   city: string;
@@ -22,7 +22,7 @@ export interface IUser {
 export enum RequestStatus {
   PENDING = 'pending',
   ACCEPTED = 'accepted',
-  REJECTED = 'rejected',
+  REJECTED = 'rejected'
 }
 
 export interface IRequest {

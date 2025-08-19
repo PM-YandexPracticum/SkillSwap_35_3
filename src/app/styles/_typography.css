@@ -1,0 +1,13 @@
+body {
+  font-family: var(--font-family-text);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  font-weight: var(--font-weight-light);
+  background-color: var(--background-color-primary);
+}
+
+a {
+  text-decoration: none; /* Убираем подчёркивание */
+  color: inherit;
+}

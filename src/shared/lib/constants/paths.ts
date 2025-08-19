@@ -6,5 +6,5 @@ export const pathConstants = {
   CARD: '/card/:id',
   PROFILE: '/profile/:id',
   ERROR_PAGE: '/error/:type',
-  NOT_FOUND: '*',
+  NOT_FOUND: '*'
 };

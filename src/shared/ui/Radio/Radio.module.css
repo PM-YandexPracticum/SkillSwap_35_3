@@ -1,0 +1,53 @@
+@import '@/app/styles/_variables.css';
+
+.radio {
+  display: grid;
+  gap: 12px;
+}
+
+.radio__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.radio__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radio__control {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+
+.radio__control::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.radio__checked .radio__control {
+  border-color: var(--font-color-accent)
+}
+
+.radio__checked .radio__control::after {
+  background: var(--font-color-accent)
+}
+
+.radio__label {
+  line-height: 1;
+}
+
+.radio__disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+} 
