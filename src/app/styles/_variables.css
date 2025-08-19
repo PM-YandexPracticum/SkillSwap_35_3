@@ -43,10 +43,10 @@
   --button-color-hover: #DEEBC5; /* Button hover */
   --tag-color-business: #EEE7F7; /* Tag_Бизнес и карьера */
   --tag-color-art: #F7E7F2; /* Tag_Творчество и искусство */
-  --tag-colog-language: #EBE5C5; /* Tag_Иностранные языки  */
-  --tag-colog-education: #E7F2F6; /* Tag_Образование и развитие  */
+  --tag-color-language: #EBE5C5; /* Tag_Иностранные языки  */
+  --tag-color-education: #E7F2F6; /* Tag_Образование и развитие  */
   --tag-color-household: #F7EBE5; /* Tag_Дом и уют  */
-  --tag-colog-lifestyle: #E9F7E7; /* Tag_Здоровье и лайфстайл */
+  --tag-color-lifestyle: #E9F7E7; /* Tag_Здоровье и лайфстайл */
   --tag-color-plus: #E8ECF7; /* Tag_+  */
   --overlay-color: #8E8E8E99; /* overlay */
   --error-color: #BF3920; /* Error */
