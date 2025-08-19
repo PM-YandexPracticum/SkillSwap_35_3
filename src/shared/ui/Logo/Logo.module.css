@@ -1,0 +1,13 @@
+@import url('@/app/styles/_variables.css');
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  cursor: pointer; 
+  gap: 12px;
+}
+
+.text {
+  margin-left: 8px;
+  font-weight: bold;
+}
