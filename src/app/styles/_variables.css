@@ -50,8 +50,6 @@
   --overlay-color: #8E8E8E99; /* overlay */
   --error-color: #BF3920; /* Error */
 
-
-
   /* переменные для рамок и скруглений */
   --border-radius-big: 24px; /* sidebar, userinfo */
   --border-radius-small: 12px; /* button, input, card */
