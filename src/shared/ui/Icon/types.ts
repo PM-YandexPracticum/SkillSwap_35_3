@@ -42,7 +42,7 @@ export type IconName =
 
   // Другое
   | 'user-circle-icon'
-  | 'logo-icon'
+  | 'logo-icon';
 
 export interface IconProps {
   name: IconName;
