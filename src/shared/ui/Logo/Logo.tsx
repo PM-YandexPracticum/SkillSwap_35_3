@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Icon } from '@/shared/ui/Icon'; // Импорт компонента Icon для отображения логотипа
+import { Icon } from '@/shared/ui/Icon';
+import { Title } from '../Title';
 import styles from './Logo.module.css';
 import { LogoProps } from './types';
 
@@ -9,7 +10,8 @@ const Logo: React.FC<LogoProps> = ({
   color,
   text = 'Skillbox',
   onClick,
-  className = ''
+  className = '',
+  titleSize = 'lg'
 }) => {
   const [accentColor, setAccentColor] = useState<string | undefined>(undefined);
 
@@ -23,7 +25,7 @@ const Logo: React.FC<LogoProps> = ({
 
   const iconColor = color || accentColor || 'currentColor';
 
-  const containerClassName = [styles.logoContainer, className]
+  const containerClassName = [styles.logo__container, className]
     .filter(Boolean)
     .join(' ');
 
@@ -36,7 +38,9 @@ const Logo: React.FC<LogoProps> = ({
         color={iconColor}
         aria-label='Логотип Skillbox'
       />
-      <span className={styles.logoText}>{text}</span>
+      <Title as='h2' size={titleSize}>
+        {text}
+      </Title>
     </div>
   );
 };

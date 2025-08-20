@@ -4,5 +4,6 @@ export interface LogoProps {
   color?: string;
   text?: string;
   onClick?: () => void;
-  className?: string; // дополнительные классы для контейнера
+  className?: string;
+  titleSize?: 'xl' | 'lg' | 'md' | 'sm';
 }

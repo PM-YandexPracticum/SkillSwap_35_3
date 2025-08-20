@@ -7,7 +7,8 @@ const meta: Meta<typeof Logo> = {
   component: Logo,
   args: {
     size: 40,
-    text: 'Skillbox'
+    text: 'Skillbox',
+    titleSize: 'lg'
   },
   parameters: {
     docs: {
@@ -26,7 +27,8 @@ type Story = StoryObj<typeof Logo>;
 export const Basic: Story = {
   args: {
     size: 40,
-    text: 'Skillbox'
+    text: 'Skillbox',
+    titleSize: 'lg'
   }
 };
 
@@ -34,19 +36,19 @@ export const Basic: Story = {
 export const LargeSizeAndCustomText: Story = {
   args: {
     size: 80,
-    text: 'Большой логотип'
+    text: 'Большой логотип',
+    titleSize: 'xl'
   }
 };
 
 // История с обработчиком клика
 export const ClickableLogo: Story = {
-  render: () => (
-    <Logo
-      size={60}
-      text='Кликабельный'
-      onClick={() => alert('Логотип кликнут!')}
-    />
-  )
+  args: {
+    size: 60,
+    text: 'Кликабельный',
+    titleSize: 'md'
+  },
+  render: (args) => <Logo {...args} onClick={() => alert('Логотип кликнут!')} />
 };
 
 // История с кастомным цветом (например, передать через пропс)
@@ -54,6 +56,7 @@ export const CustomColor: Story = {
   args: {
     size: 50,
     text: 'Цветной логотип',
-    color: 'red' // Передача собственного цвета
+    color: 'red',
+    titleSize: 'sm'
   }
 };
