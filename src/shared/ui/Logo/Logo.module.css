@@ -1,0 +1,15 @@
+@import '@/app/styles/_variables.css';
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer; /* при необходимости */
+}
+
+/* Стиль для текста Skillbox */
+.logoText {
+  /* Используем переменные из _variables */
+  font: var(--logo-font);
+  color: var(--font-color-primary);
+}
