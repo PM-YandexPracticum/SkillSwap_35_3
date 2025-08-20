@@ -1,4 +1,4 @@
-import { getUserById, getUsers } from '@/api/mockApi';
+import { getUserById, getUsers } from '../../api/mockApi';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchUsers = createAsyncThunk(

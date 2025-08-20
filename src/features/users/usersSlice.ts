@@ -1,4 +1,4 @@
-import { IUser } from '@/api/types';
+import { IUser } from '../../api/types';
 import { createSlice, SerializedError } from '@reduxjs/toolkit';
 import { fetchUserByID, fetchUsers } from './usersThunks';
 
@@ -9,7 +9,7 @@ type UserState = {
   error: SerializedError | null;
 };
 
-const initialState: UserState = {
+export const initialState: UserState = {
   users: [],
   selected: null,
   isLoading: false,
