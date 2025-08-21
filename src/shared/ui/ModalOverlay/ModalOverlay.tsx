@@ -4,5 +4,19 @@ import { ModalOverlayProps } from './types';
 
 export const ModalOverlayUI: React.FC<ModalOverlayProps> = ({
   onClose,
-  'data-cy': dataCy = 'overlay'
-}) => <div className={styles.overlay} onClick={onClose} data-cy={dataCy} />;
+  'data-cy': dataCy = 'overlay',
+  className,
+  overlayStyle,
+  children
+}) => (
+  <div
+    className={`${styles.overlay} ${className ?? ''}`} // добавляем дополнительные классы, если есть
+    style={overlayStyle}
+    onClick={() => {
+      if (onClose) onClose();
+    }}
+    data-cy={dataCy}
+  >
+    {children}
+  </div>
+);

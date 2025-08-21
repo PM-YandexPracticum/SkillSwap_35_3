@@ -5,4 +5,5 @@ export interface ModalOverlayProps {
   className?: string; // дополнительные классы для стилизации
   overlayStyle?: React.CSSProperties; // inline-стили для оверлея
   'data-cy'?: string; // дата-атрибут для тестирования
+  children?: React.ReactNode; // содержимое внутри компонента
 }
