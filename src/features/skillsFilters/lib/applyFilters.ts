@@ -4,26 +4,27 @@ import type { IUser, ISkill } from '@/api/types';
 const buildSkillTitleMap = (skills: ISkill[]) =>
   new Map<string, string>(skills.map((s) => [String(s.id), s.title]));
 
-type WithSkillIds =
-  | { teachIds?: (string | number)[]; learnIds?: (string | number)[] }
-  | { teach?: (string | number)[]; learn?: (string | number)[] };
+type WithSkillIds = {
+  teachIds?: (string | number)[];
+  learnIds?: (string | number)[];
+  teach?: (string | number)[];
+  learn?: (string | number)[];
+};
 
 const idsOf = (list?: (string | number)[]) => (list ?? []).map(String);
 
-const getTeachIds = (u: IUser): string[] => {
-  const x = u as unknown as WithSkillIds;
-  return idsOf((x as any).teachIds ?? (x as any).teach);
+const getTeachIds = (u: IUser & Partial<WithSkillIds>): string[] => {
+  return idsOf(u.teachIds ?? u.teach);
 };
-const getLearnIds = (u: IUser): string[] => {
-  const x = u as unknown as WithSkillIds;
-  return idsOf((x as any).learnIds ?? (x as any).learn);
+const getLearnIds = (u: IUser & Partial<WithSkillIds>): string[] => {
+  return idsOf(u.learnIds ?? u.learn);
 };
 
 const hasAny = (ids: string[], selected: Set<string>) =>
   ids.some((id) => selected.has(id));
 
 const matchModeAndCategories = (
-  u: IUser,
+  u: IUser & Partial<WithSkillIds>,
   mode: Mode,
   categories: Set<string>,
 ) => {
@@ -45,7 +46,11 @@ const matchGender = (u: IUser, gender: Gender | null) =>
 const normalize = (s: unknown) =>
   (typeof s === 'string' ? s : String(s ?? '')).trim().toLowerCase();
 
-const matchQuery = (u: IUser, q: string, skills: ISkill[]) => {
+const matchQuery = (
+  u: IUser & Partial<WithSkillIds>,
+  q: string,
+  skills: ISkill[],
+) => {
   const needle = normalize(q);
   if (!needle) return true;
 
