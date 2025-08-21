@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
 import applyFilters from '@/features/skillsFilters/lib/applyFilters';
 import type { Filters, Gender, Mode } from '@/features/skillsFilters/lib/types';
+import type { IUser, ISkill } from '@/api/types';
 import { RadioUI, CheckboxUI, Title } from '@/shared/ui';
 import s from './FiltersBar.module.css';
 
 type Props = {
-  users: any[];
-  onChange?: (filtered: any[], filters: Filters) => void;
+  users: IUser[];
+  skills: ISkill[];
+  onChange?: (filtered: IUser[], filters: Filters) => void;
 };
 
 const initial: Filters = {
@@ -17,41 +19,23 @@ const initial: Filters = {
   q: '',
 };
 
-export function FiltersBar({ users, onChange }: Props) {
+export function FiltersBar({ users, skills, onChange }: Props) {
   const [filters, setFilters] = useState<Filters>(initial);
 
   const cities = useMemo(
-    () =>
-      Array.from(
-        new Set(users.map((u: any) => u.city ?? u.location).filter(Boolean)),
-      ).sort(),
+    () => Array.from(new Set(users.map((u) => u.city))).sort(),
     [users],
   );
 
-  const categories = useMemo(() => {
-    const teach = users
-      .map((u: any) => u.canTeach ?? u.skillCanTeach)
-      .map((v) =>
-        typeof v === 'string' ? v : v?.title ?? v?.name ?? v?.subcategory,
-      )
-      .filter(Boolean) as string[];
+  const skillOptions = useMemo(
+    () => skills.map((s) => ({ id: String(s.id), title: s.title })),
+    [skills],
+  );
 
-    const learn = users.flatMap((u: any) =>
-      (u.wantToLearn ??
-        u.skillsWantToLearn ??
-        u.subcategoriesWantToLearn ??
-        []
-      )
-        .map((v: any) =>
-          typeof v === 'string' ? v : v?.title ?? v?.name ?? v?.subcategory,
-        )
-        .filter(Boolean),
-    ) as string[];
-
-    return Array.from(new Set([...teach, ...learn])).sort();
-  }, [users]);
-
-  const result = useMemo(() => applyFilters(users, filters), [users, filters]);
+  const result = useMemo(
+    () => applyFilters(users, filters, skills),
+    [users, filters, skills],
+  );
 
   useEffect(() => {
     onChange?.(result, filters);
@@ -67,7 +51,6 @@ export function FiltersBar({ users, onChange }: Props) {
     <section className={s.filters}>
       <Title as="h3" size="md">Фильтры</Title>
 
-      {/* Поиск */}
       <div className={s.filters__section}>
         <label className={s.search}>
           <span className={s.search__label}>Поиск</span>
@@ -77,14 +60,13 @@ export function FiltersBar({ users, onChange }: Props) {
             onChange={(e) =>
               setFilters((f) => ({ ...f, q: e.target.value }))
             }
-            placeholder="имя, описание…"
+            placeholder="имя, навык…"
           />
         </label>
       </div>
 
-      {/* Категории */}
       <div className={s.filters__section}>
-        <Title as="h4" size="sm">Категории/подкатегории</Title>
+        <Title as="h4" size="sm">Навыки</Title>
         <div className={s.filters__actions}>
           <button
             type="button"
@@ -92,14 +74,14 @@ export function FiltersBar({ users, onChange }: Props) {
               setFilters((f) => ({ ...f, categories: new Set() }))
             }
           >
-            Сбросить категории
+            Сбросить навыки
           </button>
         </div>
         <CheckboxUI
-          name="categories"
+          name="skills"
           values={[...filters.categories]}
-          options={categories.map((c) => ({ label: c, value: c }))}
-          onChange={(val) =>
+          options={skillOptions.map((c) => ({ label: c.title, value: c.id }))}
+          onChange={(val /* string */, _checked) =>
             setFilters((f) => ({
               ...f,
               categories: toggleSet(f.categories, val),
@@ -108,7 +90,6 @@ export function FiltersBar({ users, onChange }: Props) {
         />
       </div>
 
-      {/* Режим */}
       <div className={s.filters__section}>
         <Title as="h4" size="sm">Режим</Title>
         <RadioUI
@@ -119,13 +100,10 @@ export function FiltersBar({ users, onChange }: Props) {
             { label: 'Хочу научиться', value: 'learn' },
             { label: 'Могу научить', value: 'teach' },
           ]}
-          onChange={(m) =>
-            setFilters((f) => ({ ...f, mode: m as Mode }))
-          }
+          onChange={(m) => setFilters((f) => ({ ...f, mode: m as Mode }))}
         />
       </div>
 
-      {/* Пол */}
       <div className={s.filters__section}>
         <Title as="h4" size="sm">Пол</Title>
         <RadioUI
@@ -133,8 +111,8 @@ export function FiltersBar({ users, onChange }: Props) {
           value={(filters.gender ?? 'any') as string}
           options={[
             { label: 'Любой', value: 'any' },
-            { label: 'Мужской', value: 'm' },
-            { label: 'Женский', value: 'f' },
+            { label: 'Мужской', value: 'male' },
+            { label: 'Женский', value: 'female' },
           ]}
           onChange={(v) =>
             setFilters((f) => ({
@@ -145,7 +123,6 @@ export function FiltersBar({ users, onChange }: Props) {
         />
       </div>
 
-      {/* Города */}
       <div className={s.filters__section}>
         <Title as="h4" size="sm">Города</Title>
         <div className={s.filters__actions}>
@@ -160,7 +137,7 @@ export function FiltersBar({ users, onChange }: Props) {
           name="cities"
           values={[...filters.cities]}
           options={cities.map((c) => ({ label: c, value: c }))}
-          onChange={(val) =>
+          onChange={(val, _checked) =>
             setFilters((f) => ({
               ...f,
               cities: toggleSet(f.cities, val),
@@ -169,7 +146,6 @@ export function FiltersBar({ users, onChange }: Props) {
         />
       </div>
 
-      {/* Действия */}
       <div className={s.filters__actions}>
         <button type="button" onClick={() => setFilters(initial)}>
           Сбросить все

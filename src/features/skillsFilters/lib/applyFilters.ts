@@ -1,64 +1,59 @@
 import type { Filters, Gender, Mode } from './types';
+import type { IUser, ISkill } from '@/api/types';
 
-const getCity = (u: any): string | undefined => u.city ?? u.location;
+const buildSkillTitleMap = (skills: ISkill[]) =>
+  new Map<string, string>(skills.map((s) => [String(s.id), s.title]));
+
+type WithSkillIds =
+  | { teachIds?: (string | number)[]; learnIds?: (string | number)[] }
+  | { teach?: (string | number)[]; learn?: (string | number)[] };
+
+const idsOf = (list?: (string | number)[]) => (list ?? []).map(String);
+
+const getTeachIds = (u: IUser): string[] => {
+  const x = u as unknown as WithSkillIds;
+  return idsOf((x as any).teachIds ?? (x as any).teach);
+};
+const getLearnIds = (u: IUser): string[] => {
+  const x = u as unknown as WithSkillIds;
+  return idsOf((x as any).learnIds ?? (x as any).learn);
+};
+
+const hasAny = (ids: string[], selected: Set<string>) =>
+  ids.some((id) => selected.has(id));
+
+const matchModeAndCategories = (
+  u: IUser,
+  mode: Mode,
+  categories: Set<string>,
+) => {
+  if (categories.size === 0) return true;
+  const teach = getTeachIds(u);
+  const learn = getLearnIds(u);
+
+  if (mode === 'teach') return hasAny(teach, categories);
+  if (mode === 'learn') return hasAny(learn, categories);
+  return hasAny(teach, categories) || hasAny(learn, categories);
+};
+
+const matchCity = (u: IUser, cities: Set<string>) =>
+  cities.size === 0 ? true : cities.has(u.city);
+
+const matchGender = (u: IUser, gender: Gender | null) =>
+  gender ? u.gender === gender : true;
 
 const normalize = (s: unknown) =>
   (typeof s === 'string' ? s : String(s ?? '')).trim().toLowerCase();
 
-const getCategoryFromValue = (v: any): string | undefined =>
-  typeof v === 'string' ? v : (v?.title ?? v?.name ?? v?.subcategory);
-
-const getTeach = (u: any): string[] => {
-  const v = u.canTeach ?? u.skillCanTeach;
-  const one = getCategoryFromValue(v);
-  return one ? [one] : [];
-};
-
-const getLearn = (u: any): string[] => {
-  const arr =
-    u.wantToLearn ?? u.skillsWantToLearn ?? u.subcategoriesWantToLearn ?? [];
-  return (Array.isArray(arr) ? arr : [])
-    .map(getCategoryFromValue)
-    .filter(Boolean) as string[];
-};
-
-const hasAny = (source: string[], needed: Set<string>) =>
-  source.some((x) => needed.has(x));
-
-const matchModeAndCategories = (u: any, mode: Mode, cats: Set<string>) => {
-  if (cats.size === 0) return true;
-
-  const teach = getTeach(u);
-  const learn = getLearn(u);
-
-  if (mode === 'teach') return hasAny(teach, cats);
-  if (mode === 'learn') return hasAny(learn, cats);
-  // mode === 'all'
-  return hasAny(teach, cats) || hasAny(learn, cats);
-};
-
-const matchCity = (u: any, cities: Set<string>) => {
-  if (cities.size === 0) return true;
-  const city = getCity(u);
-  return city ? cities.has(city) : false;
-};
-
-const matchGender = (u: any, gender: Gender | null) => {
-  if (!gender) return true;
-  return (u.gender ?? u.sex) === gender;
-};
-
-const matchQuery = (u: any, q: string) => {
+const matchQuery = (u: IUser, q: string, skills: ISkill[]) => {
   const needle = normalize(q);
   if (!needle) return true;
 
-  const hay = [
-    u.name,
-    u.title,
-    u.description,
-    getTeach(u).join(' '),
-    getLearn(u).join(' '),
-  ]
+  const titleById = buildSkillTitleMap(skills);
+  const teachTitles = getTeachIds(u).map((id) => titleById.get(id) ?? id);
+  const learnTitles = getLearnIds(u).map((id) => titleById.get(id) ?? id);
+
+  const hay = [u.name, ...teachTitles, ...learnTitles]
     .filter(Boolean)
     .map(normalize)
     .join(' ');
@@ -66,7 +61,7 @@ const matchQuery = (u: any, q: string) => {
   return hay.includes(needle);
 };
 
-function applyFilters(users: any[], filters: Filters) {
+function applyFilters(users: IUser[], filters: Filters, skills: ISkill[]) {
   const { mode, categories, cities, gender, q } = filters;
 
   return users.filter(
@@ -74,7 +69,7 @@ function applyFilters(users: any[], filters: Filters) {
       matchModeAndCategories(u, mode, categories) &&
       matchCity(u, cities) &&
       matchGender(u, gender) &&
-      matchQuery(u, q),
+      matchQuery(u, q, skills),
   );
 }
 

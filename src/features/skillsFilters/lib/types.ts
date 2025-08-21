@@ -1,4 +1,6 @@
-export type Gender = 'm' | 'f';
+import type { IUser } from '@/api/types';
+
+export type Gender = IUser['gender'];
 export type Mode = 'all' | 'learn' | 'teach';
 
 export type Filters = {
