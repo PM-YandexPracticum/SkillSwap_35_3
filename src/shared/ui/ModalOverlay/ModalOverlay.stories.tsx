@@ -8,7 +8,7 @@ export default {
   argTypes: {
     onClose: { action: 'closed' },
     'data-cy': { control: 'text' }
-  },
+  }
 } as Meta;
 
 const Template: StoryFn<{ onClose: () => void; 'data-cy'?: string }> = (
