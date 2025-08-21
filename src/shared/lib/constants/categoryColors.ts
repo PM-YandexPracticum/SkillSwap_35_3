@@ -1,84 +1,119 @@
 export const DEFAULT_COLOR = 'var(--tag-color-plus)';
 
-export const CATEGORY_COLORS: Record<string, string> = {
-  'Бизнес и карьера': 'var(--tag-color-business)',
-  'Иностранные языки': 'var(--tag-color-language)',
-  'Творчество и искусство': 'var(--tag-color-art)',
-  'Образование и развитие': 'var(--tag-color-education)',
-  'Дом и уют': 'var(--tag-color-household)',
-  'Здоровье и лайфстайл': 'var(--tag-color-lifestyle)'
+type Category = {
+  name: string;
+  color: string;
+  subs: string[];
 };
 
-export const SUBCATEGORY_COLORS: Record<
-  string,
-  keyof typeof CATEGORY_COLORS | string
-> = {
-  'Управление командой': 'Бизнес и карьера',
-  'Маркетинг и реклама': 'Бизнес и карьера',
-  'Продажи и переговоры': 'Бизнес и карьера',
-  'Личный бренд': 'Бизнес и карьера',
-  'Резюме и собеседование': 'Бизнес и карьера',
-  'Тайм-менеджмент': 'Бизнес и карьера',
-  'Проектное управление': 'Бизнес и карьера',
-  'Предпринимательство': 'Бизнес и карьера',
+export const categories: Category[] = [
+  {
+    name: 'Бизнес и карьера',
+    color: 'var(--tag-color-business)',
+    subs: [
+      'Управление командой',
+      'Маркетинг и реклама',
+      'Продажи и переговоры',
+      'Личный бренд',
+      'Резюме и собеседование',
+      'Тайм-менеджмент',
+      'Проектное управление',
+      'Предпринимательство'
+    ]
+  },
+  {
+    name: 'Иностранные языки',
+    color: 'var(--tag-color-language)',
+    subs: [
+      'Английский',
+      'Немецкий',
+      'Испанский',
+      'Французский',
+      'Китайский',
+      'Японский',
+      'Подготовка к экзаменам (IELTS, TOEFL)'
+    ]
+  },
+  {
+    name: 'Творчество и искусство',
+    color: 'var(--tag-color-art)',
+    subs: [
+      'Рисование и иллюстрация',
+      'Фотография',
+      'Видеомонтаж',
+      'Музыка и звук',
+      'Актёрское мастерство',
+      'Креативное письмо',
+      'Арт-терапия',
+      'Декор и DIY'
+    ]
+  },
+  {
+    name: 'Образование и развитие',
+    color: 'var(--tag-color-education)',
+    subs: [
+      'Личностное развитие',
+      'Навыки обучения',
+      'Когнитивные техники',
+      'Скорочтение',
+      'Навыки преподавания',
+      'Коучинг'
+    ]
+  },
+  {
+    name: 'Дом и уют',
+    color: 'var(--tag-color-household)',
+    subs: [
+      'Уборка и организация',
+      'Домашние финансы',
+      'Приготовление еды',
+      'Домашние растения',
+      'Ремонт',
+      'Хранение вещей'
+    ]
+  },
+  {
+    name: 'Здоровье и лайфстайл',
+    color: 'var(--tag-color-lifestyle)',
+    subs: [
+      'Йога и медитация',
+      'Питание и ЗОЖ',
+      'Ментальное здоровье',
+      'Осознанность',
+      'Физические тренировки',
+      'Сон и восстановление',
+      'Баланс жизни и работы'
+    ]
+  }
+];
 
-  'Английский': 'Иностранные языки',
-  'Немецкий': 'Иностранные языки',
-  'Испанский': 'Иностранные языки',
-  'Французский': 'Иностранные языки',
-  'Китайский': 'Иностранные языки',
-  'Японский': 'Иностранные языки',
-  'Подготовка к экзаменам (IELTS, TOEFL)': 'Иностранные языки',
+export const CATEGORY_COLORS = Object.fromEntries(
+  categories.map((c) => [c.name, c.color] as const)
+) as Record<string, string>;
 
-  'Рисование и иллюстрация': 'Творчество и искусство',
-  'Фотография': 'Творчество и искусство',
-  'Видеомонтаж': 'Творчество и искусство',
-  'Музыка и звук': 'Творчество и искусство',
-  'Актёрское мастерство': 'Творчество и искусство',
-  'Креативное письмо': 'Творчество и искусство',
-  'Арт-терапия': 'Творчество и искусство',
-  'Декор и DIY': 'Творчество и искусство',
+export const SUBCATEGORY_COLORS = Object.fromEntries(
+  categories.flatMap((c) => c.subs.map((s) => [s, c.name] as const))
+) as Record<string, keyof typeof CATEGORY_COLORS>;
 
-  'Личностное развитие': 'Образование и развитие',
-  'Навыки обучения': 'Образование и развитие',
-  'Когнитивные техники': 'Образование и развитие',
-  'Скорочтение': 'Образование и развитие',
-  'Навыки преподавания': 'Образование и развитие',
-  'Коучинг': 'Образование и развитие',
+export const isCategoryKey = (
+  key: string
+): key is keyof typeof CATEGORY_COLORS =>
+  Object.prototype.hasOwnProperty.call(CATEGORY_COLORS, key);
 
-  'Уборка и организация': 'Дом и уют',
-  'Домашние финансы': 'Дом и уют',
-  'Приготовление еды': 'Дом и уют',
-  'Домашние растения': 'Дом и уют',
-  'Ремонт': 'Дом и уют',
-  'Хранение вещей': 'Дом и уют',
-
-  'Йога и медитация': 'Здоровье и лайфстайл',
-  'Питание и ЗОЖ': 'Здоровье и лайфстайл',
-  'Ментальное здоровье': 'Здоровье и лайфстайл',
-  'Осознанность': 'Здоровье и лайфстайл',
-  'Физические тренировки': 'Здоровье и лайфстайл',
-  'Сон и восстановление': 'Здоровье и лайфстайл',
-  'Баланс жизни и работы': 'Здоровье и лайфстайл'
-};
-
-const isCssColorLiteral = (val: string) =>
-  val.startsWith('var(') ||
-  val.startsWith('#') ||
-  val.startsWith('rgb(') ||
-  val.startsWith('hsl(');
-
-export const getCategoryColor = (category?: string | null): string => {
-  if (!category) return DEFAULT_COLOR;
-  return CATEGORY_COLORS[category] ?? DEFAULT_COLOR;
-};
+export const getCategoryColor = (category?: string | null): string =>
+  category && isCategoryKey(category)
+    ? CATEGORY_COLORS[category]
+    : DEFAULT_COLOR;
 
 export const getSubcategoryColor = (subcategory?: string | null): string => {
   if (!subcategory) return DEFAULT_COLOR;
   const mapped = SUBCATEGORY_COLORS[subcategory];
-  if (!mapped) return DEFAULT_COLOR;
-  if (typeof mapped === 'string' && isCssColorLiteral(mapped)) return mapped;
-  const categoryName = String(mapped);
+  return mapped && isCategoryKey(mapped)
+    ? CATEGORY_COLORS[mapped]
+    : DEFAULT_COLOR;
+};
 
-  return CATEGORY_COLORS[categoryName] ?? DEFAULT_COLOR;
+export {
+  CATEGORY_COLORS as categoryColors,
+  SUBCATEGORY_COLORS as subcategoryColors
 };
