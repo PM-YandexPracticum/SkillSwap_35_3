@@ -11,17 +11,18 @@ const meta: Meta<typeof CheckboxUI> = {
     options: [
       { value: 'opt1', label: 'Вариант 1' },
       { value: 'opt2', label: 'Вариант 2' },
-      { value: 'opt3', label: 'Вариант 3' },
+      { value: 'opt3', label: 'Вариант 3' }
     ] as ICheckboxProps['options'],
-    variant: 'check',
+    variant: 'check'
   },
   parameters: {
     docs: {
       description: {
-        component: 'Минимальные сторисы для CheckboxUI (варианты: галочка и тире).',
-      },
-    },
-  },
+        component:
+          'Минимальные сторисы для CheckboxUI (варианты: галочка и тире).'
+      }
+    }
+  }
 };
 export default meta;
 
@@ -33,7 +34,9 @@ export const Basic: Story = {
 
     const handleChange: ICheckboxProps['onChange'] = (value, checked) => {
       setValues((prev) =>
-        checked ? Array.from(new Set([...prev, value])) : prev.filter((v) => v !== value),
+        checked
+          ? Array.from(new Set([...prev, value]))
+          : prev.filter((v) => v !== value)
       );
     };
 
@@ -45,18 +48,20 @@ export const Basic: Story = {
         </div>
       </div>
     );
-  },
+  }
 };
 
 export const DashVariant: Story = {
   args: {
-    variant: 'dash',
+    variant: 'dash'
   },
   render: (args) => {
     const [values, setValues] = useState<string[]>(['opt2']);
     const handleChange: ICheckboxProps['onChange'] = (value, checked) => {
       setValues((prev) =>
-        checked ? Array.from(new Set([...prev, value])) : prev.filter((v) => v !== value),
+        checked
+          ? Array.from(new Set([...prev, value]))
+          : prev.filter((v) => v !== value)
       );
     };
     return (
@@ -67,7 +72,7 @@ export const DashVariant: Story = {
         </div>
       </div>
     );
-  },
+  }
 };
 
 export const DisabledItems: Story = {
@@ -75,14 +80,16 @@ export const DisabledItems: Story = {
     options: [
       { value: 'opt1', label: 'Недоступный 1', disabled: true },
       { value: 'opt2', label: 'Доступный' },
-      { value: 'opt3', label: 'Недоступный 2', disabled: true },
-    ],
+      { value: 'opt3', label: 'Недоступный 2', disabled: true }
+    ]
   },
   render: (args) => {
     const [values, setValues] = useState<string[]>(['opt2']);
     const handleChange: ICheckboxProps['onChange'] = (value, checked) => {
       setValues((prev) =>
-        checked ? Array.from(new Set([...prev, value])) : prev.filter((v) => v !== value),
+        checked
+          ? Array.from(new Set([...prev, value]))
+          : prev.filter((v) => v !== value)
       );
     };
     return (
@@ -90,5 +97,5 @@ export const DisabledItems: Story = {
         <CheckboxUI {...args} values={values} onChange={handleChange} />
       </div>
     );
-  },
+  }
 };

@@ -31,7 +31,7 @@
 }
 
 .checkbox__variant_check .checkbox__checked .checkbox__control::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 4px;
   top: 4px;
@@ -43,7 +43,7 @@
 }
 
 .checkbox__variant_dash .checkbox__checked .checkbox__control::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   left: 5px;

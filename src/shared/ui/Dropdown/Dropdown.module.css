@@ -87,7 +87,7 @@
 
 .dropdown__option--selected {
   background-color: var(--button-color-hover);
-} 
+}
 
 .dropdown__icon {
   display: flex;

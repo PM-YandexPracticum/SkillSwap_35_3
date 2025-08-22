@@ -28,7 +28,7 @@
 }
 
 .radio__control::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 4px;
   border-radius: 50%;
@@ -36,11 +36,11 @@
 }
 
 .radio__checked .radio__control {
-  border-color: var(--font-color-accent)
+  border-color: var(--font-color-accent);
 }
 
 .radio__checked .radio__control::after {
-  background: var(--font-color-accent)
+  background: var(--font-color-accent);
 }
 
 .radio__label {
@@ -50,4 +50,4 @@
 .radio__disabled {
   opacity: 0.5;
   cursor: not-allowed;
-} 
+}

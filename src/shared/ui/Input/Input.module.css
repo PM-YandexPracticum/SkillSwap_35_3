@@ -51,7 +51,6 @@
   right: 20px;
 }
 
-
 .input::placeholder {
   font-family: var(--font-family-text);
   font-weight: var(--font-weight-light);
@@ -61,4 +60,3 @@
   letter-spacing: 2%;
   color: var(--font-color-secondary);
 }
-
