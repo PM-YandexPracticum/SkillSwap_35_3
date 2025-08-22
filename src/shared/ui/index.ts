@@ -4,5 +4,7 @@ export * from './Button';
 export * from './Title';
 export * from './Icon';
 export * from './Avatar';
+export * from './Dropdown';
+export * from './Input';
 export * from './Logo';
 export * from './ModalOverlay';
