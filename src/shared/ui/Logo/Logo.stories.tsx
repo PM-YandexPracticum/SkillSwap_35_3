@@ -7,7 +7,7 @@ const meta: Meta<typeof Logo> = {
   component: Logo,
   args: {
     size: 40,
-    text: 'Skillbox',
+    text: 'Skillswap',
     titleSize: 'lg'
   },
   parameters: {
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof Logo>;
 export const Basic: Story = {
   args: {
     size: 40,
-    text: 'Skillbox',
+    text: 'Skillswap',
     titleSize: 'lg'
   }
 };

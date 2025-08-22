@@ -8,7 +8,7 @@ const Logo: React.FC<LogoProps> = ({
   size = 40,
   fill,
   color,
-  text = 'Skillbox',
+  text = 'Skillswap',
   onClick,
   className = '',
   titleSize = 'lg'
@@ -36,7 +36,7 @@ const Logo: React.FC<LogoProps> = ({
         size={size}
         fill={fill}
         color={iconColor}
-        aria-label='Логотип Skillbox'
+        aria-label='Логотип Skillswap'
       />
       <Title as='h2' size={titleSize}>
         {text}
