@@ -1,9 +1,9 @@
-import { fetchUserByID, fetchUsers } from './usersThunks';
+import { fetchUserByID, fetchUsers } from '../thunks/usersThunks';
 import usersReducer, {
   clearSelected,
   initialState as usersInitialState
 } from './usersSlice';
-import { IUser } from '../../api/types';
+import { IUser } from '../../../api/types';
 
 const mockUsers: IUser[] = [
   {
@@ -58,7 +58,7 @@ describe('Проверка правильной настройки и работ
     it('Rejected стейт', () => {
       const state = usersReducer(
         usersInitialState,
-        fetchUsers.rejected(new Error('Error') as any, '', undefined)
+        fetchUsers.rejected(new Error('Error') as Error, '', undefined)
       );
       expect(state.isLoading).toBe(false);
       expect(state.users).toEqual([]);
@@ -87,7 +87,7 @@ describe('Проверка правильной настройки и работ
     it('Rejected стейт', () => {
       const state = usersReducer(
         usersInitialState,
-        fetchUserByID.rejected(new Error('Error') as any, '', 9999)
+        fetchUserByID.rejected(new Error('Error') as Error, '', 9999)
       );
       expect(state.isLoading).toBe(false);
       expect(state.selected).toBeNull();

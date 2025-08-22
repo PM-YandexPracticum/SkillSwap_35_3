@@ -1,4 +1,4 @@
-import { getSkillById, getSkills } from '../../api/mockApi';
+import { getSkillById, getSkills } from '@/api/mockApi';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchSkills = createAsyncThunk(
@@ -7,8 +7,9 @@ export const fetchSkills = createAsyncThunk(
     try {
       const data = await getSkills();
       return data;
-    } catch (err: any) {
-      return thunkAPI.rejectWithValue(err.message);
+    } catch (err) {
+      const error = err as Error;
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -19,8 +20,9 @@ export const fetchSkillById = createAsyncThunk(
     try {
       const skill = await getSkillById(id);
       return skill;
-    } catch (err: any) {
-      return thunkAPI.rejectWithValue(err.message);
+    } catch (err) {
+      const error = err as Error;
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

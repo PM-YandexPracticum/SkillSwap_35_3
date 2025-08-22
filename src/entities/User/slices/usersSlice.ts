@@ -1,6 +1,6 @@
-import { IUser } from '../../api/types';
+import { IUser } from '@/api/types';
 import { createSlice, SerializedError } from '@reduxjs/toolkit';
-import { fetchUserByID, fetchUsers } from './usersThunks';
+import { fetchUserByID, fetchUsers } from '../thunks/usersThunks';
 
 type UserState = {
   users: IUser[];

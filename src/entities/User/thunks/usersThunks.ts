@@ -1,4 +1,4 @@
-import { getUserById, getUsers } from '../../api/mockApi';
+import { getUserById, getUsers } from '@/api/mockApi';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchUsers = createAsyncThunk(
@@ -7,8 +7,9 @@ export const fetchUsers = createAsyncThunk(
     try {
       const data = await getUsers();
       return data;
-    } catch (err: any) {
-      return thunkAPI.rejectWithValue(err.message);
+    } catch (err) {
+      const error = err as Error;
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -19,8 +20,9 @@ export const fetchUserByID = createAsyncThunk(
     try {
       const user = await getUserById(id);
       return user;
-    } catch (err: any) {
-      return thunkAPI.rejectWithValue(err.message);
+    } catch (err) {
+      const error = err as Error;
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

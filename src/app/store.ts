@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import usersReducer from '../features/users/usersSlice';
-import skillsReducer from '../features/skills/skillsSlice';
+import usersReducer from '@/entities/User/slices/usersSlice';
+import skillsReducer from '@/entities/Skill/slices/skillsSlice';
 
 import {
   TypedUseSelectorHook,

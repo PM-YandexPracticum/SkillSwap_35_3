@@ -8,7 +8,7 @@ const users = mockData.users;
 
 export default {
   title: 'UI/Avatar',
-  component: Avatar,
+  component: Avatar
 } as Meta;
 
 const Template: StoryFn<typeof Avatar> = (args) => <Avatar {...args} />;
@@ -16,13 +16,13 @@ const Template: StoryFn<typeof Avatar> = (args) => <Avatar {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   src: users[0]?.avatar || '',
-  alt: `Аватар ${users[0]?.name || 'пользователя'}`,
+  alt: `Аватар ${users[0]?.name || 'пользователя'}`
 };
 
 export const SecondAvatar = Template.bind({});
 SecondAvatar.args = {
   src: users[1]?.avatar || '',
-  alt: `Аватар ${users[1]?.name || 'пользователя'}`,
+  alt: `Аватар ${users[1]?.name || 'пользователя'}`
 };
 
 // Отображение всех аватаров с переносом и сохранением пропорций

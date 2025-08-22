@@ -1,6 +1,9 @@
 import { ISkill } from '@/api/types';
 import { createSlice, SerializedError } from '@reduxjs/toolkit';
-import { fetchSkills, fetchSkillById } from './skillsThunk';
+import {
+  fetchSkills,
+  fetchSkillById
+} from '../../entities/Skill/thunks/skillsThunk';
 
 type SkillState = {
   skills: ISkill[];

@@ -1,4 +1,4 @@
-import { fetchSkillById, fetchSkills } from './skillsThunk';
+import { fetchSkillById, fetchSkills } from '../thunks/skillsThunk';
 import skillsReducer, {
   initialState as skillsInitialState
 } from './skillsSlice';

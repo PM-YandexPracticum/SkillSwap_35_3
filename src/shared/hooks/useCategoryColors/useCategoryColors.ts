@@ -3,7 +3,7 @@ import {
   DEFAULT_COLOR,
   getCategoryColor,
   getSubcategoryColor
-} from '../lib/constants/categoryColors';
+} from '../../lib/constants/categoryColors';
 
 export function useCategoryColors(
   category?: string | null,
