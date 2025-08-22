@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { CheckboxUI } from './Checkbox';
+import { Checkbox } from './Checkbox';
 import type { ICheckboxProps } from './types';
 
-const meta: Meta<typeof CheckboxUI> = {
+const meta: Meta<typeof Checkbox> = {
   title: 'UI/Checkbox',
-  component: CheckboxUI,
+  component: Checkbox,
   args: {
     name: 'demo',
     options: [
@@ -26,7 +26,7 @@ const meta: Meta<typeof CheckboxUI> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof CheckboxUI>;
+type Story = StoryObj<typeof Checkbox>;
 
 export const Basic: Story = {
   render: (args) => {
@@ -44,7 +44,7 @@ export const Basic: Story = {
       <div>
         <span style={{ fontSize: 20, fontWeight: 550 }}>Базовый чекбокс</span>
         <div style={{ marginTop: 16 }}>
-          <CheckboxUI {...args} values={values} onChange={handleChange} />
+          <Checkbox {...args} values={values} onChange={handleChange} />
         </div>
       </div>
     );
@@ -68,7 +68,7 @@ export const DashVariant: Story = {
       <div>
         <span style={{ fontSize: 20, fontWeight: 550 }}>Вариант «тире»</span>
         <div style={{ marginTop: 16 }}>
-          <CheckboxUI {...args} values={values} onChange={handleChange} />
+          <Checkbox {...args} values={values} onChange={handleChange} />
         </div>
       </div>
     );
@@ -94,7 +94,7 @@ export const DisabledItems: Story = {
     };
     return (
       <div>
-        <CheckboxUI {...args} values={values} onChange={handleChange} />
+        <Checkbox {...args} values={values} onChange={handleChange} />
       </div>
     );
   }

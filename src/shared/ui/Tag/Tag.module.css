@@ -1,0 +1,15 @@
+.tag {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-family: var(--font-family-text);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--font-color-primary);
+}
+
+.tag__row {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
