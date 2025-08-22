@@ -3,7 +3,7 @@ import usersReducer, {
   clearSelected,
   initialState as usersInitialState
 } from './usersSlice';
-import { IUser } from '../../../api/types';
+import { IUser } from '@/api/types';
 
 const mockUsers: IUser[] = [
   {

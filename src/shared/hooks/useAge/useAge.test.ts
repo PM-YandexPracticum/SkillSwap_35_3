@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import { useAge } from '../shared/hooks/useAge';
+import { useAge } from './useAge';
 
 describe('useAge', () => {
   beforeEach(() => {

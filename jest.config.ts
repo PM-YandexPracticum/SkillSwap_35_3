@@ -17,16 +17,10 @@ const config: Config = {
     ]
   },
   moduleNameMapper: {
-    '^@api(.*)$': '<rootDir>/src/utils/burger-api$1',
-    '^@api$': '<rootDir>/src/utils/burger-api',
+    '^@/(.*)$': '<rootDir>/src/$1',
 
-    '^@services(.*)$': '<rootDir>/src/services$1',
-    '^@utils(.*)$': '<rootDir>/src/utils$1',
-    '^@types(.*)$': '<rootDir>/src/utils/types$1',
-
-    '^../utils/burger-api$': '<rootDir>/src/utils/burger-api',
-    '^../utils/cookie$': '<rootDir>/src/utils/cookie',
-    '^../utils/types$': '<rootDir>/src/utils/types'
+    '^@api(.*)$': '<rootDir>/src/api/mockApi$1',
+    '^@api$': '<rootDir>/src/api/mockApi'
   },
   collectCoverage: true,
   coverageDirectory: 'coverage',
