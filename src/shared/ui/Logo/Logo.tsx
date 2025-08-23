@@ -8,7 +8,7 @@ const Logo: React.FC<LogoProps> = ({
   size = 40,
   fill,
   color,
-  text = 'Skillswap',
+  text = 'SkillSwap',
   onClick,
   className = '',
   titleSize = 'lg'
