@@ -1,9 +1,10 @@
 @import '@/app/styles/_variables.css';
+@import '@/app/styles/_typography.css';
 
 .footer {
   width: 100%;
   padding: 32px 36px; /* по макету */
-  background-color: #f8f8f8; /* сделать по макету */
+  background-color: var(--background-color-secondary);
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -14,7 +15,7 @@
 /* Логотип внутри футера */
 .footer__logo {
   cursor: pointer;
-  margin-bottom: 20px; /* сделано по макету к */
+  margin-bottom: 20px; /* по макету к */
 }
 
 /* Блок с сеткой ссылок */
@@ -35,15 +36,19 @@
 
 /* Ссылки в футере */
 .footer__link {
+  font: var(--font-sm); /* из переменной */
   text-decoration: none;
-  color: #333; /* сделать по макету */
+  color: var(--font-color-primary); /* из переменной */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* Копирайт внизу */
 .footer__copyright {
-  margin-top: 32px; /* сделано по макету */
+  margin-top: 32px; /* по макету */
   font-size: 14px;
-  color: #777;
+  color: var(--font-color-primary); /* из переменной */
 }
 
 /* Модификатор для закрепленного футера */
