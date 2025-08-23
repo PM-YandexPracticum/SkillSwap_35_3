@@ -1,110 +1,96 @@
 import React from 'react';
-import styles from './Footer.module.css
+import styles from './Footer.module.css'; // путь к файлу стилей
 import { FooterProps } from './types';
 
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import Logo from '@/shared/ui/Logo';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { Logo } from '@/shared/ui/Logo';
 
-export const Footer: React.FC<FooterProps> = ({ show = true }) => {
+export const Footer: React.FC<FooterProps> = ({
+  show = true,
+  className = '',
+  style,
+  children,
+  isSticky = false,
+  backgroundColor,
+  height,
+  padding,
+  onClick,
+  id,
+  ariaLabel,
+  'data-cy': dataCy
+}) => {
   if (!show) {
     return null;
-  } 
+  }
 
   const navigate = useNavigate();
 
+  // Объединяем стили
+  const footerStyle: React.CSSProperties = {
+    backgroundColor,
+    height,
+    padding,
+    position: isSticky ? 'sticky' : undefined,
+    bottom: isSticky ? 0 : undefined,
+    cursor: onClick ? 'pointer' : undefined,
+    ...style
+  };
+
   return (
-    <footer>
-      {/* логотип внутри футера */}
-      <div className='footer__logo' onClick={() => navigate('/')}>
+    <footer
+      id={id}
+      aria-label={ariaLabel}
+      className={`${styles['footer']} ${className}`}
+      style={footerStyle}
+      onClick={onClick}
+      data-cy={dataCy}
+    >
+      {/* Логотип */}
+      <div className={styles['footer__logo']} onClick={() => navigate('/')}>
         <Logo size={40} />
       </div>
 
-      {/* Блок со ссылками в виде grid */}
-      <div className='footer__links-grid'>
+      {/* Блок с ссылками */}
+      <div className={styles['footer__links-grid']}>
         {/* Первая колонка - пустая */}
-        <div className='footer__column'></div>
+        <div className={styles['footer__column']}></div>
 
-        {/* Вторая колонка - две ссылки */}
-        <div className='footer__column'>
-          <NavLink
-            to='/contact'
-            className={({ isActive }) =>
-              'footer__link' + (isActive ? ' footer__link--active' : '')
-            }
-          >
-            Контакты
+        {/* Вторая колонка */}
+        <div className={styles['footer__column']}>
+          <NavLink to='/contact' className={styles['footer__link']}>
+            О проекте
           </NavLink>
-           <NavLink
-            to='/contact'
-            className={({ isActive }) =>
-              'footer__link' + (isActive ? ' footer__link--active' : '')
-            }
-          >
-            Контакты
+          <NavLink to='/about' className={styles['footer__link']}>
+            Все навыки
           </NavLink>
         </div>
 
-        {/* Третья колонка - две ссылки */}
-        <div className='footer__column'>
-          <NavLink
-            to='/contact'
-            className={({ isActive }) =>
-              'footer__link' + (isActive ? ' footer__link--active' : '')
-            }
-          >
+        {/* Третья колонка */}
+        <div className={styles['footer__column']}>
+          <NavLink to='/contact' className={styles['footer__link']}>
             Контакты
           </NavLink>
-           <NavLink
-            to='/contact'
-            className={({ isActive }) =>
-              'footer__link' + (isActive ? ' footer__link--active' : '')
-            }
-          >
-            Контакты
+          <NavLink to='/about' className={styles['footer__link']}>
+            Блог
           </NavLink>
         </div>
 
-        {/* Четвертая колонка - две ссылки */}
-        <div className='footer__column'>
-          <NavLink
-            to='/contact'
-            className={({ isActive }) =>
-              'footer__link' + (isActive ? ' footer__link--active' : '')
-            }
-          >
-            Контакты
+        {/* Четвертая колонка */}
+        <div className={styles['footer__column']}>
+          <NavLink to='/contact' className={styles['footer__link']}>
+            Политика конфиденциальности
           </NavLink>
-           <NavLink
-            to='/contact'
-            className={({ isActive }) =>
-              'footer__link' + (isActive ? ' footer__link--active' : '')
-            }
-          >
-            Контакты
+          <NavLink to='/about' className={styles['footer__link']}>
+            Пользовательское соглашение
           </NavLink>
         </div>
       </div>
 
       {/* Копирайт */}
-      <p className='footer__copyright'>SkillSwap — 2025</p>
+      <p className={styles['footer__copyright']}>SkillSwap — 2025</p>
+
+      {/* Вложенные элементы, если есть */}
+      {children}
     </footer>
   );
 };
-
-/*
-import React from 'react';
-import { Footer } from 'widgets/Footer';
-
-const PageComponent = () => {
-  const shouldShowFooter = true; // или логика, которая определяет отображение
-
-  return (
-    <div>
-      {/* содержимое страницы }
-      
-      {/* отображаем футер только если нужно }
-      <Footer show={shouldShowFooter} />
-    </div>
-  );
-};
-*/

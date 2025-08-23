@@ -1,49 +1,53 @@
 @import '@/app/styles/_variables.css';
 
 .footer {
-  padding: 20px; /* внутренний отступ вокруг всего футера */
-  background-color: #f8f8f8; /* пример фона, при необходимости замените или уберите */
+  width: 100%;
+  padding: 32px 36px; /* по макету */
+  background-color: #f8f8f8; /* сделать по макету */
   display: flex;
   flex-direction: column;
   align-items: left;
+  justify-content: flex-start;
+  box-sizing: border-box;
 }
 
 /* Логотип внутри футера */
 .footer__logo {
   cursor: pointer;
-  margin-bottom: 20px; /* расстояние между логотипом и блоком ссылок */
+  margin-bottom: 20px; /* сделано по макету к */
 }
 
 /* Блок с сеткой ссылок */
 .footer__links-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* четыре колонки одинаковой ширины */
-  gap: 20px; /* расстояние между колонками */
+  gap: 24px; /* по макету */
   width: 100%;
-  max-width: 800px; /* ограничение ширины, по желанию */
 }
 
 /* Каждая колонка */
 .footer__column {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* расстояние между ссылками внутри колонки */
+  justify-content: flex-start;
+  gap: 12px; /* расстояние между ссылками внутри колонки */
 }
 
 /* Ссылки в футере */
 .footer__link {
   text-decoration: none;
-  color: #333; /* цвет текста, при необходимости измените */
-}
-
-.footer__link--active {
-  font-weight: bold;
-  color: #000; /* активная ссылка выделена жирным или другим цветом */
+  color: #333; /* сделать по макету */
 }
 
 /* Копирайт внизу */
 .footer__copyright {
-  margin-top: 20px; /* расстояние от блока ссылок до текста копирайта */
+  margin-top: 32px; /* сделано по макету */
   font-size: 14px;
   color: #777;
+}
+
+/* Модификатор для закрепленного футера */
+.footer--sticky {
+  position: sticky;
+  bottom: 0;
 }
