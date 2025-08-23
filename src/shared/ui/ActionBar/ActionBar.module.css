@@ -1,0 +1,50 @@
+.actionBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.actionButton:hover {
+  background-color: #e9ecef;
+}
+
+.actionButton:active {
+  transform: scale(0.95);
+}
+
+.actionButton.liked {
+  color: #dc3545;
+  fill: #dc3545;
+}
+
+@media (width <= 768px) {
+  .actionBar {
+    gap: 4px;
+    padding: 6px 8px;
+  }
+
+  .actionButton {
+    padding: 6px;
+    font-size: 13px;
+  }
+}
