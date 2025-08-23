@@ -25,6 +25,9 @@ export const Button: React.FC<ButtonProps> = ({
     }
   };
 
+  const hasIconOnly = (!children || children === '') && (icon || iconName);
+  const hasContent = children && children !== '';
+
   const buttonClasses = cn(
     styles.button,
     styles[`button_type_${type}`],
@@ -32,55 +35,52 @@ export const Button: React.FC<ButtonProps> = ({
     {
       [styles.button_fullWidth]: fullWidth,
       [styles.button_disabled]: disabled,
-      [styles.button_withIcon]: !!icon || !!iconName
+      [styles.button_withIcon]: hasContent && (icon || iconName),
+      [styles.button_iconOnly]: hasIconOnly
     },
     className
   );
 
+  const renderIcon = () => {
+    if (iconName) {
+      return <Icon name={iconName} size={iconSize} />;
+    }
+    if (icon) {
+      return icon;
+    }
+    return null;
+  };
+
   const renderContent = () => {
+    if (hasIconOnly) {
+      return renderIcon();
+    }
+
     return (
       <>
-        {iconName && iconPosition === 'left' && (
+        {icon && iconPosition === 'left' && (
           <span
             className={cn(
               styles.button__icon,
               styles.button__icon_position_left
             )}
           >
-            <Icon name={iconName} size={iconSize} />
-          </span>
-        )}
-        {icon && !iconName && iconPosition === 'left' && (
-          <span
-            className={cn(
-              styles.button__icon,
-              styles.button__icon_position_left
-            )}
-          >
-            {icon}
+            {renderIcon()}
           </span>
         )}
 
-        <span className={styles.button__content}>{children}</span>
+        {hasContent && (
+          <span className={styles.button__content}>{children}</span>
+        )}
 
-        {iconName && iconPosition === 'right' && (
+        {icon && iconPosition === 'right' && (
           <span
             className={cn(
               styles.button__icon,
               styles.button__icon_position_right
             )}
           >
-            <Icon name={iconName} size={iconSize} />
-          </span>
-        )}
-        {icon && !iconName && iconPosition === 'right' && (
-          <span
-            className={cn(
-              styles.button__icon,
-              styles.button__icon_position_right
-            )}
-          >
-            {icon}
+            {renderIcon()}
           </span>
         )}
       </>
@@ -89,10 +89,10 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      type={htmlType}
       className={buttonClasses}
       onClick={handleClick}
       disabled={disabled}
-      type={htmlType}
       {...rest}
     >
       {renderContent()}
