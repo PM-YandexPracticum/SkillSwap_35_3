@@ -16,6 +16,8 @@
 .footer__logo {
   cursor: pointer;
   margin-bottom: 20px; /* по макету к */
+  display: inline-flex;
+
 }
 
 /* Блок с сеткой ссылок */
