@@ -8,7 +8,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     type: {
       control: { type: 'select' },
-      options: ['primary', 'secondary', 'tertiary']
+      options: ['primary', 'secondary', 'tertiary', 'ghost']
     },
     size: {
       control: { type: 'select' },
@@ -21,6 +21,7 @@ const meta: Meta<typeof Button> = {
         'close-icon',
         'edit-icon',
         'like-icon',
+        'like-icon-fill',
         'category-art-icon'
       ]
     },
@@ -135,9 +136,20 @@ export const FullWidth: Story = {
   }
 };
 
-export const IconOnly: Story = {
+export const IconOnlyGhost: Story = {
   args: {
+    type: 'ghost',
     iconName: 'like-icon',
+    iconSize: 24,
+    children: null
+  }
+};
+
+export const IconOnlyGhostFill: Story = {
+  args: {
+    type: 'ghost',
+    iconName: 'like-icon-fill',
+    iconSize: 24,
     children: null
   }
 };

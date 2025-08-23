@@ -58,7 +58,7 @@ export const Button: React.FC<ButtonProps> = ({
 
     return (
       <>
-        {icon && iconPosition === 'left' && (
+        {(iconName || icon) && iconPosition === 'left' && (
           <span
             className={cn(
               styles.button__icon,
@@ -73,7 +73,7 @@ export const Button: React.FC<ButtonProps> = ({
           <span className={styles.button__content}>{children}</span>
         )}
 
-        {icon && iconPosition === 'right' && (
+        {(iconName || icon) && iconPosition === 'right' && (
           <span
             className={cn(
               styles.button__icon,

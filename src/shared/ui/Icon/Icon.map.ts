@@ -22,7 +22,8 @@ export const iconMap: Record<IconName, SvgIconComponent> = {
   'clock-icon': Icons.ClockIcon,
   'edit-icon': Icons.EditIcon,
   'share-icon': Icons.ShareIcon,
-  'like-icon': Icons.LikeIconFilled,
+  'like-icon': Icons.LikeIcon,
+  'like-icon-fill': Icons.LikeIconFilled,
   'more-square-icon': Icons.MoreSquareIcon,
   'gallery-add-icon': Icons.GalleryAddIcon,
 
