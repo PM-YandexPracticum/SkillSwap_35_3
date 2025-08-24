@@ -55,16 +55,26 @@ const onDetails = (id: number) => {
   alert(`Подробнее о пользователе с id: ${id}`);
 };
 
-export const Default = () => (
-  <Card user={user} skills={skills} onDetails={onDetails} />
+export const WithAndWithoutAbout = () => (
+  <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
+    <Card user={user} skills={skills} onDetails={onDetails} />
+    <Card user={user} skills={skills} onDetails={onDetails} showAbout={true} />
+  </div>
 );
 
-export const NoTeachSkill = () => (
-  <Card
-    user={{ ...user, teachingSkillId: 999 }}
-    skills={skills}
-    onDetails={onDetails}
-  />
+export const NoTeachNoLearnSkill = () => (
+  <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
+    <Card
+      user={{ ...user, teachingSkillId: 999 }}
+      skills={skills}
+      onDetails={onDetails}
+    />
+    <Card
+      user={{ ...user, learningSkillIds: [] }}
+      skills={skills}
+      onDetails={onDetails}
+    />
+  </div>
 );
 
 export const OneLearnSkill = () => (
@@ -73,16 +83,4 @@ export const OneLearnSkill = () => (
     skills={skills}
     onDetails={onDetails}
   />
-);
-
-export const NoLearnSkills = () => (
-  <Card
-    user={{ ...user, learningSkillIds: [] }}
-    skills={skills}
-    onDetails={onDetails}
-  />
-);
-
-export const ShowAbout = () => (
-  <Card user={user} skills={skills} onDetails={onDetails} showAbout={true} />
 );
