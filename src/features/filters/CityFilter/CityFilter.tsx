@@ -3,22 +3,7 @@ import { CityFilterProps } from './type';
 import { Checkbox, Icon } from '@/shared/ui';
 import styles from './CityFilter.module.css';
 
-const cities = [
-  'Москва',
-  'Санкт-Петербург',
-  'Новосибирск',
-  'Екатеринбург',
-  'Казань',
-  'Нижний Новгород',
-  'Челябинск',
-  'Самара',
-  'Омск',
-  'Ростов-на-Дону',
-  'Уфа',
-  'Красноярск'
-];
-
-export const CityFilter = ({ onChange, value }: CityFilterProps) => {
+export const CityFilter = ({ onChange, value, cities }: CityFilterProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const [maxHeight, setMaxHeight] = useState('208px');

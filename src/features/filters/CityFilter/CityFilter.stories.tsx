@@ -5,6 +5,21 @@ import { CityFilterProps } from './type';
 
 type StoryArgs = CityFilterProps;
 
+const cities = [
+  'Москва',
+  'Санкт-Петербург',
+  'Новосибирск',
+  'Екатеринбург',
+  'Казань',
+  'Нижний Новгород',
+  'Челябинск',
+  'Самара',
+  'Омск',
+  'Ростов-на-Дону',
+  'Уфа',
+  'Красноярск'
+];
+
 export default {
   title: 'UI/CityFilter',
   component: CityFilter,
@@ -16,6 +31,6 @@ export default {
 export const Filter: StoryObj<StoryArgs> = {
   render: () => {
     const [value, setValue] = useState<string[]>([]);
-    return <CityFilter value={value} onChange={setValue} />;
+    return <CityFilter value={value} onChange={setValue} cities={cities} />;
   }
 };
