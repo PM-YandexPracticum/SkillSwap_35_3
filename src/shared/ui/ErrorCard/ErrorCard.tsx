@@ -4,36 +4,30 @@ import styles from './ErrorCard.module.css';
 
 import { ErrorCardProps } from './types';
 
-import error404 from '@/shared/assets/images/error404.png'; // Импорт картинки
 import { Button } from '@/shared/ui/Button'; // Импорт компонента Button
 import { Title } from '@/shared/ui/Title';
 
 export const ErrorCard: React.FC<ErrorCardProps> = ({
-  title = 'Страница не найдена',
-  message = 'К сожалению, эта страница недоступна. Вернитесь <br /> на главную страницу или попробуйте позже',
+  title,
+  message,
+  imageSrc,
   onRetry,
   onGoHome
 }) => {
   return (
     <div className={styles['error-card']}>
-      {/* Картинка Error404 */}
+      {/* Картинка */}
       <div className={styles['error-card__image']}>
-        <img src={error404} alt='Error 404' />
+        <img src={imageSrc} alt='Error' />
       </div>
 
-      {/* Отдельный контейнер для заголовка */}
+      {/* Заголовок */}
       <Title as='h2' size='lg' className={styles['error-card__text-title']}>
         {title}
       </Title>
 
-      {/* Отдельный контейнер для текста */}
-      <div className={styles['error-message-container']}>
-        {/* Используем dangerouslySetInnerHTML для вставки HTML */}
-        <p
-          className={styles['error-card__text-description']}
-          dangerouslySetInnerHTML={{ __html: message }}
-        />
-      </div>
+      {/* Текст */}
+      <p className={styles['error-card__text-description']}>{message}</p>
 
       {/* Блок с кнопками */}
       <div className={styles['error-card__buttons']}>
