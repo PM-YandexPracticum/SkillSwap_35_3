@@ -12,6 +12,7 @@
   border: none;
   border-radius: var(--border-radius-small);
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .button_type_primary {
