@@ -13,10 +13,12 @@ type User = {
   birthDate: string;
   teachingSkillId: number;
   learningSkillIds: number[];
+  about: string;
 };
 
 export type CardProps = {
   user: User;
   skills: Skill[];
   onDetails: (id: number) => void;
+  showAbout?: boolean;
 };

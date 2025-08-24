@@ -12,7 +12,7 @@ const Avatar: React.FC<AvatarProps> = ({
     <img
       src={src}
       alt={alt}
-      className={`${styles.avatar} ${className}`}
+      className={`${styles.avatar} ${className ? className : ''}`}
       onClick={onClick}
     />
   );

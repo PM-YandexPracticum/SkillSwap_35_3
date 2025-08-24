@@ -33,3 +33,21 @@
   font-weight: 400 700;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../../shared/assets/fonts/OpenSans/OpenSans-VariableFont.woff2')
+    format('woff2');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../../shared/assets/fonts/OpenSans/OpenSans-Italic-VariableFont.woff2')
+    format('woff2');
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+}
