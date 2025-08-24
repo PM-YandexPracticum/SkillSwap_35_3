@@ -1,0 +1,58 @@
+@import '@/app/styles/_variables.css';
+@import '@/app/styles/_typography.css';
+@import '@/app/styles/index.css';
+
+.footer {
+  width: 100%;
+  padding: 32px 36px; /* по макету */
+  background-color: var(--background-color-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+/* Логотип внутри футера */
+.footer__logo {
+  cursor: pointer;
+  margin-bottom: 20px; /* по макету к */
+  display: inline-flex;
+}
+
+/* Блок с сеткой ссылок */
+.footer__links-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* четыре колонки одинаковой ширины */
+  gap: 24px; /* по макету */
+  width: 100%;
+}
+
+/* Каждая колонка */
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 12px; /* расстояние между ссылками внутри колонки */
+}
+
+/* Ссылки в футере */
+.footer__link {
+  font: var(--font-sm); /* из переменной */
+  text-decoration: none;
+  color: var(--font-color-primary); /* из переменной */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Копирайт внизу */
+.footer__copyright {
+  margin-top: 32px; /* по макету */
+}
+
+/* Модификатор для закрепленного футера */
+.footer--sticky {
+  position: sticky;
+  bottom: 0;
+}
