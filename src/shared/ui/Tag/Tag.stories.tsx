@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Tag from './Tag';
+import { Tag } from './Tag';
 import styles from './Tag.module.css';
 
 const meta: Meta<typeof Tag> = {

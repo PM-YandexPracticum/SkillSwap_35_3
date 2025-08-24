@@ -4,6 +4,7 @@ body {
   line-height: 16px;
   letter-spacing: 0.02em;
   font-weight: var(--font-weight-light);
+  color: var(--font-color-primary);
   background-color: var(--background-color-primary);
 }
 
