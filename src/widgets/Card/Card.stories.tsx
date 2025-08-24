@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card } from './Card';
 import { CardProps } from './types';
 
@@ -43,6 +42,7 @@ const skills = [
 const user: CardProps['user'] = {
   id: 5,
   name: 'Максим',
+  about: 'Специалист по цифровому рисованию, обучаю Procreate.',
   avatar:
     'https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0',
   city: 'Москва',
@@ -83,7 +83,6 @@ export const NoLearnSkills = () => (
   />
 );
 
-// КОММЕНТАРИИ:
-// - Проверяются все состояния: навык обучения есть/нет, навыки изучения 1, много, нет.
-// - Используй настоящие данные и URL для аватара.
-// - onDetails — простая функция для теста.
+export const ShowAbout = () => (
+  <Card user={user} skills={skills} onDetails={onDetails} showAbout={true} />
+);

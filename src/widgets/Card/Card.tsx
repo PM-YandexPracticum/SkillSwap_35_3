@@ -1,12 +1,22 @@
-import React from 'react';
 import { CardProps } from './types';
 import { Button, Tag, Avatar } from '@/shared/ui';
 import { useAge } from '@/shared/hooks/useAge/useAge';
+import { toggleLike } from '@/features/favorites/toggle-like/toggleLike';
 
 import styles from './Card.module.css';
 
-export function Card({ user, skills, onDetails }: CardProps) {
+export function Card({ user, skills, onDetails, showAbout }: CardProps) {
   const age = useAge(user.birthDate);
+
+  //const isAuth - проверка авторизации для лайка
+
+  const { isLiked, toggle } = toggleLike({
+    defaultLiked: false, //
+    onToggle: (liked) => {
+      // ЗАМЕНИТЬ потенциально на полноценную реализацию хранения лайков
+      console.log('Card liked:', liked);
+    }
+  });
 
   const teachSkill = skills.find((s) => s.id === user.teachingSkillId);
   const learnSkills = skills.filter((s) =>
@@ -18,21 +28,35 @@ export function Card({ user, skills, onDetails }: CardProps) {
   return (
     <div className={styles.card}>
       <div className={styles.card__header}>
-        {/* AuthorPreview вставить, когда компонент будет готов */}
+        <div className={styles['card__button-like_container']}>
+          <Button
+            iconName={isLiked ? 'like-icon-fill' : 'like-icon'}
+            type='ghost'
+            onClick={toggle}
+            className={
+              isLiked
+                ? styles['card__button-like_active']
+                : styles['card__button-like']
+            }
+          />
+        </div>
         <Avatar
           src={user.avatar}
           alt={user.name}
-          className={styles.card__avatar}
+          className={styles['card__header-avatar']}
         />
-        <div className={styles.card__info}>
-          <div className={styles.card__name}>{user.name}</div>
-          <div className={styles.card__details}>
+        <div className={styles['card__header-info']}>
+          <div className={styles['card__header-name']}>{user.name}</div>
+          <div className={styles['card__header-details']}>
             {user.city}, {age}
           </div>
         </div>
       </div>
 
       <div className={styles.card__block}>
+        {showAbout && user.about && (
+          <div className={styles.card__about}>{user.about}</div>
+        )}
         <span className={styles['card__tags-title']}>Может научить:</span>
         <div className={styles.card__tags}>
           {teachSkill ? (

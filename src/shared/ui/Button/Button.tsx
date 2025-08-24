@@ -15,6 +15,8 @@ export const Button: React.FC<ButtonProps> = ({
   iconSize = 24,
   iconPosition = 'left',
   fullWidth = false,
+  fill,
+  stroke,
   children,
   disabled,
   ...rest
@@ -43,7 +45,9 @@ export const Button: React.FC<ButtonProps> = ({
 
   const renderIcon = () => {
     if (iconName) {
-      return <Icon name={iconName} size={iconSize} />;
+      return (
+        <Icon name={iconName} size={iconSize} fill={fill} color={stroke} />
+      );
     }
     if (icon) {
       return icon;

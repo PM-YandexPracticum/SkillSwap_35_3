@@ -18,4 +18,6 @@ export interface ButtonProps
   iconSize?: number;
   iconPosition?: ButtonIconPosition;
   fullWidth?: boolean;
+  fill?: string;
+  stroke?: string;
 }
