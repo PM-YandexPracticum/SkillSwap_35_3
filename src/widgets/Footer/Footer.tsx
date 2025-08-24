@@ -1,9 +1,10 @@
 import React from 'react';
-import styles from './Footer.module.css'; // путь к файлу стилей
+import styles from './Footer.module.css';
 import { FooterProps } from './types';
 
-import { NavLink, useNavigate } from 'react-router-dom';
-import { Logo } from '@/shared/ui/Logo';
+import { Link, useNavigate } from 'react-router-dom';
+//import { Logo } from '@/shared/ui/Logo'; // Компонент Logo убран
+import logo from '@/shared/assets/logo/logo.png'; // Импорт картинки логотипа
 
 export const Footer: React.FC<FooterProps> = ({
   show = true,
@@ -32,7 +33,7 @@ export const Footer: React.FC<FooterProps> = ({
     padding,
     position: isSticky ? 'sticky' : undefined,
     bottom: isSticky ? 0 : undefined,
-    cursor: onClick ? 'pointer' : undefined,
+    cursor: 'default', // всегда по умолчанию
     ...style
   };
 
@@ -46,8 +47,9 @@ export const Footer: React.FC<FooterProps> = ({
       data-cy={dataCy}
     >
       {/* Логотип */}
+      {/* В этом блоке раньше использовался компонент Logo, сейчас используется изображение */}
       <div className={styles['footer__logo']} onClick={() => navigate('/')}>
-        <Logo size={40} />
+        <img src={logo} alt='Логотип' height={40} />
       </div>
 
       {/* Блок с ссылками */}
@@ -57,32 +59,32 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Вторая колонка */}
         <div className={styles['footer__column']}>
-          <NavLink to='/contact' className={styles['footer__link']}>
-            О проекте
-          </NavLink>
-          <NavLink to='/about' className={styles['footer__link']}>
-            Все навыки
-          </NavLink>
+          <Link to='/404' className={styles['footer__link']}>
+            О проекте
+          </Link>
+          <Link to='/404' className={styles['footer__link']}>
+            Все навыки
+          </Link>
         </div>
 
         {/* Третья колонка */}
         <div className={styles['footer__column']}>
-          <NavLink to='/contact' className={styles['footer__link']}>
+          <Link to='/404' className={styles['footer__link']}>
             Контакты
-          </NavLink>
-          <NavLink to='/about' className={styles['footer__link']}>
+          </Link>
+          <Link to='/404' className={styles['footer__link']}>
             Блог
-          </NavLink>
+          </Link>
         </div>
 
         {/* Четвертая колонка */}
         <div className={styles['footer__column']}>
-          <NavLink to='/contact' className={styles['footer__link']}>
+          <Link to='/404' className={styles['footer__link']}>
             Политика конфиденциальности
-          </NavLink>
-          <NavLink to='/about' className={styles['footer__link']}>
+          </Link>
+          <Link to='/404' className={styles['footer__link']}>
             Пользовательское соглашение
-          </NavLink>
+          </Link>
         </div>
       </div>
 

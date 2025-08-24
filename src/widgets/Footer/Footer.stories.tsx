@@ -1,21 +1,22 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
+import { MemoryRouter } from 'react-router-dom'; // импортируем MemoryRouter
 import { Footer } from './Footer';
 import { FooterProps } from './types';
-import { MemoryRouter } from 'react-router-dom';
 
 export default {
-  title: 'shared/Footer',
+  title: 'Components/Footer',
   component: Footer,
   argTypes: {
     show: { control: 'boolean' },
-    isSticky: { control: 'boolean' },
-    backgroundColor: { control: 'color' },
-    height: { control: 'text' },
-    padding: { control: 'text' },
-    onClick: { action: 'clicked' },
+    className: { control: 'text' },
     style: { control: 'object' },
-    children: { control: 'text' }
+    children: { control: false }, // отключаем управление через сторибук
+    isSticky: { control: 'boolean' },
+    id: { control: 'text' },
+    ariaLabel: { control: 'text' },
+    'data-cy': { control: 'text' },
+    onClick: { action: 'clicked' }
   },
   decorators: [
     (Story) => (
@@ -27,16 +28,30 @@ export default {
 } as Meta;
 
 // Базовая история
-const Template: Story<FooterProps> = (args) => <Footer {...args} />;
+const Template: StoryFn<FooterProps> = (args) => <Footer {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   show: true,
-  isSticky: false,
-  backgroundColor: undefined,
-  height: undefined,
-  padding: undefined,
   className: '',
-  style: {}, // Можно оставить пустым или добавить стили по необходимости
-  children: null
+  style: {},
+  children: null,
+  isSticky: false,
+  id: 'footer-id',
+  ariaLabel: 'Футер сайта',
+  'data-cy': 'footer'
+};
+
+// История с закрепленным футером
+export const Sticky = Template.bind({});
+Sticky.args = {
+  ...Default.args,
+  isSticky: true
+};
+
+// История без отображения
+export const Hidden = Template.bind({});
+Hidden.args = {
+  ...Default.args,
+  show: false
 };

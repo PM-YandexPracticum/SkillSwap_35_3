@@ -49,8 +49,6 @@
 /* Копирайт внизу */
 .footer__copyright {
   margin-top: 32px; /* по макету */
-  font-size: 14px;
-  color: var(--font-color-primary); /* из переменной */
 }
 
 /* Модификатор для закрепленного футера */
