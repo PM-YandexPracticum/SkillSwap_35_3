@@ -24,10 +24,10 @@
   /* Шрифты для текста с указанием размера, интервала и семейства */
   --font-sm: var(--font-size-sm) / var(--font-line-sm-md)
     var(--font-family-text); /* календарь, описание скилов, город проживания */
-  
+
   --font-md: var(--font-size-md) / var(--font-line-sm-md)
     var(--font-family-text); /* основной текст */
-  
+
   --font-lg: var(--font-size-lg) / var(--font-line-lg) var(--font-family-title);
   --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-title);
 
