@@ -1,20 +1,24 @@
 import React from 'react';
 import styles from './ActionBar.module.css';
-import { ActionBarProps, ButtonConfig } from './types';
+import { ActionBarProps } from './types';
 import { Button } from '../Button';
 
-export const ActionBar: React.FC<ActionBarProps> = ({
-  buttons: buttonsProps
-}) => {
+export const ActionBar: React.FC<ActionBarProps> = ({ buttons, className }) => {
   return (
-    <div className={styles['action-bar']}>
-      {buttonsProps?.map((button: ButtonConfig, index: number) => (
+    <div className={`${styles['action-bar']} ${className || ''}`}>
+      {buttons.map((button, index: number) => (
         <Button
           key={`${button.iconName}-${index}`}
-          iconName={button.active ? button.iconNameActive : button.iconName}
-          iconSize={button.size}
+          iconName={
+            button.active
+              ? button.iconNameActive || button.iconName
+              : button.iconName
+          }
+          iconSize={button.size || 24}
           onClick={button.onClick}
           type={button.type || 'ghost'}
+          aria-label={button.ariaLabel}
+          className={button.className}
         />
       ))}
     </div>

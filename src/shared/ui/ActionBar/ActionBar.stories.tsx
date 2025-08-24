@@ -15,13 +15,19 @@ export const LikeShareMore: Story = {
     buttons: [
       {
         iconName: 'like-icon',
-        iconNameActive: 'like-icon-fill'
+        iconNameActive: 'like-icon-fill',
+        onClick: () => {},
+        ariaLabel: 'Like'
       },
       {
-        iconName: 'share-icon'
+        iconName: 'share-icon',
+        onClick: () => {},
+        ariaLabel: 'Share'
       },
       {
-        iconName: 'more-square-icon'
+        iconName: 'more-square-icon',
+        onClick: () => {},
+        ariaLabel: 'More'
       }
     ]
   }
@@ -33,7 +39,9 @@ export const Liked: Story = {
       {
         iconName: 'like-icon',
         iconNameActive: 'like-icon-fill',
-        active: true
+        active: true,
+        onClick: () => {},
+        ariaLabel: 'Like'
       }
     ]
   }
@@ -44,11 +52,15 @@ export const DifferentSizes: Story = {
     buttons: [
       {
         iconName: 'calendar-icon',
-        size: 96
+        size: 96,
+        onClick: () => {},
+        ariaLabel: 'Calendar'
       },
       {
         iconName: 'arrow-right-icon',
-        size: 16
+        size: 16,
+        onClick: () => {},
+        ariaLabel: 'Arrow Right'
       }
     ]
   }
@@ -59,19 +71,27 @@ export const DifferentButtonTypes: Story = {
     buttons: [
       {
         iconName: 'close-icon',
-        type: 'primary'
+        type: 'primary',
+        onClick: () => {},
+        ariaLabel: 'Close'
       },
       {
         iconName: 'clock-icon',
-        type: 'secondary'
+        type: 'secondary',
+        onClick: () => {},
+        ariaLabel: 'Clock'
       },
       {
         iconName: 'gallery-add-icon',
-        type: 'tertiary'
+        type: 'tertiary',
+        onClick: () => {},
+        ariaLabel: 'Gallery Add'
       },
       {
         iconName: 'edit-icon',
-        type: 'ghost'
+        type: 'ghost',
+        onClick: () => {},
+        ariaLabel: 'Edit'
       }
     ]
   }

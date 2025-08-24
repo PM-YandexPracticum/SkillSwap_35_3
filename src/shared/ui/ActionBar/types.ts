@@ -1,15 +1,18 @@
 import { ButtonType } from '../Button';
 import { IconName } from '../Icon/types';
 
-export interface ButtonConfig {
+export interface ActionBarButtonConfig {
   iconName: IconName;
   iconNameActive?: IconName;
   active?: boolean;
-  onClick?: () => void;
+  onClick: () => void;
   size?: number;
   type?: ButtonType;
+  className?: string;
+  ariaLabel: string;
 }
 
 export interface ActionBarProps {
-  buttons?: ButtonConfig[];
+  buttons: ActionBarButtonConfig[];
+  className?: string;
 }
