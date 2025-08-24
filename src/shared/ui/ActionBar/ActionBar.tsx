@@ -1,42 +1,22 @@
 import React from 'react';
 import styles from './ActionBar.module.css';
-import { ActionBarProps } from './types';
+import { ActionBarProps, ButtonConfig } from './types';
 import { Button } from '../Button';
 
 export const ActionBar: React.FC<ActionBarProps> = ({
-  onLike,
-  onShare,
-  onMore,
-  liked = false
+  buttons: buttonsProps
 }) => {
   return (
-    <div className={styles.actionBar}>
-      <Button
-        iconName={`${liked ? 'like-icon-fill' : 'like-icon'}`}
-        size='small'
-        type='ghost'
-        onClick={onLike}
-        className={`${styles.actionButton} ${liked ? styles.liked : ''}`}
-        aria-label='Like'
-      />
-
-      <Button
-        iconName='share-icon'
-        size='small'
-        type='ghost'
-        onClick={onShare}
-        className={styles.actionButton}
-        aria-label='Share'
-      />
-
-      <Button
-        iconName='more-square-icon'
-        size='small'
-        type='ghost'
-        onClick={onMore}
-        className={styles.actionButton}
-        aria-label='More'
-      />
+    <div className={styles['action-bar']}>
+      {buttonsProps?.map((button: ButtonConfig, index: number) => (
+        <Button
+          key={`${button.iconName}-${index}`}
+          iconName={button.active ? button.iconNameActive : button.iconName}
+          iconSize={button.size}
+          onClick={button.onClick}
+          type={button.type || 'ghost'}
+        />
+      ))}
     </div>
   );
 };
