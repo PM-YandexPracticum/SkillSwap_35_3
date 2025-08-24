@@ -3,8 +3,7 @@ import styles from './Footer.module.css';
 import { FooterProps } from './types';
 
 import { Link, useNavigate } from 'react-router-dom';
-//import { Logo } from '@/shared/ui/Logo'; // Компонент Logo убран
-import logo from '@/shared/assets/logo/logo.png'; // Импорт картинки логотипа
+import { Logo } from '@/shared/ui/Logo';
 
 export const Footer: React.FC<FooterProps> = ({
   show = true,
@@ -47,9 +46,8 @@ export const Footer: React.FC<FooterProps> = ({
       data-cy={dataCy}
     >
       {/* Логотип */}
-      {/* В этом блоке раньше использовался компонент Logo, сейчас используется изображение */}
       <div className={styles['footer__logo']} onClick={() => navigate('/')}>
-        <img src={logo} alt='Логотип' height={40} />
+        <Logo />
       </div>
 
       {/* Блок с ссылками */}

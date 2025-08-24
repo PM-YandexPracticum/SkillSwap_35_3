@@ -1,5 +1,3 @@
-@import '@/app/styles/_variables.css';
-@import '@/app/styles/_typography.css';
 @import '@/app/styles/index.css';
 
 .footer {
@@ -49,6 +47,7 @@
 /* Копирайт внизу */
 .footer__copyright {
   margin-top: 32px; /* по макету */
+  color: var(--font-color-secondary);
 }
 
 /* Модификатор для закрепленного футера */

@@ -1,9 +1,7 @@
 @import '@/app/styles/_variables.css';
 
 .logo__container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer; /* при необходимости */
+  display: inline-block;
+  cursor: pointer;
+  height: 40px;
 }
