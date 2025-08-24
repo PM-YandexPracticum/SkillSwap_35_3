@@ -9,7 +9,7 @@ import { Button } from '@/shared/ui/Button'; // Импорт компонент�
 import { Title } from '@/shared/ui/Title';
 
 export const ErrorCard: React.FC<ErrorCardProps> = ({
-  title = 'Страница не найдена',
+  title = 'Страница не найдена',
   message = 'К сожалению, эта страница недоступна. Вернитесь <br /> на главную страницу или попробуйте позже',
   onRetry,
   onGoHome
@@ -17,15 +17,17 @@ export const ErrorCard: React.FC<ErrorCardProps> = ({
   return (
     <div className={styles['error-card']}>
       {/* Картинка Error404 */}
-      <div className={styles['error-image']}>
+      <div className={styles['error-card__image']}>
         <img src={error404} alt='Error 404' />
       </div>
 
-      {/* Заголовок и текст */}
-      <div className={styles['error-card__text']}>
-        <Title as='h2' size='lg' className={styles['error-card__text-title']}>
-          {title}
-        </Title>
+      {/* Отдельный контейнер для заголовка */}
+      <Title as='h2' size='lg' className={styles['error-card__text-title']}>
+        {title}
+      </Title>
+
+      {/* Отдельный контейнер для текста */}
+      <div className={styles['error-message-container']}>
         {/* Используем dangerouslySetInnerHTML для вставки HTML */}
         <p
           className={styles['error-card__text-description']}

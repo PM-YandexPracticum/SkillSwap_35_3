@@ -25,30 +25,25 @@
   display: block; 
 }
 
-/* Элемент: текст ошибки */
-.error-card__text {
-  text-align: center;
-  margin-top: 16px; /* сделать по макету */
-}
-
 .error-card__text-title { 
   font-family: var(--font-family-title);
   text-align: center;
+  margin-top: 40px;
 }
 
 .error-card__text-description { /* сделать по макету */
   font-family: var(--font-family-text);
   font-size: var(--font-sm);
   text-align: center;
-  color: #555;
+  color: var(--font-color-primary);
 }
 
 /* Контейнер для кнопок */
 .error-card__buttons {
   display: grid; /* грид с двумя колонками */
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px; /* промежутки между кнопками */
-  margin-top: 20px; /* сделать по макету */
+  gap: 24px; /* по макету */
+  margin-top: 32px; /*  по макету */
 }
 
 /* Стиль для кнопок внутри ErrorCard */
