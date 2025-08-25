@@ -3,7 +3,11 @@ import React from 'react';
 
 import { Meta, StoryFn } from '@storybook/react';
 
-import { ErrorCard, ErrorCardProps } from './ErrorCard';
+import { ErrorCard } from './ErrorCard';
+import { ErrorCardProps } from './types';
+
+// Импорт изображения
+import error404 from '@/shared/assets/images/error404.png';
 
 // Настройка метаданных для Storybook
 export default {
@@ -15,19 +19,16 @@ export default {
   }
 } as Meta;
 
-// Базовая история с всеми пропсами
+// Создаем шаблон истории
 const Template: StoryFn<ErrorCardProps> = (args) => <ErrorCard {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-  // Можно оставить пустым, чтобы использовать значения по умолчанию
-};
-
+// История "с Retry и Go Home"
 export const WithRetryAndGoHome = Template.bind({});
 WithRetryAndGoHome.args = {
   title: 'Страница не найдена',
   message:
     'К сожалению, эта страница недоступна. Вернитесь на главную страницу или попробуйте позже.',
+  imageSrc: error404,
   onRetry: () => alert('Обработка ошибки отправлена'),
   onGoHome: () => alert('Переход на главную')
 };

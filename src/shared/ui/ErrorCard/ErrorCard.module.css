@@ -2,7 +2,6 @@
 @import '@/app/styles/_typography.css';
 @import '@/app/styles/index.css';
 
-
 /* Блок: ErrorCard */
 .error-card {
   display: flex;
@@ -29,18 +28,24 @@
   font-family: var(--font-family-title);
   text-align: center;
   margin-top: 40px;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--font-color-primary);
+
 }
 
-.error-card__text-description { /* сделать по макету */
+.error-card__text-description { /*  по макету */
   font-family: var(--font-family-text);
-  font-size: var(--font-sm);
+  font-size: var(--font-size-sm);
   text-align: center;
   color: var(--font-color-primary);
+  font-weight: var(--font-weight-light);
+  line-height: 1.5;
 }
 
 /* Контейнер для кнопок */
 .error-card__buttons {
-  display: grid; /* грид с двумя колонками */
+  display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px; /* по макету */
   margin-top: 32px; /*  по макету */
