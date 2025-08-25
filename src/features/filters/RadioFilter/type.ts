@@ -1,7 +1,12 @@
 export interface RadioFilterProps {
   value: string;
-  onChange: (radioItem: string) => void;
-  radioList: string[];
+  onChange: (value: string) => void;
+  radioList: RadioFilterOption[];
   title?: string;
   name: string;
+}
+
+export interface RadioFilterOption {
+  value: string;
+  label: string;
 }

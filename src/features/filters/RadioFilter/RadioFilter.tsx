@@ -19,15 +19,15 @@ export const RadioFilter = ({
         <div className={styles['radio__filter-container']}>
           {radioList.map((item) => (
             <RadioUI
-              key={item}
+              key={String(item.value)}
               name={name}
               value={value}
               options={[
                 {
-                  value: item,
+                  value: item.value,
                   label: (
                     <span className={styles['radio__filter-item-title']}>
-                      {item}
+                      {item.label}
                     </span>
                   )
                 }

@@ -5,9 +5,35 @@ import { RadioFilterProps } from './type';
 
 type StoryArgs = RadioFilterProps;
 
-const gender = ['Не имеет значения', 'Мужской', 'Женский'];
+const gender = [
+  {
+    label: 'Не имеет значения',
+    value: 'default'
+  },
+  {
+    label: 'Мужской',
+    value: 'm'
+  },
+  {
+    label: 'Женский',
+    value: 'f'
+  }
+];
 
-const mode = ['Всё', 'Хочу научиться', 'Могу научить'];
+const mode = [
+  {
+    label: 'Всё',
+    value: 'all'
+  },
+  {
+    label: 'Хочу научиться',
+    value: 'learn'
+  },
+  {
+    label: 'Могу научить',
+    value: 'teach'
+  }
+];
 
 export default {
   title: 'UI/RadioFilter',
@@ -19,7 +45,7 @@ export default {
 
 export const genderFilter: StoryObj<StoryArgs> = {
   render: () => {
-    const [value, setValue] = useState<string>('Не имеет значения');
+    const [value, setValue] = useState<string>('default');
     return (
       <RadioFilter
         value={value}
@@ -34,7 +60,7 @@ export const genderFilter: StoryObj<StoryArgs> = {
 
 export const modeFilter: StoryObj<StoryArgs> = {
   render: () => {
-    const [value, setValue] = useState<string>('Всё');
+    const [value, setValue] = useState<string>('all');
     return (
       <RadioFilter
         value={value}
