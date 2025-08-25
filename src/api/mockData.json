@@ -5,6 +5,7 @@
       "title": "Техника Pomodoro",
       "category": "Бизнес и карьера",
       "subcategory": "Тайм-менеджмент",
+      "description": "Освойте технику Pomodoro и забудьте о прокрастинации. Я научу вас концентрироваться на задачах, управлять временем и достигать целей быстрее. Простая система интервалов поможет повысить продуктивность уже с первого дня.",
       "images": [
         "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800",
         "https://images.unsplash.com/photo-1707904112367-eab8c5f2912f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -18,6 +19,7 @@
       "title": "Матрица Эйзенхауэра",
       "category": "Бизнес и карьера",
       "subcategory": "Тайм-менеджмент",
+      "description": "Не знаете, с чего начать день? Матрица Эйзенхауэра поможет расставить приоритеты. Я покажу, как различать срочные и важные дела, чтобы вы успевали всё и при этом не выгорали.",
       "images": [
         "https://images.unsplash.com/photo-1572473773346-51c29ac7d978?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1617271345189-f968eaa2b292?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -30,6 +32,7 @@
       "title": "Работа с возражениями",
       "category": "Бизнес и карьера",
       "subcategory": "Продажи и переговоры",
+      "description": "Хотите уверенно отвечать на любые возражения клиентов? Научу вас методам, которые превращают сомнения в согласие. Применяя их, вы сможете заключать больше сделок и выстраивать доверие.",
       "images": [
         "https://images.unsplash.com/photo-1626447269096-f8665509589c?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1598363431659-330370aaaa7b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -41,6 +44,7 @@
       "title": "Техники убеждения",
       "category": "Бизнес и карьера",
       "subcategory": "Продажи и переговоры",
+      "description": "Переговоры станут вашей сильной стороной. Я научу вас техникам убеждения, которые помогут склонить собеседника на свою сторону, будь то деловое совещание или бытовая ситуация.",
       "images": [
         "https://images.unsplash.com/photo-1659352790996-871ea0804eec?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1749353709979-7f169131254e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -53,6 +57,7 @@
       "title": "Основы Agile и Scrum",
       "category": "Бизнес и карьера",
       "subcategory": "Проектное управление",
+      "description": "Agile и Scrum — это не только про IT. Я покажу, как эти методы помогают в любых проектах. Вы научитесь управлять командой, ускорять процессы и достигать результатов итерациями.",
       "images": [
         "https://images.unsplash.com/photo-1586936893354-362ad6ae47ba?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1586863065451-6a82fa7e81b9?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -66,6 +71,7 @@
       "title": "Планирование спринтов",
       "category": "Бизнес и карьера",
       "subcategory": "Проектное управление",
+      "description": "Эффективное планирование спринтов — залог успеха команды. Я помогу вам правильно делить задачи, прогнозировать результаты и избегать хаоса в проектах.",
       "images": [
         "https://images.unsplash.com/photo-1549923746-1d28f336cc41?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1562601555-513820e5d0eb?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -79,6 +85,7 @@
       "title": "Финансовая грамотность для начинающих",
       "category": "Бизнес и карьера",
       "subcategory": "Личные финансы",
+      "description": "Хотите управлять своими деньгами уверенно? Я объясню простыми словами, как составить бюджет, копить и приумножать капитал. Всё на реальных примерах, без лишней теории.",
       "images": [
         "https://images.unsplash.com/photo-1574884280706-7342ca3d4231?q=80&w=1022&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1675242314995-034d11bac319?q=80&w=2164&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -92,6 +99,7 @@
       "title": "Публичные выступления",
       "category": "Бизнес и карьера",
       "subcategory": "Коммуникации",
+      "description": "Преодолейте страх сцены и научитесь вдохновлять аудиторию. Я помогу вам выступать уверенно, красиво говорить и оставлять яркое впечатление на слушателей.",
       "images": [
         "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=800",
         "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=800",
@@ -105,6 +113,7 @@
       "title": "Деловая переписка",
       "category": "Бизнес и карьера",
       "subcategory": "Коммуникации",
+      "description": "Письма — это лицо вашей компании. Я научу вас писать так, чтобы ваши сообщения читали, понимали и уважали. Лаконичность, вежливость и убедительность — главные инструменты.",
       "images": [
         "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800",
         "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800",
@@ -118,6 +127,7 @@
       "title": "Разговорный английский",
       "category": "Иностранные языки",
       "subcategory": "Английский",
+      "description": "Хотите свободно говорить на английском в путешествиях и на работе? Я предлагаю практику живого общения без зубрёжки. Уроки строятся вокруг тем, которые вам действительно интересны.",
       "images": [
         "https://images.unsplash.com/photo-1645594287996-086e2217a809?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1673515336170-3bf951ddb5a8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -131,6 +141,7 @@
       "title": "Академический английский",
       "category": "Иностранные языки",
       "subcategory": "Английский",
+      "description": "Если вы планируете учёбу или карьеру за рубежом, академический английский — must-have. Я помогу освоить лексику для статей, презентаций и научных дискуссий.",
       "images": [
         "https://images.unsplash.com/photo-1645594287996-086e2217a809?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1673515336170-3bf951ddb5a8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -144,6 +155,7 @@
       "title": "Подготовка к IELTS",
       "category": "Иностранные языки",
       "subcategory": "Английский",
+      "description": "Сдать IELTS на высокий балл реально! Я поделюсь стратегиями для Listening, Reading, Writing и Speaking. Вы получите чёткий план и уверенность в результате.",
       "images": [
         "https://images.unsplash.com/photo-1592278423578-4b83c89859ac?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1708793715672-1464958800c3?q=80&w=1384&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -157,6 +169,7 @@
       "title": "Базовый немецкий (A1-A2)",
       "category": "Иностранные языки",
       "subcategory": "Немецкий",
+      "description": "Я носитель немецкого языка и уже более 5 лет обучаю студентов. Помогу вам легко освоить базовый уровень A1–A2: от алфавита и простых диалогов до уверенного общения в путешествиях и работе. Использую простые примеры, живые диалоги и культурные особенности Германии, чтобы язык был не только полезным, но и интересным.",
       "images": [
         "https://images.unsplash.com/photo-1626884620961-8117e9de9aff?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1604742496374-8aba83957a9b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -170,6 +183,7 @@
       "title": "Разговорный французский",
       "category": "Иностранные языки",
       "subcategory": "Французский",
+      "description": "Французский язык откроет для вас мир путешествий и культуры. Я помогу освоить разговорный уровень, чтобы вы могли чувствовать себя уверенно в любой ситуации — от кафе до деловой встречи.",
       "images": [
         "https://plus.unsplash.com/premium_photo-1663036583472-84bee4a90090?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://plus.unsplash.com/premium_photo-1663036583472-84bee4a90090?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -183,6 +197,7 @@
       "title": "Итальянский для путешествий",
       "category": "Иностранные языки",
       "subcategory": "Итальянский",
+      "description": "Италия звучит красивее, когда понимаешь язык. Я научу вас базовым фразам и выражениям для поездок, чтобы ваше путешествие стало ещё приятнее и насыщеннее.",
       "images": [
         "https://images.unsplash.com/photo-1499678329028-101435549a4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1499678329028-101435549a4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -196,6 +211,7 @@
       "title": "Цифровой рисунок в Procreate",
       "category": "Творчество и искусство",
       "subcategory": "Рисование и иллюстрация",
+      "description": "Хотите рисовать как профессионал на iPad? Я познакомлю вас с Procreate: от первых штрихов до создания полноценной иллюстрации. Подходит и для новичков, и для тех, кто уже пробовал.",
       "images": [
         "https://images.unsplash.com/photo-1506585345028-d9d1525ecb21?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1628130235364-9e412ffaae5a?q=80&w=1341&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -209,6 +225,7 @@
       "title": "Базовые аккорды на укулеле",
       "category": "Творчество и искусство",
       "subcategory": "Музыка и звук",
+      "description": "Укулеле — это весело и просто! За несколько занятий вы освоите базовые аккорды и сможете сыграть любимые песни для друзей. Музыка станет вашим спутником.",
       "images": [
         "https://images.unsplash.com/photo-1570684615997-5fc6c4378f1a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://plus.unsplash.com/premium_photo-1702552106519-edb44d6dc8c8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -222,6 +239,7 @@
       "title": "Игра на гитаре: старт",
       "category": "Творчество и искусство",
       "subcategory": "Музыка и звук",
+      "description": "Мечтаете играть на гитаре, но не знаете с чего начать? Я помогу вам освоить основы аккордов и ритма, чтобы вы уже через пару занятий могли исполнять первые мелодии.",
       "images": [
         "https://images.unsplash.com/photo-1664463761426-6c9b707fb8f3?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1664463761426-6c9b707fb8f3?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -235,6 +253,7 @@
       "title": "Основы мобильной фотографии",
       "category": "Творчество и искусство",
       "subcategory": "Фотография",
+      "description": "Смартфон может больше, чем кажется! Я научу вас делать снимки, которые будут собирать сотни лайков. Композиция, свет и обработка — всё доступно в вашем кармане.",
       "images": [
         "https://images.unsplash.com/photo-1634613938278-f3d97bf08aca?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1563030646-da027e3d6360?q=80&w=689&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -250,6 +269,7 @@
       "title": "Фотосъёмка портретов",
       "category": "Творчество и искусство",
       "subcategory": "Фотография",
+      "description": "Хотите делать портреты, от которых невозможно отвести взгляд? Я покажу техники позирования, света и обработки, чтобы ваши фотографии выглядели профессионально.",
       "images": [
         "https://images.unsplash.com/photo-1674787344890-ad6dc6b6c513?q=80&w=1475&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1674787344890-ad6dc6b6c513?q=80&w=1475&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -263,6 +283,7 @@
       "title": "Обработка фото на смартфоне",
       "category": "Творчество и искусство",
       "subcategory": "Фотография",
+      "description": "Я научу вас обрабатывать фото прямо на телефоне — быстро и стильно. Цветокоррекция, фильтры и лайфхаки помогут вашим снимкам выглядеть как в Instagram-профилях топ-блогеров.",
       "images": [
         "https://images.unsplash.com/photo-1563030646-2957db71d197?q=80&w=689&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1563030646-2957db71d197?q=80&w=689&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -276,6 +297,7 @@
       "title": "Старт в видеоблогинге",
       "category": "Творчество и искусство",
       "subcategory": "Видеоконтент",
+      "description": "Хотите запустить свой видеоблог? Я расскажу, как снимать, монтировать и продвигать видео, чтобы привлечь аудиторию. Даже с простым оборудованием вы сможете выделяться.",
       "images": [
         "https://images.unsplash.com/photo-1610820270934-2434e1c409cc?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1610820270934-2434e1c409cc?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -289,6 +311,7 @@
       "title": "Видео-монтаж для новичков",
       "category": "Творчество и искусство",
       "subcategory": "Видеоконтент",
+      "description": "Научитесь монтировать ролики без сложных программ. Я помогу вам освоить базовые инструменты и делать стильные видео для соцсетей и личных проектов.",
       "images": [
         "https://images.unsplash.com/photo-1528478940942-401d9b167878?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1528478940942-401d9b167878?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -302,6 +325,7 @@
       "title": "Скетчинг для начинающих",
       "category": "Творчество и искусство",
       "subcategory": "Рисование и иллюстрация",
+      "description": "Скетчинг — это быстрые зарисовки, которые помогают развить вкус и наблюдательность. Я научу вас основам, чтобы вы могли с лёгкостью фиксировать идеи и делиться ими.",
       "images": [
         "https://images.unsplash.com/photo-1608804375369-498a4b601e42?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1608804375369-498a4b601e42?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",

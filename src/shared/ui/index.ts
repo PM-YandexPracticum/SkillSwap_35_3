@@ -8,5 +8,6 @@ export * from './Dropdown';
 export * from './Input';
 export * from './Logo';
 export * from './ModalOverlay';
+export * from './Modal';
 export * from './Tag';
 export * from './ActionBar';
