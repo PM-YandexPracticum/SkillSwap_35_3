@@ -2,8 +2,8 @@
 
 export interface ErrorCardProps {
   title?: string;
-  message?: string;
-  imageSrc?: string;
+  description?: string;
+  imageSrc?: React.ComponentType<React.SVGProps<SVGSVGElement>> | string;
   onRetry?: () => void;
   onGoHome?: () => void;
 }

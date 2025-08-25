@@ -9,16 +9,30 @@ import { Title } from '@/shared/ui/Title';
 
 export const ErrorCard: React.FC<ErrorCardProps> = ({
   title,
-  message,
+  description,
   imageSrc,
   onRetry,
   onGoHome
 }) => {
+  const isStringImage = typeof imageSrc === 'string';
+
   return (
     <div className={styles['error-card']}>
       {/* Картинка */}
       <div className={styles['error-card__image']}>
-        <img src={imageSrc} alt='Error' />
+        {isStringImage ? (
+          <img src={imageSrc} alt={`Ошибка: ${title}`} />
+        ) : (
+          React.createElement(
+            imageSrc as React.FC<React.SVGProps<SVGSVGElement>>,
+            {
+              width: 460, // по макету
+              height: 304, // по макету
+              role: 'img',
+              'aria-label': `Ошибка: ${title}`
+            }
+          )
+        )}
       </div>
 
       {/* Заголовок */}
@@ -27,7 +41,7 @@ export const ErrorCard: React.FC<ErrorCardProps> = ({
       </Title>
 
       {/* Текст */}
-      <p className={styles['error-card__text-description']}>{message}</p>
+      <p className={styles['error-card__text-description']}>{description}</p>
 
       {/* Блок с кнопками */}
       <div className={styles['error-card__buttons']}>
