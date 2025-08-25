@@ -1,0 +1,33 @@
+.cards-feed {
+  display: flex;
+  flex-direction: column;
+  max-width: 1025px;
+  gap: 40px;
+}
+
+.cards-feed__section {
+  gap: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cards-feed__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cards-feed__title {
+  font: var(--font-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.cards-feed__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(325px, 1fr));
+  gap: 24px;
+  justify-items: center;
+}
+
+
