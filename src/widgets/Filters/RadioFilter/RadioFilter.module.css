@@ -1,0 +1,33 @@
+.radio__filter {
+  border: none;
+}
+
+.radio__filter-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.radio__filter-title {
+  font-family: var(--font-family-title);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-md);
+  color: var(--font-color-primary);
+  line-height: var(--font-line-sm-md);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.radio__filter-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.radio__filter-item-title {
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-sm);
+  line-height: var(--font-line-sm-md);
+  letter-spacing: 2%;
+  color: var(--font-color-primary);
+}

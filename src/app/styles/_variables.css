@@ -1,0 +1,76 @@
+:root {
+  /* Семейства шрифтов */
+  --font-family-title: 'Jost', sans-serif;
+  --font-family-text: 'Roboto', sans-serif;
+  --font-family-card-user-name: 'OpenSans', sans-serif;
+
+  /* Размеры шрифтов и интерльньяж */
+  --font-size-xl: 32px; /* заголовки карточек */
+  --font-line-xl: 40px;
+  --font-size-lg: 24px; /* pop-up и лого */
+  --font-line-lg: 28px;
+  --font-size-md: 20px; /* имена */
+  --font-size-sm: 16px; /* основной текст */
+  --font-line-sm-md: 24px;
+
+  /* Переменные для letter-spacing */
+  --letter-spacing-tight: -0.011em; /* Более плотное расстояние */
+
+  /* Переменные для веса */
+  --font-weight-light: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Шрифты для текста с указанием размера, интервала и семейства */
+  --font-sm: var(--font-size-sm) / var(--font-line-sm-md)
+    var(--font-family-text); /* календарь, описание скилов, город проживания */
+
+  --font-md: var(--font-size-md) / var(--font-line-sm-md)
+    var(--font-family-text); /* основной текст */
+
+  --font-lg: var(--font-size-lg) / var(--font-line-lg) var(--font-family-title);
+  --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-title);
+
+  /* Стили для конкретных элементов */
+  --logo-font: var(--font-size-m) / var(--font-line-m-logo)
+    var(--font-family-title);
+  --usernames-font: var(--font-size-s-usernames) / var(--font-line-s)
+    var(--font-family-text);
+
+  /* переменные для цвета */
+  --background-color-primary: #f9faf7; /* цвет страницы, Background */
+  --background-color-secondary: #fff; /* цвет для основных компонентов Card, input */
+  --font-color-primary: #253017; /* Основной цвет текста, Text */
+  --font-color-secondary: #69735d; /* Цвет текста на неактивных кнопках Caption */
+  --font-color-accent: #508826; /* Цвет активной кнопки, текстовой ссылки Text link, Button pressed */
+  --button-color-accent: #abd27a; /* Accent */
+  --button-color-disabled: #e4e8df; /* Цвет неактивной кнопки Disabled */
+  --button-color-hover: #deebc5; /* Button hover */
+  --tag-color-business: #eee7f7; /* Tag_Бизнес и карьера */
+  --tag-color-art: #f7e7f2; /* Tag_Творчество и искусство */
+  --tag-color-language: #ebe5c5; /* Tag_Иностранные языки  */
+  --tag-color-education: #e7f2f6; /* Tag_Образование и развитие  */
+  --tag-color-household: #f7ebe5; /* Tag_Дом и уют  */
+  --tag-color-lifestyle: #e9f7e7; /* Tag_Здоровье и лайфстайл */
+  --tag-color-plus: #e8ecf7; /* Tag_+  */
+  --overlay-color: #8e8e8e99; /* overlay */
+  --error-color: #bf3920; /* Error */
+
+  /* переменные для рамок и скруглений */
+  --border-radius-big: 24px; /* sidebar, userinfo */
+  --border-radius-small: 12px; /* button, input, card */
+  --border-radius-tag: 20px; /* tags */
+  --border-input-button: 1px;
+
+  /* переменные для padding */
+  --padding-big: 40px; /* sidebar, userinfo */
+  --padding-medium: 20px; /* filtres, cards */
+  --padding-small: 12px 20px 12px 20px; /* button, input, card */
+  --padding-tag: 8px 12px 8px 12px;
+
+  /* переменные для gap */
+  --gap-big: 60px; /* sidebar, userinfo */
+  --gap-medium: 40px; /* filtres */
+  --gap-small: 20px; /* cards */
+  --gap-extrasmall: 4px; /* tags */
+}

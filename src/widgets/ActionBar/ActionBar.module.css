@@ -1,0 +1,15 @@
+.action-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+@media (width <= 768px) {
+  .action-bar {
+    gap: 4px;
+    padding: 6px 8px;
+  }
+}

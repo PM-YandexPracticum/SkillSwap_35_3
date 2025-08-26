@@ -1,1 +1,40 @@
-//= ТИПЫ ДЛЯ ВСЕХ МОКОВЫХ ДАННЫХ =//
+export interface ISkill {
+  id: number;
+  title: string;
+  category: string;
+  subcategory: string;
+  images: string[];
+}
+
+export interface IUser {
+  id: number;
+  name: string;
+  gender: 'male' | 'female';
+  about: string;
+  email: string;
+  password: string;
+  avatar: string;
+  city: string;
+  birthDate: string;
+  teachingSkillId: number;
+  learningSkillIds: number[];
+}
+
+export enum RequestStatus {
+  PENDING = 'pending',
+  ACCEPTED = 'accepted',
+  REJECTED = 'rejected'
+}
+
+export interface IRequest {
+  id: number;
+  skillId: number;
+  fromUserId: number;
+  toUserId: number;
+  status: RequestStatus;
+}
+
+export interface IMockData {
+  skills: ISkill[];
+  users: IUser[];
+}

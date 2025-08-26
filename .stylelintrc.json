@@ -1,11 +1,12 @@
 {
   "extends": [
     "stylelint-config-standard-scss",
-    "stylelint-config-prettier-scss" 
+    "stylelint-config-prettier-scss"
   ],
   "rules": {
     "declaration-no-important": true,
     "declaration-block-single-line-max-declarations": 1,
-    "selector-class-pattern": null
+    "selector-class-pattern": null,
+    "font-family-name-quotes": null
   }
 }

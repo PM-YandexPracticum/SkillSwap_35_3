@@ -18,6 +18,7 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/no-this-in-sfc": "warn",
+    "react/prop-types": "off",
     "jsx-quotes": ["warn", "prefer-single"]
   },
   "settings": {
