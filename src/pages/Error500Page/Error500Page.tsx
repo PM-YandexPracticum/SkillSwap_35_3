@@ -4,7 +4,7 @@ import { ErrorCard } from '@/shared/ui';
 import { errors } from '@/shared/lib/constants/errors';
 import styles from './Error500Page.module.css';
 
-export const Error500Page: React.FC = () => {
+export const Error500Page = () => {
   const navigate = useNavigate();
   const data = errors[500];
 

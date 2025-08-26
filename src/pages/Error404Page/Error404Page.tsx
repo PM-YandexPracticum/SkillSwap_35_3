@@ -4,7 +4,7 @@ import { ErrorCard } from '@/shared/ui';
 import { errors } from '@/shared/lib/constants/errors';
 import styles from './Error404Page.module.css';
 
-export const Error404Page: React.FC = () => {
+export const Error404Page = () => {
   const navigate = useNavigate();
   const data = errors[404];
 
