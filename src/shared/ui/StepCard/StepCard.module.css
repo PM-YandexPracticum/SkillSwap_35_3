@@ -2,7 +2,6 @@
 @import '@/app/styles/_typography.css';
 @import '@/app/styles/index.css';
 
-/* Блок: StepCard */
 .step-card {
   display: flex;
   flex-direction: column;
@@ -12,9 +11,9 @@
   width: 556px;  
   height: 692px;
   background-color: var(--background-color-secondary);
+  margin: auto;
 }
 
-/* Элемент: изображение */
 .step-card__image {
   height: auto;
 }
@@ -39,4 +38,6 @@
   color: var(--font-color-primary);
   font-weight: var(--font-weight-light);
   line-height: 1.5;
+  margin-top: 12px;
+
 }
