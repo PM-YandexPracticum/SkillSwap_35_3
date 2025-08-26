@@ -3,8 +3,7 @@ import styles from './ErrorCard.module.css';
 
 import { ErrorCardProps } from './types';
 
-import { Button } from '@/shared/ui/Button'; // Импорт компонента Button
-import { Title } from '@/shared/ui/Title';
+import { Button, Title } from '@/shared/ui';
 
 export const ErrorCard = ({
   title,

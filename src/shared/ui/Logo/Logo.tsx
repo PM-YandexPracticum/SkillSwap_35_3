@@ -1,4 +1,3 @@
-import React from 'react';
 import LogoSvg from '@/shared/assets/logo/logo.svg?react';
 import styles from './Logo.module.css';
 import { LogoProps } from './types';

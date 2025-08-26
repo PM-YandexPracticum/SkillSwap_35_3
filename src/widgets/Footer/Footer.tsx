@@ -3,7 +3,7 @@ import styles from './Footer.module.css';
 import { FooterProps } from './types';
 
 import { Link, useNavigate } from 'react-router-dom';
-import { Logo } from '@/shared/ui/Logo';
+import { Logo } from '@/shared/ui';
 
 export const Footer = ({
   show = true,

@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import type { DropdownProps } from './types';
 import styles from './Dropdown.module.css';
-import { Checkbox } from '@/shared/ui/Checkbox';
-import { Icon, IconName } from '@/shared/ui/Icon/';
+import { Icon, IconName, Checkbox } from '@/shared/ui';
 
 const ARROW_DOWN: IconName = 'arrow-down-icon';
 

@@ -1,6 +1,6 @@
 import styles from './ActionBar.module.css';
 import { ActionBarProps } from './types';
-import { Button } from '../Button';
+import { Button } from '@/shared/ui';
 
 export const ActionBar = ({ buttons, className }: ActionBarProps) => {
   return (
