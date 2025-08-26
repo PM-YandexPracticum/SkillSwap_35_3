@@ -1,31 +1,20 @@
-import React, { useState } from 'react';
-import { ActionBar, Avatar, Button, Icon, Input, Logo } from '@/shared/ui';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  ActionBar,
+  Button,
+  Icon,
+  Input,
+  Logo,
+  AllSkillsModal
+} from '@/shared/ui';
 import styles from './Header.module.css';
 import { HeaderProps } from './types';
 import { Link, useNavigate } from 'react-router-dom';
-import { ActionBarButtonConfig } from '@/shared/ui/ActionBar/types';
-
-// моковый хук для изменения isAuthenticated
-let useAuthHook = () => {
-  return {
-    isAuthenticated: true,
-    user: {
-      id: 5,
-      name: 'Максим',
-      about: 'Специалист по цифровому рисованию, обучаю Procreate.',
-      avatar:
-        'https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0',
-      city: 'Москва',
-      birthDate: '2002-02-14',
-      teachingSkillId: 1,
-      learningSkillIds: [2, 3, 4, 5]
-    }
-  };
-};
-
-export const setUseAuth = (mockHook: any) => {
-  useAuthHook = mockHook;
-};
+// раскомментировать когда готовы userSlice и authSlice
+// import { useActionBarButtons } from '@/shared/hooks/useActionBarButtons';
+// import { selectIsAuthenticated } from '@/store/auth/authSlice';
+// import { selectUser } from '@/store/user/userSlice';
+// import { useSelector } from '@/app/store';
 
 export const Header: React.FC<HeaderProps> = ({
   className = '',
@@ -34,37 +23,43 @@ export const Header: React.FC<HeaderProps> = ({
   ariaLabel,
   'data-cy': dataCy
 }) => {
-  const [isSkillsHovered, setIsSkillsHovered] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const skillsRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const { isAuthenticated, user } = useAuthHook();
 
-  // Логика для ActionBar когда пользователь авторизован или не авторизован
-  const baseButtons = [
-    {
-      iconName: 'theme-icon',
-      type: 'ghost',
-      onClick: () => console.log('Смена темы'),
-      ariaLabel: 'Смена темы'
-    }
-  ] satisfies ActionBarButtonConfig[];
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node) &&
+        skillsRef.current &&
+        !skillsRef.current.contains(event.target as Node)
+      ) {
+        setIsModalOpen(false);
+      }
+    };
 
-  const authenticatedButtons = isAuthenticated
-    ? ([
-        ...baseButtons,
-        {
-          iconName: 'notification-icon',
-          type: 'ghost',
-          onClick: () => console.log('Уведомления'),
-          ariaLabel: 'Уведомления'
-        },
-        {
-          iconName: 'heart-icon',
-          type: 'ghost',
-          onClick: () => console.log('Избранное'),
-          ariaLabel: 'Избранное'
-        }
-      ] satisfies ActionBarButtonConfig[])
-    : baseButtons;
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleSkillsClick = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const handleModalClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
+  // Используем селекторы для получения состояния аутентификации
+  // const isAuthenticated = useSelector(selectIsAuthenticated);
+  // const user = useSelector(selectUser);
+
+  // Используем хук для получения конфигурации кнопок
+  // const actionBarButtons = useActionBarButtons();
 
   return (
     <header
@@ -84,16 +79,23 @@ export const Header: React.FC<HeaderProps> = ({
         </Link>
         <div
           className={styles['header__skills-wrapper']}
-          onMouseEnter={() => setIsSkillsHovered(true)}
-          onMouseLeave={() => setIsSkillsHovered(false)}
+          ref={skillsRef}
+          onClick={handleSkillsClick}
         >
           <div className={styles['header__skills']}>
             Все навыки
             <Icon
               name={'arrow-down-icon'}
               size={24}
-              className={`${styles['header__arrow']} ${isSkillsHovered ? styles['header__arrow--rotated'] : ''}`}
+              className={`${styles['header__arrow']} ${isModalOpen ? styles['header__arrow--rotated'] : ''}`}
             />
+          </div>
+          <div
+            className={styles['modal-container']}
+            ref={modalRef}
+            onClick={handleModalClick}
+          >
+            <AllSkillsModal isOpen={isModalOpen} />
           </div>
         </div>
       </div>
@@ -107,29 +109,38 @@ export const Header: React.FC<HeaderProps> = ({
       />
 
       <ActionBar
-        buttons={authenticatedButtons}
+        // в Buttons вставить переменную actionBarButtons когда будут готовы userSlice и authSlice
+        buttons={[
+          {
+            iconName: 'theme-icon',
+            type: 'ghost',
+            onClick: () => console.log('Смена темы'),
+            ariaLabel: 'Смена темы'
+          }
+        ]}
         className={styles['header__action-bar']}
       />
 
-      {isAuthenticated ? (
+      {/* Раскомментировать когда будет готова логика авторизации */}
+      {/* {isAuthenticated ? (
         <div className={styles['header__user']}>
-          <p className={styles['header__user-name']}>{user.name}</p>
+          <p className={styles['header__user-name']}>{user?.name}</p>
           <Avatar
-            src={user.avatar}
-            alt={user.name}
+            src={user?.avatar}
+            alt={user?.name || 'Пользователь'}
             className={styles['header__user-avatar']}
           />
         </div>
-      ) : (
-        <div className={styles['header__buttons']}>
-          <Button type='secondary' size='small'>
-            Войти
-          </Button>
-          <Button type='primary' size='small'>
-            Зарегистрироваться
-          </Button>
-        </div>
-      )}
+      ) : ( */}
+      <div className={styles['header__buttons']}>
+        <Button type='secondary' size='small'>
+          Войти
+        </Button>
+        <Button type='primary' size='small'>
+          Зарегистрироваться
+        </Button>
+      </div>
+      {/* )} */}
       {children}
     </header>
   );
