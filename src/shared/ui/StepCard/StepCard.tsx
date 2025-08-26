@@ -5,11 +5,7 @@ import { StepCardProps } from './types';
 
 import { Title } from '@/shared/ui/Title';
 
-export const StepCard: React.FC<StepCardProps> = ({
-  title,
-  description,
-  imageSrc
-}) => {
+export const StepCard = ({ title, description, imageSrc }: StepCardProps) => {
   const isStringImage = typeof imageSrc === 'string';
 
   return (
