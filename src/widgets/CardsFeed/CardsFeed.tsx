@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from '@/app/store';
-import { selectUsers } from '@/entities/User/selectors/usersSelectors';
 import { selectSkills } from '@/entities/Skill/selectors/skillsSelectors';
+import { selectFilteredUsers } from '@/entities/User/selectors/filteredUsersSelector';
 import { Card } from '@/widgets';
 import { Title, Button } from '@/shared/ui';
 import { ICardsFeedProps } from './types';
@@ -12,7 +12,7 @@ import styles from './CardsFeed.module.css';
 const PAGE_SIZE = 12;
 
 export const CardsFeed = ({ usersData, skillsData }: ICardsFeedProps) => {
-  const users = usersData ?? useSelector(selectUsers);
+  const users  = usersData  ?? useSelector(selectFilteredUsers);
   const skills = skillsData ?? useSelector(selectSkills);
 
   const popularUsers = users.slice(0, 3);

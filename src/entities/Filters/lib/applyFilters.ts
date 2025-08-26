@@ -1,4 +1,4 @@
-import type { Filters, Gender, Mode } from './types';
+import type { FiltersState, Gender, Mode } from '@/entities/Filters/model/filtersSlice';
 import type { IUser, ISkill } from '@/api/types';
 
 const buildSkillTitleMap = (skills: ISkill[]) =>
@@ -40,8 +40,8 @@ const matchModeAndCategories = (
 const matchCity = (u: IUser, cities: Set<string>) =>
   cities.size === 0 ? true : cities.has(u.city);
 
-const matchGender = (u: IUser, gender: Gender | null) =>
-  gender ? u.gender === gender : true;
+const matchGender = (u: IUser, gender: Gender) =>
+  gender === 'any' ? true : u.gender === gender;
 
 const normalize = (s: unknown) =>
   (typeof s === 'string' ? s : String(s ?? '')).trim().toLowerCase();
@@ -66,13 +66,16 @@ const matchQuery = (
   return hay.includes(needle);
 };
 
-function applyFilters(users: IUser[], filters: Filters, skills: ISkill[]) {
+function applyFilters(users: IUser[], filters: FiltersState, skills: ISkill[]) {
   const { mode, categories, cities, gender, q } = filters;
+
+  const categoriesSet = new Set<string>(categories);
+  const citiesSet = new Set<string>(cities);
 
   return users.filter(
     (u) =>
-      matchModeAndCategories(u, mode, categories) &&
-      matchCity(u, cities) &&
+      matchModeAndCategories(u, mode, categoriesSet) &&
+      matchCity(u, citiesSet) &&
       matchGender(u, gender) &&
       matchQuery(u, q, skills),
   );
