@@ -1,16 +1,10 @@
 import React, { useRef, useState } from 'react';
-import {
-  ActionBar,
-  Button,
-  Icon,
-  Input,
-  Logo,
-  AllSkillsModal
-} from '@/shared/ui';
+import { Button, Icon, Input, Logo, AllSkillsModal } from '@/shared/ui';
 import styles from './Header.module.css';
 import { HeaderProps } from './types';
 import { Link, useNavigate } from 'react-router-dom';
 import { useClickOutside } from '@/shared/hooks/useClickOutside';
+import { ActionBar } from '../ActionBar';
 // раскомментировать когда готовы userSlice и authSlice
 // import { useActionBarButtons } from '@/shared/hooks/useActionBarButtons';
 // import { selectIsAuthenticated } from '@/store/auth/authSlice';
