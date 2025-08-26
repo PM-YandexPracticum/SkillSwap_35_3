@@ -12,6 +12,7 @@
   border: none;
   border-radius: var(--border-radius-small);
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .button_type_primary {
@@ -65,6 +66,11 @@
   border: none;
 }
 
+.button_type_ghost {
+  background-color: transparent;
+  border: none;
+}
+
 .button_size_small {
   padding-inline: 23px;
 }
@@ -97,4 +103,13 @@
 
 .button__content {
   display: inline-block;
+}
+
+.button_iconOnly {
+  width: auto;
+  height: auto;
+  min-width: auto;
+  min-height: auto;
+  padding: 0;
+  margin: 0;
 }

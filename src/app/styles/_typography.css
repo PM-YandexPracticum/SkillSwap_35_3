@@ -1,9 +1,21 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+	user-select: none;
+}
+
 body {
   font-family: var(--font-family-text);
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.02em;
   font-weight: var(--font-weight-light);
+  color: var(--font-color-primary);
   background-color: var(--background-color-primary);
 }
 

@@ -1,7 +1,7 @@
 import React, { SyntheticEvent, ReactNode } from 'react';
 import { IconName } from '../Icon';
 
-export type ButtonType = 'primary' | 'secondary' | 'tertiary';
+export type ButtonType = 'primary' | 'secondary' | 'tertiary' | 'ghost';
 export type ButtonSize = 'small' | 'medium' | 'large';
 export type ButtonHtmlType = 'button' | 'submit' | 'reset';
 export type ButtonIconPosition = 'left' | 'right';
@@ -18,4 +18,6 @@ export interface ButtonProps
   iconSize?: number;
   iconPosition?: ButtonIconPosition;
   fullWidth?: boolean;
+  fill?: string;
+  stroke?: string;
 }

@@ -1,21 +1,13 @@
-import React from 'react';
 import styles from './Avatar.module.css';
 import { AvatarProps } from './types';
 
-const Avatar: React.FC<AvatarProps> = ({
-  src,
-  alt,
-  className = '',
-  onClick
-}) => {
+export const Avatar = ({ src, alt, className = '', onClick }: AvatarProps) => {
   return (
     <img
       src={src}
       alt={alt}
-      className={`${styles.avatar} ${className}`}
+      className={`${styles.avatar} ${className ? className : ''}`}
       onClick={onClick}
     />
   );
 };
-
-export default Avatar;

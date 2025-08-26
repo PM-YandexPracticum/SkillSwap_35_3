@@ -1,0 +1,7 @@
+@import '@/app/styles/_variables.css';
+
+.logo__container {
+  display: inline-block;
+  cursor: pointer;
+  height: 40px;
+}

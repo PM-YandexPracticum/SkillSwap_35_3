@@ -23,6 +23,7 @@ export const iconMap: Record<IconName, SvgIconComponent> = {
   'edit-icon': Icons.EditIcon,
   'share-icon': Icons.ShareIcon,
   'like-icon': Icons.LikeIcon,
+  'like-icon-fill': Icons.LikeIconFilled,
   'more-square-icon': Icons.MoreSquareIcon,
   'gallery-add-icon': Icons.GalleryAddIcon,
 
@@ -42,5 +43,6 @@ export const iconMap: Record<IconName, SvgIconComponent> = {
   'apple-icon': Icons.AppleIcon,
 
   // Другое
-  'user-circle-icon': Icons.UserCircleIcon
+  'user-circle-icon': Icons.UserCircleIcon,
+  'logo-icon': Icons.LogoIcon
 };

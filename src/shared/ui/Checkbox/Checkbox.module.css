@@ -1,21 +1,69 @@
-.checkbox {}
+@import '@/app/styles/_variables.css';
 
-.checkbox__item {}
+.checkbox {
+  display: grid;
+  gap: 12px;
+}
 
-.checkbox__input {}
+.checkbox__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
 
-.checkbox__control {}
+.checkbox__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
 
-.checkbox__label {}
+.checkbox__control {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #000;
+  border-radius: 30%;
+  display: inline-block;
+  position: relative;
+  flex-shrink: 0;
+  background: #fff;
+  transition: all 0.2s ease-in-out;
+}
 
-.checkbox__checked .checkbox__control {}
+.checkbox__variant_check .checkbox__checked .checkbox__control::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 10px;
+  height: 6px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(-45deg) scaleX(-1);
+}
 
-.checkbox__disabled {}
+.checkbox__variant_dash .checkbox__checked .checkbox__control::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  right: 5px;
+  width: 9.5px;
+  height: 2px;
+  background: #fff;
+  transform: translateY(-50%);
+}
 
-.checkbox__variant_check .checkbox__item.checkbox__checked .checkbox__control::after {}
+.checkbox__checked .checkbox__control {
+  border-color: var(--button-color-accent);
+  background: var(--button-color-accent);
+}
 
-.checkbox__variant_dash .checkbox__item.checkbox__checked .checkbox__control::after {}
+.checkbox__label {
+  line-height: 1.2;
+}
 
-.checkbox__item:hover .checkbox__control {}
-
-.checkbox__input:focus-visible + .checkbox__control {}
+.checkbox__disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

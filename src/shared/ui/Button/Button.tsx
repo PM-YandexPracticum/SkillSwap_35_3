@@ -2,9 +2,9 @@ import React from 'react';
 import { ButtonProps } from './types';
 import styles from './Button.module.css';
 import cn from 'classnames';
-import { Icon } from '@/shared/ui/Icon';
+import { Icon } from '@/shared/ui';
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button = ({
   type = 'primary',
   size = 'medium',
   onClick,
@@ -15,15 +15,20 @@ export const Button: React.FC<ButtonProps> = ({
   iconSize = 24,
   iconPosition = 'left',
   fullWidth = false,
+  fill,
+  stroke,
   children,
   disabled,
   ...rest
-}) => {
+}: ButtonProps) => {
   const handleClick = (e: React.SyntheticEvent) => {
     if (!disabled && onClick) {
       onClick(e);
     }
   };
+
+  const hasIconOnly = (!children || children === '') && (icon || iconName);
+  const hasContent = children && children !== '';
 
   const buttonClasses = cn(
     styles.button,
@@ -32,55 +37,54 @@ export const Button: React.FC<ButtonProps> = ({
     {
       [styles.button_fullWidth]: fullWidth,
       [styles.button_disabled]: disabled,
-      [styles.button_withIcon]: !!icon || !!iconName
+      [styles.button_withIcon]: hasContent && (icon || iconName),
+      [styles.button_iconOnly]: hasIconOnly
     },
     className
   );
 
+  const renderIcon = () => {
+    if (iconName) {
+      return (
+        <Icon name={iconName} size={iconSize} fill={fill} color={stroke} />
+      );
+    }
+    if (icon) {
+      return icon;
+    }
+    return null;
+  };
+
   const renderContent = () => {
+    if (hasIconOnly) {
+      return renderIcon();
+    }
+
     return (
       <>
-        {iconName && iconPosition === 'left' && (
+        {(iconName || icon) && iconPosition === 'left' && (
           <span
             className={cn(
               styles.button__icon,
               styles.button__icon_position_left
             )}
           >
-            <Icon name={iconName} size={iconSize} />
-          </span>
-        )}
-        {icon && !iconName && iconPosition === 'left' && (
-          <span
-            className={cn(
-              styles.button__icon,
-              styles.button__icon_position_left
-            )}
-          >
-            {icon}
+            {renderIcon()}
           </span>
         )}
 
-        <span className={styles.button__content}>{children}</span>
+        {hasContent && (
+          <span className={styles.button__content}>{children}</span>
+        )}
 
-        {iconName && iconPosition === 'right' && (
+        {(iconName || icon) && iconPosition === 'right' && (
           <span
             className={cn(
               styles.button__icon,
               styles.button__icon_position_right
             )}
           >
-            <Icon name={iconName} size={iconSize} />
-          </span>
-        )}
-        {icon && !iconName && iconPosition === 'right' && (
-          <span
-            className={cn(
-              styles.button__icon,
-              styles.button__icon_position_right
-            )}
-          >
-            {icon}
+            {renderIcon()}
           </span>
         )}
       </>
@@ -89,10 +93,10 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      type={htmlType}
       className={buttonClasses}
       onClick={handleClick}
       disabled={disabled}
-      type={htmlType}
       {...rest}
     >
       {renderContent()}
