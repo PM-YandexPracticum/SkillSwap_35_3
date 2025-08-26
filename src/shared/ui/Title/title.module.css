@@ -4,7 +4,7 @@
 .title {
   color: var(--title-color, var(--font-color-primary));
   font-family: var(--title-font-family, var(--font-family-title));
-  font-weight: var(--title-font-weight, var(--font-weight-medium));
+  font-weight: var(--title-font-weight, var(--font-weight-semibold));
   letter-spacing: var(--title-letter-spacing, var(--letter-spacing-tight));
 }
 

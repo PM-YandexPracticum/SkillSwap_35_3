@@ -10,6 +10,7 @@
   padding: 62px 60px;
   background: var(--background-color-secondary);
   color: var(--font-color-primary);
+  font-size: var(--font-size-sm);
   border-radius: var(--border-radius-small);
   box-shadow:
     0 24px 32px rgb(0 0 0 / 6%),

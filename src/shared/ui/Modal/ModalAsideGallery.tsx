@@ -2,10 +2,7 @@ import React from 'react';
 import styles from './modal.module.css';
 import { AsideGalleryProps } from './types';
 
-export const AsideGallery: React.FC<AsideGalleryProps> = ({
-  images = [],
-  alt
-}) => {
+export function AsideGallery({ images = [], alt }: AsideGalleryProps) {
   const [cover, ...rest] = images;
   const thumbs = rest.slice(0, 3);
   const extraCount = Math.max(rest.length - 3, 0);
@@ -28,4 +25,4 @@ export const AsideGallery: React.FC<AsideGalleryProps> = ({
       </div>
     </div>
   );
-};
+}

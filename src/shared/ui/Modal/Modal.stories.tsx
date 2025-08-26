@@ -16,9 +16,10 @@ const meta: Meta<typeof ModalUI> = {
 };
 export default meta;
 
-const WithToggle: React.FC<
-  Omit<TModalUIProps, 'isOpen' | 'onClose'> & { buttonLabel?: string }
-> = ({ buttonLabel = 'Открыть модалку', ...modalProps }) => {
+function WithToggle({
+  buttonLabel = 'Открыть модалку',
+  ...modalProps
+}: Omit<TModalUIProps, 'isOpen' | 'onClose'> & { buttonLabel?: string }) {
   const [open, setOpen] = useState(true);
   return (
     <div style={{ minHeight: 520 }}>
@@ -26,7 +27,7 @@ const WithToggle: React.FC<
       <ModalUI {...modalProps} isOpen={open} onClose={() => setOpen(false)} />
     </div>
   );
-};
+}
 
 const fallback = {
   id: 0,
