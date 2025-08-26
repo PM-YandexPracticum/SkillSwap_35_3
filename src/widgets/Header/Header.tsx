@@ -17,13 +17,13 @@ import { useClickOutside } from '@/shared/hooks/useClickOutside';
 // import { selectUser } from '@/store/user/userSlice';
 // import { useSelector } from '@/app/store';
 
-export const Header: React.FC<HeaderProps> = ({
+export const Header = ({
   className = '',
   children,
   isSticky = false,
   ariaLabel,
   'data-cy': dataCy
-}) => {
+}: HeaderProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);

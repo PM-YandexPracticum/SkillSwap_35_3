@@ -4,7 +4,7 @@ import styles from './AllSkillsModal.module.css';
 import { categories } from '@/shared/lib/constants/categoryColors';
 import { AllSkillsModalProps, CategoryColorName } from './types';
 
-export const AllSkillsModal: React.FC<AllSkillsModalProps> = ({ isOpen }) => {
+export const AllSkillsModal = ({ isOpen }: AllSkillsModalProps) => {
   const getCleanColorName = (colorVar: string): CategoryColorName => {
     const match = colorVar.match(/var\(--tag-color-(.*?)\)/);
     const name = match ? match[1] : 'business';
