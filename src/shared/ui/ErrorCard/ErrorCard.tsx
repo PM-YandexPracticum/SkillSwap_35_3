@@ -1,19 +1,17 @@
-// src/components/ErrorCard.tsx
 import React from 'react';
 import styles from './ErrorCard.module.css';
 
 import { ErrorCardProps } from './types';
 
-import { Button } from '@/shared/ui/Button'; // Импорт компонента Button
-import { Title } from '@/shared/ui/Title';
+import { Button, Title } from '@/shared/ui';
 
-export const ErrorCard: React.FC<ErrorCardProps> = ({
+export const ErrorCard = ({
   title,
   description,
   imageSrc,
   onRetry,
   onGoHome
-}) => {
+}: ErrorCardProps) => {
   const isStringImage = typeof imageSrc === 'string';
 
   return (

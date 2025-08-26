@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from '@/app/store';
 import { selectUsers } from '@/entities/User/selectors/usersSelectors';
 import { selectSkills } from '@/entities/Skill/selectors/skillsSelectors';
@@ -11,7 +11,7 @@ import styles from './CardsFeed.module.css';
 
 const PAGE_SIZE = 12;
 
-export function CardsFeed({ usersData, skillsData }: ICardsFeedProps) {
+export const CardsFeed = ({ usersData, skillsData }: ICardsFeedProps) => {
   const users = usersData ?? useSelector(selectUsers);
   const skills = skillsData ?? useSelector(selectSkills);
 
@@ -122,4 +122,4 @@ export function CardsFeed({ usersData, skillsData }: ICardsFeedProps) {
       </div>
     </section>
   );
-}
+};

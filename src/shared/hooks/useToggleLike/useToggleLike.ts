@@ -5,7 +5,7 @@ interface toggleLikeProps {
   onToggle?: (isLiked: boolean) => void;
 }
 
-export const toggleLike = ({
+export const useToggleLike = ({
   defaultLiked = false,
   onToggle
 }: toggleLikeProps = {}) => {

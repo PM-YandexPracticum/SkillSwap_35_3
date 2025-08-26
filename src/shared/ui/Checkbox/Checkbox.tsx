@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Checkbox.module.css';
 import { ICheckboxProps } from './types';
 
@@ -6,7 +5,7 @@ function cx(...parts: Array<string | false | undefined>) {
   return parts.filter(Boolean).join(' ');
 }
 
-export const Checkbox: React.FC<ICheckboxProps> = ({
+export const Checkbox = ({
   name,
   options,
   values,
@@ -14,7 +13,7 @@ export const Checkbox: React.FC<ICheckboxProps> = ({
   className,
   itemClassName,
   variant = 'check'
-}) => {
+}: ICheckboxProps) => {
   const rootCls = cx(
     styles.checkbox,
     variant === 'dash'
