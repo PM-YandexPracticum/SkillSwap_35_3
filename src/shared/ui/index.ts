@@ -10,3 +10,4 @@ export * from './Logo';
 export * from './ModalOverlay';
 export * from './Tag';
 export * from './ActionBar';
+export * from './ErrorCard'
