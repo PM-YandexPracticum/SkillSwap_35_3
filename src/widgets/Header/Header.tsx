@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   ActionBar,
   Button,
@@ -10,6 +10,7 @@ import {
 import styles from './Header.module.css';
 import { HeaderProps } from './types';
 import { Link, useNavigate } from 'react-router-dom';
+import { useClickOutside } from '@/shared/hooks/useClickOutside';
 // раскомментировать когда готовы userSlice и authSlice
 // import { useActionBarButtons } from '@/shared/hooks/useActionBarButtons';
 // import { selectIsAuthenticated } from '@/store/auth/authSlice';
@@ -28,24 +29,12 @@ export const Header: React.FC<HeaderProps> = ({
   const skillsRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        modalRef.current &&
-        !modalRef.current.contains(event.target as Node) &&
-        skillsRef.current &&
-        !skillsRef.current.contains(event.target as Node)
-      ) {
-        setIsModalOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
+  //  refs, клик по которым не должен закрывать модалку
+  useClickOutside([modalRef, skillsRef], {
+    onClickOutside: () => {
+      setIsModalOpen(false);
+    }
+  });
   const handleSkillsClick = () => {
     setIsModalOpen(!isModalOpen);
   };
