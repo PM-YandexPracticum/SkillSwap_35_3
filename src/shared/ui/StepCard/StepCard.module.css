@@ -1,0 +1,43 @@
+@import '@/app/styles/_variables.css';
+@import '@/app/styles/_typography.css';
+@import '@/app/styles/index.css';
+
+.step-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 132px 60px;
+  width: 556px;  
+  height: 692px;
+  background-color: var(--background-color-secondary);
+  margin: auto;
+}
+
+.step-card__image {
+  height: auto;
+}
+
+.step-card__image img {
+  display: block;
+} 
+
+.step-card__text-title { 
+  font-family: var(--font-family-title);
+  text-align: center;
+  margin-top: 40px;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--font-color-primary);
+}
+
+.step-card__text-description { /*  по макету */
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  color: var(--font-color-primary);
+  font-weight: var(--font-weight-light);
+  line-height: 1.5;
+  margin-top: 12px;
+
+}
