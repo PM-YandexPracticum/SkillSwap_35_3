@@ -3,12 +3,7 @@ import styles from './Tag.module.css';
 import { TagProps } from './types';
 import { useCategoryColors } from '@/shared/hooks/useCategoryColors/useCategoryColors';
 
-export const Tag: React.FC<TagProps> = ({
-  text,
-  category,
-  subcategory,
-  style
-}) => {
+export const Tag = ({ text, category, subcategory, style }: TagProps) => {
   const backgroundColor = useCategoryColors(category, subcategory);
 
   return (

@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Radio.module.css';
 import { IRadioProps } from './types';
 
@@ -6,14 +5,14 @@ function cx(...parts: Array<string | undefined | false>) {
   return parts.filter(Boolean).join(' ');
 }
 
-export const RadioUI: React.FC<IRadioProps> = ({
+export const RadioUI = ({
   name,
   options,
   value,
   onChange,
   className,
   itemClassName
-}) => {
+}: IRadioProps) => {
   return (
     <div className={cx(styles.radio, className)}>
       {options.map((option) => {

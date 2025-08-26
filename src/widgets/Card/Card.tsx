@@ -5,13 +5,13 @@ import { toggleLike } from '@/features/favorites/toggle-like/toggleLike';
 
 import styles from './Card.module.css';
 
-export function Card({
+export const Card = ({
   user,
   skills,
   onDetails,
   showAbout,
   className
-}: CardProps) {
+}: CardProps) => {
   const age = useAge(user.birthDate);
 
   //const isAuth - проверка авторизации для лайка
@@ -104,4 +104,4 @@ export function Card({
       </div>
     </div>
   );
-}
+};

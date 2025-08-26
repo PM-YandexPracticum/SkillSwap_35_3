@@ -5,7 +5,7 @@ import { FooterProps } from './types';
 import { Link, useNavigate } from 'react-router-dom';
 import { Logo } from '@/shared/ui/Logo';
 
-export const Footer: React.FC<FooterProps> = ({
+export const Footer = ({
   show = true,
   className = '',
   style,
@@ -18,7 +18,7 @@ export const Footer: React.FC<FooterProps> = ({
   id,
   ariaLabel,
   'data-cy': dataCy
-}) => {
+}: FooterProps) => {
   if (!show) {
     return null;
   }
