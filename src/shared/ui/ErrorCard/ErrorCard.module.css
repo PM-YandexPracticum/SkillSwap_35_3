@@ -16,25 +16,25 @@
 
 /* Элемент: изображение ошибки */
 .error-card__image {
-  width: 100%;   
+  width: 100%;
   height: auto;
 }
 
 .error-card__image img {
-  display: block; 
+  display: block;
 }
 
-.error-card__text-title { 
+.error-card__text-title {
   font-family: var(--font-family-title);
   text-align: center;
   margin-top: 40px;
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-medium);
   color: var(--font-color-primary);
-
 }
 
-.error-card__text-description { /*  по макету */
+.error-card__text-description {
+  /*  по макету */
   font-family: var(--font-family-text);
   font-size: var(--font-size-sm);
   text-align: center;

@@ -6,7 +6,7 @@
 
 .header {
   height: 104px;
-  background: #F9FAF7;
+  background: #f9faf7;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,7 +22,7 @@
 
 .footer {
   height: 232px;
-  background: #FFFFFF;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;

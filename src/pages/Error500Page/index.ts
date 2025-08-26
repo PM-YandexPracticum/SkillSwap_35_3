@@ -1,1 +1,1 @@
-export * from './Error500Page'
+export * from './Error500Page';
