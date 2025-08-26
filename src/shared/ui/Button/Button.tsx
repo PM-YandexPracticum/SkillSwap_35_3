@@ -2,7 +2,7 @@ import React from 'react';
 import { ButtonProps } from './types';
 import styles from './Button.module.css';
 import cn from 'classnames';
-import { Icon } from '@/shared/ui/Icon';
+import { Icon } from '@/shared/ui';
 
 export const Button = ({
   type = 'primary',

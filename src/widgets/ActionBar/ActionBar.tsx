@@ -1,9 +1,8 @@
-import React from 'react';
 import styles from './ActionBar.module.css';
 import { ActionBarProps } from './types';
-import { Button } from '../Button';
+import { Button } from '@/shared/ui';
 
-export const ActionBar: React.FC<ActionBarProps> = ({ buttons, className }) => {
+export const ActionBar = ({ buttons, className }: ActionBarProps) => {
   return (
     <div className={`${styles['action-bar']} ${className || ''}`}>
       {buttons.map((button, index: number) => (

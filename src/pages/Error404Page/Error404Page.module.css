@@ -1,0 +1,29 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  height: 104px;
+  background: #f9faf7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 16px;
+}
+
+.footer {
+  height: 232px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

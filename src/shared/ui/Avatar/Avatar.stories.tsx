@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import Avatar from './Avatar';
+import { Avatar } from './Avatar';
 
 import mockData from '@/api/mockData.json';
 

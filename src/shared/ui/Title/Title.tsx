@@ -1,13 +1,13 @@
 import type { ITitleProps } from './types';
 import styles from './title.module.css';
 
-export const Title: React.FC<ITitleProps> = ({
+export const Title = ({
   as: Tag,
   size,
   className,
   children,
   ...rest
-}) => {
+}: ITitleProps) => {
   const titleClasses = [styles.title, styles[size], className]
     .filter(Boolean)
     .join(' ');
