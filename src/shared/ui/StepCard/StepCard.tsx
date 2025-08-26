@@ -5,7 +5,7 @@ import { StepCardProps } from './types';
 
 import { Title } from '@/shared/ui/Title';
 
-export const ErrorCard: React.FC<StepCardProps> = ({
+export const StepCard: React.FC<StepCardProps> = ({
   title,
   description,
   imageSrc
@@ -17,15 +17,15 @@ export const ErrorCard: React.FC<StepCardProps> = ({
       {/* Картинка */}
       <div className={styles['step-card__image']}>
         {isStringImage ? (
-          <img src={imageSrc} alt={`Ошибка: ${title}`} />
+          <img src={imageSrc} alt={``} />
         ) : (
           React.createElement(
             imageSrc as React.FC<React.SVGProps<SVGSVGElement>>,
             {
-              width: 460, // по макету
-              height: 304, // по макету
+              width: 300, // по макету
+              height: 300, // по макету
               role: 'img',
-              'aria-label': `Ошибка: ${title}`
+              'aria-label': ``
             }
           )
         )}
