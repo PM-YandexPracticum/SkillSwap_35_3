@@ -1,15 +1,13 @@
 import React, { useRef, useState } from 'react';
-import { Button, Icon, Input, Logo, AllSkillsModal } from '@/shared/ui';
+import { Button, Icon, Input, Logo, AllSkillsModal, Avatar } from '@/shared/ui';
 import styles from './Header.module.css';
 import { HeaderProps } from './types';
 import { Link, useNavigate } from 'react-router-dom';
 import { useClickOutside } from '@/shared/hooks/useClickOutside';
 import { ActionBar } from '../ActionBar';
-// раскомментировать когда готовы userSlice и authSlice
-// import { useActionBarButtons } from '@/shared/hooks/useActionBarButtons';
-// import { selectIsAuthenticated } from '@/store/auth/authSlice';
-// import { selectUser } from '@/store/user/userSlice';
-// import { useSelector } from '@/app/store';
+import { useActionBarButtons } from '@/shared/hooks/useActionBarButtons';
+import { selectIsAuthenticated, selectAuthUser } from '@/features/auth';
+import { useSelector } from '@/app/store';
 
 export const Header = ({
   className = '',
@@ -33,16 +31,16 @@ export const Header = ({
     setIsModalOpen(!isModalOpen);
   };
 
-  const handleModalClick = (e: React.MouseEvent) => {
+  /* const handleModalClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-  };
+  }; */
 
   // Используем селекторы для получения состояния аутентификации
-  // const isAuthenticated = useSelector(selectIsAuthenticated);
-  // const user = useSelector(selectUser);
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const user = useSelector(selectAuthUser);
 
   // Используем хук для получения конфигурации кнопок
-  // const actionBarButtons = useActionBarButtons();
+  const actionBarButtons = useActionBarButtons();
 
   return (
     <header
@@ -73,11 +71,7 @@ export const Header = ({
               className={`${styles['header__arrow']} ${isModalOpen ? styles['header__arrow--rotated'] : ''}`}
             />
           </div>
-          <div
-            className={styles['modal-container']}
-            ref={modalRef}
-            onClick={handleModalClick}
-          >
+          <div className={styles['modal-container']} ref={modalRef}>
             <AllSkillsModal isOpen={isModalOpen} />
           </div>
         </div>
@@ -86,44 +80,37 @@ export const Header = ({
       <Input
         placeholder='Искать навык'
         search={true}
-        icon={<Icon name='search-icon' />}
+        icon={<Icon name='search-icon' fill='#69735D' />}
         iconPosition='left'
         className={styles['header__input']}
       />
 
       <ActionBar
         // в Buttons вставить переменную actionBarButtons когда будут готовы userSlice и authSlice
-        buttons={[
-          {
-            iconName: 'theme-icon',
-            type: 'ghost',
-            onClick: () => console.log('Смена темы'),
-            ariaLabel: 'Смена темы'
-          }
-        ]}
+        buttons={actionBarButtons}
         className={styles['header__action-bar']}
       />
 
       {/* Раскомментировать когда будет готова логика авторизации */}
-      {/* {isAuthenticated ? (
+      {isAuthenticated ? (
         <div className={styles['header__user']}>
           <p className={styles['header__user-name']}>{user?.name}</p>
           <Avatar
-            src={user?.avatar}
+            src={user?.avatar || ''}
             alt={user?.name || 'Пользователь'}
             className={styles['header__user-avatar']}
           />
         </div>
-      ) : ( */}
-      <div className={styles['header__buttons']}>
-        <Button type='secondary' size='small'>
-          Войти
-        </Button>
-        <Button type='primary' size='small'>
-          Зарегистрироваться
-        </Button>
-      </div>
-      {/* )} */}
+      ) : (
+        <div className={styles['header__buttons']}>
+          <Button type='secondary' size='small'>
+            Войти
+          </Button>
+          <Button type='primary' size='small'>
+            Зарегистрироваться
+          </Button>
+        </div>
+      )}
       {children}
     </header>
   );
