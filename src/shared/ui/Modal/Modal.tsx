@@ -28,7 +28,10 @@ export const ModalUI = memo(function ModalUI({
   className
 }: TModalUIProps) {
   const modalRef = useRef<HTMLDivElement>(null);
-  useClickOutside(modalRef, onClose, Boolean(isOpen && closeOnOverlay));
+  useClickOutside([modalRef], {
+    onClickOutside: onClose,
+    enabled: Boolean(isOpen && closeOnOverlay)
+  });
 
   useEffect(() => {
     if (!isOpen || !closeOnEsc) return;
