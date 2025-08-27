@@ -1,21 +1,4 @@
-@import '@/app/styles/index.css';
-
 .page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.header {
-  height: 104px;
-  background: var(--background-color-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.main {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -24,13 +7,8 @@
 }
 
 .main__filters {
-  background: var(--background-color-secondary);
-}
-
-.main__cards {
-  display: flex;
-  flex-direction: column;
-  max-width: 1025px;
-  gap: 40px;
+  border-radius: 12px;
+  width: 325px;
+  height: 100vh;
   background: var(--background-color-secondary);
 }
