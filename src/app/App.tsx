@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
-
 import { routeConfig } from './providers/router/config/routeConfig';
+import { Header, Footer } from '@/widgets';
 
 import './styles/index.css';
 
 export const App = () => {
   return (
     <div className='app'>
-      {/*<Header /> */}
+      <Header />
       <main className='main-content'>
         <Routes>
           {routeConfig.map((route) => (
@@ -15,7 +15,7 @@ export const App = () => {
           ))}
         </Routes>
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

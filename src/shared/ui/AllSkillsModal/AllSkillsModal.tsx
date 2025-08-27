@@ -1,8 +1,8 @@
-import React from 'react';
 import { Icon } from '@/shared/ui';
 import styles from './AllSkillsModal.module.css';
 import { categories } from '@/shared/lib/constants/categoryColors';
 import { AllSkillsModalProps, CategoryColorName } from './types';
+import { createPortal } from 'react-dom';
 
 export const AllSkillsModal = ({ isOpen }: AllSkillsModalProps) => {
   const getCleanColorName = (colorVar: string): CategoryColorName => {
@@ -13,7 +13,7 @@ export const AllSkillsModal = ({ isOpen }: AllSkillsModalProps) => {
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div className={styles['skills__modal-container']}>
       <div className={styles['skills__modal']}>
         {categories.map((category) => {
@@ -47,7 +47,8 @@ export const AllSkillsModal = ({ isOpen }: AllSkillsModalProps) => {
           );
         })}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

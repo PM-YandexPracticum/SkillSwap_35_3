@@ -1,17 +1,18 @@
-@import '@/app/styles/index.css';
-
 .skills__modal {
   position: absolute;
   z-index: 1000;
-  top: 94px;
+  top: 105px;
   left: 36px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
+  max-height: 90vh;
   padding: 60px;
   border: 1px solid var(--font-color-secondary);
   border-radius: var(--border-radius-small);
   width: 1136px;
+  background-color: var(--background-color-secondary);
+  overflow-y: auto;
 }
 
 .skills__modal-item {

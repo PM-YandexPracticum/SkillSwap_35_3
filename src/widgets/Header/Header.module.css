@@ -1,5 +1,3 @@
-@import '@/app/styles/index.css';
-
 .header {
   width: 100%;
   background-color: var(--background-color-primary);
