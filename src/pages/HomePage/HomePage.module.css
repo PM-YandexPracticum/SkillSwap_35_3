@@ -1,0 +1,35 @@
+@import '@/app/styles/index.css';
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.headerPlaceholder {
+  height: 104px;
+  background: var(--background-color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 36px 60px;
+}
+
+.main__filters {
+  background: var(--background-color-secondary);
+}
+
+.footer {
+  height: 232px;
+  background: var(--background-color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
