@@ -27,13 +27,15 @@ export const StepCard = ({ title, description, imageSrc }: StepCardProps) => {
         )}
       </div>
 
-      {/* Заголовок */}
-      <Title as='h2' size='lg' className={styles['step-card__text-title']}>
-        {title}
-      </Title>
+      {/* Контент */}
+      <div className={styles['step-card__content']}>
+        <Title as='h2' size='lg' className={styles['step-card__text-title']}>
+          {title}
+        </Title>
 
-      {/* Текст */}
-      <p className={styles['step-card__text-description']}>{description}</p>
+        {/* Текст */}
+        <p className={styles['step-card__text-description']}>{description}</p>
+      </div>
     </div>
   );
 };
