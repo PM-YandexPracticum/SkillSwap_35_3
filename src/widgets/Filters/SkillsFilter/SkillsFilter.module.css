@@ -1,0 +1,103 @@
+.filter__skills {
+    border: none;
+    max-width: 284px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+}
+
+.filter__skills-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.filter__skills-title {
+    font-family: var(--font-family-title);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-spacing-tight);
+    font-size: var(--font-size-md);
+    line-height: var(--font-line-sm-md);
+    color: var(--font-color-primary);
+    
+}
+
+.filter__skills-checbox-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+}
+
+
+.filter__skills-category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter__skills-category-title {
+    font-family: var(--font-family-text);
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-sm);
+    line-height: var(--font-line-sm-md);
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--font-color-primary);
+}
+
+.filter__skills-category-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter__skills-category-header:hover .filter__skills-category-toggle {
+  display: flex;
+}
+
+.filter__skills-subcategories-container {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  margin-left: 20px;
+}
+
+.filter__skills-subcategories {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0 0;
+  row-gap: 4px;
+}
+
+.filter__skills-subcategories-item {
+    padding: 4px 0 4px 12px;
+}
+
+.filter__skills-subcategory-title {
+    color: var(--font-color-primary);
+    font-family: var(--font-family-text);
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-sm);
+    line-height: var(--font-line-sm-md);
+    letter-spacing: var(--letter-spacing-tight);
+}
+
+.filter__skills-category-toggle svg {
+  transition: transform 0.3s ease;
+}
+
+.filter__skills-button {
+    border: none;
+    background-color: inherit;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: var(--font-family-text);
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-sm);
+    letter-spacing: var(--letter-spacing-tight);
+    line-height: var(--font-line-sm-md);
+    color: var(--font-color-accent);
+    column-gap: 4px;
+}
