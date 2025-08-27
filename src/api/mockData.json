@@ -3,8 +3,8 @@
     {
       "id": 1,
       "title": "Техника Pomodoro",
-      "category": "Бизнес и карьера",
-      "subcategory": "Тайм-менеджмент",
+      "category": "Образование и развитие",
+      "subcategory": "Навыки обучения",
       "description": "Освойте технику Pomodoro и забудьте о прокрастинации. Я научу вас концентрироваться на задачах, управлять временем и достигать целей быстрее. Простая система интервалов поможет повысить продуктивность уже с первого дня.",
       "images": [
         "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800",
@@ -43,7 +43,7 @@
       "id": 4,
       "title": "Техники убеждения",
       "category": "Бизнес и карьера",
-      "subcategory": "Продажи и переговоры",
+      "subcategory": "Маркетинг и реклама",
       "description": "Переговоры станут вашей сильной стороной. Я научу вас техникам убеждения, которые помогут склонить собеседника на свою сторону, будь то деловое совещание или бытовая ситуация.",
       "images": [
         "https://images.unsplash.com/photo-1659352790996-871ea0804eec?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -70,7 +70,7 @@
       "id": 6,
       "title": "Планирование спринтов",
       "category": "Бизнес и карьера",
-      "subcategory": "Проектное управление",
+      "subcategory": "Управление командой",
       "description": "Эффективное планирование спринтов — залог успеха команды. Я помогу вам правильно делить задачи, прогнозировать результаты и избегать хаоса в проектах.",
       "images": [
         "https://images.unsplash.com/photo-1549923746-1d28f336cc41?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -83,8 +83,8 @@
     {
       "id": 7,
       "title": "Финансовая грамотность для начинающих",
-      "category": "Бизнес и карьера",
-      "subcategory": "Личные финансы",
+      "category": "Дом и уют",
+      "subcategory": "Домашние финансы",
       "description": "Хотите управлять своими деньгами уверенно? Я объясню простыми словами, как составить бюджет, копить и приумножать капитал. Всё на реальных примерах, без лишней теории.",
       "images": [
         "https://images.unsplash.com/photo-1574884280706-7342ca3d4231?q=80&w=1022&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -97,8 +97,8 @@
     {
       "id": 8,
       "title": "Публичные выступления",
-      "category": "Бизнес и карьера",
-      "subcategory": "Коммуникации",
+      "category": "Образование и развитие",
+      "subcategory": "Коучинг",
       "description": "Преодолейте страх сцены и научитесь вдохновлять аудиторию. Я помогу вам выступать уверенно, красиво говорить и оставлять яркое впечатление на слушателей.",
       "images": [
         "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=800",
@@ -112,7 +112,7 @@
       "id": 9,
       "title": "Деловая переписка",
       "category": "Бизнес и карьера",
-      "subcategory": "Коммуникации",
+      "subcategory": "Личный бренд",
       "description": "Письма — это лицо вашей компании. Я научу вас писать так, чтобы ваши сообщения читали, понимали и уважали. Лаконичность, вежливость и убедительность — главные инструменты.",
       "images": [
         "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800",
@@ -140,7 +140,7 @@
       "id": 11,
       "title": "Академический английский",
       "category": "Иностранные языки",
-      "subcategory": "Английский",
+      "subcategory": "Подготовка к экзаменам (IELTS, TOEFL)",
       "description": "Если вы планируете учёбу или карьеру за рубежом, академический английский — must-have. Я помогу освоить лексику для статей, презентаций и научных дискуссий.",
       "images": [
         "https://images.unsplash.com/photo-1645594287996-086e2217a809?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -154,7 +154,7 @@
       "id": 12,
       "title": "Подготовка к IELTS",
       "category": "Иностранные языки",
-      "subcategory": "Английский",
+      "subcategory": "Подготовка к экзаменам (IELTS, TOEFL)",
       "description": "Сдать IELTS на высокий балл реально! Я поделюсь стратегиями для Listening, Reading, Writing и Speaking. Вы получите чёткий план и уверенность в результате.",
       "images": [
         "https://images.unsplash.com/photo-1592278423578-4b83c89859ac?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -194,10 +194,10 @@
     },
     {
       "id": 15,
-      "title": "Итальянский для путешествий",
+      "title": "Испанский для путешествий",
       "category": "Иностранные языки",
-      "subcategory": "Итальянский",
-      "description": "Италия звучит красивее, когда понимаешь язык. Я научу вас базовым фразам и выражениям для поездок, чтобы ваше путешествие стало ещё приятнее и насыщеннее.",
+      "subcategory": "Испанский",
+      "description": "Испания звучит красивее, когда понимаешь язык. Я научу вас базовым фразам и выражениям для поездок, чтобы ваше путешествие стало ещё приятнее и насыщеннее.",
       "images": [
         "https://images.unsplash.com/photo-1499678329028-101435549a4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1499678329028-101435549a4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -296,7 +296,7 @@
       "id": 22,
       "title": "Старт в видеоблогинге",
       "category": "Творчество и искусство",
-      "subcategory": "Видеоконтент",
+      "subcategory": "Видеомонтаж",
       "description": "Хотите запустить свой видеоблог? Я расскажу, как снимать, монтировать и продвигать видео, чтобы привлечь аудиторию. Даже с простым оборудованием вы сможете выделяться.",
       "images": [
         "https://images.unsplash.com/photo-1610820270934-2434e1c409cc?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -310,7 +310,7 @@
       "id": 23,
       "title": "Видео-монтаж для новичков",
       "category": "Творчество и искусство",
-      "subcategory": "Видеоконтент",
+      "subcategory": "Видеомонтаж",
       "description": "Научитесь монтировать ролики без сложных программ. Я помогу вам освоить базовые инструменты и делать стильные видео для соцсетей и личных проектов.",
       "images": [
         "https://images.unsplash.com/photo-1528478940942-401d9b167878?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -333,6 +333,220 @@
         "https://images.unsplash.com/photo-1608804375369-498a4b601e42?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1608804375369-498a4b601e42?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       ]
+    },
+    {
+      "id": 25,
+      "title": "Эффективное управление командой",
+      "category": "Бизнес и карьера",
+      "subcategory": "Управление командой",
+      "images": [
+        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1470&auto=format&fit=crop"
+      ]
+    },
+    {
+      "id": 26,
+      "title": "SEO и продвижение в интернете",
+      "category": "Бизнес и карьера",
+      "subcategory": "Маркетинг и реклама",
+      "images": [
+        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1470&auto=format&fit=crop"
+      ]
+    },
+    {
+      "id": 27,
+      "title": "Питание для здоровья и энергии",
+      "category": "Здоровье и лайфстайл",
+      "subcategory": "Питание и ЗОЖ",
+      "images": [
+        "https://images.unsplash.com/photo-1506806732259-39c2d0268443?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1506806732259-39c2d0268443?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1506806732259-39c2d0268443?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1506806732259-39c2d0268443?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1506806732259-39c2d0268443?q=80&w=1470&auto=format&fit=crop"
+      ]
+    },
+    {
+      "id": 28,
+      "title": "Основы медитации и практика йоги",
+      "category": "Здоровье и лайфстайл",
+      "subcategory": "Йога и медитация",
+      "images": [
+        "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1470&auto=format&fit=crop"
+      ]
+    },
+    {
+      "id": 29,
+      "title": "Креативное письмо для начинающих",
+      "category": "Творчество и искусство",
+      "subcategory": "Креативное письмо",
+      "images": [
+        "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=800&auto=format&fit=crop"
+      ]
+    },
+    {
+      "id": 30,
+      "title": "Управление стрессом и ментальное здоровье",
+      "category": "Здоровье и лайфстайл",
+      "subcategory": "Ментальное здоровье",
+      "images": [
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1470&auto=format&fit=crop"
+      ]
+    },
+    {
+      "id": 31,
+      "title": "Основы ремонта и ремонта дома",
+      "category": "Дом и уют",
+      "subcategory": "Ремонт",
+      "images": [
+        "https://images.unsplash.com/photo-1743527705972-4c8506afe856?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1743527705972-4c8506afe856?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1743527705972-4c8506afe856?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1743527705972-4c8506afe856?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1743527705972-4c8506afe856?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1743527705972-4c8506afe856?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      ]
+    },
+    {
+      "id": 32,
+      "title": "Уход за комнатными растениями",
+      "category": "Дом и уют",
+      "subcategory": "Домашние растения",
+      "images": [
+        "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1470&auto=format&fit=crop"
+      ]
+    },
+    {
+      "id": 33,
+      "title": "Эффективное резюме и собеседование",
+      "category": "Бизнес и карьера",
+      "subcategory": "Резюме и собеседование",
+      "images": [
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1470&auto=format&fit=crop"
+      ]
+    },
+    {
+      "id": 34,
+      "title": "Предпринимательство с нуля",
+      "category": "Бизнес и карьера",
+      "subcategory": "Предпринимательство",
+      "images": [
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1470&auto=format&fit=crop"
+      ]
+    },
+    {
+      "id": 35,
+      "title": "Китайский язык для начинающих",
+      "category": "Иностранные языки",
+      "subcategory": "Китайский",
+      "images": [
+        "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1470&auto=format&fit=crop"
+      ]
+    },
+    {
+      "id": 36,
+      "title": "Основы японского языка",
+      "category": "Иностранные языки",
+      "subcategory": "Японский",
+      "images": [
+        "https://images.unsplash.com/photo-1549693578-d683be217e58?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1549693578-d683be217e58?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1549693578-d683be217e58?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1549693578-d683be217e58?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1549693578-d683be217e58?q=80&w=1470&auto=format&fit=crop"
+      ]
+    },
+    {
+      "id": 37,
+      "title": "Актёрское мастерство для начинающих",
+      "category": "Творчество и искусство",
+      "subcategory": "Актёрское мастерство",
+      "images": [
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1470&auto=format&fit=crop"
+      ]
+    },
+    {
+      "id": 38,
+      "title": "Декор и DIY проекты дома",
+      "category": "Творчество и искусство",
+      "subcategory": "Декор и DIY",
+      "images": [
+        "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?q=80&w=1470&auto=format&fit=crop"
+      ]
+    },
+    {
+      "id": 39,
+      "title": "Организация пространства и уборка",
+      "category": "Дом и уют",
+      "subcategory": "Уборка и организация",
+      "images": [
+        "https://images.unsplash.com/photo-1581578949510-fa7315c4c350?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1581578949510-fa7315c4c350?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1581578949510-fa7315c4c350?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1581578949510-fa7315c4c350?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1581578949510-fa7315c4c350?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      ]
+    },
+    {
+      "id": 40,
+      "title": "Физические тренировки дома",
+      "category": "Здоровье и лайфстайл",
+      "subcategory": "Физические тренировки",
+      "images": [
+        "https://images.unsplash.com/photo-1714646442130-b64b96af082c?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1714646442130-b64b96af082c?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1714646442130-b64b96af082c?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1714646442130-b64b96af082c?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1714646442130-b64b96af082c?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      ]
     }
   ],
   "users": [
@@ -340,67 +554,73 @@
       "id": 1,
       "name": "Мария",
       "gender": "female",
-      "email": "maria@example.com",
+      "email": "maria1@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=687&auto=format&fit=crop",
       "city": "Москва",
       "birthDate": "1995-10-28",
       "teachingSkillId": 1,
-      "learningSkillIds": [2, 3, 5],
+      "learningSkillIds": [9, 31],
       "about": "Опытный специалист по Pomodoro, делюсь лайфхаками продуктивности."
     },
     {
       "id": 2,
       "name": "Иван",
       "gender": "male",
-      "email": "ivan@example.com",
+      "email": "ivan2@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=687&auto=format&fit=crop",
       "city": "Санкт-Петербург",
       "birthDate": "1992-05-15",
       "teachingSkillId": 2,
-      "learningSkillIds": [1, 4, 10],
+      "learningSkillIds": [1, 7, 10],
       "about": "Эксперт по матрице Эйзенхауэра, учу работать с приоритетами."
     },
     {
       "id": 3,
       "name": "Елена",
       "gender": "female",
-      "email": "elena@example.com",
+      "email": "elena3@example.com",
+      "password": "123456",
       "avatar": "https://plus.unsplash.com/premium_photo-1689551671541-31a345ce6ae0?q=80&w=687&auto=format&fit=crop",
       "city": "Новосибирск",
       "birthDate": "1998-02-11",
       "teachingSkillId": 3,
-      "learningSkillIds": [1, 4, 6],
+      "learningSkillIds": [16],
       "about": "Профессионально обучаю техникам работы с возражениями."
     },
     {
       "id": 4,
       "name": "Алексей",
       "gender": "male",
-      "email": "aleksey@example.com",
+      "email": "aleksey4@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=870&auto=format&fit=crop",
       "city": "Екатеринбург",
       "birthDate": "1988-08-12",
       "teachingSkillId": 4,
-      "learningSkillIds": [2, 5, 7],
+      "learningSkillIds": [28, 15, 3, 1],
       "about": "Учу убеждать и вести сложные переговоры."
     },
     {
       "id": 5,
       "name": "Ольга",
       "gender": "female",
-      "email": "olga@example.com",
+      "email": "olga5@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=761&auto=format&fit=crop",
       "city": "Казань",
       "birthDate": "1994-11-05",
       "teachingSkillId": 5,
-      "learningSkillIds": [1, 3, 10],
+      "learningSkillIds": [21, 39, 10],
       "about": "Наставник по Scrum и гибким методологиям управления проектами."
     },
     {
       "id": 6,
       "name": "Дмитрий",
       "gender": "male",
-      "email": "dmitry@example.com",
+      "email": "dmitry6@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=687&auto=format&fit=crop",
       "city": "Нижний Новгород",
       "birthDate": "1990-03-22",
@@ -412,7 +632,8 @@
       "id": 7,
       "name": "Анна",
       "gender": "female",
-      "email": "anna@example.com",
+      "email": "anna7@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1470&auto=format&fit=crop",
       "city": "Самара",
       "birthDate": "1997-07-30",
@@ -424,7 +645,8 @@
       "id": 8,
       "name": "Сергей",
       "gender": "male",
-      "email": "sergey@example.com",
+      "email": "sergey8@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=721&auto=format&fit=crop",
       "city": "Омск",
       "birthDate": "1985-01-18",
@@ -436,7 +658,8 @@
       "id": 9,
       "name": "Татьяна",
       "gender": "female",
-      "email": "tatiana@example.com",
+      "email": "tatiana9@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1521146764736-56c929d59c83?q=80&w=687&auto=format&fit=crop",
       "city": "Челябинск",
       "birthDate": "1993-09-14",
@@ -448,7 +671,8 @@
       "id": 10,
       "name": "Павел",
       "gender": "male",
-      "email": "pavel@example.com",
+      "email": "pavel10@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?q=80&w=880&auto=format&fit=crop",
       "city": "Ростов-на-Дону",
       "birthDate": "1989-12-01",
@@ -460,7 +684,8 @@
       "id": 11,
       "name": "Виктория",
       "gender": "female",
-      "email": "viktoria@example.com",
+      "email": "viktoria11@example.com",
+      "password": "123456",
       "avatar": "https://plus.unsplash.com/premium_photo-1689551671548-79ff30459d2a?q=80&w=687&auto=format&fit=crop",
       "city": "Краснодар",
       "birthDate": "1996-02-15",
@@ -472,7 +697,8 @@
       "id": 12,
       "name": "Андрей",
       "gender": "male",
-      "email": "andrey@example.com",
+      "email": "andrey12@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=689&auto=format&fit=crop",
       "city": "Владивосток",
       "birthDate": "1991-11-21",
@@ -484,7 +710,8 @@
       "id": 13,
       "name": "Оксана",
       "gender": "female",
-      "email": "oksana@example.com",
+      "email": "oksana13@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1604004555489-723a93d6ce74?q=80&w=687&auto=format&fit=crop",
       "city": "Пермь",
       "birthDate": "1997-07-10",
@@ -496,7 +723,8 @@
       "id": 14,
       "name": "Денис",
       "gender": "male",
-      "email": "denis@example.com",
+      "email": "denis14@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1639747280804-dd2d6b3d88ac?q=80&w=687&auto=format&fit=crop",
       "city": "Иркутск",
       "birthDate": "1988-04-30",
@@ -508,7 +736,8 @@
       "id": 15,
       "name": "Ирина",
       "gender": "female",
-      "email": "irina@example.com",
+      "email": "irina15@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=688&auto=format&fit=crop",
       "city": "Тюмень",
       "birthDate": "1995-05-26",
@@ -520,7 +749,8 @@
       "id": 16,
       "name": "Максим",
       "gender": "male",
-      "email": "maxim@example.com",
+      "email": "maxim16@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "city": "Москва",
       "birthDate": "1993-02-16",
@@ -532,7 +762,8 @@
       "id": 17,
       "name": "Валерия",
       "gender": "female",
-      "email": "valeria@example.com",
+      "email": "valeria17@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "city": "Новосибирск",
       "birthDate": "1996-08-09",
@@ -544,7 +775,8 @@
       "id": 18,
       "name": "Артём",
       "gender": "male",
-      "email": "artem@example.com",
+      "email": "artem18@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=687&auto=format&fit=crop",
       "city": "Сочи",
       "birthDate": "1991-06-25",
@@ -556,7 +788,8 @@
       "id": 19,
       "name": "Юлия",
       "gender": "female",
-      "email": "yulia@example.com",
+      "email": "yulia19@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=687&auto=format&fit=crop",
       "city": "Калуга",
       "birthDate": "1994-07-13",
@@ -568,13 +801,274 @@
       "id": 20,
       "name": "Роман",
       "gender": "male",
-      "email": "roman@example.com",
+      "email": "roman20@example.com",
+      "password": "123456",
       "avatar": "https://images.unsplash.com/photo-1636041246170-9278569b9c36?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "city": "Уфа",
       "birthDate": "1989-09-10",
       "teachingSkillId": 20,
       "learningSkillIds": [19, 14, 4],
       "about": "Объясню всё про свет и позирование в портретной фотографии."
+    },
+    {
+      "id": 21,
+      "name": "Глеб",
+      "gender": "male",
+      "email": "gleb21@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1724435811349-32d27f4d5806?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Воронеж",
+      "birthDate": "1993-03-15",
+      "teachingSkillId": 21,
+      "learningSkillIds": [2, 7],
+      "about": "Демонстрирую лучшие техники мобильной обработки фото для соцсетей."
+    },
+    {
+      "id": 22,
+      "name": "Светлана",
+      "gender": "female",
+      "email": "svetlana22@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800",
+      "city": "Томск",
+      "birthDate": "1999-02-06",
+      "teachingSkillId": 22,
+      "learningSkillIds": [11, 4, 15],
+      "about": "Учусь и учу видеоблогингу, делюсь лайфхаками уверенности перед камерой."
+    },
+    {
+      "id": 23,
+      "name": "Фёдор",
+      "gender": "male",
+      "email": "fedor23@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=800",
+      "city": "Коста-Рика",
+      "birthDate": "1987-07-31",
+      "teachingSkillId": 23,
+      "learningSkillIds": [13, 18],
+      "about": "Научу базовому видео-монтажу и продакшену ярких роликов."
+    },
+    {
+      "id": 24,
+      "name": "Карина",
+      "gender": "female",
+      "email": "karina24@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800",
+      "city": "Пятигорск",
+      "birthDate": "1995-04-11",
+      "teachingSkillId": 24,
+      "learningSkillIds": [8],
+      "about": "Преподаю скетчинг и быстрые техники рисования для новичков."
+    },
+    {
+      "id": 25,
+      "name": "Армен",
+      "gender": "male",
+      "email": "armen25@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1626038135427-bd4eb8193ba5?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Ставрополь",
+      "birthDate": "1985-10-19",
+      "teachingSkillId": 25,
+      "learningSkillIds": [5, 28, 20],
+      "about": "Менеджер по управлению командой, раскрываю секреты лидерства."
+    },
+    {
+      "id": 26,
+      "name": "Алёна",
+      "gender": "female",
+      "email": "alena26@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1701615004837-40d8573b6652?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Серпухов",
+      "birthDate": "1992-01-12",
+      "teachingSkillId": 26,
+      "learningSkillIds": [1, 6, 12],
+      "about": "Провожу интенсивы по SEO и интернет-продвижению."
+    },
+    {
+      "id": 27,
+      "name": "Олег",
+      "gender": "male",
+      "email": "oleg27@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1750535135593-3a8e5def331d?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Нижний Тагил",
+      "birthDate": "1991-09-09",
+      "teachingSkillId": 27,
+      "learningSkillIds": [9, 3],
+      "about": "Расскажу о правильном питании для энергии, делюсь мотивацией придерживаться ЗОЖ."
+    },
+    {
+      "id": 28,
+      "name": "Диана",
+      "gender": "female",
+      "email": "diana28@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1685903772095-f07172808761?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Вологда",
+      "birthDate": "1998-06-17",
+      "teachingSkillId": 28,
+      "learningSkillIds": [2, 14],
+      "about": "Инструктор по медитации и йоге, учу находить баланс в повседневности."
+    },
+    {
+      "id": 29,
+      "name": "Денис",
+      "gender": "male",
+      "email": "denis29@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1577333715735-8fcb0359d906?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Новокузнецк",
+      "birthDate": "1990-12-12",
+      "teachingSkillId": 29,
+      "learningSkillIds": [1],
+      "about": "Провожу практикумы по креативному письму, делюсь упражнениями и структурами."
+    },
+    {
+      "id": 30,
+      "name": "Сергей",
+      "gender": "male",
+      "email": "sergey30@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1537006176750-19c08a9af863?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Москва",
+      "birthDate": "1986-06-26",
+      "teachingSkillId": 30,
+      "learningSkillIds": [28, 27, 18],
+      "about": "Эксперт по стресс-менеджменту, практикую техники ментального здоровья."
+    },
+    {
+      "id": 31,
+      "name": "Юлия",
+      "gender": "female",
+      "email": "yulia31@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1718056514261-bb037cfe6ddd?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Ярославль",
+      "birthDate": "1997-05-22",
+      "teachingSkillId": 31,
+      "learningSkillIds": [23, 6],
+      "about": "Консультирую по базовым вопросам ремонта, делюсь лайфхаками для дома."
+    },
+    {
+      "id": 32,
+      "name": "Дмитрий",
+      "gender": "male",
+      "email": "dmitriy32@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1685146851626-a88d73cd5f5c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Калуга",
+      "birthDate": "1993-04-24",
+      "teachingSkillId": 32,
+      "learningSkillIds": [7],
+      "about": "Люблю растения. Покажу, как просто ухаживать за домашней оранжереей."
+    },
+    {
+      "id": 33,
+      "name": "Мила",
+      "gender": "female",
+      "email": "mila33@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1712168567852-ea607c2d3177?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Ростов-на-Дону",
+      "birthDate": "1998-08-28",
+      "teachingSkillId": 33,
+      "learningSkillIds": [21, 9],
+      "about": "Навыки Pomodoro в действии — мотивирую коллег и студентов."
+    },
+    {
+      "id": 34,
+      "name": "Павел",
+      "gender": "male",
+      "email": "pavel34@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1592394172986-6baf1ec14472?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Архангельск",
+      "birthDate": "1996-12-01",
+      "teachingSkillId": 34,
+      "learningSkillIds": [17],
+      "about": "Эффективный тайм-менеджмент для сложных проектов — лучшие практики."
+    },
+    {
+      "id": 35,
+      "name": "Вера",
+      "gender": "female",
+      "email": "vera35@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1607167494912-a6153535f03e?q=80&w=673&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Мурманск",
+      "birthDate": "1994-01-11",
+      "teachingSkillId": 35,
+      "learningSkillIds": [2, 23],
+      "about": "Техники убеждения и коммуникации — мой путь к успеху."
+    },
+    {
+      "id": 36,
+      "name": "Никита",
+      "gender": "male",
+      "email": "nikita36@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1617171819965-da05f22afebb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Пермь",
+      "birthDate": "1995-07-19",
+      "teachingSkillId": 36,
+      "learningSkillIds": [24, 14, 26],
+      "about": "Погружение в мир рекламы и современных маркетинговых инструментов."
+    },
+    {
+      "id": 37,
+      "name": "Анна",
+      "gender": "female",
+      "email": "anna37@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Москва",
+      "birthDate": "1990-04-14",
+      "teachingSkillId": 37,
+      "learningSkillIds": [10, 15, 24, 2],
+      "about": "Опытный специалист по созданию эффективных резюме и прохождению собеседований."
+    },
+    {
+      "id": 38,
+      "name": "Игорь",
+      "gender": "male",
+      "email": "igor38@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1492288991661-058aa541ff43?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Санкт-Петербург",
+      "birthDate": "1985-11-22",
+      "teachingSkillId": 38,
+      "learningSkillIds": [22, 7],
+      "about": "Наставник по предпринимательству, помогаю запускать стартапы с нуля."
+    },
+    {
+      "id": 39,
+      "name": "Мария",
+      "gender": "male",
+      "email": "maria39@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Москва",
+      "birthDate": "1994-07-29",
+      "teachingSkillId": 39,
+      "learningSkillIds": [29, 30, 31, 28],
+      "about": "Преподаватель китайского языка для начинающих, использую современные методики."
+    },
+    {
+      "id": 40,
+      "name": "Юко",
+      "gender": "female",
+      "email": "yuko40@example.com",
+      "password": "123456",
+      "avatar": "https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "city": "Владивосток",
+      "birthDate": "1992-03-10",
+      "teachingSkillId": 40,
+      "learningSkillIds": [36, 39, 18, 9],
+      "about": "Преподаватель японского языка с упором на повседневную коммуникацию."
     }
   ]
 }

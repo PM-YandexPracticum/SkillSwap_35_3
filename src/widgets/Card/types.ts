@@ -21,4 +21,5 @@ export type CardProps = {
   skills: Skill[];
   onDetails: (id: number) => void;
   showAbout?: boolean;
+  className?: string;
 };

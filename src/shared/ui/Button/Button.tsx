@@ -2,9 +2,9 @@ import React from 'react';
 import { ButtonProps } from './types';
 import styles from './Button.module.css';
 import cn from 'classnames';
-import { Icon } from '@/shared/ui/Icon';
+import { Icon } from '@/shared/ui';
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button = ({
   type = 'primary',
   size = 'medium',
   onClick,
@@ -20,7 +20,7 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   disabled,
   ...rest
-}) => {
+}: ButtonProps) => {
   const handleClick = (e: React.SyntheticEvent) => {
     if (!disabled && onClick) {
       onClick(e);

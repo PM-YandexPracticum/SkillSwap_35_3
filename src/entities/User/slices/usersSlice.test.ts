@@ -11,6 +11,7 @@ const mockUsers: IUser[] = [
     name: 'Мария',
     gender: 'female',
     email: 'maria@example.com',
+    password: '123456',
     avatar:
       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=687&auto=format&fit=crop',
     city: 'Москва',
@@ -24,6 +25,7 @@ const mockUsers: IUser[] = [
     name: 'Иван',
     gender: 'male',
     email: 'ivan@example.com',
+    password: '123456',
     avatar:
       'https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=687&auto=format&fit=crop',
     city: 'Санкт-Петербург',

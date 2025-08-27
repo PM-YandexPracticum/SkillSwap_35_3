@@ -10,4 +10,5 @@ export * from './Logo';
 export * from './ModalOverlay';
 export * from './Modal';
 export * from './Tag';
-export * from './ActionBar';
+export * from './AllSkillsModal';
+export * from './ErrorCard';

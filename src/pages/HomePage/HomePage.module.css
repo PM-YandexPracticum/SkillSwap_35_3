@@ -1,0 +1,14 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 32px 36px 60px;
+  gap: 24px;
+}
+
+.main__filters {
+  border-radius: 12px;
+  width: 325px;
+  height: 100vh;
+  background: var(--background-color-secondary);
+}
