@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+
 import styles from './HomePage.module.css';
 
 import { useDispatch, useSelector } from '@/app/store';
@@ -21,21 +22,21 @@ export const HomePage = () => {
   const skills = useSelector(selectSkills);
 
   useEffect(() => {
-    dispatch(fetchUsers());
-    dispatch(fetchSkills());
+    dispatch(fetchUsers()); // Загружаем список пользователей при монтировании компонента
+    dispatch(fetchSkills()); // Загружаем список навыков при монтировании компонента
   }, [dispatch]);
 
   return (
     <div className={styles.page}>
-      <Header />
-      <div className={styles.headerPlaceholder}>Заглушка Header</div>
+      {/* <Header /> */}
+      <div className={styles.header}>Заглушка Header</div>
 
       <main className={styles.main}>
-        <div className={styles.filtersColumn}>
-          <div className={styles.filtersPlaceholder}>Заглушка Фильтры</div>
-        </div>
+        {/* <FiltersPanel /> */}
+        <div className={styles.main__filters}>Заглушка Фильтры</div>
 
         <CardsFeed usersData={users} skillsData={skills} />
+        {/* <div className={styles.main__cards}>Заглушка карточки</div> */}
       </main>
 
       <Footer />
