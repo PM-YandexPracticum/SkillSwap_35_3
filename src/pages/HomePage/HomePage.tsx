@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from '@/app/store';
 import { fetchUsers } from 'src/entities/User/thunks/usersThunks';
 import { fetchSkills } from 'src/entities/Skill/thunks/skillsThunk';
 
-import { selectUsers } from '@/entities/User/selectors/usersSelectors';
-import { selectSkills } from '@/entities/Skill/selectors/skillsSelectors';
+//import { selectUsers } from '@/entities/User/selectors/usersSelectors';
+//import { selectSkills } from '@/entities/Skill/selectors/skillsSelectors';
 
 //import { Header } from '@/widgets/Header';
 import { Footer } from '@/widgets/Footer';
@@ -18,8 +18,8 @@ export const HomePage = () => {
   const dispatch = useDispatch();
 
   // Получаем данные из стора
-  const users = useSelector(selectUsers);
-  const skills = useSelector(selectSkills);
+  //const users = useSelector(selectUsers);
+  //const skills = useSelector(selectSkills);
 
   useEffect(() => {
     dispatch(fetchUsers()); // Загружаем список пользователей при монтировании компонента
@@ -35,7 +35,7 @@ export const HomePage = () => {
         {/* <FiltersPanel /> */}
         <div className={styles.main__filters}>Заглушка Фильтры</div>
 
-        <CardsFeed usersData={users} skillsData={skills} />
+        <CardsFeed />
         {/* <div className={styles.main__cards}>Заглушка карточки</div> */}
       </main>
 
