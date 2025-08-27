@@ -1,83 +1,123 @@
 import type { FiltersState, Gender, Mode } from '@/entities/Filters/model/filtersSlice';
 import type { IUser, ISkill } from '@/api/types';
 
-const buildSkillTitleMap = (skills: ISkill[]) =>
-  new Map<string, string>(skills.map((s) => [String(s.id), s.title]));
+// --- utils ---
+const normalize = (v: unknown) =>
+  (typeof v === 'string' ? v : String(v ?? '')).trim();
 
-type WithSkillIds = {
-  teachIds?: (string | number)[];
-  learnIds?: (string | number)[];
-  teach?: (string | number)[];
-  learn?: (string | number)[];
+const toLower = (s: string) => s.toLowerCase();
+
+// Карта id -> title
+const buildIdToTitle = (skills: ISkill[]) => {
+  const map = new Map<string, string>();
+  for (const s of skills as any[]) {
+    const id = normalize((s as any)?.id);
+    const title = normalize((s as any)?.title);
+    if (id) map.set(id, title);
+  }
+  return map;
 };
 
-const idsOf = (list?: (string | number)[]) => (list ?? []).map(String);
-
-const getTeachIds = (u: IUser & Partial<WithSkillIds>): string[] => {
-  return idsOf(u.teachIds ?? u.teach);
+// Поддерживаем разные схемы хранения навыков у пользователя
+type WithSkillFields = {
+  teachingSkillId?: unknown;
+  learningSkillIds?: unknown[];
+  teachIds?: unknown[];
+  learnIds?: unknown[];
+  teach?: unknown[];
+  learn?: unknown[];
+  skills?: { teach?: unknown[]; learn?: unknown[] };
 };
-const getLearnIds = (u: IUser & Partial<WithSkillIds>): string[] => {
-  return idsOf(u.learnIds ?? u.learn);
+
+const toId = (x: unknown): string => {
+  if (x == null) return '';
+  if (typeof x === 'number' || typeof x === 'string') return String(x);
+  if (typeof x === 'object') {
+    const o = x as any;
+    if (o.id != null) return String(o.id);
+    if (o.skillId != null) return String(o.skillId);
+    if (o.subcategoryId != null) return String(o.subcategoryId);
+    if (o.skill?.id != null) return String(o.skill.id);
+    if (o.title != null) return String(o.title); // иногда хранят просто названием
+  }
+  return '';
 };
 
-const hasAny = (ids: string[], selected: Set<string>) =>
-  ids.some((id) => selected.has(id));
+const idsOf = (arr?: unknown[]) =>
+  (arr ?? []).map(toId).filter(Boolean) as string[];
+
+// teach: один id или массив — поддерживаем оба
+const getTeachIds = (u: IUser & Partial<WithSkillFields>): string[] => {
+  const single = (u as any).teachingSkillId;
+  if (single !== undefined && single !== null) return [toId(single)].filter(Boolean);
+  return idsOf(u.teachIds ?? u.teach ?? u.skills?.teach);
+};
+
+const getLearnIds = (u: IUser & Partial<WithSkillFields>): string[] => {
+  const list = (u as any).learningSkillIds as unknown[] | undefined;
+  if (Array.isArray(list)) return idsOf(list);
+  return idsOf(u.learnIds ?? u.learn ?? u.skills?.learn);
+};
+
+// --- predicates ---
+const matchCity = (u: IUser, cities: Set<string>) =>
+  cities.size === 0 || cities.has(u.city);
+
+const matchGender = (u: IUser, gender: Gender) =>
+  gender === 'any' || u.gender === gender;
 
 const matchModeAndCategories = (
-  u: IUser & Partial<WithSkillIds>,
+  u: IUser & Partial<WithSkillFields>,
   mode: Mode,
-  categories: Set<string>,
+  selected: Set<string>,
 ) => {
-  if (categories.size === 0) return true;
+  if (selected.size === 0) return true;
   const teach = getTeachIds(u);
   const learn = getLearnIds(u);
 
-  if (mode === 'teach') return hasAny(teach, categories);
-  if (mode === 'learn') return hasAny(learn, categories);
-  return hasAny(teach, categories) || hasAny(learn, categories);
+  const teachHit = teach.some((id) => selected.has(String(id)));
+  const learnHit = learn.some((id) => selected.has(String(id)));
+
+  if (mode === 'teach') return teachHit;
+  if (mode === 'learn') return learnHit;
+  return teachHit || learnHit;
 };
-
-const matchCity = (u: IUser, cities: Set<string>) =>
-  cities.size === 0 ? true : cities.has(u.city);
-
-const matchGender = (u: IUser, gender: Gender) =>
-  gender === 'any' ? true : u.gender === gender;
-
-const normalize = (s: unknown) =>
-  (typeof s === 'string' ? s : String(s ?? '')).trim().toLowerCase();
 
 const matchQuery = (
-  u: IUser & Partial<WithSkillIds>,
+  u: IUser & Partial<WithSkillFields>,
   q: string,
-  skills: ISkill[],
+  idToTitle: Map<string, string>,
 ) => {
-  const needle = normalize(q);
+  const needle = toLower(normalize(q));
   if (!needle) return true;
 
-  const titleById = buildSkillTitleMap(skills);
-  const teachTitles = getTeachIds(u).map((id) => titleById.get(id) ?? id);
-  const learnTitles = getLearnIds(u).map((id) => titleById.get(id) ?? id);
+  const parts: string[] = [];
+  if ((u as any).name) parts.push(normalize((u as any).name));
 
-  const hay = [u.name, ...teachTitles, ...learnTitles]
-    .filter(Boolean)
-    .map(normalize)
-    .join(' ');
+  // добавляем человекочитаемые названия навыков пользователя
+  const ids = new Set<string>([...getTeachIds(u), ...getLearnIds(u)].map(String));
+  for (const id of ids) {
+    const title = idToTitle.get(id);
+    if (title) parts.push(title);
+  }
 
-  return hay.includes(needle);
+  return parts.join(' ').toLowerCase().includes(needle);
 };
 
+// --- main ---
 function applyFilters(users: IUser[], filters: FiltersState, skills: ISkill[]) {
   const { mode, categories, cities, gender, q } = filters;
 
-  const categoriesSet = new Set<string>(categories);
-  const citiesSet = new Set<string>(cities);
+  const idToTitle = buildIdToTitle(skills);
+  const selected = new Set<string>(categories.map(String));
+  const citiesSet = new Set<string>(cities.map(String));
 
   return users.filter(
-    (u) =>
-      matchModeAndCategories(u, mode, categoriesSet) &&
+    (u: any) =>
+      matchModeAndCategories(u, mode, selected) &&
       matchCity(u, citiesSet) &&
       matchGender(u, gender) &&
-      matchQuery(u, q, skills),
+      matchQuery(u, q, idToTitle),
   );
 }
 
