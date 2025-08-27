@@ -7,11 +7,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 40px;
   padding: 132px 60px;
   width: 556px;  
   height: 692px;
   background-color: var(--background-color-secondary);
   margin: auto;
+  border-radius: 12px;
 }
 
 .step-card__image {
@@ -20,14 +22,19 @@
 
 .step-card__image img {
   display: block;
-} 
+}
+
+.step-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
 .step-card__text-title { 
   font-family: var(--font-family-title);
   text-align: center;
-  margin-top: 40px;
   font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semibold);
   color: var(--font-color-primary);
 }
 
@@ -36,8 +43,5 @@
   font-size: var(--font-size-sm);
   text-align: center;
   color: var(--font-color-primary);
-  font-weight: var(--font-weight-light);
   line-height: 1.5;
-  margin-top: 12px;
-
 }

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import AllSkillsModal from './AllSkillsModal';
 
 const meta: Meta<typeof AllSkillsModal> = {
-  title: 'Components/AllSkillsModal',
+  title: 'UI/AllSkillsModal',
   component: AllSkillsModal,
   parameters: {
     layout: 'centered'

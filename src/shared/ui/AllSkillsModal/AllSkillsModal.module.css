@@ -1,4 +1,4 @@
-@import '@/app/styles/_variables.css';
+@import '@/app/styles/index.css';
 
 .skills__modal {
   position: absolute;
@@ -20,16 +20,20 @@
 }
 
 .item-title {
-  font-family: var(--font-family-title, 'Jost', sans-serif);
+  font-family: var(--font-family-title);
   font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--font-line-lg);
   color: var(--font-color-primary);
 }
 
 .item-subs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
   font-family: var(--font-family-text);
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-light);
+  line-height: var(--font-line-sm-md);
   color: var(--font-color-primary);
 }
 
@@ -44,12 +48,6 @@
 }
 
 .skills__modal-item-text {
-  display: flex;
-  flex-direction: column;
-  row-gap: 12px;
-}
-
-.item-subs {
   display: flex;
   flex-direction: column;
   row-gap: 12px;

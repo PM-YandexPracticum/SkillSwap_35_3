@@ -6,12 +6,15 @@ import { steps } from '@/shared/lib/constants/steps'; // путь к вашим 
 
 // Типизация для Storybook
 export default {
-  title: 'Components/StepCard',
+  title: 'UI/StepCard',
   component: StepCard,
   argTypes: {
     title: { control: 'text' },
     description: { control: 'text' },
-    imageSrc: { control: 'select', options: Object.values(steps).map(step => step.imageSrc) }
+    imageSrc: {
+      control: 'select',
+      options: Object.values(steps).map((step) => step.imageSrc)
+    }
   }
 } as Meta;
 
