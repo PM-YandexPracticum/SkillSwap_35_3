@@ -9,20 +9,14 @@ export const Error500Page = () => {
   const data = errors[500];
 
   return (
-    <div className={styles.page}>
-      <header className={styles.header}>Header Placeholder</header>
-
-      <main className={styles.main}>
-        <ErrorCard
-          title={data.title}
-          description={data.description}
-          imageSrc={data.image}
-          onGoHome={() => navigate('/')}
-          onRetry={() => window.location.reload()}
-        />
-      </main>
-
-      <footer className={styles.footer}>Footer Placeholder</footer>
-    </div>
+    <main className={styles.main}>
+      <ErrorCard
+        title={data.title}
+        description={data.description}
+        imageSrc={data.image}
+        onGoHome={() => navigate('/')}
+        onRetry={() => window.location.reload()}
+      />
+    </main>
   );
 };

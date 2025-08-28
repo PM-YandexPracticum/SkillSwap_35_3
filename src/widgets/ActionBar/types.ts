@@ -1,5 +1,5 @@
-import { ButtonType } from '../Button';
-import { IconName } from '../Icon/types';
+import { ButtonType } from '@/shared/ui/Button/types';
+import { IconName } from '@/shared/ui/Icon/types';
 
 export interface ActionBarButtonConfig {
   iconName: IconName;

@@ -1,0 +1,87 @@
+.header {
+  width: 100%;
+  background-color: var(--background-color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 46px 36px 30px;
+  gap: 32px;
+}
+
+.header--sticky {
+  position: sticky;
+  bottom: 0;
+}
+
+.header__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 8px;
+}
+
+.header__links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 24px;
+  font: var(--font-sm);
+  text-decoration: none;
+  color: var(--font-color-primary);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.header__input {
+  max-width: 648px;
+  min-width: 527px;
+}
+
+.header__action-bar {
+  column-gap: 20px;
+}
+
+.header__skills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  column-gap: 4px;
+}
+
+.header__arrow {
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.header__arrow--rotated {
+  transform: rotate(180deg);
+}
+
+.header__register-button {
+  padding: 12px 24px;
+}
+
+.header__user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 12px;
+  cursor: pointer;
+}
+
+.header__user-avatar {
+  display: block;
+  width: 48px;
+  height: 48px;
+}
+
+.header__user-name {
+  font: var(--font-sm);
+  text-decoration: none;
+  color: var(--font-color-primary);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

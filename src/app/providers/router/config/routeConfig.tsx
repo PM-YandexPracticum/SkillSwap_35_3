@@ -2,13 +2,13 @@ import { type RouteProps } from 'react-router-dom';
 import { pathConstants } from '@/shared/lib/constants/paths';
 
 /*
-import { HomePage } from '@/pages/HomePage';
-import { RegistrationPage } from '@/pages/RegistrationPage';
-import { CardDetailPage } from '@/pages/CardDetailPage';
-import { ProfilePage } from '@/pages/ProfilePage';
-import { ErrorPage } from '@/pages/ErrorPage';
-import { NotFoundPage } from '@/pages/NotFoundPage';
+import { HomePage } from '@/pages';
+import { RegistrationPage } from '@/pages';
+import { CardDetailPage } from '@/pages';
+import { ProfilePage } from '@/pages';
 */
+import { Error404Page } from '@/pages';
+import { Error500Page } from '@/pages';
 
 export const routeConfig: RouteProps[] = [
   {
@@ -28,11 +28,11 @@ export const routeConfig: RouteProps[] = [
     // element: <ProfilePage />,
   },
   {
-    path: pathConstants.ERROR_PAGE
-    // element: <ErrorPage />,
+    path: pathConstants.ERROR_PAGE,
+    element: <Error500Page />
   },
   {
-    path: pathConstants.NOT_FOUND
-    // element: <NotFoundPage />,
+    path: pathConstants.NOT_FOUND,
+    element: <Error404Page />
   }
 ];

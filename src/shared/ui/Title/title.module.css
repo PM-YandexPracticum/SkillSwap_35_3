@@ -1,26 +1,29 @@
+@import '../../../app//styles/_variables.css';
+@import '../../../app//styles/_fonts.css';
+
 .title {
-  color: var(--title-color, #253017);
-  font-family: Jost, Roboto, sans-serif;
-  font-weight: 500;
-  letter-spacing: -0.011em;
+  color: var(--title-color, var(--font-color-primary));
+  font-family: var(--title-font-family, var(--font-family-title));
+  font-weight: var(--title-font-weight, var(--font-weight-semibold));
+  letter-spacing: var(--title-letter-spacing, var(--letter-spacing-tight));
 }
 
 .xl {
-  font-size: 32px;
-  line-height: 40px;
+  font-size: var(--font-size-xl);
+  line-height: var(--font-line-xl);
 }
 
 .lg {
-  font-size: 24px;
-  line-height: 28px;
+  font-size: var(--font-size-lg);
+  line-height: var(--font-line-lg);
 }
 
 .md {
-  font-size: 20px;
-  line-height: 24px;
+  font-size: var(--font-size-md);
+  line-height: var(--font-line-sm-md);
 }
 
 .sm {
-  font-size: 16px;
-  line-height: 24px;
+  font-size: var(--font-size-sm);
+  line-height: var(--font-line-sm-md);
 }

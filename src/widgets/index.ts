@@ -3,3 +3,4 @@ export * from './Card';
 export * from './CardsFeed';
 export * from './ActionBar';
 export * from './Filters';
+export * from './Header';
