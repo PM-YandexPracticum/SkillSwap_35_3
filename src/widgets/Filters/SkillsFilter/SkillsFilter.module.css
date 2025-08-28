@@ -1,0 +1,93 @@
+.skills-filter__group {
+  margin-bottom: 8px;
+}
+
+.skills-filter__cat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 2px 0;
+}
+
+.skills-filter__cat-left {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.skills-filter__indicator {
+  width: var(--checkbox-size, 20px);
+  height: var(--checkbox-size, 20px);
+  border-radius: var(--checkbox-radius, 4px);
+  border: var(--checkbox-border-width, 2px) solid var(--checkbox-border, #253017);
+  background: var(--checkbox-bg, #ffffff);
+  box-sizing: border-box;
+  position: relative;
+}
+
+.skills-filter__cat-left:hover .skills-filter__indicator {
+  border-color: var(--checkbox-checked-border, #253017);
+}
+
+.skills-filter__indicator--on {
+  background: var(--checkbox-checked-bg, var(--accent-500, #A6D67A));
+  border: none;
+}
+.skills-filter__indicator--on::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 5px;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-45%) rotate(-45deg);
+  border-left: 2px solid var(--on-accent, #fff);
+  border-bottom: 2px solid var(--on-accent, #fff);
+}
+
+.skills-filter__indicator--partial {
+  background: var(--checkbox-checked-bg, var(--accent-500, #A6D67A));
+  border: none;
+}
+.skills-filter__indicator--partial::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: calc(50% - 1px);
+  height: 2px;
+  background: var(--on-accent, #fff);
+  border-radius: 1px;
+}
+
+.skills-filter__cat-title {
+  margin-left: 8px;
+  font-weight: 400;
+  font-size: var(--font-size-14, 14px);
+  line-height: 1.3;
+  color: var(--text-primary, #253017);
+}
+
+.skills-filter__chevron-btn {
+  background: none;
+  border: none;
+  padding: 2px 4px;
+  cursor: pointer;
+  line-height: 0;
+}
+.skills-filter__chevron {
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.skills-filter__chevron--open {
+  transform: rotate(180deg);
+}
+
+.skills-filter__sub-list {
+  padding-left: 24px;
+  margin-top: 6px;
+}

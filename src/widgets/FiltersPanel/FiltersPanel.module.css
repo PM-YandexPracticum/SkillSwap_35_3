@@ -1,0 +1,29 @@
+.filters-panel {
+  padding: 16px;
+  max-width: 360px;
+  display: grid;
+  gap: 16px;
+}
+
+.filters-panel__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.filters-panel__title {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.filters-panel__reset {
+  margin-left: auto;
+  background: none;
+  border: none;
+  padding: 0;
+  color: #4caf50;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+}
