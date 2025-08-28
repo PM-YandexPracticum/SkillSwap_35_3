@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from '@/app/store';
+import { useAppDispatch, useSelector } from '@/app/store';
 
 import {
   selectMode,
@@ -43,7 +43,7 @@ const genderOptions: { value: Gender; label: string }[] = [
 ];
 
 export function FiltersPanel() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const mode = useSelector(selectMode);
   const gender = useSelector(selectGender);

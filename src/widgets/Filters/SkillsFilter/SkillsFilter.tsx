@@ -1,5 +1,5 @@
 import { useMemo, useState, useEffect } from 'react';
-import { useDispatch, useSelector } from '@/app/store';
+import { useAppDispatch, useSelector } from '@/app/store';
 
 import { selectCategories } from '@/entities/Filters/model/filtersSelectors';
 import { setCategories, toggleCategory, toggleSkill } from '@/entities/Filters/model/filtersSlice';
@@ -27,7 +27,7 @@ function getCategoryId(s: any): string {
 }
 
 export function SkillsFilter({ skills }: Props) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const selected = useSelector(selectCategories);
 
   const groups = useMemo(() => {
