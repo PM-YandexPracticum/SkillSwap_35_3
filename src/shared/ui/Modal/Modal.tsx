@@ -1,11 +1,9 @@
-import { memo, useEffect, useRef } from 'react';
+import { memo, useRef } from 'react';
 import styles from './modal.module.css';
 import cn from 'classnames';
 import { TModalUIProps } from './types';
-import { ModalOverlayUI } from '../ModalOverlay';
-import { Icon } from '../Icon';
-import { Title } from '../Title';
-import { useClickOutside } from '../../hooks/useClickOutside';
+import { Icon, Title, ModalOverlayUI } from '@/shared/ui';
+import { useClickOutside, useEscapeClose } from '@/shared/hooks';
 
 export const ModalUI = memo(function ModalUI({
   isOpen,
@@ -33,12 +31,7 @@ export const ModalUI = memo(function ModalUI({
     enabled: Boolean(isOpen && closeOnOverlay)
   });
 
-  useEffect(() => {
-    if (!isOpen || !closeOnEsc) return;
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [isOpen, closeOnEsc, onClose]);
+  useEscapeClose(onClose, isOpen && closeOnEsc);
 
   if (!isOpen) return null;
 
@@ -62,69 +55,70 @@ export const ModalUI = memo(function ModalUI({
         aria-labelledby={headingId}
         data-cy='modal'
       >
-        <div className={styles.header}>
+        <div className={styles.modal__header}>
           {modalType === 'success' && statusIconName && (
-            <div className={styles.statusIcon} aria-hidden='true'>
-              <Icon
-                name={statusIconName}
-                size={56}
-                color='currentColor'
-                fill='none'
-              />
+            <div className={styles.modal__icon} aria-hidden='true'>
+              <Icon name={statusIconName} size={100} fill='none' />
             </div>
           )}
-
-          {title && (
-            <Title
-              as='h2'
-              size='lg'
-              id={headingId}
-              className={styles.modalTitle}
-            >
-              {title}
-            </Title>
-          )}
-
-          {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+          <div className={styles.modal__content}>
+            {title && (
+              <Title
+                as='h2'
+                size='lg'
+                id={headingId}
+                className={styles.modal__title}
+              >
+                {title}
+              </Title>
+            )}
+            {subtitle && <p className={styles.modal__subtitle}>{subtitle}</p>}
+          </div>
         </div>
 
         {computedLayout === 'split' ? (
-          <div className={styles.split}>
-            <div className={styles.leftCol}>
-              {modalType === 'skill' && bodyTitle && (
-                <Title as='h1' size='xl' className={styles.bodyTitle}>
-                  {bodyTitle}
-                </Title>
-              )}
-              {modalType === 'skill' && (
-                <>
-                  {(category || subcategory) && (
-                    <p className={styles.meta}>
-                      {category}
-                      {category && subcategory ? ' / ' : ''}
-                      {subcategory}
-                    </p>
-                  )}
-                  {description && <p className={styles.desc}>{description}</p>}
-                </>
-              )}
+          <div className={styles.modal__layout_split}>
+            <div className={styles[`modal__left-collumn`]}>
+              <div className={styles[`modal__left-collumn_content`]}>
+                {modalType === 'skill' && bodyTitle && (
+                  <Title as='h1' size='xl' className={styles.bodyTitle}>
+                    {bodyTitle}
+                  </Title>
+                )}
+                {modalType === 'skill' && (
+                  <>
+                    {(category || subcategory) && (
+                      <p className={styles.modal__meta}>
+                        {category}
+                        {category && subcategory ? ' / ' : ''}
+                        {subcategory}
+                      </p>
+                    )}
+                    {description && (
+                      <p className={styles.modal__description}>{description}</p>
+                    )}
+                  </>
+                )}
+              </div>
 
-              <div className={styles.content}>{children}</div>
-
+              <div className={styles.modal__children}>{children}</div>
               {actions && actionsPlacement === 'left' && (
-                <div className={styles.actionsWrapper}>
-                  <div className={cn(styles.actions, styles.actionsLeft)}>
-                    {actions}
-                  </div>
+                <div
+                  className={cn(
+                    styles.modal__actions,
+                    styles.modal__actions_placement_left
+                  )}
+                >
+                  {actions}
                 </div>
               )}
             </div>
-            <div className={styles.rightCol}>{aside}</div>
+            <div className={styles[`modal__right-collumn`]}>{aside}</div>
           </div>
         ) : (
           <>
-            <div className={styles.content}>{children}</div>
-            {actions && <div className={styles.actions}>{actions}</div>}
+            <div className={styles.modal__children}>{children}</div>
+            {actions && <div className={styles.modal__actions}>{actions}</div>}
           </>
         )}
       </div>
