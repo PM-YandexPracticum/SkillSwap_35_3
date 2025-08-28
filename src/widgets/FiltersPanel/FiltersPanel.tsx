@@ -53,7 +53,6 @@ export function FiltersPanel() {
 
   const skills: TSkill[] = (mock.skills as unknown as TSkill[]) ?? [];
 
-  // счётчик групп фильтров
   const filtersCount =
     (mode !== 'all' ? 1 : 0) +
     (gender !== 'any' ? 1 : 0) +
@@ -62,16 +61,18 @@ export function FiltersPanel() {
     (categories.length ? 1 : 0);
 
   return (
-    <aside className={styles.panel}>
-      {/* Шапка */}
-      <div className={styles.header}>
-        <h3 className={styles.title}>Фильтры ({filtersCount})</h3>
-        <button className={styles.reset} type="button" onClick={() => dispatch(resetFilters())}>
+    <aside className={styles['filters-panel']}>
+      <div className={styles['filters-panel__header']}>
+        <h3 className={styles['filters-panel__title']}>Фильтры ({filtersCount})</h3>
+        <button
+          className={styles['filters-panel__reset']}
+          type="button"
+          onClick={() => dispatch(resetFilters())}
+        >
           Сбросить
         </button>
       </div>
 
-      {/* Поиск */}
       <fieldset className={radioStyles.radio__filter}>
         <div className={radioStyles['radio__filter-wrapper']}>
           <legend className={radioStyles['radio__filter-title']}>Поиск</legend>
@@ -87,7 +88,6 @@ export function FiltersPanel() {
         </div>
       </fieldset>
 
-      {/* Режим */}
       <RadioFilter
         title="Режим"
         name="mode"
@@ -96,10 +96,8 @@ export function FiltersPanel() {
         onChange={(v: string | null) => dispatch(setMode((v as Mode) ?? 'all'))}
       />
 
-      {/* Навыки */}
       <SkillsFilter skills={skills as any} />
 
-      {/* Пол */}
       <RadioFilter
         title="Пол автора"
         name="gender"
@@ -108,7 +106,6 @@ export function FiltersPanel() {
         onChange={(v: string | null) => dispatch(setGender((v as Gender) ?? 'any'))}
       />
 
-      {/* Город */}
       <CityFilter value={cities} cities={demoCities} onChange={(arr: string[]) => dispatch(setCities(arr))} />
     </aside>
   );

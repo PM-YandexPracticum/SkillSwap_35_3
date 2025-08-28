@@ -64,34 +64,37 @@ export function SkillsFilter({ skills }: Props) {
             const isOpen = !!open[g.key];
 
             return (
-              <div className={styles.group} key={g.key}>
-                <div className={styles.catRow}>
+              <div className={styles['skills-filter__group']} key={g.key}>
+                <div className={styles['skills-filter__cat-row']}>
                   <button
                     type="button"
-                    className={styles.catLeft}
+                    className={styles['skills-filter__cat-left']}
                     role="checkbox"
                     aria-checked={partial ? 'mixed' : allSelected}
                     onClick={() => dispatch(toggleCategory({ subcategoryIds: g.subIds }))}
                   >
                     <span
                       className={[
-                        styles.indicator,
-                        allSelected ? styles.indicator_on : '',
-                        partial ? styles.indicator_partial : '',
+                        styles['skills-filter__indicator'],
+                        allSelected ? styles['skills-filter__indicator--on'] : '',
+                        partial ? styles['skills-filter__indicator--partial'] : '',
                       ].join(' ')}
                       aria-hidden="true"
                     />
-                    <span className={styles.catTitle}>{g.title}</span>
+                    <span className={styles['skills-filter__cat-title']}>{g.title}</span>
                   </button>
 
                   <button
                     type="button"
-                    className={styles.chevronBtn}
+                    className={styles['skills-filter__chevron-btn']}
                     aria-label={isOpen ? 'Свернуть' : 'Развернуть'}
                     onClick={() => setOpen((s) => ({ ...s, [g.key]: !s[g.key] }))}
                   >
                     <svg
-                      className={[styles.chevron, isOpen ? styles.chevron_open : ''].join(' ')}
+                      className={[
+                        styles['skills-filter__chevron'],
+                        isOpen ? styles['skills-filter__chevron--open'] : '',
+                      ].join(' ')}
                       width="16"
                       height="8"
                       viewBox="0 0 16 8"
@@ -109,7 +112,7 @@ export function SkillsFilter({ skills }: Props) {
                 </div>
 
                 {isOpen && (
-                  <div className={styles.subList}>
+                  <div className={styles['skills-filter__sub-list']}>
                     <Checkbox
                       name={`skills-${g.key}`}
                       options={g.subIds.map((id, i) => ({ label: g.subTitles[i], value: id }))}

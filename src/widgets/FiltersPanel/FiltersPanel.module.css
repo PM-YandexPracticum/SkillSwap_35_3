@@ -1,23 +1,23 @@
-.panel {
+.filters-panel {
   padding: 16px;
   max-width: 360px;
   display: grid;
   gap: 16px;
 }
 
-.header {
+.filters-panel__header {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.title {
+.filters-panel__title {
   margin: 0;
   font-weight: 600;
   line-height: 1.2;
 }
 
-.reset {
+.filters-panel__reset {
   margin-left: auto;
   background: none;
   border: none;
