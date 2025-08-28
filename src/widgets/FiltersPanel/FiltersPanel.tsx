@@ -5,7 +5,7 @@ import {
   selectGender,
   selectCities,
   selectQuery,
-  selectCategories,
+  selectCategories
 } from '@/entities/Filters/model/filtersSelectors';
 
 import {
@@ -15,7 +15,7 @@ import {
   setQuery,
   resetFilters,
   type Mode,
-  type Gender,
+  type Gender
 } from '@/entities/Filters/model/filtersSlice';
 
 import { CityFilter } from '@/widgets/Filters/CityFilter';
@@ -26,20 +26,27 @@ import radioStyles from '@/widgets/Filters/RadioFilter/RadioFilter.module.css';
 import styles from './FiltersPanel.module.css';
 import mock from '@/api/mockData.json';
 
-const demoCities = ['Москва', 'Санкт-Петербург', 'Новосибирск', 'Екатеринбург', 'Казань', 'Нижний Новгород'];
+const demoCities = [
+  'Москва',
+  'Санкт-Петербург',
+  'Новосибирск',
+  'Екатеринбург',
+  'Казань',
+  'Нижний Новгород'
+];
 
 type TSkill = (typeof mock)['skills'][number];
 
 const modeOptions: { value: Mode; label: string }[] = [
   { value: 'all', label: 'Всё' },
   { value: 'learn', label: 'Хочу научиться' },
-  { value: 'teach', label: 'Могу научить' },
+  { value: 'teach', label: 'Могу научить' }
 ];
 
 const genderOptions: { value: Gender; label: string }[] = [
   { value: 'any', label: 'Не имеет значения' },
   { value: 'male', label: 'Мужской' },
-  { value: 'female', label: 'Женский' },
+  { value: 'female', label: 'Женский' }
 ];
 
 export function FiltersPanel() {
@@ -63,10 +70,12 @@ export function FiltersPanel() {
   return (
     <aside className={styles['filters-panel']}>
       <div className={styles['filters-panel__header']}>
-        <h3 className={styles['filters-panel__title']}>Фильтры ({filtersCount})</h3>
+        <h3 className={styles['filters-panel__title']}>
+          Фильтры ({filtersCount})
+        </h3>
         <button
           className={styles['filters-panel__reset']}
-          type="button"
+          type='button'
           onClick={() => dispatch(resetFilters())}
         >
           Сбросить
@@ -78,8 +87,8 @@ export function FiltersPanel() {
           <legend className={radioStyles['radio__filter-title']}>Поиск</legend>
           <div className={radioStyles['radio__filter-container']}>
             <input
-              type="text"
-              placeholder="Искать навык или автора…"
+              type='text'
+              placeholder='Искать навык или автора…'
               value={q}
               onChange={(e) => dispatch(setQuery(e.target.value))}
               style={{ width: '100%', padding: '8px 12px' }}
@@ -89,8 +98,8 @@ export function FiltersPanel() {
       </fieldset>
 
       <RadioFilter
-        title="Режим"
-        name="mode"
+        title='Режим'
+        name='mode'
         value={mode}
         radioList={modeOptions}
         onChange={(v: string | null) => dispatch(setMode((v as Mode) ?? 'all'))}
@@ -99,14 +108,20 @@ export function FiltersPanel() {
       <SkillsFilter skills={skills as any} />
 
       <RadioFilter
-        title="Пол автора"
-        name="gender"
+        title='Пол автора'
+        name='gender'
         value={gender}
         radioList={genderOptions}
-        onChange={(v: string | null) => dispatch(setGender((v as Gender) ?? 'any'))}
+        onChange={(v: string | null) =>
+          dispatch(setGender((v as Gender) ?? 'any'))
+        }
       />
 
-      <CityFilter value={cities} cities={demoCities} onChange={(arr: string[]) => dispatch(setCities(arr))} />
+      <CityFilter
+        value={cities}
+        cities={demoCities}
+        onChange={(arr: string[]) => dispatch(setCities(arr))}
+      />
     </aside>
   );
 }

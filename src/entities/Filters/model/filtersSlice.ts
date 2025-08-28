@@ -16,7 +16,7 @@ const initialState: FiltersState = {
   gender: 'any',
   cities: [],
   categories: [],
-  q: '',
+  q: ''
 };
 
 export const filtersSlice = createSlice({
@@ -46,15 +46,17 @@ export const filtersSlice = createSlice({
     },
     toggleCategory(state, action: PayloadAction<{ subcategoryIds: string[] }>) {
       const { subcategoryIds } = action.payload;
-      const allSelected = subcategoryIds.every((id) => state.categories.includes(id));
+      const allSelected = subcategoryIds.every((id) =>
+        state.categories.includes(id)
+      );
       state.categories = allSelected
         ? state.categories.filter((cid) => !subcategoryIds.includes(cid))
         : Array.from(new Set([...state.categories, ...subcategoryIds]));
     },
     resetFilters() {
       return initialState;
-    },
-  },
+    }
+  }
 });
 
 export const {
@@ -65,7 +67,7 @@ export const {
   setCategories,
   toggleSkill,
   toggleCategory,
-  resetFilters,
+  resetFilters
 } = filtersSlice.actions;
 
 export default filtersSlice.reducer;

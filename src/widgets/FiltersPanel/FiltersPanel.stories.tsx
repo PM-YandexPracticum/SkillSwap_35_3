@@ -2,7 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Provider } from 'react-redux';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
-import filtersReducer, { type FiltersState } from '@/entities/Filters/model/filtersSlice';
+import filtersReducer, {
+  type FiltersState
+} from '@/entities/Filters/model/filtersSlice';
 import { selectFilters } from '@/entities/Filters/model/filtersSelectors';
 import applyFilters from '@/entities/Filters/lib/applyFilters';
 
@@ -18,8 +20,17 @@ const makeStore = (preloaded?: Partial<FiltersState>) =>
   configureStore({
     reducer: combineReducers({ filters: filtersReducer }),
     preloadedState: preloaded
-      ? { filters: { mode: 'all', gender: 'any', cities: [], categories: [], q: '', ...preloaded } }
-      : undefined,
+      ? {
+          filters: {
+            mode: 'all',
+            gender: 'any',
+            cities: [],
+            categories: [],
+            q: '',
+            ...preloaded
+          }
+        }
+      : undefined
   });
 
 function FeedWithFilters() {
@@ -32,13 +43,13 @@ function FeedWithFilters() {
 }
 
 const withStore =
-  (node: React.ReactNode, preloaded?: Partial<FiltersState>) =>
-  () =>
-    <Provider store={makeStore(preloaded)}>{node}</Provider>;
+  (node: React.ReactNode, preloaded?: Partial<FiltersState>) => () => (
+    <Provider store={makeStore(preloaded)}>{node}</Provider>
+  );
 
 const meta: Meta<typeof FiltersPanel> = {
   title: 'Widgets/FiltersPanel',
-  component: FiltersPanel,
+  component: FiltersPanel
 };
 export default meta;
 
@@ -46,17 +57,28 @@ type Story = StoryObj<typeof FiltersPanel>;
 
 /** Только панель */
 export const Default: Story = {
-  decorators: [withStore(<FiltersPanel />)],
+  decorators: [withStore(<FiltersPanel />)]
 };
 
 /** Панель + Фид с моками и реальной фильтрацией */
 export const WithFeed: Story = {
   decorators: [
     withStore(
-      <div style={{ display: 'grid', gridTemplateColumns: '360px 1fr', gap: 24, padding: 16 }}>
-        <div><FiltersPanel /></div>
-        <div><FeedWithFilters /></div>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '360px 1fr',
+          gap: 24,
+          padding: 16
+        }}
+      >
+        <div>
+          <FiltersPanel />
+        </div>
+        <div>
+          <FeedWithFilters />
+        </div>
       </div>
-    ),
-  ],
+    )
+  ]
 };

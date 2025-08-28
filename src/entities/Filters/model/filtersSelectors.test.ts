@@ -1,6 +1,6 @@
 import {
   selectIsCategorySelected,
-  selectIsCategoryPartial,
+  selectIsCategoryPartial
 } from './filtersSelectors';
 import type { RootState } from '@/app/store';
 
@@ -11,9 +11,9 @@ const makeState = (categories: string[]): RootState =>
       gender: 'any',
       cities: [],
       categories,
-      q: '',
-    },
-  } as unknown as RootState);
+      q: ''
+    }
+  }) as unknown as RootState;
 
 describe('filters selectors for Skills', () => {
   test('selectIsCategorySelected: true when all subIds are chosen', () => {

@@ -6,7 +6,7 @@ import reducer, {
   toggleSkill,
   toggleCategory,
   resetFilters,
-  type FiltersState,
+  type FiltersState
 } from './filtersSlice';
 
 const initial: FiltersState = {
@@ -14,7 +14,7 @@ const initial: FiltersState = {
   gender: 'any',
   cities: [],
   categories: [],
-  q: '',
+  q: ''
 };
 
 describe('filtersSlice', () => {
@@ -62,7 +62,10 @@ describe('filtersSlice', () => {
 
   it('toggleCategory merges with existing and adds only missing', () => {
     const start: FiltersState = { ...initial, categories: ['a'] };
-    const s1 = reducer(start, toggleCategory({ subcategoryIds: ['a', 'b', 'c'] }));
+    const s1 = reducer(
+      start,
+      toggleCategory({ subcategoryIds: ['a', 'b', 'c'] })
+    );
     expect([...s1.categories].sort()).toEqual(['a', 'b', 'c']);
   });
 
@@ -72,7 +75,7 @@ describe('filtersSlice', () => {
       gender: 'female',
       cities: ['Казань'],
       categories: ['dev'],
-      q: 'test',
+      q: 'test'
     };
     expect(reducer(changed, resetFilters())).toEqual(initial);
   });

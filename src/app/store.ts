@@ -7,19 +7,19 @@ import authReducer from '@/features/auth/slices/authSlice';
 import {
   TypedUseSelectorHook,
   useDispatch as dispatchHook,
-  useSelector as selectorHook,
+  useSelector as selectorHook
 } from 'react-redux';
 
 export const rootReducer = combineReducers({
   users: usersReducer,
   skills: skillsReducer,
   filters: filtersReducer,
-  auth: authReducer,
+  auth: authReducer
 });
 
 const store = configureStore({
   reducer: rootReducer,
-  devTools: process.env.NODE_ENV !== 'production',
+  devTools: process.env.NODE_ENV !== 'production'
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

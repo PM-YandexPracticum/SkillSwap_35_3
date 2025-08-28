@@ -12,7 +12,7 @@ import styles from './CardsFeed.module.css';
 const PAGE_SIZE = 12;
 
 export const CardsFeed = ({ usersData, skillsData }: ICardsFeedProps) => {
-  const users  = usersData  ?? useSelector(selectFilteredUsers);
+  const users = usersData ?? useSelector(selectFilteredUsers);
   const skills = skillsData ?? useSelector(selectSkills);
 
   const popularUsers = users.slice(0, 3);

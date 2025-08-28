@@ -3,7 +3,7 @@ import type { FiltersState } from '../model/filtersSlice';
 
 const mockSkills = [
   { id: 's1', title: 'JS' },
-  { id: 's2', title: 'React' },
+  { id: 's2', title: 'React' }
 ];
 
 const mockUsers = [
@@ -13,7 +13,7 @@ const mockUsers = [
     city: 'Москва',
     gender: 'male',
     teach: ['s1'],
-    learn: ['s2'],
+    learn: ['s2']
   },
   {
     id: 2,
@@ -21,8 +21,8 @@ const mockUsers = [
     city: 'Казань',
     gender: 'female',
     teach: ['s2'],
-    learn: [],
-  },
+    learn: []
+  }
 ];
 
 const baseFilters: FiltersState = {
@@ -30,7 +30,7 @@ const baseFilters: FiltersState = {
   gender: 'any',
   cities: [],
   categories: [],
-  q: '',
+  q: ''
 };
 
 describe('applyFilters', () => {
@@ -54,7 +54,11 @@ describe('applyFilters', () => {
   });
 
   it('filters by mode=teach + categories', () => {
-    const f: FiltersState = { ...baseFilters, mode: 'teach', categories: ['s2'] };
+    const f: FiltersState = {
+      ...baseFilters,
+      mode: 'teach',
+      categories: ['s2']
+    };
     const res = applyFilters(mockUsers as any, f, mockSkills as any);
     expect(res).toHaveLength(1);
     expect(res[0].name).toBe('Мария');

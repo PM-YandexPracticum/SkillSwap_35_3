@@ -1,4 +1,8 @@
-import type { FiltersState, Gender, Mode } from '@/entities/Filters/model/filtersSlice';
+import type {
+  FiltersState,
+  Gender,
+  Mode
+} from '@/entities/Filters/model/filtersSlice';
 import type { IUser, ISkill } from '@/api/types';
 
 // --- utils ---
@@ -49,7 +53,8 @@ const idsOf = (arr?: unknown[]) =>
 // teach: один id или массив — поддерживаем оба
 const getTeachIds = (u: IUser & Partial<WithSkillFields>): string[] => {
   const single = (u as any).teachingSkillId;
-  if (single !== undefined && single !== null) return [toId(single)].filter(Boolean);
+  if (single !== undefined && single !== null)
+    return [toId(single)].filter(Boolean);
   return idsOf(u.teachIds ?? u.teach ?? u.skills?.teach);
 };
 
@@ -69,7 +74,7 @@ const matchGender = (u: IUser, gender: Gender) =>
 const matchModeAndCategories = (
   u: IUser & Partial<WithSkillFields>,
   mode: Mode,
-  selected: Set<string>,
+  selected: Set<string>
 ) => {
   if (selected.size === 0) return true;
   const teach = getTeachIds(u);
@@ -86,7 +91,7 @@ const matchModeAndCategories = (
 const matchQuery = (
   u: IUser & Partial<WithSkillFields>,
   q: string,
-  idToTitle: Map<string, string>,
+  idToTitle: Map<string, string>
 ) => {
   const needle = toLower(normalize(q));
   if (!needle) return true;
@@ -95,7 +100,9 @@ const matchQuery = (
   if ((u as any).name) parts.push(normalize((u as any).name));
 
   // добавляем человекочитаемые названия навыков пользователя
-  const ids = new Set<string>([...getTeachIds(u), ...getLearnIds(u)].map(String));
+  const ids = new Set<string>(
+    [...getTeachIds(u), ...getLearnIds(u)].map(String)
+  );
   for (const id of ids) {
     const title = idToTitle.get(id);
     if (title) parts.push(title);
@@ -117,7 +124,7 @@ function applyFilters(users: IUser[], filters: FiltersState, skills: ISkill[]) {
       matchModeAndCategories(u, mode, selected) &&
       matchCity(u, citiesSet) &&
       matchGender(u, gender) &&
-      matchQuery(u, q, idToTitle),
+      matchQuery(u, q, idToTitle)
   );
 }
 
