@@ -9,6 +9,7 @@ export * from './Input';
 export * from './Logo';
 export * from './ModalOverlay';
 export * from './Modal';
+export * from './AuthCredentialsForm';
 export * from './Tag';
 export * from './AllSkillsModal';
 export * from './ErrorCard';
