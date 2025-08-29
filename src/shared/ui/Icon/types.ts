@@ -41,6 +41,12 @@ export type IconName =
   | 'apple-icon'
   | 'google-icon'
 
+  // Профиль
+  | 'idea-icon'
+  | 'message-text-icon'
+  | 'request-icon'
+  | 'user-icon'
+
   // Другое
   | 'user-circle-icon'
   | 'logo-icon';

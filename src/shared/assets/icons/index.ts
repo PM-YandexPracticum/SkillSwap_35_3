@@ -6,3 +6,4 @@ export * from './inputs';
 export * from './notifications';
 export * from './socials';
 export * from './ui';
+export * from './profile';
