@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Slider.module.css';
 import { ArrorRightIcon } from '@/shared/assets/icons/ui';
 import { SliderProps } from './types';
+import { useSlider } from '@/shared/hooks';
 
 export const Slider = ({
   className,
@@ -12,29 +13,14 @@ export const Slider = ({
   children,
   buttonPosition = 'edges'
 }: SliderProps) => {
-  const [startingPoint, setStartingPoint] = useState(0);
-  const childrenArray = React.Children.toArray(children);
-  const hasHiddenItems = childrenArray.length > visible;
-  const visibleChildren = childrenArray.slice(
-    startingPoint,
-    startingPoint + visible
-  );
-
-  const canScrollNext =
-    hasHiddenItems && startingPoint + visible < childrenArray.length;
-  const canScrollPrev = startingPoint > 0;
-
-  const handleNext = () => {
-    if (canScrollNext) {
-      setStartingPoint((prev) => prev + 1);
-    }
-  };
-
-  const handlePrev = () => {
-    if (canScrollPrev) {
-      setStartingPoint((prev) => prev - 1);
-    }
-  };
+  const {
+    hasHiddenItems,
+    visibleChildren,
+    canScrollNext,
+    canScrollPrev,
+    handleNext,
+    handlePrev
+  } = useSlider({ visible, children });
 
   return (
     <div
