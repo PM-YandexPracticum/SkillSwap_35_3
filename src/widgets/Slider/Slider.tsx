@@ -3,13 +3,15 @@ import styles from './Slider.module.css';
 import { ArrorRightIcon } from '@/shared/assets/icons/ui';
 import { SliderProps } from './types';
 
-export const Slider: React.FC<SliderProps> = ({
+export const Slider = ({
   className,
   ariaLabel,
+  ariaLabelNext = 'Следующие слайды',
+  ariaLabelPrev = 'Предыдущие слайды',
   visible,
   children,
   buttonPosition = 'edges'
-}) => {
+}: SliderProps) => {
   const [startingPoint, setStartingPoint] = useState(0);
   const childrenArray = React.Children.toArray(children);
   const hasHiddenItems = childrenArray.length > visible;
@@ -43,7 +45,7 @@ export const Slider: React.FC<SliderProps> = ({
         <button
           className={`${styles.button} ${buttonPosition === 'inside' ? styles['button-prev-inside'] : styles['button-prev']}`}
           onClick={handlePrev}
-          aria-label='Previous cards'
+          aria-label={ariaLabelPrev}
         >
           <ArrorRightIcon className={styles['chevron-icon']} />
         </button>
@@ -57,7 +59,7 @@ export const Slider: React.FC<SliderProps> = ({
         <button
           className={`${styles.button} ${buttonPosition === 'inside' ? styles['button-next-inside'] : styles['button-next']}`}
           onClick={handleNext}
-          aria-label='Next cards'
+          aria-label={ariaLabelNext}
         >
           <ArrorRightIcon className={styles['chevron-icon']} />
         </button>
