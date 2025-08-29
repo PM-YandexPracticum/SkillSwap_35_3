@@ -14,119 +14,87 @@ const toLower = (s: string) => s.toLowerCase();
 // Карта id -> title
 const buildIdToTitle = (skills: ISkill[]) => {
   const map = new Map<string, string>();
-  for (const s of skills as any[]) {
-    const id = normalize((s as any)?.id);
-    const title = normalize((s as any)?.title);
-    if (id) map.set(id, title);
+  for (const s of skills) {
+    const id = String(s.id);
+    if (id) map.set(id, s.title ?? '');
   }
   return map;
 };
 
-// Поддерживаем разные схемы хранения навыков у пользователя
-type WithSkillFields = {
-  teachingSkillId?: unknown;
-  learningSkillIds?: unknown[];
-  teachIds?: unknown[];
-  learnIds?: unknown[];
-  teach?: unknown[];
-  learn?: unknown[];
-  skills?: { teach?: unknown[]; learn?: unknown[] };
-};
+const getTeachIds = (u: IUser): string[] =>
+  u.teachingSkillId == null ? [] : [String(u.teachingSkillId)];
 
-const toId = (x: unknown): string => {
-  if (x == null) return '';
-  if (typeof x === 'number' || typeof x === 'string') return String(x);
-  if (typeof x === 'object') {
-    const o = x as any;
-    if (o.id != null) return String(o.id);
-    if (o.skillId != null) return String(o.skillId);
-    if (o.subcategoryId != null) return String(o.subcategoryId);
-    if (o.skill?.id != null) return String(o.skill.id);
-    if (o.title != null) return String(o.title); // иногда хранят просто названием
-  }
-  return '';
-};
+const getLearnIds = (u: IUser): string[] =>
+  Array.isArray(u.learningSkillIds)
+    ? u.learningSkillIds.map((x) => String(x))
+    : [];
 
-const idsOf = (arr?: unknown[]) =>
-  (arr ?? []).map(toId).filter(Boolean) as string[];
-
-// teach: один id или массив — поддерживаем оба
-const getTeachIds = (u: IUser & Partial<WithSkillFields>): string[] => {
-  const single = (u as any).teachingSkillId;
-  if (single !== undefined && single !== null)
-    return [toId(single)].filter(Boolean);
-  return idsOf(u.teachIds ?? u.teach ?? u.skills?.teach);
-};
-
-const getLearnIds = (u: IUser & Partial<WithSkillFields>): string[] => {
-  const list = (u as any).learningSkillIds as unknown[] | undefined;
-  if (Array.isArray(list)) return idsOf(list);
-  return idsOf(u.learnIds ?? u.learn ?? u.skills?.learn);
-};
-
-// --- predicates ---
+// фильтры
 const matchCity = (u: IUser, cities: Set<string>) =>
-  cities.size === 0 || cities.has(u.city);
+  cities.size === 0 || cities.has(String(u.city));
 
 const matchGender = (u: IUser, gender: Gender) =>
   gender === 'any' || u.gender === gender;
 
 const matchModeAndCategories = (
-  u: IUser & Partial<WithSkillFields>,
+  u: IUser,
   mode: Mode,
   selected: Set<string>
 ) => {
   if (selected.size === 0) return true;
+
   const teach = getTeachIds(u);
   const learn = getLearnIds(u);
 
-  const teachHit = teach.some((id) => selected.has(String(id)));
-  const learnHit = learn.some((id) => selected.has(String(id)));
+  if (mode === 'teach') return teach.some((id) => selected.has(id));
+  if (mode === 'learn') return learn.some((id) => selected.has(id));
 
-  if (mode === 'teach') return teachHit;
-  if (mode === 'learn') return learnHit;
-  return teachHit || learnHit;
+  // mode === 'all'
+  return (
+    teach.some((id) => selected.has(id)) ||
+    learn.some((id) => selected.has(id))
+  );
 };
 
-const matchQuery = (
-  u: IUser & Partial<WithSkillFields>,
-  q: string,
-  idToTitle: Map<string, string>
-) => {
+const matchQuery = (u: IUser, q: string, idToTitle: Map<string, string>) => {
   const needle = toLower(normalize(q));
   if (!needle) return true;
 
-  const parts: string[] = [];
-  if ((u as any).name) parts.push(normalize((u as any).name));
-
-  // добавляем человекочитаемые названия навыков пользователя
-  const ids = new Set<string>(
-    [...getTeachIds(u), ...getLearnIds(u)].map(String)
-  );
+  const titles: string[] = [];
+  const ids = new Set<string>([...getTeachIds(u), ...getLearnIds(u)]);
   for (const id of ids) {
     const title = idToTitle.get(id);
-    if (title) parts.push(title);
+    if (title) titles.push(title);
   }
 
-  return parts.join(' ').toLowerCase().includes(needle);
+  const haystack = [u.name, u.city, ...titles]
+    .filter(Boolean)
+    .map((s) => toLower(String(s)))
+    .join(' ');
+
+  return haystack.includes(needle);
 };
 
 // --- main ---
-function applyFilters(users: IUser[], filters: FiltersState, skills: ISkill[]) {
+export function applyFilters(
+  users: IUser[],
+  filters: FiltersState,
+  skills: ISkill[]
+): IUser[] {
   const { mode, categories, cities, gender, q } = filters;
 
   const idToTitle = buildIdToTitle(skills);
   const selected = new Set<string>(categories.map(String));
   const citiesSet = new Set<string>(cities.map(String));
 
-  return users.filter(
-    (u: any) =>
+  return users.filter((u) => {
+    return (
       matchModeAndCategories(u, mode, selected) &&
       matchCity(u, citiesSet) &&
       matchGender(u, gender) &&
       matchQuery(u, q, idToTitle)
-  );
+    );
+  });
 }
 
 export default applyFilters;
-export { applyFilters };

@@ -15,65 +15,83 @@ import { Checkbox } from '@/shared/ui/Checkbox';
 type Skill = { id: string | number; title: string } & Record<string, unknown>;
 type Props = { skills: Skill[] };
 
-function getCategoryTitle(s: any): string {
-  return String(
-    s?.categoryTitle ??
-      s?.category ??
-      s?.categoryName ??
-      s?.group ??
-      s?.parent?.title ??
-      'Все навыки'
-  );
+function getCategoryTitle(s: Skill): string {
+  const r = s as Record<string, unknown>;
+  const val =
+    r['categoryTitle'] ??
+    r['category'] ??
+    r['categoryName'] ??
+    r['group'] ??
+    (r['parent'] as Record<string, unknown> | undefined)?.['title'] ??
+    'Все навыки';
+  return String(val ?? '');
 }
-function getCategoryId(s: any): string {
+
+function getCategoryId(s: Skill): string {
+  const r = s as Record<string, unknown>;
   const id =
-    s?.categoryId ?? s?.category_id ?? s?.parent?.id ?? getCategoryTitle(s);
-  return String(id);
+    r['categoryId'] ??
+    r['category_id'] ??
+    (r['parent'] as Record<string, unknown> | undefined)?.['id'] ??
+    getCategoryTitle(s);
+  return String(id ?? '');
 }
 
 export function SkillsFilter({ skills }: Props) {
   const dispatch = useAppDispatch();
   const selected = useSelector(selectCategories);
 
+  // группируем навыки по категории
   const groups = useMemo(() => {
     const map = new Map<
       string,
       { key: string; title: string; subIds: string[]; subTitles: string[] }
     >();
-    for (const raw of skills as any[]) {
-      const id = String(raw?.id);
-      const title = String(raw?.title ?? '');
+
+    for (const raw of skills) {
+      const rr = raw as Record<string, unknown>;
+      const id = String(rr['id']);
+      const title = String(rr['title'] ?? '');
       if (!id || !title) continue;
+
       const catId = getCategoryId(raw);
       const catTitle = getCategoryTitle(raw);
-      if (!map.has(catId))
+
+      if (!map.has(catId)) {
         map.set(catId, {
           key: catId,
           title: catTitle,
           subIds: [],
           subTitles: []
         });
+      }
       const g = map.get(catId)!;
       g.subIds.push(id);
       g.subTitles.push(title);
     }
+
+    // сортировка категорий по алфавиту
     return Array.from(map.values()).sort((a, b) =>
       a.title.localeCompare(b.title, 'ru')
     );
   }, [skills]);
 
+  // открываем первую категорию, сохраняем состояние при обновлении списка
   const [open, setOpen] = useState<Record<string, boolean>>({});
   useEffect(() => {
     const next: Record<string, boolean> = {};
-    for (const g of groups)
+    for (const g of groups) {
       next[g.key] = open[g.key] ?? groups[0]?.key === g.key;
+    }
     setOpen(next);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [groups.length]);
 
   return (
     <fieldset className={radioStyles.radio__filter}>
       <div className={radioStyles['radio__filter-wrapper']}>
         <legend className={radioStyles['radio__filter-title']}>Навыки</legend>
+
         <div className={radioStyles['radio__filter-container']}>
           {groups.map((g) => {
             const allSelected =
@@ -86,6 +104,7 @@ export function SkillsFilter({ skills }: Props) {
             return (
               <div className={styles['skills-filter__group']} key={g.key}>
                 <div className={styles['skills-filter__cat-row']}>
+                  {/* Кнопка слева: «индикатор» + название категории */}
                   <button
                     type='button'
                     className={styles['skills-filter__cat-left']}
@@ -112,6 +131,7 @@ export function SkillsFilter({ skills }: Props) {
                     </span>
                   </button>
 
+                  {/* Кнопка справа: раскрыть/свернуть подсписок */}
                   <button
                     type='button'
                     className={styles['skills-filter__chevron-btn']}
@@ -134,7 +154,7 @@ export function SkillsFilter({ skills }: Props) {
                       focusable='false'
                     >
                       <path
-                        d='M15.3101 7.93308C15.1347 7.93308 14.9593 7.86847 14.8209 7.73003L8.803 1.71214C8.35997 1.26911 7.64003 1.26911 7.197 1.71214L1.17912 7.73003C0.911451 7.99769 0.468416 7.99769 0.20075 7.73003C-0.0669166 7.46236 -0.0669166 7.01933 0.20075 6.75166L6.21863 0.733775C7.197 -0.244592 8.79377 -0.244592 9.78137 0.733775L15.7992 6.75166C16.0669 7.01933 16.0669 7.46236 15.7992 7.73003C15.6608 7.85924 15.4854 7.93308 15.3101 7.93308Z'
+                        d='M15.3101 7.93308C15.1347 7.93308 14.9594 7.85924 14.8356 7.73545L8.00022 0.900072L1.16484 7.73545C0.917244 7.98305 0.516393 7.98305 0.268796 7.73545C0.0211994 7.48785 0.0211994 7.08699 0.268796 6.8394L7.55271 0.555476C7.8003 0.30788 8.20115 0.30788 8.44875 0.555476L15.7327 6.8394C15.9803 7.08699 15.9803 7.48785 15.7327 7.73545C15.6089 7.85924 15.4335 7.93308 15.2582 7.93308H15.3101Z'
                         fill='#253017'
                       />
                     </svg>
@@ -153,7 +173,9 @@ export function SkillsFilter({ skills }: Props) {
                       onChange={(value: string, nextChecked: boolean) => {
                         const id = String(value);
                         if (nextChecked) {
-                          const next = Array.from(new Set([...selected, id]));
+                          const next = Array.from(
+                            new Set([...selected, id])
+                          );
                           dispatch(setCategories(next));
                         } else {
                           dispatch(toggleSkill(id));

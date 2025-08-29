@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj, Decorator } from '@storybook/react';
 import { Provider } from 'react-redux';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
@@ -9,12 +9,20 @@ import { selectFilters } from '@/entities/Filters/model/filtersSelectors';
 import applyFilters from '@/entities/Filters/lib/applyFilters';
 
 import mock from '@/api/mockData.json';
+import type { IUser, ISkill } from '@/api/types';
+
 import { FiltersPanel } from './FiltersPanel';
 import { CardsFeed } from '@/widgets/CardsFeed';
 import { useSelector } from '@/app/store';
 
-type IUser = (typeof mock)['users'][number];
-type ISkill = (typeof mock)['skills'][number];
+type MockShape = {
+  users: IUser[];
+  skills: ISkill[];
+};
+const typed = mock as unknown as MockShape;
+
+const users: IUser[] = typed.users;
+const skills: ISkill[] = typed.skills;
 
 const makeStore = (preloaded?: Partial<FiltersState>) =>
   configureStore({
@@ -35,35 +43,33 @@ const makeStore = (preloaded?: Partial<FiltersState>) =>
 
 function FeedWithFilters() {
   const filters = useSelector(selectFilters);
-  const users: IUser[] = mock.users as unknown as IUser[];
-  const skills: ISkill[] = mock.skills as unknown as ISkill[];
-
-  const filtered = applyFilters(users as any, filters, skills as any);
-  return <CardsFeed usersData={filtered as any} skillsData={skills as any} />;
+  const filtered = applyFilters(users, filters, skills);
+  return <CardsFeed usersData={filtered} skillsData={skills} />;
 }
 
-const withStore =
-  (node: React.ReactNode, preloaded?: Partial<FiltersState>) => () => (
-    <Provider store={makeStore(preloaded)}>{node}</Provider>
-  );
+const withReduxProvider: Decorator = (Story) => (
+  <Provider store={makeStore()}>
+    <Story />
+  </Provider>
+);
+withReduxProvider.displayName = 'withReduxProvider';
 
 const meta: Meta<typeof FiltersPanel> = {
   title: 'Widgets/FiltersPanel',
-  component: FiltersPanel
+  component: FiltersPanel,
+  decorators: [withReduxProvider]
 };
+
 export default meta;
 
 type Story = StoryObj<typeof FiltersPanel>;
 
-/** Только панель */
-export const Default: Story = {
-  decorators: [withStore(<FiltersPanel />)]
-};
+export const Default: Story = {};
 
-/** Панель + Фид с моками и реальной фильтрацией */
-export const WithFeed: Story = {
-  decorators: [
-    withStore(
+export const WithFeed: Story = {};
+WithFeed.render = function WithFeedRender() {
+  return (
+    <Provider store={makeStore()}>
       <div
         style={{
           display: 'grid',
@@ -79,6 +85,6 @@ export const WithFeed: Story = {
           <FeedWithFilters />
         </div>
       </div>
-    )
-  ]
+    </Provider>
+  );
 };
