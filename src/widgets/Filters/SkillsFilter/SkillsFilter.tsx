@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState } from 'react';
 import { useAppDispatch, useSelector } from '@/app/store';
 
 import { selectCategories } from '@/entities/Filters/model/filtersSelectors';
@@ -76,16 +76,7 @@ export function SkillsFilter({ skills }: Props) {
     );
   }, [skills]);
 
-  // открываем первую категорию, сохраняем состояние при обновлении списка
   const [open, setOpen] = useState<Record<string, boolean>>({});
-  useEffect(() => {
-    const next: Record<string, boolean> = {};
-    for (const g of groups) {
-      next[g.key] = open[g.key] ?? groups[0]?.key === g.key;
-    }
-    setOpen(next);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [groups.length]);
 
   return (
     <fieldset className={radioStyles.radio__filter}>

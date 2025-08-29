@@ -7,7 +7,9 @@ import { useClickOutside } from '@/shared/hooks/useClickOutside';
 import { ActionBar } from '../ActionBar';
 import { useActionBarButtons } from '@/shared/hooks/useActionBarButtons';
 import { selectIsAuthenticated, selectAuthUser } from '@/features/auth';
-import { useSelector } from '@/app/store';
+import { useAppDispatch, useSelector } from '@/app/store';
+import { selectQuery } from '@/entities/Filters/model/filtersSelectors';
+import { setQuery } from '@/entities/Filters/model/filtersSlice';
 
 export const Header = ({
   className = '',
@@ -21,33 +23,29 @@ export const Header = ({
   const skillsRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
-  //  refs, клик по которым не должен закрывать модалку
+  // закрываем модалку «Все навыки» по клику вне
   useClickOutside([modalRef, skillsRef], {
     onClickOutside: () => {
       setIsModalOpen(false);
     }
   });
-  const handleSkillsClick = () => {
-    setIsModalOpen(!isModalOpen);
-  };
+  const handleSkillsClick = () => setIsModalOpen((v) => !v);
 
-  /* const handleModalClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  }; */
-
-  // Используем селекторы для получения состояния аутентификации
+  // auth
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const user = useSelector(selectAuthUser);
 
-  // Используем хук для получения конфигурации кнопок
+  // кнопки экшн-бара
   const actionBarButtons = useActionBarButtons();
+
+  // поиск: связываем инпут в хедере с фильтрами (q) через Redux
+  const dispatch = useAppDispatch();
+  const q = useSelector(selectQuery);
 
   return (
     <header
       aria-label={ariaLabel}
-      className={`${styles['header']} ${className} ${
-        isSticky ? styles['header--sticky'] : ''
-      }`}
+      className={`${styles['header']} ${className} ${isSticky ? styles['header--sticky'] : ''}`}
       data-cy={dataCy}
     >
       <div className={styles['header__logo']} onClick={() => navigate('/')}>
@@ -58,15 +56,13 @@ export const Header = ({
         <Link to='/404' className={styles['header__link']}>
           О проекте
         </Link>
-        <div
-          className={styles['header__skills-wrapper']}
-          ref={skillsRef}
-          onClick={handleSkillsClick}
-        >
+
+        {/* Кнопка «Все навыки» + модалка */}
+        <div className={styles['header__skills-wrapper']} ref={skillsRef} onClick={handleSkillsClick}>
           <div className={styles['header__skills']}>
             Все навыки
             <Icon
-              name={'arrow-down-icon'}
+              name='arrow-down-icon'
               size={24}
               className={`${styles['header__arrow']} ${isModalOpen ? styles['header__arrow--rotated'] : ''}`}
             />
@@ -77,21 +73,22 @@ export const Header = ({
         </div>
       </div>
 
+      {/* Поисковая строка в хедере: контролируемое значение из Redux */}
       <Input
         placeholder='Искать навык'
-        search={true}
+        search
         icon={<Icon name='search-icon' fill='#69735D' />}
         iconPosition='left'
         className={styles['header__input']}
+        value={q}
+        onChange={(e) => dispatch(setQuery(e.target.value))}
+        aria-label='Поиск по имени и навыкам'
+        data-cy='header-search'
       />
 
-      <ActionBar
-        // в Buttons вставить переменную actionBarButtons когда будут готовы userSlice и authSlice
-        buttons={actionBarButtons}
-        className={styles['header__action-bar']}
-      />
+      <ActionBar buttons={actionBarButtons} className={styles['header__action-bar']} />
 
-      {/* Раскомментировать когда будет готова логика авторизации */}
+      {/* Блок авторизации: имя + аватар или кнопки «Войти/Зарегистрироваться» */}
       {isAuthenticated ? (
         <div className={styles['header__user']}>
           <p className={styles['header__user-name']}>{user?.name}</p>
@@ -111,6 +108,7 @@ export const Header = ({
           </Button>
         </div>
       )}
+
       {children}
     </header>
   );
