@@ -4,7 +4,7 @@ import { RootState } from '@/app/store';
 import { Navigate, useLocation } from 'react-router-dom';
 
 type ProtectedRouteProps = {
-  component: React.ReactNode;
+  component: React.ReactElement;
   onlyUnAuth?: boolean; // по умолчанию false
 };
 
@@ -32,7 +32,7 @@ const ProtectedRoute = ({
   }
 
   // Иначе показываем компонент
-  return <>{component}</>;
+  return component;
 };
 
 export default ProtectedRoute;
