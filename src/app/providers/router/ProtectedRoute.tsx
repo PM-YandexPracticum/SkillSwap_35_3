@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector } from '@/app/store';
-import { RootState } from '@/app/store';
 import { Navigate, useLocation } from 'react-router-dom';
+
+import { selectAuthUser, selectAuthIsLoading } from '@/features/auth';
 
 type ProtectedRouteProps = {
   component: React.ReactElement;
@@ -12,8 +13,8 @@ const ProtectedRoute = ({
   component,
   onlyUnAuth = false
 }: ProtectedRouteProps): React.ReactNode => {
-  const selectedUser = useSelector((state: RootState) => state.users.selected);
-  const isLoading = useSelector((state: RootState) => state.users.isLoading);
+  const selectedUser = useSelector(selectAuthUser);
+  const isLoading = useSelector(selectAuthIsLoading);
   const location = useLocation();
 
   if (isLoading) {
@@ -44,5 +45,5 @@ export const OnlyAuth = ProtectedRoute;
 export const OnlyUnAuth = ({
   component
 }: {
-  component: React.ReactNode;
+  component: React.ReactElement;
 }): React.ReactElement => <ProtectedRoute onlyUnAuth component={component} />;
