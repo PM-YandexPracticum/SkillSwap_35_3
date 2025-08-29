@@ -10,5 +10,5 @@
   border-radius: 12px;
   width: 325px;
   height: 100vh;
-  background: var(--background-color-secondary);
+  /* background: var(--background-color-secondary); */
 }

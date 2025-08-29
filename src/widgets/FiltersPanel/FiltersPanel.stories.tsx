@@ -47,12 +47,14 @@ function FeedWithFilters() {
   return <CardsFeed usersData={filtered} skillsData={skills} />;
 }
 
-const withReduxProvider: Decorator = (Story) => (
-  <Provider store={makeStore()}>
-    <Story />
-  </Provider>
-);
-withReduxProvider.displayName = 'withReduxProvider';
+// ИМЕНОВАННЫЙ декоратор — без displayName-свойств
+const withReduxProvider: Decorator = function WithReduxProvider(Story) {
+  return (
+    <Provider store={makeStore()}>
+      <Story />
+    </Provider>
+  );
+};
 
 const meta: Meta<typeof FiltersPanel> = {
   title: 'Widgets/FiltersPanel',
