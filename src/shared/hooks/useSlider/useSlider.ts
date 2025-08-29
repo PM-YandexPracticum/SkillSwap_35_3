@@ -34,12 +34,10 @@ export const useSlider = ({
     [childrenArray, startingPoint, visible]
   );
 
-  const canScrollNext = useMemo(
-    () => hasHiddenItems && startingPoint + visible < childrenArray.length,
-    [hasHiddenItems, startingPoint, visible, childrenArray.length]
-  );
+  const canScrollNext =
+    hasHiddenItems && startingPoint + visible < childrenArray.length;
 
-  const canScrollPrev = useMemo(() => startingPoint > 0, [startingPoint]);
+  const canScrollPrev = startingPoint > 0;
 
   const handleNext = () => {
     if (canScrollNext) {
