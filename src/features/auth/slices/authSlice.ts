@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, isAnyOf } from '@reduxjs/toolkit';
 import type { IUser } from '@/api/types';
 import {
   loginUserThunk,
@@ -43,42 +43,60 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loginUserThunk.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
       .addCase(loginUserThunk.fulfilled, (state, action) => {
-        state.isLoading = false;
         state.user = action.payload.user;
         state.token = action.payload.token;
+
+        localStorage.setItem('token', action.payload.token);
+        localStorage.setItem('user', JSON.stringify(action.payload.user));
       })
-      .addCase(loginUserThunk.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload as string;
-      })
-      .addCase(registerUserThunk.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(registerUserThunk.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload as string;
-      })
-      .addCase(updateUserThunk.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
+      .addCase(registerUserThunk.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+
+        localStorage.setItem('token', action.payload.token);
+        localStorage.setItem('user', JSON.stringify(action.payload.user));
       })
       .addCase(
         updateUserThunk.fulfilled,
         (state, action: PayloadAction<IUser>) => {
-          state.isLoading = false;
           state.user = action.payload;
+
+          localStorage.setItem('user', JSON.stringify(action.payload));
         }
       )
-      .addCase(updateUserThunk.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload as string;
-      });
+      .addMatcher(
+        isAnyOf(
+          loginUserThunk.pending,
+          registerUserThunk.pending,
+          updateUserThunk.pending
+        ),
+        (state) => {
+          state.isLoading = true;
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          loginUserThunk.fulfilled,
+          registerUserThunk.fulfilled,
+          updateUserThunk.fulfilled
+        ),
+        (state) => {
+          state.isLoading = false;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          loginUserThunk.rejected,
+          registerUserThunk.rejected,
+          updateUserThunk.rejected
+        ),
+        (state, action) => {
+          state.isLoading = false;
+          state.error = action.payload as string;
+        }
+      );
   }
 });
 

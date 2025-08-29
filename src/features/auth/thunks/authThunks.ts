@@ -12,9 +12,6 @@ export const loginUserThunk = createAsyncThunk(
       const user = await loginUser(email, password);
       const token = `mock-jwt-token-for-${user.id}`;
 
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(user));
-
       return { user, token };
     } catch (err) {
       const error = err as Error;
@@ -31,7 +28,15 @@ export const registerUserThunk = createAsyncThunk(
       await registerUser(newUser);
       const { email, password } = newUser;
 
-      return thunkAPI.dispatch(loginUserThunk({ email, password }));
+      const result = await thunkAPI.dispatch(
+        loginUserThunk({ email, password })
+      );
+
+      if (loginUserThunk.fulfilled.match(result)) {
+        return result.payload;
+      }
+
+      return thunkAPI.rejectWithValue(result.payload as string);
     } catch (err) {
       const error = err as Error;
 
@@ -50,7 +55,6 @@ export const updateUserThunk = createAsyncThunk(
       const updatedUser = await updateUser(id, data);
 
       if (updatedUser) {
-        localStorage.setItem('user', JSON.stringify(updatedUser));
         return updatedUser;
       }
       return thunkAPI.rejectWithValue('Ошибка при обновлении профиля');
