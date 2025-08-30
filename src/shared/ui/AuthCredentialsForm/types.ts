@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export type AuthOption = 'login' | 'register';
 
 export interface AuthFormProps {
@@ -9,7 +11,16 @@ export interface AuthFormProps {
   onSubmit?: () => void;
   emailError?: string;
   passwordError?: string;
+  emailLabel?: string;
+  passwordLabel?: string;
+  emailPlaceholder?: string;
+  passwordPlaceholder?: string;
+  submitText?: string;
+  passwordHint?: string;
   disabled?: boolean;
   loading?: boolean;
   className?: string;
+  topContent?: ReactNode;
+  children?: ReactNode;
+  bottomContent?: ReactNode;
 }

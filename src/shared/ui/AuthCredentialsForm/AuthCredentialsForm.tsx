@@ -4,7 +4,7 @@ import { Input, Button, Icon } from '@/shared/ui';
 import styles from './AuthCredentialsForm.module.css';
 import type { AuthFormProps } from './types';
 
-export function AuthCredentialsForm({
+export const AuthCredentialsForm = ({
   option,
   email,
   password,
@@ -13,77 +13,54 @@ export function AuthCredentialsForm({
   onSubmit,
   emailError,
   passwordError,
+  emailLabel,
+  passwordLabel,
+  emailPlaceholder,
+  passwordPlaceholder,
+  submitText,
+  passwordHint,
   disabled,
   loading,
-  className
-}: AuthFormProps) {
+  className,
+  topContent,
+  children,
+  bottomContent
+}: AuthFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
-  const isLogin = option === 'login';
   const isDisabled = Boolean(disabled || loading);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    if (isDisabled) return;
-    onSubmit?.();
+    if (!isDisabled) onSubmit?.();
   };
 
   return (
-    <main className={styles['auth-form']}>
-      <div className={cn(styles['auth-form__card'], className)}>
+    <div className={cn(styles['auth-form'], className)}>
+      <div className={styles['auth-form__card']}>
         <form
           className={styles['auth-form__form']}
           onSubmit={handleSubmit}
           noValidate
         >
-          <>
-            <div className={styles['auth-form__social']}>
-              <Button
-                type='secondary'
-                size='large'
-                fullWidth
-                disabled={isDisabled}
-                iconName='google-icon'
-                className={cn(
-                  styles['auth-form__social-button'],
-                  styles['auth-form__nowrap']
-                )}
-              >
-                Продолжить с Google
-              </Button>
-              <Button
-                type='secondary'
-                size='large'
-                fullWidth
-                disabled={isDisabled}
-                iconName='apple-icon'
-                className={cn(
-                  styles['auth-form__social-button'],
-                  styles['auth-form__nowrap']
-                )}
-              >
-                Продолжить с Apple
-              </Button>
-            </div>
-
-            <div className={styles['auth-form__divider']} aria-hidden='true'>
-              <span />
-              <span>или</span>
-              <span />
-            </div>
-          </>
+          {topContent}
 
           <div
             className={cn(styles['auth-form__field'], {
               [styles['auth-form__field--error']]: !!emailError
             })}
           >
-            <label className={styles['auth-form__label']} htmlFor='auth-email'>
-              Email
-            </label>
+            {emailLabel && (
+              <label
+                className={styles['auth-form__label']}
+                htmlFor='auth-email'
+              >
+                {emailLabel}
+              </label>
+            )}
             <Input
               id='auth-email'
               type='email'
-              placeholder='Введите email'
+              placeholder={emailPlaceholder}
               value={email}
               onChange={(event) => onEmailChange?.(event.currentTarget.value)}
               name='email'
@@ -100,29 +77,33 @@ export function AuthCredentialsForm({
             </div>
           </div>
 
+          {children}
+
           <div
             className={cn(styles['auth-form__field'], {
               [styles['auth-form__field--error']]: !!passwordError
             })}
           >
-            <label
-              className={styles['auth-form__label']}
-              htmlFor='auth-password'
-            >
-              Пароль
-            </label>
+            {passwordLabel && (
+              <label
+                className={styles['auth-form__label']}
+                htmlFor='auth-password'
+              >
+                {passwordLabel}
+              </label>
+            )}
             <Input
               id='auth-password'
               type={showPassword ? 'text' : 'password'}
-              placeholder={
-                isLogin ? 'Введите ваш пароль' : 'Придумайте надёжный пароль'
-              }
+              placeholder={passwordPlaceholder}
               value={password}
               onChange={(event) =>
                 onPasswordChange?.(event.currentTarget.value)
               }
               name='password'
-              autoComplete={isLogin ? 'current-password' : 'new-password'}
+              autoComplete={
+                option === 'login' ? 'current-password' : 'new-password'
+              }
               disabled={isDisabled}
               icon={
                 <button
@@ -130,7 +111,8 @@ export function AuthCredentialsForm({
                   aria-label={
                     showPassword ? 'Скрыть пароль' : 'Показать пароль'
                   }
-                  onClick={() => setShowPassword((v) => !v)}
+                  onClick={() => setShowPassword((value) => !value)}
+                  className={styles['auth-form__eye-button']}
                   style={{ all: 'unset', cursor: 'pointer' }}
                 >
                   <Icon name='eye-icon' size={20} />
@@ -144,8 +126,7 @@ export function AuthCredentialsForm({
               aria-live='polite'
               role={passwordError ? 'alert' : undefined}
             >
-              {passwordError ??
-                (!isLogin ? 'Пароль должен содержать не менее 8 знаков' : null)}
+              {passwordError ?? passwordHint}
             </div>
           </div>
 
@@ -158,22 +139,13 @@ export function AuthCredentialsForm({
               disabled={isDisabled}
               className={styles['auth-form__actions-button']}
             >
-              {isLogin ? 'Войти' : 'Далее'}
+              {submitText}
             </Button>
           </div>
         </form>
 
-        {option === 'login' && (
-          <div className={styles['auth-form__footer-switch']}>
-            <button
-              type='button'
-              className={styles['auth-form__footer-switch-btn']}
-            >
-              Зарегистрироваться
-            </button>
-          </div>
-        )}
+        {bottomContent}
       </div>
-    </main>
+    </div>
   );
-}
+};
