@@ -71,6 +71,10 @@
   border: none;
 }
 
+.button_type_ghost:focus {
+  outline: none;
+}
+
 .button_size_small {
   padding-inline: 23px;
 }
