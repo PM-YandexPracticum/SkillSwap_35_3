@@ -19,6 +19,7 @@ export const AuthCredentialsForm = ({
   passwordPlaceholder,
   submitText,
   passwordHint,
+  passwordAutoComplete,
   disabled,
   loading,
   className,
@@ -101,9 +102,7 @@ export const AuthCredentialsForm = ({
                 onPasswordChange?.(event.currentTarget.value)
               }
               name='password'
-              autoComplete={
-                option === 'login' ? 'current-password' : 'new-password'
-              }
+              autoComplete={passwordAutoComplete}
               disabled={isDisabled}
               icon={
                 <button

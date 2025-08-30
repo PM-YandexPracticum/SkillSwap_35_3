@@ -17,6 +17,7 @@ export interface AuthFormProps {
   passwordPlaceholder?: string;
   submitText?: string;
   passwordHint?: string;
+  passwordAutoComplete?: string;
   disabled?: boolean;
   loading?: boolean;
   className?: string;

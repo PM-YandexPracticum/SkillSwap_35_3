@@ -84,6 +84,7 @@ const baseLoginArgs = {
   passwordPlaceholder: 'Введите пароль',
   submitText: 'Войти',
   passwordHint: undefined,
+  passwordAutoComplete: 'current-password',
   topContent: <SocialTop />,
   bottomContent: <FooterSwitch toRegister />
 };
@@ -96,6 +97,7 @@ const baseRegisterArgs = {
   passwordPlaceholder: 'Придумайте надёжный пароль',
   submitText: 'Далее',
   passwordHint: 'Пароль должен содержать не менее 8 знаков',
+  passwordAutoComplete: 'new-password',
   topContent: <SocialTop />,
   bottomContent: null
 };
