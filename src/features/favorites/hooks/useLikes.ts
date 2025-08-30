@@ -3,7 +3,6 @@ import { useAppDispatch, useSelector } from '@/app/store';
 import {
   toggleLike as toggleLikeAction,
   setLike as setLikeAction,
-  selectIsLiked,
   selectLikedItems,
   selectTotalLikes
 } from '../slices/likeSlice';
@@ -28,14 +27,9 @@ export const useLikes = () => {
     [dispatch]
   );
 
-  const isLiked = (id: string) => {
-    return useSelector(selectIsLiked(id));
-  };
-
   return {
     toggleLike,
     setLike,
-    isLiked,
     likedItems,
     totalLikes
   };
