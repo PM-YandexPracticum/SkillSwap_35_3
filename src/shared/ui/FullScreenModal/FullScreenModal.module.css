@@ -1,0 +1,21 @@
+.modalFullScreen {
+    position: fixed;
+    z-index: 2;
+    inset: 0;
+    background-color: var(--background-color-primary);
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalFullScreen__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.modalFullScreen__content {
+    max-width: 1150px;
+    align-self: center
+}
