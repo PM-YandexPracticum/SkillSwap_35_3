@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from '@/app/store';
 import { selectSkills } from '@/entities/Skill/selectors/skillsSelectors';
 import { selectFilteredUsers } from '@/entities/User/selectors/filteredUsersSelector';
@@ -12,6 +13,8 @@ import styles from './CardsFeed.module.css';
 const PAGE_SIZE = 12;
 
 export const CardsFeed = ({ usersData, skillsData }: ICardsFeedProps) => {
+  const navigate = useNavigate();
+
   const users = usersData ?? useSelector(selectFilteredUsers);
   const skills = skillsData ?? useSelector(selectSkills);
 
@@ -27,8 +30,7 @@ export const CardsFeed = ({ usersData, skillsData }: ICardsFeedProps) => {
   };
 
   const handleDetails = (id: number) => {
-    // ДОПОЛНИТЬ
-    alert(`Переход к деталям пользователя с id: ${id}`);
+    navigate(`/card/${id}`);
   };
 
   return (
