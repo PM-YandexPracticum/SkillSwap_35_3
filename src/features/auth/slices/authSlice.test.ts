@@ -68,7 +68,7 @@ describe('authSlice', () => {
       expect(newState.error).toBeNull();
     });
 
-    test('проверяем успешную авторизацию пользователя', () => {
+    test('проверяем успешную авторизацию пользователя и запись в localStorage', () => {
       const action = {
         type: loginUserThunk.fulfilled.type,
         payload: { user: mockUser, token: 'token' }
@@ -78,6 +78,9 @@ describe('authSlice', () => {
       expect(newState.isLoading).toBe(false);
       expect(newState.user).toEqual(mockUser);
       expect(newState.token).toBe('token');
+
+      expect(localStorage.getItem('token')).toBe('token');
+      expect(localStorage.getItem('user')).toBe(JSON.stringify(mockUser));
     });
 
     test('проверяем ошибку авторизации пользователя', () => {
@@ -128,6 +131,20 @@ describe('authSlice', () => {
       expect(newState.isLoading).toBe(true);
       expect(newState.error).toBeNull();
     });
+    test('проверяем успешную регистрацию и запись в localStorage', () => {
+      const action = {
+        type: registerUserThunk.fulfilled.type,
+        payload: { user: mockUser, token: 'reg-token' }
+      };
+      const newState = authReducer(initialState, action);
+
+      expect(newState.isLoading).toBe(false);
+      expect(newState.user).toEqual(mockUser);
+      expect(newState.token).toBe('reg-token');
+
+      expect(localStorage.getItem('token')).toBe('reg-token');
+      expect(localStorage.getItem('user')).toBe(JSON.stringify(mockUser));
+    });
     test('проверяем ошибку регистрации пользователя', () => {
       const errorMessage = 'Email уже используется другим пользователем';
       const action = {
@@ -149,6 +166,10 @@ describe('authSlice', () => {
       isLoading: false,
       error: null
     };
+    beforeEach(() => {
+      localStorage.setItem('user', JSON.stringify(mockUser));
+      localStorage.setItem('token', 'mock-token');
+    });
     test('проверяем начало обновления пользователя', () => {
       const action = { type: updateUserThunk.pending.type };
       const newState = authReducer(loggedInState, action);
@@ -156,7 +177,7 @@ describe('authSlice', () => {
       expect(newState.isLoading).toBe(true);
       expect(newState.error).toBeNull();
     });
-    test('проверяем успешное обновление пользователя', () => {
+    test('проверяем успешное обновление пользователя и запись в localStorage', () => {
       const updatedUserData = { ...mockUser, name: 'New Name' };
       const action = {
         type: updateUserThunk.fulfilled.type,
@@ -167,6 +188,12 @@ describe('authSlice', () => {
       expect(newState.isLoading).toBe(false);
       expect(newState.user).toEqual(updatedUserData);
       expect(newState.error).toBeNull();
+
+      expect(newState.token).toBe('mock-token');
+      expect(localStorage.getItem('user')).toBe(
+        JSON.stringify(updatedUserData)
+      );
+      expect(localStorage.getItem('token')).toBe('mock-token');
     });
     test('проверяем ошибку обновления пользователя', () => {
       const errorMessage = 'Ошибка обновления данных';

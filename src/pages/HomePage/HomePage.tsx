@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import styles from './HomePage.module.css';
 
-import { useDispatch } from '@/app/store';
+import { useAppDispatch } from '@/app/store';
 import { fetchUsers } from 'src/entities/User/thunks/usersThunks';
 import { fetchSkills } from 'src/entities/Skill/thunks/skillsThunk';
 
@@ -10,7 +10,7 @@ import { fetchSkills } from 'src/entities/Skill/thunks/skillsThunk';
 import { CardsFeed } from '@/widgets/CardsFeed';
 
 export const HomePage = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchUsers()); // Загружаем список пользователей при монтировании компонента

@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ModalUI } from './Modal';
 import type { TModalUIProps } from './types';
 import { Button } from '../Button';
-import mockData from '../../../api/mockData.json';
+import mockData from '@/api/mockData.json';
+import type { IMockData, ISkill, IUser } from '@/api/types';
 import { AsideGallery } from './ModalAsideGallery';
 
 type Story = StoryObj<typeof ModalUI>;
@@ -29,7 +30,7 @@ function WithToggle({
   );
 }
 
-const fallback = {
+const fallback: ISkill & { description: string } = {
   id: 0,
   title: 'Навык',
   category: '',
@@ -38,12 +39,14 @@ const fallback = {
   description: ''
 };
 
-//можно выбрать любой из навыков из mockApi дял демонстрации
-const skill = (mockData as any).skills?.[12] ?? fallback;
-const teacher =
-  (mockData as any).users?.find?.((u: any) => u.teachingSkillId === skill.id) ??
-  null;
-const desc: string = skill.description ?? teacher?.about ?? '';
+const typedMockData = mockData as IMockData;
+
+const skill: ISkill = typedMockData.skills?.[12] ?? fallback;
+
+const teacher: IUser | null =
+  typedMockData.users?.find((u) => u.teachingSkillId === skill.id) ?? null;
+
+const desc: string = teacher?.about ?? '';
 
 export const Success: Story = {
   name: 'Успех',
