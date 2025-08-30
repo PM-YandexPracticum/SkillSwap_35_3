@@ -1,7 +1,6 @@
 import { CardProps } from './types';
 import { Button, Tag, Avatar } from '@/shared/ui';
-import { useAge } from '@/shared/hooks';
-import { useToggleLike } from '@/shared/hooks';
+import { useAge, useToggleLike } from '@/shared/hooks';
 
 import styles from './Card.module.css';
 

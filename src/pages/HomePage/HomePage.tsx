@@ -9,7 +9,7 @@ import { fetchSkills } from 'src/entities/Skill/thunks/skillsThunk';
 //import { FiltersPanel } from '@/widgets/CardsFeed';
 import { CardsFeed } from '@/widgets/CardsFeed';
 
-export const HomePage = () => {
+const HomePage = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {

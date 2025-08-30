@@ -1,13 +1,13 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button, Icon, Input, Logo, AllSkillsModal, Avatar } from '@/shared/ui';
 import styles from './Header.module.css';
 import { HeaderProps } from './types';
 import { Link, useNavigate } from 'react-router-dom';
-import { useClickOutside } from '@/shared/hooks/useClickOutside';
-import { ActionBar } from '../ActionBar';
-import { useActionBarButtons } from '@/shared/hooks/useActionBarButtons';
+import { useClickOutside, useActionBarButtons } from '@/shared/hooks';
+import { ActionBar } from '@/widgets';
 import { selectIsAuthenticated, selectAuthUser } from '@/features/auth';
 import { useSelector } from '@/app/store';
+import { pathConstants } from '@/shared/lib/constants/paths';
 
 export const Header = ({
   className = '',
@@ -41,6 +41,14 @@ export const Header = ({
 
   // Используем хук для получения конфигурации кнопок
   const actionBarButtons = useActionBarButtons();
+
+  const handleLoginClick = () => {
+    navigate(pathConstants.LOGIN);
+  };
+
+  const handleRegisterClick = () => {
+    navigate(pathConstants.REGISTER);
+  };
 
   return (
     <header
@@ -103,10 +111,10 @@ export const Header = ({
         </div>
       ) : (
         <div className={styles['header__buttons']}>
-          <Button type='secondary' size='small'>
+          <Button type='secondary' size='small' onClick={handleLoginClick}>
             Войти
           </Button>
-          <Button type='primary' size='small'>
+          <Button type='primary' size='small' onClick={handleRegisterClick}>
             Зарегистрироваться
           </Button>
         </div>
