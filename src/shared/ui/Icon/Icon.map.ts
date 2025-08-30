@@ -42,6 +42,12 @@ export const iconMap: Record<IconName, SvgIconComponent> = {
   'google-icon': Icons.GoogleIcon,
   'apple-icon': Icons.AppleIcon,
 
+  //Профиль
+  'idea-icon': Icons.IdeaIcon,
+  'message-text-icon': Icons.MessageTextIcon,
+  'request-icon': Icons.RequestIcon,
+  'user-icon': Icons.UserIcon,
+
   // Другое
   'user-circle-icon': Icons.UserCircleIcon,
   'logo-icon': Icons.LogoIcon
