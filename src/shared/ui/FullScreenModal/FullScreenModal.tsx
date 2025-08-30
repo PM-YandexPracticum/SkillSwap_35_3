@@ -18,8 +18,8 @@ export const FullScreenModal = ({
   }, closeOnEsc && isOpen);
 
   return (
-    <div className={styles.modalFullScreen}>
-      <div className={styles.modalFullScreen__header}>
+    <div className={styles.modal__fullscreen} role='dialog' aria-modal='true'>
+      <div className={styles['modal__fullscreen-header']}>
         <Logo />
         <Button
           icon={<Icon name={'close-icon'}></Icon>}
@@ -31,7 +31,7 @@ export const FullScreenModal = ({
           Закрыть
         </Button>
       </div>
-      <div className={styles.modalFullScreen__content}>{children}</div>
+      <div className={styles['modal__fullscreen-content']}>{children}</div>
     </div>
   );
 };

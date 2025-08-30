@@ -1,4 +1,4 @@
-.modalFullScreen {
+.modal__fullscreen {
     position: fixed;
     z-index: 2;
     inset: 0;
@@ -8,14 +8,14 @@
     flex-direction: column;
 }
 
-.modalFullScreen__header {
+.modal__fullscreen-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: end;
 }
 
-.modalFullScreen__content {
+.modal__fullscreen-content {
     max-width: 1150px;
     align-self: center
 }
