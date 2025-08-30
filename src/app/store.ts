@@ -6,6 +6,7 @@ import authReducer from '@/features/auth/slices/authSlice';
 import likesReducer, {
   initializeLikes
 } from '@/features/favorites/slices/likeSlice';
+import fileUploadReducer from '@/features/drag-and-drop/slices/fileUploadSlice';
 import {
   likesMiddleware,
   loadLikesFromStorage
@@ -22,7 +23,8 @@ export const rootReducer = combineReducers({
   skills: skillsReducer,
   filters: filtersReducer,
   auth: authReducer,
-  likes: likesReducer
+  likes: likesReducer,
+  fileUpload: fileUploadReducer
 });
 
 const store = configureStore({
