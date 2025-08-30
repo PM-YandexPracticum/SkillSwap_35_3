@@ -43,11 +43,11 @@ export const Header = ({
   const actionBarButtons = useActionBarButtons();
 
   const handleLoginClick = () => {
-    navigate(pathConstants.LOGIN);
+    navigate(pathConstants.LOGIN, { state: { background: location } });
   };
 
   const handleRegisterClick = () => {
-    navigate(pathConstants.REGISTER);
+    navigate(pathConstants.REGISTER, { state: { background: location } });
   };
 
   return (

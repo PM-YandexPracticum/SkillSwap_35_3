@@ -1,5 +1,6 @@
-import { type RouteProps, Navigate } from 'react-router-dom';
+import { type RouteObject, Navigate } from 'react-router-dom';
 import { lazy } from 'react';
+import { OnlyAuth, OnlyUnAuth } from '../ProtectedRoute';
 import { pathConstants } from '@/shared/lib/constants/paths';
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
@@ -9,6 +10,7 @@ const ErrorPage = lazy(() => import('@/pages/ErrorPage'));
 // const RegistrationPage = lazy(() => import('@/pages/RegistrationPage'));
 // const CardDetailPage = lazy(() => import('@/pages/CardDetailedPage'));
 // const ProfilePage = lazy(() => import('@/pages/ProfilePage'));
+// const ProfileFavoritesPage = lazy (() => import('@/pages/ProfileFavoritesPage));
 
 const placeholderStyles: React.CSSProperties = {
   display: 'flex',
@@ -31,25 +33,13 @@ const Placeholder = () => (
   <div style={placeholderStyles}>Страница в разработке</div>
 );
 
-export const routeConfig: RouteProps[] = [
+export const routeConfig: RouteObject[] = [
   {
     path: pathConstants.MAIN,
     element: <HomePage />
   },
   {
-    path: pathConstants.REGISTER,
-    element: <Placeholder />
-  },
-  {
-    path: pathConstants.LOGIN,
-    element: <Placeholder />
-  },
-  {
-    path: pathConstants.CARD,
-    element: <Placeholder />
-  },
-  {
-    path: pathConstants.PROFILE,
+    path: pathConstants.CARD_DETAIL,
     element: <Placeholder />
   },
   {
@@ -57,7 +47,44 @@ export const routeConfig: RouteProps[] = [
     element: <ErrorPage />
   },
   {
+    path: pathConstants.PROFILE,
+    element: <OnlyAuth component={<Placeholder />} />, // Заменить на реальную страницу
+    children: [
+      {
+        index: true,
+        element: <Placeholder /> // Заменить на реальную страницу
+      },
+      {
+        path: pathConstants.PROFILE_APPLICATIONS,
+        element: <Placeholder /> // Заменить на реальную страницу
+      },
+      {
+        path: pathConstants.PROFILE_EXCHANGES,
+        element: <Placeholder /> // Заменить на реальную страницу
+      },
+      {
+        path: pathConstants.PROFILE_FAVORITES,
+        element: <Placeholder /> // Заменить на реальную страницу
+      },
+      {
+        path: pathConstants.PROFILE_SKILLS,
+        element: <Placeholder /> // Заменить на реальную страницу
+      }
+    ]
+  },
+  {
     path: pathConstants.NOT_FOUND,
     element: <Navigate to='/error/404' replace />
+  }
+];
+
+export const modalRoutesConfig: RouteObject[] = [
+  {
+    path: pathConstants.LOGIN,
+    element: <OnlyUnAuth component={<Placeholder />} /> // Заменить на реальную страницу
+  },
+  {
+    path: pathConstants.REGISTER,
+    element: <OnlyUnAuth component={<Placeholder />} /> // Заменить на реальную страницу
   }
 ];
