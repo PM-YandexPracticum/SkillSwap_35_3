@@ -17,9 +17,8 @@ export const Card = ({
   //const isAuth - проверка авторизации для лайка
 
   const { isLiked, toggle } = useToggleLike({
-    defaultLiked: false, //
+    itemId: user.id.toString(),
     onToggle: (liked) => {
-      // ЗАМЕНИТЬ потенциально на полноценную реализацию хранения лайков
       console.log('Card liked:', liked);
     }
   });
