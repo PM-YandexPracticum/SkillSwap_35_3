@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '@/app/store';
+import { logout } from '@/features/auth/slices/authSlice';
 
 interface LikeState {
   likes: Record<string, boolean>;
@@ -33,6 +34,11 @@ const likeSlice = createSlice({
     clearAllLikes: (state) => {
       state.likes = {};
     }
+  },
+  extraReducers: (builder) => {
+    builder.addCase(logout, (state) => {
+      state.likes = {};
+    });
   }
 });
 

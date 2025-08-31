@@ -1,7 +1,15 @@
 import { Middleware } from '@reduxjs/toolkit';
 import { RootState } from '@/app/store';
 
+interface LikeState {
+  likes: Record<string, boolean>;
+}
+
 const LIKES_STORAGE_KEY = 'skillswap-likes';
+
+const getLikesStorageKey = (userId?: number | string) => {
+  return userId ? `skillswap-likes-${userId}` : 'skillswap-likes';
+};
 
 export const likesMiddleware: Middleware<Record<string, never>, RootState> =
   (store) => (next) => (action) => {
@@ -16,6 +24,9 @@ export const likesMiddleware: Middleware<Record<string, never>, RootState> =
     ) {
       const state = store.getState();
       const likesState = state.likes;
+      const userId = state.auth.user?.id;
+
+      saveLikesToStorage(likesState, userId);
 
       try {
         localStorage.setItem(LIKES_STORAGE_KEY, JSON.stringify(likesState));
@@ -30,9 +41,12 @@ export const likesMiddleware: Middleware<Record<string, never>, RootState> =
     return result;
   };
 
-export const loadLikesFromStorage = (): Record<string, boolean> => {
+export const loadLikesFromStorage = (
+  userId?: number | string
+): Record<string, boolean> => {
   try {
-    const stored = localStorage.getItem(LIKES_STORAGE_KEY);
+    const key = getLikesStorageKey(userId);
+    const stored = localStorage.getItem(key);
     if (stored) {
       const parsed = JSON.parse(stored);
       return parsed.likes || {};
@@ -45,6 +59,18 @@ export const loadLikesFromStorage = (): Record<string, boolean> => {
   }
 
   return {};
+};
+
+export const saveLikesToStorage = (
+  likesState: LikeState,
+  userId?: number | string
+) => {
+  try {
+    const key = getLikesStorageKey(userId);
+    localStorage.setItem(key, JSON.stringify(likesState));
+  } catch (error) {
+    console.warn('Не удалось сохранить лайки:', error);
+  }
 };
 
 export const clearLikesFromStorage = (): void => {

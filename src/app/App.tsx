@@ -1,9 +1,19 @@
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { Suspense, useEffect } from 'react';
 import {
   routeConfig,
   modalRoutesConfig
 } from './providers/router/config/routeConfig';
+import {
+  selectIsAuthenticated,
+  selectAuthUser
+} from '@/features/auth/selectors/authSelectors';
+import {
+  initializeLikes,
+  clearAllLikes
+} from '@/features/favorites/slices/likeSlice';
+import { loadLikesFromStorage } from '@/features/favorites/middleware/likesMiddleware';
 import { AppLayout } from './AppLayout';
 import { FullScreenModal } from '@/shared/ui';
 import LoginPage from '@/pages/LoginPage';
@@ -17,6 +27,9 @@ const RegistrationPage = () => (
 export const App = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const user = useSelector(selectAuthUser);
 
   const background = location.state && location.state.background;
 
@@ -28,6 +41,15 @@ export const App = () => {
       document.body.style.overflow = 'unset';
     };
   }, [background]);
+
+  useEffect(() => {
+    if (isAuthenticated && user?.id) {
+      const likes = loadLikesFromStorage(user.id);
+      dispatch(initializeLikes(likes));
+    } else {
+      dispatch(clearAllLikes());
+    }
+  }, [isAuthenticated, user?.id, dispatch]);
 
   const handleCloseModal = () => {
     navigate(-1);
