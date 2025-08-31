@@ -1,4 +1,4 @@
-import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import { CardsFeed } from './CardsFeed';
 import mockData from '@/api/mockData.json';
 import { IUser } from '@/api/types';
@@ -14,5 +14,7 @@ export default {
 };
 
 export const Default = () => (
-  <CardsFeed usersData={usersTyped} skillsData={mockData.skills} />
+  <MemoryRouter>
+    <CardsFeed usersData={usersTyped} skillsData={mockData.skills} />
+  </MemoryRouter>
 );

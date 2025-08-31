@@ -12,4 +12,5 @@ export * from './Tag';
 export * from './Icon';
 export * from './AllSkillsModal';
 export * from './ErrorCard';
-export * from './Loader'
+export * from './Loader';
+export * from './Gallery';
