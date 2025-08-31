@@ -108,6 +108,7 @@ export const CardsFeed = ({ usersData, skillsData }: ICardsFeedProps) => {
           next={fetchMoreRecommended}
           hasMore={visibleRecommended.length < recommendedUsers.length}
           loader={<div>Загрузка...</div>}
+          style={{ overflow: 'unset' }}
         >
           <div className={styles['cards-feed__list']}>
             {visibleRecommended.map((user) => (
