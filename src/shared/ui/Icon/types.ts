@@ -25,6 +25,7 @@ export type IconName =
   | 'like-icon-fill'
   | 'more-square-icon'
   | 'gallery-add-icon'
+  | 'logout-icon'
 
   // Инпуты
   | 'add-avatar-icon'

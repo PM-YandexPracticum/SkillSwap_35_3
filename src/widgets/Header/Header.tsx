@@ -1,13 +1,23 @@
 import { useRef, useState } from 'react';
-import { Button, Icon, Input, Logo, AllSkillsModal, Avatar } from '@/shared/ui';
+import {
+  Button,
+  Icon,
+  Input,
+  Logo,
+  AllSkillsModal,
+  Avatar,
+  UserMenu
+} from '@/shared/ui';
 import styles from './Header.module.css';
 import { HeaderProps } from './types';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useClickOutside, useActionBarButtons } from '@/shared/hooks';
 import { ActionBar } from '@/widgets';
 import { selectIsAuthenticated, selectAuthUser } from '@/features/auth';
+import { logout } from '@/features/auth/slices/authSlice';
 import { useSelector } from '@/app/store';
 import { pathConstants } from '@/shared/lib/constants/paths';
+import { useDispatch } from 'react-redux';
 
 export const Header = ({
   className = '',
@@ -17,8 +27,12 @@ export const Header = ({
   'data-cy': dataCy
 }: HeaderProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const userMenuRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -28,8 +42,22 @@ export const Header = ({
       setIsModalOpen(false);
     }
   });
+
+  useClickOutside([userMenuRef], {
+    onClickOutside: () => {
+      setIsUserMenuOpen(false);
+    }
+  });
+
   const handleSkillsClick = () => {
     setIsModalOpen(!isModalOpen);
+  };
+
+  const handleAvatarClick = () => setIsUserMenuOpen((prev) => !prev);
+
+  const handleProfileClick = () => {
+    navigate('/profile');
+    setIsUserMenuOpen(false);
   };
 
   // Используем селекторы для получения состояния аутентификации
@@ -45,6 +73,11 @@ export const Header = ({
 
   const handleRegisterClick = () => {
     navigate(pathConstants.REGISTER, { state: { background: location } });
+  };
+
+  const handleLogoutClick = () => {
+    dispatch(logout());
+    setIsUserMenuOpen(false);
   };
 
   return (
@@ -100,7 +133,16 @@ export const Header = ({
             src={user?.avatar || ''}
             alt={user?.name || 'Пользователь'}
             className={styles['header__user-avatar']}
+            onClick={handleAvatarClick}
           />
+          {isUserMenuOpen && (
+            <div ref={userMenuRef} className={styles['header__user-menu']}>
+              <UserMenu
+                onProfile={handleProfileClick}
+                onLogout={handleLogoutClick}
+              />
+            </div>
+          )}
         </div>
       ) : (
         <div className={styles['header__buttons']}>
