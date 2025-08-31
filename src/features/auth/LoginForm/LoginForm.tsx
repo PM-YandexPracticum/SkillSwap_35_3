@@ -18,51 +18,49 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   onSwitchToRegister
 }) => {
   const dispatch = useDispatch<AppDispatch>();
-  // Получать состояние загрузки (isLoading) и ошибки (authError) из стора с помощью селекторов selectAuthIsLoading и selectAuthError.
+  // состояние загрузки и серверной ошибки из стора
   const isLoading = useSelector(selectAuthIsLoading);
   const serverError = useSelector(selectAuthError);
 
-  // useState для хранения email и password
+  // локальные поля формы
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  // локальные стейты ошибок валидации
+  // локальные ошибки валидации
   const [emailError, setEmailError] = useState<string | undefined>(undefined);
   const [passwordError, setPasswordError] = useState<string | undefined>(
     undefined
   );
 
-  // общая ошибка сервера (можно переиспользовать serverError напрямую)
+  // локальная серверная ошибка (копия из стора для гибкого управления)
   const [authError, setAuthError] = useState<string | null>(null);
 
-  // Очистка серверной ошибки при изменении полей
+  // синхронизация серверной ошибки из стора
   useEffect(() => {
     if (serverError) {
-      // отражаем серверную ошибку в локальной копии, чтобы можно сбросить вручную
       setAuthError(serverError);
     } else {
-      // если серверная ошибка исчезла в сторе, очистим локально
       setAuthError(null);
     }
   }, [serverError]);
 
-  // Валидация простая: формат email и непустой пароль
+  // простая валидация email
   const isEmailValid = useMemo(() => {
     if (!email) return false;
-    // простой regex для email
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
   }, [email]);
 
+  // текущая валидная форма
   const isFormValid = useMemo(() => {
     return !!email && !!password && isEmailValid;
   }, [email, password, isEmailValid]);
 
-  // Обработчики изменений с сбросом ошибок локально
+  // обработчики изменений с сбросом локальных ошибок
   const handleEmailChange = (value: string) => {
     setEmail(value);
     if (emailError) setEmailError(undefined);
-    if (authError) setAuthError(null); // оставить как есть, если authError будет string | null
+    if (authError) setAuthError(null);
   };
 
   const handlePasswordChange = (value: string) => {
@@ -74,6 +72,11 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   // основной обработчик сабмита
   const handleSubmit = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
+
+    // сброс предшествующих ошибок перед новой валидацией
+    setEmailError(undefined);
+    setPasswordError(undefined);
+    setAuthError(null);
 
     // локальная валидация перед отправкой
     let hasError = false;
@@ -93,11 +96,9 @@ export const LoginForm: React.FC<LoginFormProps> = ({
     if (hasError) return;
 
     try {
-      // отправка логина через thunk
       await dispatch(loginUserThunk({ email, password })).unwrap();
       onLoginSuccess?.();
     } catch (err) {
-      // локальное отображение ошибки (серверная ошибка уже может быть в authError)
       const msg =
         typeof err === 'string'
           ? err
@@ -106,8 +107,8 @@ export const LoginForm: React.FC<LoginFormProps> = ({
     }
   };
 
-  // Список пропсов для универсальной формы
   const formTopContent = null;
+
   const formBottomContent = (
     <div style={{ marginTop: 8 }}>
       <button
@@ -122,8 +123,6 @@ export const LoginForm: React.FC<LoginFormProps> = ({
 
   return (
     <div title='Вход в аккаунт'>
-      {' '}
-      {/* если StepCard требует другие пропсы, адаптируйте */}
       <AuthCredentialsForm
         option='login'
         email={email}
@@ -158,16 +157,42 @@ export const LoginForm: React.FC<LoginFormProps> = ({
             )}
           </>
         }
-      ></AuthCredentialsForm>
-      {/* StepCard */}
-      <StepCard></StepCard>
+      />
+      <StepCard />
     </div>
   );
 };
+
 
 /* 
 - пропсы: onLoginSuccess?: () => void; onSwitchToRegister?: () => void;
 - используется loginUserThunk, селекторы selectAuthIsLoading и selectAuthError
 - поля email и password хранятся в локальном state
 - ошибки валидации и серверные отображаются
-- при наборе текста ошибки очищаются*/
+- при наборе текста ошибки очищаются*
+
+1. Тебе надо использовать useState для хранения email и password
+2. Проверять поля на пустоту и корректность формата email перед отправкой (валидация).
+3. Получать состояние загрузки (isLoading) и ошибки (authError) из стора с помощью селекторов selectAuthIsLoading и selectAuthError.
+    Отправлять асинхронный запрос loginUserThunk при сабмите формы.
+4. Отображать как ошибки валидации, так и ошибки, пришедшие с сервера.
+5. Собрать итоговый интерфейс из универсального AuthCredentialsForm и StepCard.
+
+Самое важное - тебе надо сделать пропсы для формы:
+onLoginSuccess?: () => void; // Функция, которая будет вызвана при успехе
+onSwitchToRegister?: () => void; // Для кнопки "Зарегистрироваться"
+
+Ты подключаешь нужные данные через диспач и селекторы. Используешь state для хранения значения логина и пароля, а также для хранения ошибок. 
+Через useEffect отображаешь серверную ошибку. Нужны обработчики полей для сброса ошибок при наборе текста (handleEmailChange, handlePasswordChange).
+Реализуешь основной обработчик отправки формы (handleSubmit = async () =>), который сбрасывает предыдущие ошибки, делает валидацию (email не пустой, имеет корректный формат, пароль не пустой).
+Вызываешь thunk для логина 
+try {
+      await dispatch(loginUserThunk({ email, password })).unwrap();
+      onLoginSuccess?.(); // логика редиректа через пропс
+    } catch (err) {
+      console.error('Ошибка входа:', err);
+    }
+  };
+
+Далее готовишь topContent и bottomContent через const. В bottomContent передаешь как раз кнопку зарегистрироваться с пропсом onClick={onSwitchToRegister}
+И потом рендеришь контент из двух компонентов в див-блоке (1й компонент форма Саши, второй StepCard с передачей нужного содержимого из констант) */
