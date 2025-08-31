@@ -1,10 +1,10 @@
 @import '@/app/styles/_variables.css';
 
 .loginform {
- display: grid;
- grid-template-columns: 1fr 1fr;
- margin: auto;
+ display: flex;
+ flex-direction: row;
  gap: 24px;
+ justify-content: center;
 }
 
 .loginform__registerButton {
@@ -19,7 +19,7 @@
 
 .loginform__social-button {
   width: 100%;
-  max-width: 480px;
+  max-width: 436px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -43,4 +43,8 @@
   padding: 0;
   font: inherit;
   text-decoration: none;
+}
+
+.loginform__footer-switch-btn:hover {
+  text-decoration: underline;
 }

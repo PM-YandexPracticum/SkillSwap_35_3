@@ -1,4 +1,82 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React from 'react';
+import { AuthCredentialsForm } from '@/shared/ui/AuthCredentialsForm/AuthCredentialsForm';
+import { StepCard } from '@/shared/ui/StepCard';
+import { steps } from '@/shared/lib/constants/steps';
+import { Button } from '@/shared/ui';
+
+import styles from './LoginForm.module.css';
+
+export const LoginForm: React.FC = () => {
+  const formTopContent = (
+    <div className={styles['loginform__social']}>
+      <Button
+        type='secondary'
+        size='large'
+        fullWidth
+        iconName='google-icon'
+        className={styles['loginform__social-button']}
+      >
+        Продолжить с Google
+      </Button>
+      <Button
+        type='secondary'
+        size='large'
+        fullWidth
+        iconName='apple-icon'
+        className={styles['loginform__social-button']}
+      >
+        Продолжить с Apple
+      </Button>
+    </div>
+  );
+
+  const formBottomContent = (
+    <div className={styles['loginform__footer-switch']}>
+      <button
+        type='button'
+        aria-label='Зарегистрироваться'
+        className={styles['loginform__footer-switch-btn']}
+      >
+        Зарегистрироваться
+      </button>
+    </div>
+  );
+
+  return (
+    <div title='Вход в аккаунт' className={styles.loginform}>
+      <AuthCredentialsForm
+        option='login'
+        email=''
+        password=''
+        onEmailChange={() => {}}
+        onPasswordChange={() => {}}
+        onSubmit={() => {}}
+        emailError={undefined}
+        passwordError={undefined}
+        emailLabel='Email'
+        passwordLabel='Пароль'
+        emailPlaceholder='name@example.com'
+        passwordPlaceholder='Ваш пароль'
+        submitText='Войти'
+        passwordHint='Используйте ваш пароль'
+        passwordAutoComplete='current-password'
+        loading={false}
+        className=''
+        topContent={formTopContent}
+        bottomContent={formBottomContent}
+        disabled={true}
+      />
+
+      <StepCard
+        title={steps.welcomeBack.title}
+        description={steps.welcomeBack.description}
+        imageSrc={steps.welcomeBack.imageSrc}
+      />
+    </div>
+  );
+};
+
+/* import React, { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 //import { useLocation, useNavigate } from 'react-router-dom';
 import { loginUserThunk } from '@/features/auth/thunks/authThunks';
@@ -106,7 +184,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
     }
   };
 
-  const formTopContent = () => (
+  const formTopContent = (
     <div>
       <div className={styles['loginform__social']}>
         <Button
@@ -165,7 +243,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
         loading={isLoading}
         className=''
         topContent={formTopContent}
-        bottomContent={<> {formBottomContent} </>}
+        bottomContent={formBottomContent}
         disabled={isLoading || !isFormValid}
       />
 
