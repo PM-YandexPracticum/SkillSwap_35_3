@@ -12,7 +12,7 @@ import { StepCard } from '@/shared/ui/StepCard';
 import { steps } from '@/shared/lib/constants/steps';
 import { Button } from '@/shared/ui';
 
-import styles from './LoginForm.module.css';\
+import styles from './LoginForm.module.css';
 
 import type { AppDispatch } from '@/app/store';
 
@@ -62,9 +62,7 @@ export const LoginForm = ({
   }, [email]);
 
   // Проверка валидности формы
-  const isFormValid = useMemo(() => {
-    return !!email && !!password && isEmailValid;
-  }, [email, password, isEmailValid]);
+  const isFormValid = !!email && !!password && isEmailValid;
 
   // Обработчик изменения email
   const handleEmailChange = (value: string) => {
@@ -110,6 +108,7 @@ export const LoginForm = ({
       await dispatch(loginUserThunk({ email, password })).unwrap();
       onLoginSuccess?.();
     } catch (err) {
+      setPasswordError('Неверный email или пароль');
     }
   };
 
@@ -134,15 +133,11 @@ export const LoginForm = ({
       >
         Продолжить с Apple
       </Button>
-    </div>
-  );
-
-  //children
-  const formDevider = (
-    <div className={styles['loginform__divider']} aria-hidden='true'>
-      <span />
-      <span>или</span>
-      <span />
+      <div className={styles['loginform__divider']} aria-hidden='true'>
+        <span />
+        <span>или</span>
+        <span />
+      </div>
     </div>
   );
 
@@ -179,9 +174,9 @@ export const LoginForm = ({
         passwordAutoComplete='current-password'
         loading={isLoading}
         topContent={formTopContent}
-        children={formDevider}
         bottomContent={formBottomContent}
-        disabled={isLoading || !isFormValid}
+        disabled={isLoading}
+        isFormValid={isFormValid}
       />
 
       <StepCard

@@ -23,5 +23,6 @@ export interface AuthFormProps {
   className?: string;
   topContent?: ReactNode;
   children?: ReactNode;
+  isFormValid?: boolean;
   bottomContent?: ReactNode;
 }

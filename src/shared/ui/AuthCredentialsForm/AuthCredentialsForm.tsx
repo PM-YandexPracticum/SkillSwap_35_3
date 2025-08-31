@@ -23,6 +23,8 @@ export const AuthCredentialsForm = ({
   loading,
   topContent,
   children,
+  className,
+  isFormValid,
   bottomContent
 }: AuthFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -133,7 +135,7 @@ export const AuthCredentialsForm = ({
               size='medium'
               htmlType='submit'
               fullWidth
-              disabled={isDisabled}
+              disabled={loading || !isFormValid}
               className={styles['auth-form__actions-button']}
             >
               {submitText}

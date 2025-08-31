@@ -6,12 +6,10 @@ import {
 } from './providers/router/config/routeConfig';
 import { AppLayout } from './AppLayout';
 import { FullScreenModal } from '@/shared/ui';
+import LoginPage from '@/pages/LoginPage';
 
 import './styles/index.css';
 
-const LoginPage = () => (
-  <div style={{ padding: '40px' }}>Содержимое страницы логина</div>
-);
 const RegistrationPage = () => (
   <div style={{ padding: '40px' }}>Содержимое страницы регистрации</div>
 );

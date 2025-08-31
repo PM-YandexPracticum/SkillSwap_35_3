@@ -1,12 +1,11 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import cn from 'classnames';
 import styles from './LoginPage.module.css';
 
 import { Title } from '@/shared/ui/Title';
 import { LoginForm } from '@/features/auth/LoginForm/LoginForm';
 
-const LoginPage = () => {
+const LoginPage = ({ padded = false }) => {
   const navigate = useNavigate();
 
   const handleLoginSuccess = () => {
@@ -14,7 +13,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className={styles.loginpage}>
+    <div className={cn(styles.loginpage, padded && styles.padded)}>
       <Title as='h2' size='lg'>
         Вход
       </Title>
