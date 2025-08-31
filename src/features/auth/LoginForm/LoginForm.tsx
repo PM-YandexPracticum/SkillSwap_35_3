@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+//import { useLocation, useNavigate } from 'react-router-dom';
 import { loginUserThunk } from '@/features/auth/thunks/authThunks';
 import {
   selectAuthIsLoading,
@@ -8,34 +9,32 @@ import {
 
 import { AuthCredentialsForm } from '@/shared/ui/AuthCredentialsForm/AuthCredentialsForm';
 import { StepCard } from '@/shared/ui/StepCard';
+import { steps } from '@/shared/lib/constants/steps';
+import { Button } from '@/shared/ui';
 
 import type { AppDispatch } from '@/app/store';
 
 import { LoginFormProps } from './types';
+import styles from './LoginForm.module.css';
 
 export const LoginForm: React.FC<LoginFormProps> = ({
   onLoginSuccess,
   onSwitchToRegister
 }) => {
   const dispatch = useDispatch<AppDispatch>();
-  // состояние загрузки и серверной ошибки из стора
   const isLoading = useSelector(selectAuthIsLoading);
   const serverError = useSelector(selectAuthError);
 
-  // локальные поля формы
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  // локальные ошибки валидации
   const [emailError, setEmailError] = useState<string | undefined>(undefined);
   const [passwordError, setPasswordError] = useState<string | undefined>(
     undefined
   );
 
-  // локальная серверная ошибка (копия из стора для гибкого управления)
   const [authError, setAuthError] = useState<string | null>(null);
 
-  // синхронизация серверной ошибки из стора
   useEffect(() => {
     if (serverError) {
       setAuthError(serverError);
@@ -102,19 +101,43 @@ export const LoginForm: React.FC<LoginFormProps> = ({
       const msg =
         typeof err === 'string'
           ? err
-          : 'Не удалось войти. Проверьте данные и повторите попытку.';
+          : 'Email или пароль введён неверно. Пожалуйста проверьте правильность введённых данных.';
       setAuthError(msg);
     }
   };
 
-  const formTopContent = null;
+  const formTopContent = () => (
+    <div>
+      <div className={styles['loginform__social']}>
+        <Button
+          type='secondary'
+          size='large'
+          fullWidth
+          iconName='google-icon'
+          className={styles['loginform__social-button']}
+        >
+          Продолжить с Google
+        </Button>
+        <Button
+          type='secondary'
+          size='large'
+          fullWidth
+          iconName='apple-icon'
+          className={styles['loginform__social-button']}
+        >
+          Продолжить с Apple
+        </Button>
+      </div>
+    </div>
+  );
 
   const formBottomContent = (
-    <div style={{ marginTop: 8 }}>
+    <div className={styles['loginform__footer-switch']}>
       <button
         type='button'
         onClick={onSwitchToRegister}
         aria-label='Зарегистрироваться'
+        className={styles['loginform__footer-switch-btn']}
       >
         Зарегистрироваться
       </button>
@@ -122,7 +145,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   );
 
   return (
-    <div title='Вход в аккаунт'>
+    <div title='Вход в аккаунт' className={styles.loginform}>
       <AuthCredentialsForm
         option='login'
         email={email}
@@ -139,32 +162,38 @@ export const LoginForm: React.FC<LoginFormProps> = ({
         submitText={isLoading ? 'Вход...' : 'Войти'}
         passwordHint='Используйте ваш пароль'
         passwordAutoComplete='current-password'
-        disabled={false}
         loading={isLoading}
         className=''
         topContent={formTopContent}
-        bottomContent={
-          <>
-            {formBottomContent}
-            {authError && (
-              <div
-                role='alert'
-                aria-live='polite'
-                style={{ color: 'var(--color-error)', marginTop: 8 }}
-              >
-                {authError}
-              </div>
-            )}
-          </>
-        }
+        bottomContent={<> {formBottomContent} </>}
+        disabled={isLoading || !isFormValid}
       />
-      <StepCard />
+
+      <StepCard
+        title={steps.welcomeBack.title}
+        description={steps.welcomeBack.description}
+        imageSrc={steps.welcomeBack.imageSrc}
+      />
     </div>
   );
 };
 
-
 /* 
+
+export const LoginForm: React.FC<LoginFormProps> = ({
+ onLoginSuccess, onSwitchToRegister }) => { const dispatch = useDispatch<AppDispatch>(); const isLoading = useSelector(selectAuthIsLoading); const serverError = useSelector(selectAuthError);
+
+// для редиректа const location = useLocation(); const navigate = useNavigate();
+
+// seed mock-пользователя в localStorage (если ещё нет) useEffect(() => { try { const stored = localStorage.getItem('mock_users'); if (!stored) { const initial = [ { email: 'user@example.com', password: '123456' } ]; localStorage.setItem('mock_users', JSON.stringify(initial)); } } catch { // игнорируем ошибки локального хранилища } }, []);
+
+// текущие поля и состояния (уже есть)
+
+// после успешной аутентификации редирект const handleLoginSuccessAndRedirect = () => { // если был предшедший location.state.from.pathname const fromPath = (location.state as any)?.from?.pathname; navigate(fromPath || '/', { replace: true }); };
+
+// Основной блок handleSubmit const handleSubmit = async (e?: React.FormEvent) => { if (e) e.preventDefault();
+
+
 - пропсы: onLoginSuccess?: () => void; onSwitchToRegister?: () => void;
 - используется loginUserThunk, селекторы selectAuthIsLoading и selectAuthError
 - поля email и password хранятся в локальном state
