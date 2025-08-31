@@ -1,7 +1,6 @@
 import { ActionBar } from '@/widgets';
-import { Button, Title, Gallery } from '@/shared/ui';
-/* import { useToggleLike } from '@/shared/hooks'; */
-import { IconName } from '@/shared/ui';
+import { Button, Title, Gallery, IconName } from '@/shared/ui';
+import { useToggleLike } from '@/shared/hooks';
 import { CardDetailProps } from './types';
 
 import styles from './CardDetail.module.css';
@@ -13,22 +12,26 @@ export const CardDetail = ({ skill }: CardDetailProps) => {
 
   const { title, category, subcategory, description, images = [] } = skill;
 
+  const { isLiked, toggle } = useToggleLike({
+    itemId: skill.id.toString()
+  });
+
   const actionBarButtons = [
     {
       iconName: 'like-icon' as IconName,
       iconNameActive: 'like-icon-fill' as IconName,
-      active: false,
-      onClick: () => console.log('Лайк'),
+      active: isLiked,
+      onClick: toggle,
       ariaLabel: 'Добавить в избранное'
     },
     {
       iconName: 'share-icon' as IconName,
-      onClick: () => console.log('Поделиться'),
+      onClick: () => {},
       ariaLabel: 'Поделиться'
     },
     {
       iconName: 'more-square-icon' as IconName,
-      onClick: () => console.log('Дополнительные действия'),
+      onClick: () => {},
       ariaLabel: 'Дополнительные действия'
     }
   ];
