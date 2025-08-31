@@ -1,10 +1,12 @@
 import { useCallback } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAppDispatch, useSelector } from '@/app/store';
 import {
   toggleLike,
   selectIsLiked
 } from '@/features/favorites/slices/likeSlice';
 import { selectIsAuthenticated } from '@/features/auth/selectors/authSelectors';
+import { pathConstants } from '@/shared/lib/constants/paths';
 
 interface toggleLikeProps {
   itemId: string;
@@ -14,11 +16,13 @@ interface toggleLikeProps {
 export const useToggleLike = ({ itemId, onToggle }: toggleLikeProps) => {
   const dispatch = useAppDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
+  const navigate = useNavigate();
+  const location = useLocation();
   const isLiked = useSelector(selectIsLiked(itemId));
 
   const toggle = useCallback(() => {
     if (!isAuthenticated) {
-      alert('Пожалуйста, авторизуйтесь, чтобы добавлять в избранное');
+      navigate(pathConstants.LOGIN, { state: { background: location } });
       return;
     }
 

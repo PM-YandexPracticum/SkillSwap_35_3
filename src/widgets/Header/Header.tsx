@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { Button, Icon, Input, Logo, AllSkillsModal, Avatar } from '@/shared/ui';
 import styles from './Header.module.css';
 import { HeaderProps } from './types';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useClickOutside, useActionBarButtons } from '@/shared/hooks';
 import { ActionBar } from '@/widgets';
 import { selectIsAuthenticated, selectAuthUser } from '@/features/auth';
@@ -20,6 +20,7 @@ export const Header = ({
   const modalRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   //  refs, клик по которым не должен закрывать модалку
   useClickOutside([modalRef, skillsRef], {
