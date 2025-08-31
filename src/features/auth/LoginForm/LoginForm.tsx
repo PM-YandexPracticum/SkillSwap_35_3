@@ -110,10 +110,6 @@ export const LoginForm = ({
       await dispatch(loginUserThunk({ email, password })).unwrap();
       onLoginSuccess?.();
     } catch (err) {
-      const msg =
-        typeof err === 'string'
-          ? err
-          : 'Email или пароль введён неверно. Пожалуйста, проверьте правильность данных.';
     }
   };
 
