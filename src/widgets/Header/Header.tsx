@@ -32,10 +32,6 @@ export const Header = ({
     setIsModalOpen(!isModalOpen);
   };
 
-  /* const handleModalClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  }; */
-
   // Используем селекторы для получения состояния аутентификации
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const user = useSelector(selectAuthUser);
@@ -80,9 +76,7 @@ export const Header = ({
               className={`${styles['header__arrow']} ${isModalOpen ? styles['header__arrow--rotated'] : ''}`}
             />
           </div>
-          <div className={styles['modal-container']} ref={modalRef}>
-            <AllSkillsModal isOpen={isModalOpen} />
-          </div>
+          <AllSkillsModal isOpen={isModalOpen} ref={modalRef} />
         </div>
       </div>
 
@@ -95,12 +89,10 @@ export const Header = ({
       />
 
       <ActionBar
-        // в Buttons вставить переменную actionBarButtons когда будут готовы userSlice и authSlice
         buttons={actionBarButtons}
         className={styles['header__action-bar']}
       />
 
-      {/* Раскомментировать когда будет готова логика авторизации */}
       {isAuthenticated ? (
         <div className={styles['header__user']}>
           <p className={styles['header__user-name']}>{user?.name}</p>
