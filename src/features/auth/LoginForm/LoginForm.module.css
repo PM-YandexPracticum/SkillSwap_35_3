@@ -48,3 +48,20 @@
 .loginform__footer-switch-btn:hover {
   text-decoration: underline;
 }
+
+.loginform__divider {
+  width: 100%;
+  max-width: 480px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  color: var(--font-color-secondary);
+  margin: 8px 0;
+}
+
+.loginform__divider > span:first-child,
+.loginform__divider > span:last-child {
+  height: 1px;
+  background: #e3e8da;
+}

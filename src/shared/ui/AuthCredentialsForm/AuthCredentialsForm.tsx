@@ -5,7 +5,6 @@ import styles from './AuthCredentialsForm.module.css';
 import type { AuthFormProps } from './types';
 
 export const AuthCredentialsForm = ({
-  option,
   email,
   password,
   onEmailChange,
@@ -22,7 +21,6 @@ export const AuthCredentialsForm = ({
   passwordAutoComplete,
   disabled,
   loading,
-  className,
   topContent,
   children,
   bottomContent

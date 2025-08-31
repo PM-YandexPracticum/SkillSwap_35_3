@@ -40,9 +40,17 @@ export const LoginForm = ({
   // Обновление ошибки из стора
   useEffect(() => {
     if (serverError) {
-      setAuthError(serverError);
+      if (serverError.toLowerCase().includes('парол')) {
+        setPasswordError(serverError);
+        setEmailError(undefined);
+      } else {
+        setEmailError(serverError);
+        setPasswordError(undefined);
+      }
     } else {
-      setAuthError(null);
+      // Если serverError null, сбрасываем ошибки
+      setEmailError(undefined);
+      setPasswordError(undefined);
     }
   }, [serverError]);
 
@@ -58,16 +66,17 @@ export const LoginForm = ({
     return !!email && !!password && isEmailValid;
   }, [email, password, isEmailValid]);
 
-  // Обработчики изменения email и пароля
+  // Обработчик изменения email
   const handleEmailChange = (value: string) => {
     setEmail(value);
-    if (emailError) setEmailError(undefined);
+    setEmailError(undefined);
     if (authError) setAuthError(null);
   };
 
+  // Обработчик изменения пароля
   const handlePasswordChange = (value: string) => {
     setPassword(value);
-    if (passwordError) setPasswordError(undefined);
+    setPasswordError(undefined);
     if (authError) setAuthError(null);
   };
 
@@ -78,7 +87,6 @@ export const LoginForm = ({
     // Сброс ошибок перед валидацией
     setEmailError(undefined);
     setPasswordError(undefined);
-    setAuthError(null);
 
     // Валидация
     let hasError = false;
@@ -106,7 +114,6 @@ export const LoginForm = ({
         typeof err === 'string'
           ? err
           : 'Email или пароль введён неверно. Пожалуйста, проверьте правильность данных.';
-      setAuthError(msg);
     }
   };
 
@@ -134,6 +141,15 @@ export const LoginForm = ({
     </div>
   );
 
+  //children
+  const formDevider = (
+    <div className={styles['loginform__divider']} aria-hidden='true'>
+      <span />
+      <span>или</span>
+      <span />
+    </div>
+  );
+
   // bottomContent
   const formBottomContent = (
     <div className={styles['loginform__footer-switch']}>
@@ -151,7 +167,6 @@ export const LoginForm = ({
   return (
     <div title='Вход в аккаунт' className={styles.loginform}>
       <AuthCredentialsForm
-        option='login'
         email={email}
         password={password}
         onEmailChange={handleEmailChange}
@@ -167,8 +182,8 @@ export const LoginForm = ({
         passwordHint='Используйте ваш пароль'
         passwordAutoComplete='current-password'
         loading={isLoading}
-        className=''
         topContent={formTopContent}
+        children={formDevider}
         bottomContent={formBottomContent}
         disabled={isLoading || !isFormValid}
       />
