@@ -9,10 +9,9 @@
   justify-content: center;
   gap: 40px;
   padding: 132px 60px;
-  width: 556px;  
-  height: 692px;
+  max-width: 556px;  
+  min-height: 692px;
   background-color: var(--background-color-secondary);
-  margin: auto;
   border-radius: 12px;
 }
 
