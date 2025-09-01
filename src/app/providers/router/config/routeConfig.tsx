@@ -2,6 +2,7 @@ import { type RouteObject, Navigate } from 'react-router-dom';
 import { lazy } from 'react';
 import { OnlyAuth, OnlyUnAuth } from '../ProtectedRoute';
 import { pathConstants } from '@/shared/lib/constants/paths';
+import ProfilePage from '@/pages/ProfilePage';
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const ErrorPage = lazy(() => import('@/pages/ErrorPage'));
@@ -48,7 +49,7 @@ export const routeConfig: RouteObject[] = [
   },
   {
     path: pathConstants.PROFILE,
-    element: <OnlyAuth component={<Placeholder />} />, // Заменить на реальную страницу
+    element: <OnlyAuth component={<ProfilePage />} />, // Заменить на реальную страницу
     children: [
       {
         index: true,

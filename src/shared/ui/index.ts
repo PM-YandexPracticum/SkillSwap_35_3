@@ -16,3 +16,4 @@ export * from './Gallery';
 export * from './Dropdown';
 export * from './FullScreenModal';
 export * from './UserMenu';
+export * from './Textarea';
