@@ -1,10 +1,8 @@
-@import '@/app/styles/_variables.css';
-
 .loginform {
- display: flex;
- flex-direction: row;
- gap: 24px;
- justify-content: center;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  justify-content: center;
 }
 
 .loginform__registerButton {

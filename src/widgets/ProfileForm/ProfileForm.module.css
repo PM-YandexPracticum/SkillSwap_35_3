@@ -79,13 +79,13 @@
   right: 0;
   width: 56px;
   height: 56px;
+  background: var(--button-color-hover);
   background-color: var(--button-color-primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  background: var(--button-color-hover);
   transition: all 0.3s ease;
 }
 
