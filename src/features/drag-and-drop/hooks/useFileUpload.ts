@@ -28,8 +28,8 @@ export const useFileUpload = () => {
   );
 
   const handleFileRemoved = useCallback(
-    (fileName: string) => {
-      dispatch(removeFile(fileName));
+    (fileId: string) => {
+      dispatch(removeFile(fileId));
     },
     [dispatch]
   );

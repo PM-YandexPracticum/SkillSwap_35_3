@@ -1,7 +1,12 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, nanoid } from '@reduxjs/toolkit';
+
+export interface FileWithId {
+  id: string;
+  file: File;
+}
 
 export interface FileUploadState {
-  files: File[];
+  files: FileWithId[];
   uploadProgress: Record<string, number>;
   uploadStatus: Record<string, 'idle' | 'uploading' | 'success' | 'error'>;
   error: string | null;
@@ -19,7 +24,10 @@ const fileUploadSlice = createSlice({
   initialState,
   reducers: {
     setFiles: (state, action: PayloadAction<File[]>) => {
-      state.files = action.payload;
+      state.files = action.payload.map((file) => ({
+        id: nanoid(),
+        file
+      }));
       state.error = null;
     },
     addFiles: (state, action: PayloadAction<File[]>) => {
@@ -27,15 +35,22 @@ const fileUploadSlice = createSlice({
         (newFile) =>
           !state.files.some(
             (existingFile) =>
-              existingFile.name === newFile.name &&
-              existingFile.size === newFile.size
+              existingFile.file.name === newFile.name &&
+              existingFile.file.size === newFile.size
           )
       );
-      state.files.push(...newFiles);
+      state.files.push(
+        ...newFiles.map((file) => ({
+          id: nanoid(),
+          file
+        }))
+      );
       state.error = null;
     },
     removeFile: (state, action: PayloadAction<string>) => {
-      state.files = state.files.filter((file) => file.name !== action.payload);
+      state.files = state.files.filter(
+        (fileWithId) => fileWithId.id !== action.payload
+      );
       delete state.uploadProgress[action.payload];
       delete state.uploadStatus[action.payload];
     },
@@ -47,18 +62,18 @@ const fileUploadSlice = createSlice({
     },
     setUploadProgress: (
       state,
-      action: PayloadAction<{ fileName: string; progress: number }>
+      action: PayloadAction<{ fileId: string; progress: number }>
     ) => {
-      state.uploadProgress[action.payload.fileName] = action.payload.progress;
+      state.uploadProgress[action.payload.fileId] = action.payload.progress;
     },
     setUploadStatus: (
       state,
       action: PayloadAction<{
-        fileName: string;
+        fileId: string;
         status: 'idle' | 'uploading' | 'success' | 'error';
       }>
     ) => {
-      state.uploadStatus[action.payload.fileName] = action.payload.status;
+      state.uploadStatus[action.payload.fileId] = action.payload.status;
     },
     setError: (state, action: PayloadAction<string | null>) => {
       state.error = action.payload;
