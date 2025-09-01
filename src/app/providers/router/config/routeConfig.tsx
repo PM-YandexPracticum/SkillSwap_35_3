@@ -2,15 +2,14 @@ import { type RouteObject, Navigate } from 'react-router-dom';
 import { lazy } from 'react';
 import { OnlyAuth, OnlyUnAuth } from '../ProtectedRoute';
 import { pathConstants } from '@/shared/lib/constants/paths';
-import ProfilePage from '@/pages/ProfilePage';
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const ErrorPage = lazy(() => import('@/pages/ErrorPage'));
+const ProfilePage = lazy(() => import('@/pages/ProfilePage'));
 
 const LoginPage = lazy(() => import('@/pages/LoginPage'));
 // const RegistrationPage = lazy(() => import('@/pages/RegistrationPage'));
 // const CardDetailPage = lazy(() => import('@/pages/CardDetailedPage'));
-// const ProfilePage = lazy(() => import('@/pages/ProfilePage'));
 // const ProfileFavoritesPage = lazy (() => import('@/pages/ProfileFavoritesPage));
 
 const placeholderStyles: React.CSSProperties = {

@@ -1,6 +1,12 @@
 import { Avatar, Button, Dropdown, Icon, Input, Textarea } from '@/shared/ui';
 import styles from './ProfileForm.module.css';
-import { useState, useEffect, SyntheticEvent, useRef } from 'react';
+import {
+  useState,
+  useEffect,
+  SyntheticEvent,
+  useRef,
+  useCallback
+} from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from '@/app/store';
 import { useDispatch } from 'react-redux';
@@ -92,52 +98,59 @@ const ProfileForm = () => {
     );
   };
 
-  const handleInputChange = (
-    evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = evt.target;
-    setFormValue((prev) => ({
-      ...prev,
-      [name]: value
-    }));
+  const handleInputChange = useCallback(
+    (evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      const { name, value } = evt.target;
+      setFormValue((prev) => ({
+        ...prev,
+        [name]: value
+      }));
 
-    if (name === 'email') {
-      if (value && !isValidEmail(value)) {
-        setEmailError('Введите корректный email адрес');
-      } else {
-        setEmailError('');
-      }
-    }
-  };
-
-  const handleDropdownChange = (name: string) => (value: string | string[]) => {
-    const selectedValue = Array.isArray(value) ? value[0] : value;
-
-    setFormValue((prev) => ({
-      ...prev,
-      [name]: selectedValue === 'none' ? undefined : selectedValue
-    }));
-  };
-
-  const handleAvatarClick = () => {
-    fileInputRef.current?.click();
-  };
-
-  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        if (event.target?.result) {
-          setFormValue((prev) => ({
-            ...prev,
-            avatar: event.target?.result as string
-          }));
+      if (name === 'email') {
+        if (value && !isValidEmail(value)) {
+          setEmailError('Введите корректный email адрес');
+        } else {
+          setEmailError('');
         }
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+      }
+    },
+    []
+  );
+
+  const handleDropdownChange = useCallback(
+    (name: string) => (value: string | string[]) => {
+      const selectedValue = Array.isArray(value) ? value[0] : value;
+
+      setFormValue((prev) => ({
+        ...prev,
+        [name]: selectedValue === 'none' ? '' : selectedValue
+      }));
+    },
+    []
+  );
+
+  const handleAvatarClick = useCallback(() => {
+    fileInputRef.current?.click();
+  }, []);
+
+  const handleAvatarChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          if (event.target?.result) {
+            setFormValue((prev) => ({
+              ...prev,
+              avatar: event.target?.result as string
+            }));
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    },
+    []
+  );
   return (
     <div className={styles['profile-info']}>
       <div className={styles['profile-form__wrapper']}>
