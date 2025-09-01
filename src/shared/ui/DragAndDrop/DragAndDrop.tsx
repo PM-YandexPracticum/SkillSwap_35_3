@@ -24,6 +24,18 @@ export const DragAndDrop = ({
     setPreviews(newPreviews);
   };
 
+  const filterValidFiles = (files: File[]): File[] => {
+    return files.filter((file) => {
+      const isValidType = acceptedFileTypes.some((type: string) => {
+        if (type === 'image/*') {
+          return file.type.startsWith('image/');
+        }
+        return file.type === type;
+      });
+      return isValidType;
+    });
+  };
+
   const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
@@ -49,15 +61,7 @@ export const DragAndDrop = ({
       files.map((file) => file.name)
     );
 
-    const validFiles = files.filter((file) => {
-      const isValidType = acceptedFileTypes.some((type: string) => {
-        if (type === 'image/*') {
-          return file.type.startsWith('image/');
-        }
-        return file.type === type;
-      });
-      return isValidType;
-    });
+    const validFiles = filterValidFiles(files);
 
     if (validFiles.length > 0) {
       console.log(
@@ -76,15 +80,7 @@ export const DragAndDrop = ({
       files.map((file) => file.name)
     );
 
-    const validFiles = files.filter((file) => {
-      const isValidType = acceptedFileTypes.some((type: string) => {
-        if (type === 'image/*') {
-          return file.type.startsWith('image/');
-        }
-        return file.type === type;
-      });
-      return isValidType;
-    });
+    const validFiles = filterValidFiles(files);
 
     if (validFiles.length > 0) {
       console.log(
