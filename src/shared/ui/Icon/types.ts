@@ -47,6 +47,7 @@ export type IconName =
   | 'message-text-icon'
   | 'request-icon'
   | 'user-icon'
+  | 'gallery-edit-icon'
 
   // Другое
   | 'user-circle-icon'

@@ -14,4 +14,6 @@ export interface DropdownProps {
   value: string | string[];
   onChange: (value: string | string[]) => void;
   multiple?: boolean;
+  className?: string;
+  fullWidth?: boolean;
 }
