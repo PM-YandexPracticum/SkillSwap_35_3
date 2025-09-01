@@ -3,7 +3,9 @@ import { useAppDispatch, useSelector } from '@/app/store';
 import {
   selectMode,
   selectGender,
-  selectCities
+  selectCities,
+  selectQuery,
+  selectCategories
 } from '@/entities/Filters/model/filtersSelectors';
 
 import {
@@ -19,7 +21,6 @@ import { CityFilter } from '@/widgets/Filters/CityFilter';
 import { RadioFilter } from '@/widgets/Filters/RadioFilter';
 import { SkillsFilter } from '@/widgets/Filters/SkillsFilter/SkillsFilter';
 
-import radioStyles from '@/widgets/Filters/RadioFilter/RadioFilter.module.css';
 import styles from './FiltersPanel.module.css';
 import mock from '@/api/mockData.json';
 
@@ -51,22 +52,41 @@ export function FiltersPanel() {
   const dispatch = useAppDispatch();
   const mode = useSelector(selectMode);
   const gender = useSelector(selectGender);
-  const cities = useSelector(selectCities);
+  const cities = useSelector(selectCities) as string[];
+  const q = useSelector(selectQuery) ?? '';
+  const categories = useSelector(selectCategories);
+
+  const activeCount =
+    (mode !== 'all' ? 1 : 0) +
+    (gender !== 'any' ? 1 : 0) +
+    (cities.length > 0 ? 1 : 0) +
+    ((categories?.length ?? 0) > 0 ? 1 : 0) +
+    (q.trim().length > 0 ? 1 : 0);
+
+  const hasActiveFilters = activeCount > 0;
 
   return (
     <aside className={styles['filters-panel']}>
       <div className={styles['filters-panel__header']}>
-        <h3 className={radioStyles['radio-filter__title']}>Фильтры</h3>
-        <button
-          type='button'
-          className={styles['filters-panel__reset']}
-          onClick={() => dispatch(resetFilters())}
-        >
-          Сбросить
-        </button>
+        <h3 className={styles['filters-panel__title']}>
+          Фильтры{hasActiveFilters && <span> ({activeCount})</span>}
+        </h3>
+
+        {hasActiveFilters && (
+          <button
+            type='button'
+            className={styles['filters-panel__reset']}
+            onClick={() => dispatch(resetFilters())}
+            aria-label='Сбросить все фильтры'
+          >
+            <span>Сбросить</span>
+            <span className={styles['filters-panel__resetIcon']} aria-hidden>
+              ×
+            </span>
+          </button>
+        )}
       </div>
 
-      {/* 1) Режим — без заголовка */}
       <RadioFilter
         name='mode'
         value={mode}
@@ -74,10 +94,8 @@ export function FiltersPanel() {
         onChange={(v) => dispatch(setMode((v as Mode) ?? 'all'))}
       />
 
-      {/* 2) Навыки — собственный заголовок внутри компонента */}
       <SkillsFilter skills={skills} />
 
-      {/* 3) Пол автора — с заголовком */}
       <RadioFilter
         title='Пол автора'
         name='gender'
@@ -86,14 +104,11 @@ export function FiltersPanel() {
         onChange={(v) => dispatch(setGender((v as Gender) ?? 'any'))}
       />
 
-      {/* 4) Город — свой заголовок внутри компонента */}
       <CityFilter
         value={cities}
         cities={demoCities}
         onChange={(arr: string[]) => dispatch(setCities(arr))}
       />
-
-      {/* Поиск временно скрыт из панели: логика в сторе и applyFilters сохранена */}
     </aside>
   );
 }
