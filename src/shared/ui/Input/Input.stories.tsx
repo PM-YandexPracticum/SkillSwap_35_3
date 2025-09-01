@@ -37,3 +37,22 @@ export const Password = {
     icon: <Icon name='eye-icon' />
   }
 };
+
+export const EmailError = {
+  args: {
+    type: 'email',
+    value: 'petrov@mail.ru',
+    message: 'Email уже используется',
+    error: true
+  }
+};
+
+export const PasswordSuccess = {
+  args: {
+    type: 'password',
+    value: 'Чер5нослив)',
+    message: 'Надёжный',
+    iconPosition: 'right',
+    icon: <Icon name='eye-icon' />
+  }
+};
