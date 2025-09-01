@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 4px;
+  position: relative;
 }
 
 .input__wrapper {
@@ -71,6 +72,10 @@
 }
 
 .input__message {
+  position: absolute;
+  left: 0;
+  bottom: -17px;
+  min-height: 15px;
   font-size: 12px;
   font-weight: var(--font-weight-light);
   line-height: 16px;
