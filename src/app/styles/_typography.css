@@ -9,7 +9,9 @@
   user-select: none;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
 }
@@ -20,7 +22,7 @@ body {
   justify-content: center;
   align-items: center;
   font-family: var(--font-family-text);
-  font-size: 12px;
+  font-size: var(--font-size-sm);
   line-height: 16px;
   letter-spacing: 0.02em;
   font-weight: var(--font-weight-light);

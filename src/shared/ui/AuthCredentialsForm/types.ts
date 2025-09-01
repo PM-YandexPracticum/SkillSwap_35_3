@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 export type AuthOption = 'login' | 'register';
 
 export interface AuthFormProps {
-  option: AuthOption;
+  option?: AuthOption;
   email: string;
   password: string;
   onEmailChange?: (value: string) => void;
@@ -23,5 +23,6 @@ export interface AuthFormProps {
   className?: string;
   topContent?: ReactNode;
   children?: ReactNode;
+  isFormValid?: boolean;
   bottomContent?: ReactNode;
 }

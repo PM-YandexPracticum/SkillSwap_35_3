@@ -13,14 +13,8 @@ export const Card = ({
 }: CardProps) => {
   const age = useAge(user.birthDate);
 
-  //const isAuth - проверка авторизации для лайка
-
   const { isLiked, toggle } = useToggleLike({
-    defaultLiked: false, //
-    onToggle: (liked) => {
-      // ЗАМЕНИТЬ потенциально на полноценную реализацию хранения лайков
-      console.log('Card liked:', liked);
-    }
+    itemId: user.id.toString()
   });
 
   const teachSkill = skills.find((s) => s.id === user.teachingSkillId);

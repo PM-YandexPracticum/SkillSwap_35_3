@@ -12,3 +12,7 @@ export * from './Tag';
 export * from './Icon';
 export * from './AllSkillsModal';
 export * from './ErrorCard';
+export * from './Gallery';
+export * from './Dropdown';
+export * from './FullScreenModal';
+export * from './UserMenu';

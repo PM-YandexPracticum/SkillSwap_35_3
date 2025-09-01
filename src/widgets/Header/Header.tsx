@@ -1,13 +1,23 @@
 import { useRef, useState } from 'react';
-import { Button, Icon, Input, Logo, AllSkillsModal, Avatar } from '@/shared/ui';
+import {
+  Button,
+  Icon,
+  Input,
+  Logo,
+  AllSkillsModal,
+  Avatar,
+  UserMenu
+} from '@/shared/ui';
 import styles from './Header.module.css';
 import { HeaderProps } from './types';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useClickOutside, useActionBarButtons } from '@/shared/hooks';
 import { ActionBar } from '@/widgets';
 import { selectIsAuthenticated, selectAuthUser } from '@/features/auth';
+import { logout } from '@/features/auth/slices/authSlice';
 import { useSelector } from '@/app/store';
 import { pathConstants } from '@/shared/lib/constants/paths';
+import { useDispatch } from 'react-redux';
 
 export const Header = ({
   className = '',
@@ -17,9 +27,14 @@ export const Header = ({
   'data-cy': dataCy
 }: HeaderProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const userMenuRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   //  refs, клик по которым не должен закрывать модалку
   useClickOutside([modalRef, skillsRef], {
@@ -27,13 +42,23 @@ export const Header = ({
       setIsModalOpen(false);
     }
   });
+
+  useClickOutside([userMenuRef], {
+    onClickOutside: () => {
+      setIsUserMenuOpen(false);
+    }
+  });
+
   const handleSkillsClick = () => {
     setIsModalOpen(!isModalOpen);
   };
 
-  /* const handleModalClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  }; */
+  const handleAvatarClick = () => setIsUserMenuOpen((prev) => !prev);
+
+  const handleProfileClick = () => {
+    navigate('/profile');
+    setIsUserMenuOpen(false);
+  };
 
   // Используем селекторы для получения состояния аутентификации
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -48,6 +73,11 @@ export const Header = ({
 
   const handleRegisterClick = () => {
     navigate(pathConstants.REGISTER, { state: { background: location } });
+  };
+
+  const handleLogoutClick = () => {
+    dispatch(logout());
+    setIsUserMenuOpen(false);
   };
 
   return (
@@ -79,9 +109,7 @@ export const Header = ({
               className={`${styles['header__arrow']} ${isModalOpen ? styles['header__arrow--rotated'] : ''}`}
             />
           </div>
-          <div className={styles['modal-container']} ref={modalRef}>
-            <AllSkillsModal isOpen={isModalOpen} />
-          </div>
+          <AllSkillsModal isOpen={isModalOpen} ref={modalRef} />
         </div>
       </div>
 
@@ -94,12 +122,10 @@ export const Header = ({
       />
 
       <ActionBar
-        // в Buttons вставить переменную actionBarButtons когда будут готовы userSlice и authSlice
         buttons={actionBarButtons}
         className={styles['header__action-bar']}
       />
 
-      {/* Раскомментировать когда будет готова логика авторизации */}
       {isAuthenticated ? (
         <div className={styles['header__user']}>
           <p className={styles['header__user-name']}>{user?.name}</p>
@@ -107,7 +133,16 @@ export const Header = ({
             src={user?.avatar || ''}
             alt={user?.name || 'Пользователь'}
             className={styles['header__user-avatar']}
+            onClick={handleAvatarClick}
           />
+          {isUserMenuOpen && (
+            <div ref={userMenuRef} className={styles['header__user-menu']}>
+              <UserMenu
+                onProfile={handleProfileClick}
+                onLogout={handleLogoutClick}
+              />
+            </div>
+          )}
         </div>
       ) : (
         <div className={styles['header__buttons']}>

@@ -6,7 +6,7 @@ import { pathConstants } from '@/shared/lib/constants/paths';
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const ErrorPage = lazy(() => import('@/pages/ErrorPage'));
 
-// const LoginPage = lazy (() => import ('@pages/LoginPage'));
+const LoginPage = lazy(() => import('@/pages/LoginPage'));
 // const RegistrationPage = lazy(() => import('@/pages/RegistrationPage'));
 // const CardDetailPage = lazy(() => import('@/pages/CardDetailedPage'));
 // const ProfilePage = lazy(() => import('@/pages/ProfilePage'));
@@ -81,7 +81,7 @@ export const routeConfig: RouteObject[] = [
 export const modalRoutesConfig: RouteObject[] = [
   {
     path: pathConstants.LOGIN,
-    element: <OnlyUnAuth component={<Placeholder />} /> // Заменить на реальную страницу
+    element: <OnlyUnAuth component={<LoginPage padded={true} />} />
   },
   {
     path: pathConstants.REGISTER,

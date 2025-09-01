@@ -1,5 +1,7 @@
 .header {
   width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
   background-color: var(--background-color-primary);
   display: flex;
   align-items: center;
@@ -64,6 +66,7 @@
 }
 
 .header__user {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,4 +87,11 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.header__user-menu {
+  position: absolute;
+  z-index: 2;
+  top: 130%;
+  right: 0;
 }

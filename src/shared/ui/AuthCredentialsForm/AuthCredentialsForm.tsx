@@ -5,7 +5,6 @@ import styles from './AuthCredentialsForm.module.css';
 import type { AuthFormProps } from './types';
 
 export const AuthCredentialsForm = ({
-  option,
   email,
   password,
   onEmailChange,
@@ -22,9 +21,10 @@ export const AuthCredentialsForm = ({
   passwordAutoComplete,
   disabled,
   loading,
-  className,
   topContent,
   children,
+  className,
+  isFormValid,
   bottomContent
 }: AuthFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -135,7 +135,7 @@ export const AuthCredentialsForm = ({
               size='medium'
               htmlType='submit'
               fullWidth
-              disabled={isDisabled}
+              disabled={loading || !isFormValid}
               className={styles['auth-form__actions-button']}
             >
               {submitText}

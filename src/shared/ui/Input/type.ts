@@ -6,4 +6,3 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   search?: boolean;
   message?: string;
   error?: boolean;
-}
