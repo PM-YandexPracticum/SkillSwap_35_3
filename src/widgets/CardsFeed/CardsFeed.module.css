@@ -1,15 +1,20 @@
 .cards-feed {
   display: flex;
   flex-direction: column;
-  max-width: 1025px;
   gap: 40px;
+  padding: 0;
+  background: transparent;
 }
 
 .cards-feed__section {
   gap: 25px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+
+.cards-feed__section_type_recommended {
+  background: transparent;
+  padding: 0;
 }
 
 .cards-feed__header {
@@ -28,4 +33,9 @@
   grid-template-columns: repeat(3, minmax(325px, 1fr));
   gap: 24px;
   justify-items: center;
+}
+
+.cards-feed__sort_active {
+  background-color: var(--button-color-accent);
+  color: var(--background-color-secondary);
 }

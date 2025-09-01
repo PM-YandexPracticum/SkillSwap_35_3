@@ -5,13 +5,12 @@ import type {
 } from '@/entities/Filters/model/filtersSlice';
 import type { IUser, ISkill } from '@/api/types';
 
-// --- utils ---
 const normalize = (v: unknown) =>
   (typeof v === 'string' ? v : String(v ?? '')).trim();
 
 const toLower = (s: string) => s.toLowerCase();
 
-// Карта id -> title
+// id -> title
 const buildIdToTitle = (skills: ISkill[]) => {
   const map = new Map<string, string>();
   for (const s of skills) {
@@ -51,8 +50,7 @@ const matchModeAndCategories = (
 
   // mode === 'all'
   return (
-    teach.some((id) => selected.has(id)) ||
-    learn.some((id) => selected.has(id))
+    teach.some((id) => selected.has(id)) || learn.some((id) => selected.has(id))
   );
 };
 
@@ -75,7 +73,6 @@ const matchQuery = (u: IUser, q: string, idToTitle: Map<string, string>) => {
   return haystack.includes(needle);
 };
 
-// --- main ---
 export function applyFilters(
   users: IUser[],
   filters: FiltersState,

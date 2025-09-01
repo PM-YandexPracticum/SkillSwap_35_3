@@ -11,18 +11,20 @@
   width: 325px;
   height: 100vh;
   background: var(--background-color-secondary);
-}
-
-.main__filters--transparent {
-  background: transparent;
+  flex-shrink: 0;
 }
 
 .content__chipsRow {
   margin: 24px 0 12px;
 }
 
+.main__content {
+  flex: 1;
+  min-width: 0;
+}
+
 .results__title {
-  margin: 0 0 24px 0;
+  margin: 0 0 24px;
   font-family: var(--font-family-title);
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-xl);

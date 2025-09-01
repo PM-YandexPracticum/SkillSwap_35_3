@@ -1,8 +1,10 @@
 import {
   selectIsCategorySelected,
-  selectIsCategoryPartial
+  selectIsCategoryPartial,
+  selectActiveFilters
 } from './filtersSelectors';
 import type { RootState } from '@/app/store';
+import type { ISkill } from '@/api/types';
 
 const makeState = (categories: string[]): RootState =>
   ({
@@ -46,3 +48,47 @@ describe('filters selectors for Skills', () => {
     expect(isPartial).toBe(false);
   });
 });
+
+  const makeStateForActive = (
+    filters: Partial<RootState['filters']>,
+    skills: ISkill[] = []
+  ): RootState =>
+    ({
+      filters: {
+      mode: 'all',
+      gender: 'any',
+      cities: [],
+      categories: [],
+      q: '',
+      ...filters
+    },
+      skills: {
+        skills,
+      selected: null,
+      isLoading: false,
+      error: null
+    }
+  }) as unknown as RootState;
+
+describe('selectActiveFilters', () => {
+  test('returns active filters with readable labels', () => {
+    const filters = {
+      mode: 'teach',
+      gender: 'male',
+      cities: ['Москва'],
+      categories: ['1'],
+      q: 'js'
+    } as RootState['filters'];
+    const skills = [
+      { id: 1, title: 'JS', category: '', subcategory: '', images: [] }
+    ];
+    const state = makeStateForActive(filters, skills);
+    expect(selectActiveFilters(state)).toEqual([
+      { type: 'mode', value: 'teach', label: 'Могу учить' },
+      { type: 'gender', value: 'male', label: 'Мужчины' },
+      { type: 'city', value: 'Москва', label: 'Москва' },
+      { type: 'category', value: '1', label: 'JS' },
+      { type: 'query', value: 'js', label: 'js' }
+    ]);
+    });
+  });
