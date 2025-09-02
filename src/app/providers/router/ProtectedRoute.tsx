@@ -17,12 +17,12 @@ const ProtectedRoute = ({
   const isLoading = useSelector(selectAuthIsLoading);
   const location = useLocation();
 
-  if (isLoading) {
+  /*   if (isLoading) {
     return null; // Прелоадер?
-  }
+  } */
 
   // Если маршрут для авторизованных, а пользователь не авторизован — редирект на /login
-  if (!onlyUnAuth && !selectedUser) {
+  if (!onlyUnAuth && !selectedUser && !isLoading) {
     return <Navigate to='/login' state={{ from: location }} replace />;
   }
 

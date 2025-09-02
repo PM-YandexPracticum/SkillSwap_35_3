@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from '@/app/store';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '@/app/store';
 import { updateUserThunk } from '@/features/auth';
 import type { IUserUpdateData } from './types';
 
@@ -20,9 +20,9 @@ const isValidEmail = (email: string): boolean => {
 };
 
 const ProfileForm = () => {
-  const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
-
+  const dispatch = useAppDispatch();
+  const user = useSelector((state) => state.auth.user);
+  const initialFormSet = useRef(false);
   const [formValue, setFormValue] = useState({
     name: '',
     email: '',
@@ -38,7 +38,7 @@ const ProfileForm = () => {
 
   // Загрузка данных пользователя
   useEffect(() => {
-    if (user) {
+    if (!initialFormSet.current && user) {
       setFormValue({
         name: user.name || '',
         email: user.email || '',
@@ -48,6 +48,7 @@ const ProfileForm = () => {
         about: user.about || '',
         avatar: user.avatar || ''
       });
+      initialFormSet.current = true;
     }
   }, [user]);
 
@@ -94,7 +95,7 @@ const ProfileForm = () => {
       updateUserThunk({
         id: user.id,
         data: updateData
-      }) as any
+      })
     );
   };
 
@@ -252,6 +253,7 @@ const ProfileForm = () => {
           <Button
             className={styles['profile-form__submit-button']}
             type='primary'
+            htmlType='submit'
             fullWidth
             disabled={isSubmitDisabled}
           >

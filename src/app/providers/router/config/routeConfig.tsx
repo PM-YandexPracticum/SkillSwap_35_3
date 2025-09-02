@@ -2,6 +2,7 @@ import { type RouteObject, Navigate } from 'react-router-dom';
 import { lazy } from 'react';
 import { OnlyAuth, OnlyUnAuth } from '../ProtectedRoute';
 import { pathConstants } from '@/shared/lib/constants/paths';
+import ProfileForm from '@/widgets/ProfileForm/ProfileForm';
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const ErrorPage = lazy(() => import('@/pages/ErrorPage'));
@@ -51,7 +52,7 @@ export const routeConfig: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <Placeholder /> // Заменить на реальную страницу
+        element: <ProfileForm />
       },
       {
         path: pathConstants.PROFILE_APPLICATIONS,
