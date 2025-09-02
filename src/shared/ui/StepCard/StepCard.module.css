@@ -1,7 +1,3 @@
-@import '@/app/styles/_variables.css';
-@import '@/app/styles/_typography.css';
-@import '@/app/styles/index.css';
-
 .step-card {
   display: flex;
   flex-direction: column;
@@ -9,11 +5,11 @@
   justify-content: center;
   gap: 40px;
   padding: 132px 60px;
-  width: 556px;  
-  height: 692px;
+  min-width: 555px;  
+  min-height: 692px;
   background-color: var(--background-color-secondary);
-  margin: auto;
   border-radius: 12px;
+  max-width: min-content;
 }
 
 .step-card__image {

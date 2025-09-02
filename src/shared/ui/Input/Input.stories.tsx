@@ -3,7 +3,8 @@ import { Input } from './input';
 
 export default {
   title: 'UI/Input',
-  component: Input
+  component: Input,
+  tags: ['autodocs']
 };
 
 export const Email = {
@@ -33,6 +34,25 @@ export const Password = {
   args: {
     type: 'password',
     placeholder: 'Придумайте надёжный пароль',
+    iconPosition: 'right',
+    icon: <Icon name='eye-icon' />
+  }
+};
+
+export const EmailError = {
+  args: {
+    type: 'email',
+    value: 'petrov@mail.ru',
+    message: 'Email уже используется',
+    error: true
+  }
+};
+
+export const PasswordSuccess = {
+  args: {
+    type: 'password',
+    value: 'Чер5нослив)',
+    message: 'Надёжный',
     iconPosition: 'right',
     icon: <Icon name='eye-icon' />
   }

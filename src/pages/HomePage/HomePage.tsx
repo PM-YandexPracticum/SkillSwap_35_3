@@ -10,7 +10,7 @@ import { CardsFeed } from '@/widgets/CardsFeed';
 import { AppliedFiltersTabs } from '@/widgets/Filters';
 import { selectActiveFilters } from '@/entities/Filters/model/filtersSelectors';
 
-export const HomePage = () => {
+const HomePage = () => {
   const dispatch = useAppDispatch();
   const activeFilters = useSelector(selectActiveFilters);
   const hasActiveFilters = activeFilters.length > 0;

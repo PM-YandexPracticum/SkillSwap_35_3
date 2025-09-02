@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from '@/app/store';
 import cn from 'classnames';
 import { selectSkills } from '@/entities/Skill/selectors/skillsSelectors';
@@ -14,6 +15,8 @@ import styles from './CardsFeed.module.css';
 const PAGE_SIZE = 12;
 
 export const CardsFeed = ({ usersData, skillsData }: ICardsFeedProps) => {
+  const navigate = useNavigate();
+
   const users = usersData ?? useSelector(selectFilteredUsers);
   const skills = skillsData ?? useSelector(selectSkills);
   const filters = useSelector(selectFilters);
@@ -164,6 +167,7 @@ export const CardsFeed = ({ usersData, skillsData }: ICardsFeedProps) => {
           next={fetchMore}
           hasMore={visibleRecommended.length < recommendedUsers.length}
           loader={<div>Загрузка...</div>}
+          style={{ overflow: 'unset' }}
         >
           <div className={styles['cards-feed__list']}>
             {visibleRecommended.map((user) => (

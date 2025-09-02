@@ -1,7 +1,6 @@
 import { CardProps } from './types';
 import { Button, Tag, Avatar } from '@/shared/ui';
-import { useAge } from '@/shared/hooks';
-import { useToggleLike } from '@/shared/hooks';
+import { useAge, useToggleLike } from '@/shared/hooks';
 
 import styles from './Card.module.css';
 
@@ -14,14 +13,8 @@ export const Card = ({
 }: CardProps) => {
   const age = useAge(user.birthDate);
 
-  //const isAuth - проверка авторизации для лайка
-
   const { isLiked, toggle } = useToggleLike({
-    defaultLiked: false, //
-    onToggle: (liked) => {
-      // ЗАМЕНИТЬ потенциально на полноценную реализацию хранения лайков
-      console.log('Card liked:', liked);
-    }
+    itemId: user.id.toString()
   });
 
   const teachSkill = skills.find((s) => s.id === user.teachingSkillId);

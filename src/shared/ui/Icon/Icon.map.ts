@@ -26,6 +26,7 @@ export const iconMap: Record<IconName, SvgIconComponent> = {
   'like-icon-fill': Icons.LikeIconFilled,
   'more-square-icon': Icons.MoreSquareIcon,
   'gallery-add-icon': Icons.GalleryAddIcon,
+  'logout-icon': Icons.LogoutIcon,
 
   // Инпуты
   'add-avatar-icon': Icons.AddAvatarIcon,
@@ -41,6 +42,13 @@ export const iconMap: Record<IconName, SvgIconComponent> = {
   // Соцсети
   'google-icon': Icons.GoogleIcon,
   'apple-icon': Icons.AppleIcon,
+
+  //Профиль
+  'idea-icon': Icons.IdeaIcon,
+  'message-text-icon': Icons.MessageTextIcon,
+  'request-icon': Icons.RequestIcon,
+  'user-icon': Icons.UserIcon,
+  'gallery-edit-icon': Icons.GalleryEditIcon,
 
   // Другое
   'user-circle-icon': Icons.UserCircleIcon,

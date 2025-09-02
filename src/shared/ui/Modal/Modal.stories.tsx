@@ -12,6 +12,7 @@ type Story = StoryObj<typeof ModalUI>;
 const meta: Meta<typeof ModalUI> = {
   title: 'UI/Modal',
   component: ModalUI,
+  tags: ['autodocs'],
   parameters: { layout: 'centered' },
   args: { isOpen: true, closeOnOverlay: true, closeOnEsc: true, className: '' }
 };

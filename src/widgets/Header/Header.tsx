@@ -1,11 +1,18 @@
-import React, { useRef, useState } from 'react';
-import { Button, Icon, Input, Logo, AllSkillsModal, Avatar } from '@/shared/ui';
+import { useRef, useState } from 'react';
+import {
+  Button,
+  Icon,
+  Input,
+  Logo,
+  AllSkillsModal,
+  Avatar,
+  UserMenu
+} from '@/shared/ui';
 import styles from './Header.module.css';
 import { HeaderProps } from './types';
-import { Link, useNavigate } from 'react-router-dom';
-import { useClickOutside } from '@/shared/hooks/useClickOutside';
-import { ActionBar } from '../ActionBar';
-import { useActionBarButtons } from '@/shared/hooks/useActionBarButtons';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useClickOutside, useActionBarButtons } from '@/shared/hooks';
+import { ActionBar } from '@/widgets';
 import { selectIsAuthenticated, selectAuthUser } from '@/features/auth';
 import { useAppDispatch, useSelector } from '@/app/store';
 import { selectQuery } from '@/entities/Filters/model/filtersSelectors';
@@ -19,9 +26,14 @@ export const Header = ({
   'data-cy': dataCy
 }: HeaderProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const userMenuRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   // закрываем модалку «Все навыки» по клику вне
   useClickOutside([modalRef, skillsRef], {
@@ -67,9 +79,7 @@ export const Header = ({
               className={`${styles['header__arrow']} ${isModalOpen ? styles['header__arrow--rotated'] : ''}`}
             />
           </div>
-          <div className={styles['modal-container']} ref={modalRef}>
-            <AllSkillsModal isOpen={isModalOpen} />
-          </div>
+          <AllSkillsModal isOpen={isModalOpen} ref={modalRef} />
         </div>
       </div>
 
@@ -96,14 +106,23 @@ export const Header = ({
             src={user?.avatar || ''}
             alt={user?.name || 'Пользователь'}
             className={styles['header__user-avatar']}
+            onClick={handleAvatarClick}
           />
+          {isUserMenuOpen && (
+            <div ref={userMenuRef} className={styles['header__user-menu']}>
+              <UserMenu
+                onProfile={handleProfileClick}
+                onLogout={handleLogoutClick}
+              />
+            </div>
+          )}
         </div>
       ) : (
         <div className={styles['header__buttons']}>
-          <Button type='secondary' size='small'>
+          <Button type='secondary' size='small' onClick={handleLoginClick}>
             Войти
           </Button>
-          <Button type='primary' size='small'>
+          <Button type='primary' size='small' onClick={handleRegisterClick}>
             Зарегистрироваться
           </Button>
         </div>

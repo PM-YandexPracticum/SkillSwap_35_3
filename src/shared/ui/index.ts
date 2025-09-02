@@ -6,9 +6,16 @@ export * from './Title';
 export * from './Avatar';
 export * from './Input';
 export * from './Modal';
+export * from './AuthCredentialsForm';
 export * from './ModalOverlay';
 export * from './Tag';
 export * from './Icon';
-
 export * from './AllSkillsModal';
 export * from './ErrorCard';
+export * from './Loader';
+export * from './Gallery';
+export * from './Dropdown';
+export * from './FullScreenModal';
+export * from './UserMenu';
+export * from './Textarea';
+export * from './Slider';

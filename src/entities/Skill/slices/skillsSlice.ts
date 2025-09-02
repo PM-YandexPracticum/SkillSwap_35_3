@@ -22,7 +22,11 @@ export const initialState: SkillState = {
 const skillsSlice = createSlice({
   name: 'skills',
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedSkill: (state, action) => {
+      state.selected = action.payload;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchSkills.pending, (state) => {
@@ -52,4 +56,5 @@ const skillsSlice = createSlice({
   }
 });
 
+export const { setSelectedSkill } = skillsSlice.actions;
 export default skillsSlice.reducer;
