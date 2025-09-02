@@ -2,7 +2,7 @@ import { type RouteObject, Navigate } from 'react-router-dom';
 import { lazy } from 'react';
 import { OnlyAuth, OnlyUnAuth } from '../ProtectedRoute';
 import { pathConstants } from '@/shared/lib/constants/paths';
-import ProfileForm from '@/widgets/ProfileForm/ProfileForm';
+import ProfileForm from '@/features/auth/ProfileForm/ProfileForm';
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const ErrorPage = lazy(() => import('@/pages/ErrorPage'));
