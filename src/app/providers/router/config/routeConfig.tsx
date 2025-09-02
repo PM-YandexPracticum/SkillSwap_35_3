@@ -7,10 +7,10 @@ import ProfileForm from '@/features/auth/ProfileForm/ProfileForm';
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const ErrorPage = lazy(() => import('@/pages/ErrorPage'));
 const ProfilePage = lazy(() => import('@/pages/ProfilePage'));
+const ProfileFavoritesPage = lazy(() => import('@/pages/ProfileFavoritesPage'));
 const LoginPage = lazy(() => import('@/pages/LoginPage'));
 // const RegistrationPage = lazy(() => import('@/pages/RegistrationPage'));
 // const CardDetailPage = lazy(() => import('@/pages/CardDetailedPage'));
-// const ProfileFavoritesPage = lazy (() => import('@/pages/ProfileFavoritesPage));
 
 const placeholderStyles: React.CSSProperties = {
   display: 'flex',
@@ -64,7 +64,7 @@ export const routeConfig: RouteObject[] = [
       },
       {
         path: pathConstants.PROFILE_FAVORITES,
-        element: <Placeholder /> // Заменить на реальную страницу
+        element: <ProfileFavoritesPage />
       },
       {
         path: pathConstants.PROFILE_SKILLS,
