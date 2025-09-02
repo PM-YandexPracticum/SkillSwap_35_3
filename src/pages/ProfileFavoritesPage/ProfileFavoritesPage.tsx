@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from '@/app/store';
 import { selectSkills } from '@/entities/Skill/selectors/skillsSelectors';
@@ -18,9 +18,10 @@ export const ProfileFavoritesPage = () => {
   const allUsers = useSelector(selectUsers);
   const skills = useSelector(selectSkills);
 
-  const likedUsers = allUsers.filter((user) =>
-    likedItems.includes(user.id.toString())
-  );
+  const likedUsers = useMemo(() => {
+    const likedSet = new Set(likedItems);
+    return allUsers.filter((user) => likedSet.has(user.id.toString()));
+  }, [allUsers, likedItems]);
 
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
@@ -28,9 +29,12 @@ export const ProfileFavoritesPage = () => {
     setVisibleCount((prev) => prev + PAGE_SIZE);
   };
 
-  const handleDetails = (id: number) => {
-    navigate(`/profile/${id}`);
-  };
+  const handleDetails = useCallback(
+    (id: number) => {
+      navigate(`/card/${id}`);
+    },
+    [navigate]
+  );
 
   const visibleUsers = likedUsers.slice(0, visibleCount);
   const hasMore = visibleUsers.length < likedUsers.length;
