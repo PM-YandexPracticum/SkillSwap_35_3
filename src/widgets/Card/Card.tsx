@@ -9,7 +9,8 @@ export const Card = ({
   skills,
   onDetails,
   showAbout,
-  className
+  className,
+  hideDetailsButton
 }: CardProps) => {
   const age = useAge(user.birthDate);
 
@@ -90,11 +91,13 @@ export const Card = ({
           )}
         </div>
       </div>
-      <div className={styles.card__button}>
-        <Button onClick={() => onDetails(user.id)} fullWidth>
-          Подробнее
-        </Button>
-      </div>
+      {!hideDetailsButton && (
+        <div className={styles.card__button}>
+          <Button onClick={() => onDetails(user.id)} fullWidth>
+            Подробнее
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
