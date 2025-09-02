@@ -3,7 +3,8 @@ import { Input } from './input';
 
 export default {
   title: 'UI/Input',
-  component: Input
+  component: Input,
+  tags: ['autodocs']
 };
 
 export const Email = {
