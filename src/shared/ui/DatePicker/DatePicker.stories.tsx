@@ -61,7 +61,7 @@ export const Basic: Story = {
 
 export const WithInitialValue: Story = {
   name: 'С предустановленной датой',
-  render: (args) => <Local {...args} value={new Date(1995, 9, 28)} />,
+  render: (args) => <Local {...args} value={new Date(2025, 8, 2)} />,
 };
 
 export const Disabled: Story = {

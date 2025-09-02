@@ -1,10 +1,15 @@
-import React, { useMemo, useRef, useState, forwardRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState, forwardRef } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import { ru } from 'date-fns/locale';
 import 'react-datepicker/dist/react-datepicker.css';
+import clsx from 'clsx';
 import styles from './DatePicker.module.css';
-import Calendar from '../../assets/icons/inputs/calendar.svg?react';
-import ChevronDown from '../../assets/icons/ui/chevronDown.svg?react';
+import ChevronDown from '../../assets/icons/ui/chevron-down.svg?react';
+import { InputProps } from '@/shared/ui/Input/type';
+import { Input } from '@/shared/ui/Input/input';
+import { Icon } from '../Icon';
+
+type DatePickerRef = ReactDatePicker & { setOpen: (open: boolean) => void };
 
 export interface BirthDatePickerProps {
   value: Date | null;
@@ -14,6 +19,8 @@ export interface BirthDatePickerProps {
   maxDate?: Date;
   disabled?: boolean;
   className?: string;
+  inputClassName?: string;
+  popperClassName?: string;
 }
 
 export function BirthDatePicker({
@@ -23,9 +30,16 @@ export function BirthDatePicker({
   maxDate = new Date(),
   disabled,
   className,
+  inputClassName,
+  popperClassName,
+  placeholder = 'дд.мм.гггг',
 }: BirthDatePickerProps) {
-  const dpRef = useRef<ReactDatePicker>(null);
-  const [temp, setTemp] = useState<Date | null>(value);
+  const dpRef = useRef<DatePickerRef | null>(null);
+  const [temp, setTemp] = useState<Date | null>(value ?? null);
+
+  useEffect(() => {
+    setTemp(value ?? null);
+  }, [value]);
 
   const years = useMemo(() => {
     const arr: number[] = [];
@@ -34,12 +48,15 @@ export function BirthDatePicker({
   }, [minDate, maxDate]);
 
   const months = useMemo(
-    () => ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+    () => [
+      'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+      'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
+    ],
     []
   );
 
-  const open = () => dpRef.current?.setOpen?.(true as any);
-  const close = () => dpRef.current?.setOpen?.(false as any);
+  const open = () => dpRef.current?.setOpen(true);
+  const close = () => dpRef.current?.setOpen(false);
 
   const confirm = () => {
     onChange(temp ?? null);
@@ -52,11 +69,11 @@ export function BirthDatePicker({
   };
 
   return (
-    <div className={[styles.wrapper, className].filter(Boolean).join(' ')}>
+    <div className={clsx(styles.wrapper, className)}>
       <ReactDatePicker
-        ref={dpRef as any}
-        selected={temp ?? value}
-        onChange={(d) => setTemp(d as Date | null)}
+        ref={dpRef as unknown as React.RefObject<DatePickerRef>}
+        selected={temp ?? value ?? null}
+        onChange={(d) => setTemp((d as Date) ?? null)}
         onCalendarOpen={() => setTemp(value ?? null)}
         onClickOutside={cancel}
         shouldCloseOnSelect={false}
@@ -67,12 +84,13 @@ export function BirthDatePicker({
         minDate={minDate}
         maxDate={maxDate}
         disabled={disabled}
+        placeholderText={placeholder}
         customInput={
-          <InputWithIcon
-            onOpen={open}
-            disabled={disabled}
+          <PickerInputAdapter
+            className={clsx(styles.input, inputClassName)}
           />
         }
+        popperClassName={clsx(styles.popper, popperClassName)}
         renderCustomHeader={({ date, changeYear, changeMonth }) => (
           <div className={styles.header}>
             <div className={styles.headerControls}>
@@ -87,8 +105,9 @@ export function BirthDatePicker({
                     <option key={m} value={i}>{m}</option>
                   ))}
                 </select>
-                <ChevronDown/>
+                <ChevronDown />
               </div>
+
               <div className={styles.selectWrap}>
                 <select
                   className={styles.select}
@@ -100,20 +119,34 @@ export function BirthDatePicker({
                     <option key={y} value={y}>{y}</option>
                   ))}
                 </select>
-                <ChevronDown/>
+                <ChevronDown />
               </div>
             </div>
           </div>
         )}
-
         calendarContainer={({ children }) => (
-          <div className={styles.calendar}>
+          <div
+            className={styles.calendar}
+            tabIndex={-1}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') confirm();
+              if (e.key === 'Escape') cancel();
+            }}
+          >
             {children}
             <div className={styles.footer}>
-              <button type="button" className={`${styles.btn} ${styles.btnGhost}`} onClick={cancel}>
+              <button
+                type="button"
+                className={clsx(styles.btn, styles['ghost-btn'])}
+                onClick={cancel}
+              >
                 Отменить
               </button>
-              <button type="button" className={`${styles.btn} ${styles.btnPrimary}`} onClick={confirm}>
+              <button
+                type="button"
+                className={clsx(styles.btn, styles['primary-btn'])}
+                onClick={confirm}
+              >
                 Выбрать
               </button>
             </div>
@@ -126,30 +159,19 @@ export function BirthDatePicker({
     </div>
   );
 }
-
-const InputWithIcon = forwardRef<HTMLInputElement, {
-  value?: string;
-  onClick?: () => void;
-  onOpen?: () => void;
-  placeholder?: string;
-  
-  disabled?: boolean;
-}>(({ value, onClick, onOpen, disabled }, ref) => (
-  <button
-    type="button"
-    className={styles.input}
-    onClick={(e) => {
-      onClick?.();
-      onOpen?.();
-      e.preventDefault();
-    }}
-    disabled={disabled}
-  >
-    <span className={value ? styles.inputValue : styles.inputPlaceholder}>
-      {value || 'дд.мм.гггг'}
-    </span>
-    <Calendar />
-    <input ref={ref} value={value} readOnly className={styles.hiddenNativeInput} />
-  </button>
-));
-InputWithIcon.displayName = 'InputWithIcon';
+const PickerInputAdapter = forwardRef<HTMLInputElement, Partial<InputProps>>(
+  ({ value, onClick, placeholder, disabled, className }, ref) => (
+    <Input
+      ref={ref}
+      value={(value as string) ?? ''}
+      onClick={onClick}
+      placeholder={placeholder}
+      readOnly
+      disabled={disabled}
+      icon={<Icon name="calendar-icon" />}
+      iconPosition="right"
+      className={className}
+    />
+  )
+);
+PickerInputAdapter.displayName = 'PickerInputAdapter';

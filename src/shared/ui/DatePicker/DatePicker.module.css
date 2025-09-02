@@ -1,80 +1,27 @@
-.wrapper { 
-  display: inline-block; 
+.wrapper {
+  display: inline-block;
 }
 
-.input {
-  width: 208px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 12px 20px;
-  border: 1px solid #69735D;
-  border-radius: 12px;
-  background: #fff;
-  color: #253017;
-  cursor: pointer;
-}
-
-.input:disabled { 
-  opacity: .6; cursor: not-allowed; 
-}
-
-.input:hover { 
-  background: #fafafa; 
-}
-
-.inputPlaceholder { 
-  color: #69735D; 
-}
-
-.inputValue { 
-  color: #253017; 
-}
-
-.input:focus-within {
-  visibility: hidden;
-}
-
-.hiddenNativeInput {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-  width: 0; height: 0;
+.popper {
+  border: 0;
 }
 
 .calendar {
-  margin: 0;
   background: #fff;
   border: 1px solid #69735D;
   border-radius: 12px;
   overflow: hidden;
   width: 280px;
   height: 340px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
 }
 
 .header {
   display: flex;
   justify-content: center;
-  padding: 24px 32px 4px;
-  border: 0;
-}
-
-.selectWrap {
-  position: relative;
-  display: flex;
-  gap: 4px;
-  border: 0;
-}
-
-.select {
-  background: #fff;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border: none;
-  border-radius: 0;
-  cursor: pointer;
+  padding: 24px 32px 0px;
 }
 
 .headerControls {
@@ -83,71 +30,84 @@
   gap: 28px;
 }
 
-.headerNav {
-  width: 32px; height: 32px;
-  border: 0;
-  border-radius: 10px;
-  background: #fff;
-  cursor: pointer;
-}
-.headerNav:disabled { 
-  opacity: .4; cursor: default; 
-}
-
-.selectLike {
-  display: inline-flex;
+.selectWrap {
+  position: relative;
+  display: flex;
   align-items: center;
   gap: 4px;
-  padding: 6px 10px;
-  border: 1px solid #e7eedf;
-  border-radius: 10px;
+}
+
+.select {
   background: #fff;
-  color: #1f2328;
+  appearance: none;
+  border: none;
   cursor: pointer;
 }
-.hiddenSelect { 
-  position: absolute; 
-  width: 0; 
-  height: 0; 
-  overflow: hidden; 
+
+.select:focus {
+  outline: none;
+}
+
+.input {
+  width: 208px;
+  border: 1px solid #69735D;
+  border-radius: 12px;
+  color: #253017;
+  cursor: pointer;
+}
+
+.input :global(input)::placeholder {
+  opacity: .6;
+  text-transform: lowercase;
+}
+
+.input:disabled {
+  opacity: .6;
+  cursor: not-allowed;
 }
 
 .footer {
   display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  padding: 12px;
-  border-top: 1px solid #e7eedf;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 5px 16px;
+  height: 64px;
 }
 
 .btn {
   width: 125px;
-  min-height: 48px;
-  padding: 10px 16px;
+  height: 48px;
   border-radius: 12px;
-  border: 1px solid transparent;
-  font: inherit;
+  border: 1px solid #ABD27A;
   cursor: pointer;
 }
 
-.btnGhost {
-  background: #fff;
-  border-color: #cfe0b8;
-  color: #39412e;
+.ghost-btn {
+  background-color: #fff;
 }
 
-.btnGhost:hover { 
-  background: #f6fbef; 
+.ghost-btn:hover {
+  border-color: #fff;
+  opacity: .6;
 }
 
-.btnPrimary {
+.ghost-btn:active {
+  border-color: #508826;
+}
+
+.primary-btn {
   max-width: 115px;
-  background: #ABD27A;
-  color: #253017;
+  background-color: #ABD27A;
 }
 
-.btnPrimary:hover { 
-  filter: brightness(.97); 
+.primary-btn:hover {
+  background-color: #DEEBC5;
+  border-color: #DEEBC5;
+}
+
+.primary-btn:active {
+  background-color: #508826;
+  border-color: #508826;
 }
 
 .weekday {
@@ -159,7 +119,29 @@
   border-radius: 50%;
 }
 
-:global(.react-datepicker__day:hover) { 
+:global(.react-datepicker) {
+  border: 0;
+}
+
+:global(.react-datepicker__triangle) {
+  display: none;
+}
+
+:global(.react-datepicker__header) {
+  padding: 0;
+  border-bottom: 0;
+}
+
+:global(.react-datepicker__month-container) {
+  padding: 0 18px;
+}
+
+:global(.react-datepicker__day-names) {
+  margin: 0;
+  padding: 0 6px;
+}
+
+:global(.react-datepicker__day:hover) {
   background: #f2f7eb;
 }
 
@@ -169,24 +151,8 @@
   color: #253017;
 }
 
-:global(.react-datepicker) { 
-  border: 0; 
-}
-
-:global(.react-datepicker__month-container) { 
-  padding: 0px 18px; 
-}
-
-:global(.react-datepicker__triangle) {
-  display: none; 
-}
-
-:global(.react-datepicker__header) {
-  padding: 0;
-  border-bottom: 0;
-}
-
-:global(.react-datepicker__day-names) {
-  margin: 0;
-  padding: 0 6px;
+:global(.react-datepicker__day--outside-month) {
+  color: #253017;
+  opacity: .6;
+  pointer-events: none;
 }
