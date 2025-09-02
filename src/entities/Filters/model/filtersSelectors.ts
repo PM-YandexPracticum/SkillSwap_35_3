@@ -24,7 +24,7 @@ export const selectIsCategoryPartial = (subcategoryIds: string[]) =>
     return cnt > 0 && cnt < subcategoryIds.length;
   });
 
-  export interface ActiveFilter {
+export interface ActiveFilter {
   type: 'mode' | 'gender' | 'city' | 'category' | 'query';
   value: string;
   label: string;

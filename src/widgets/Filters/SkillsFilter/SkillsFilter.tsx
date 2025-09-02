@@ -41,10 +41,7 @@ function getCategoryTitle(s: Skill): string {
 
 function getCategoryId(s: Skill): string {
   return String(
-    s.categoryId ??
-    s.category_id ??
-    s.parent?.id ??
-    getCategoryTitle(s)
+    s.categoryId ?? s.category_id ?? s.parent?.id ?? getCategoryTitle(s)
   );
 }
 
@@ -174,9 +171,7 @@ export function SkillsFilter({ skills }: Props) {
                       onChange={(value: string, nextChecked: boolean) => {
                         const id = String(value);
                         if (nextChecked) {
-                          const next = Array.from(
-                            new Set([...selected, id])
-                          );
+                          const next = Array.from(new Set([...selected, id]));
                           dispatch(setCategories(next));
                         } else {
                           dispatch(toggleSkill(id));

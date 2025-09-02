@@ -27,21 +27,38 @@ export const Header = ({
 }: HeaderProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+
   const userMenuRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
 
   // закрываем модалку «Все навыки» по клику вне
   useClickOutside([modalRef, skillsRef], {
-    onClickOutside: () => {
-      setIsModalOpen(false);
-    }
+    onClickOutside: () => setIsModalOpen(false)
   });
+
+  // закрываем меню пользователя по клику вне
+  useClickOutside([userMenuRef], {
+    onClickOutside: () => setIsUserMenuOpen(false)
+  });
+
   const handleSkillsClick = () => setIsModalOpen((v) => !v);
+  const handleAvatarClick = () => setIsUserMenuOpen((v) => !v);
+  const handleProfileClick = () => {
+    setIsUserMenuOpen(false);
+    navigate('/profile');
+  };
+  const handleLogoutClick = () => {
+    setIsUserMenuOpen(false);
+    // здесь может быть диспатч logout(), если он есть в проекте
+    navigate('/login');
+  };
+  const handleLoginClick = () => navigate('/login');
+  const handleRegisterClick = () => navigate('/register');
 
   // auth
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -51,8 +68,7 @@ export const Header = ({
   const actionBarButtons = useActionBarButtons();
 
   // поиск: связываем инпут в хедере с фильтрами (q) через Redux
-  const dispatch = useAppDispatch();
-  const q = useSelector(selectQuery);
+  const q = useSelector(selectQuery) ?? '';
 
   return (
     <header
@@ -70,7 +86,11 @@ export const Header = ({
         </Link>
 
         {/* Кнопка «Все навыки» + модалка */}
-        <div className={styles['header__skills-wrapper']} ref={skillsRef} onClick={handleSkillsClick}>
+        <div
+          className={styles['header__skills-wrapper']}
+          ref={skillsRef}
+          onClick={handleSkillsClick}
+        >
           <div className={styles['header__skills']}>
             Все навыки
             <Icon
@@ -96,7 +116,10 @@ export const Header = ({
         data-cy='header-search'
       />
 
-      <ActionBar buttons={actionBarButtons} className={styles['header__action-bar']} />
+      <ActionBar
+        buttons={actionBarButtons}
+        className={styles['header__action-bar']}
+      />
 
       {/* Блок авторизации: имя + аватар или кнопки «Войти/Зарегистрироваться» */}
       {isAuthenticated ? (

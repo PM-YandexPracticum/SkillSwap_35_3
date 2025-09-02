@@ -51,7 +51,7 @@ export function AppliedFiltersTabs() {
             key: 'query',
             text: label,
             onClose: () => dispatch(setQuery(''))
-          };  
+          };
         default:
           return null;
       }
