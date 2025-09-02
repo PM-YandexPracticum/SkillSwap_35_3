@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Slider } from './Slider';
-import { Card } from '../Card/Card';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Card } from '@/widgets';
+import { Avatar } from '@/shared/ui';
 
 const meta: Meta<typeof Slider> = {
   title: 'Widgets/Slider',
