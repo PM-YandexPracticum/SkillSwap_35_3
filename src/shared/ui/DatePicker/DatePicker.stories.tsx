@@ -8,7 +8,12 @@ const meta: Meta<typeof BirthDatePicker> = {
   parameters: {
     layout: 'centered',
     controls: { expanded: true },
-    docs: { description: { component: 'Поле выбора даты рождения с попап-календарём, RU-локаль, кнопки Отменить/Выбрать.' } },
+    docs: {
+      description: {
+        component:
+          'Поле выбора даты рождения с попап-календарём, RU-локаль, кнопки Отменить/Выбрать.',
+      },
+    },
   },
   args: {
     value: null,
@@ -34,33 +39,32 @@ const meta: Meta<typeof BirthDatePicker> = {
 export default meta;
 type Story = StoryObj<typeof BirthDatePicker>;
 
-// Локальный контроллер, чтобы жить без useArgs
-const Local: React.FC<BirthDatePickerProps> = (props) => {
+function Local(props: BirthDatePickerProps) {
   const [v, setV] = useState<Date | null>(props.value ?? null);
+
   return (
     <BirthDatePicker
       {...props}
       value={v}
       onChange={(d) => {
         setV(d);
-        // прокинем наружу, чтобы в Actions было видно
         props.onChange?.(d);
       }}
     />
   );
-};
+}
 
 export const Basic: Story = {
   name: 'Базовый',
-  render: (args: any) => <Local {...args} />,
+  render: (args) => <Local {...args} />,
 };
 
 export const WithInitialValue: Story = {
   name: 'С предустановленной датой',
-  render: (args: any) => <Local {...args} value={new Date(1995, 9, 28)} />, // 28.10.1995
+  render: (args) => <Local {...args} value={new Date(1995, 9, 28)} />,
 };
 
 export const Disabled: Story = {
   name: 'Заблокирован',
-  render: (args: any) => <Local {...args} disabled />,
+  render: (args) => <Local {...args} disabled />,
 };

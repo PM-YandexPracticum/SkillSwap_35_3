@@ -134,7 +134,7 @@ const InputWithIcon = forwardRef<HTMLInputElement, {
   placeholder?: string;
   
   disabled?: boolean;
-}>(({ value, onClick, onOpen, placeholder, disabled }, ref) => (
+}>(({ value, onClick, onOpen, disabled }, ref) => (
   <button
     type="button"
     className={styles.input}
