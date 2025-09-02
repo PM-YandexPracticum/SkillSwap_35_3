@@ -6,7 +6,9 @@ const ProfilePage = () => {
   return (
     <div className={styles['profile-page']}>
       <ProfileMenu />
-      <Outlet />
+      <div className={styles['profile-content']}>
+        <Outlet />
+      </div>
     </div>
   );
 };
