@@ -9,6 +9,7 @@
   min-height: 692px;
   background-color: var(--background-color-secondary);
   border-radius: 12px;
+  max-width: min-content;
 }
 
 .step-card__image {

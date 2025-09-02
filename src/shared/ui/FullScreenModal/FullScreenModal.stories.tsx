@@ -6,6 +6,7 @@ import { useState } from 'react';
 const MetaData: Meta<typeof FullScreenModal> = {
   title: 'UI/FullScreenModal',
   component: FullScreenModal,
+  tags: ['autodocs'],
   argTypes: {
     isOpen: { control: 'boolean' },
     closeOnEsc: { control: 'boolean' }

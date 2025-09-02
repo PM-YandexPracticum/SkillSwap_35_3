@@ -3,7 +3,8 @@ import { Icon } from './Icon';
 
 const meta: Meta<typeof Icon> = {
   title: 'UI/Icon',
-  component: Icon
+  component: Icon,
+  tags: ['autodocs']
 };
 
 export default meta;

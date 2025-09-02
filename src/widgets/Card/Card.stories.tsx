@@ -1,10 +1,57 @@
 import { Card } from './Card';
 import { CardProps } from './types';
 
-export default {
+import type { Meta, StoryObj } from '@storybook/react';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import { MemoryRouter } from 'react-router-dom';
+
+import usersReducer from '@/entities/User/slices/usersSlice';
+import skillsReducer from '@/entities/Skill/slices/skillsSlice';
+import favoritesReducer from '@/features/favorites/slices/likeSlice';
+import authReducer from '@/features/auth/slices/authSlice';
+import { likesReducer } from '@/features/favorites';
+
+const store = configureStore({
+  reducer: {
+    users: usersReducer,
+    skills: skillsReducer,
+    favorites: favoritesReducer,
+    auth: authReducer,
+    likes: likesReducer
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false
+    })
+});
+
+store.dispatch({
+  type: 'auth/setAuthState',
+  payload: {
+    token: 'demo-token',
+    user: null
+  }
+});
+
+const meta: Meta<typeof Card> = {
   title: 'Widgets/Card',
-  component: Card
+  component: Card,
+  decorators: [
+    (Story) => (
+      <Provider store={store}>
+        <MemoryRouter>
+          <Story />
+        </MemoryRouter>
+      </Provider>
+    )
+  ],
+  tags: ['autodocs']
 };
+
+export default meta;
+
+type Story = StoryObj<typeof Card>;
 
 const skills = [
   {
@@ -55,32 +102,36 @@ const onDetails = (id: number) => {
   alert(`Подробнее о пользователе с id: ${id}`);
 };
 
-export const WithAndWithoutAbout = () => (
-  <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-    <Card user={user} skills={skills} onDetails={onDetails} />
-    <Card user={user} skills={skills} onDetails={onDetails} showAbout={true} />
-  </div>
-);
+export const WithAndWithoutAbout: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 16 }}>
+      <Card user={user} skills={skills} onDetails={onDetails} />
+      <Card user={user} skills={skills} onDetails={onDetails} showAbout />
+    </div>
+  )
+};
 
-export const NoTeachNoLearnSkill = () => (
-  <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-    <Card
-      user={{ ...user, teachingSkillId: 999 }}
-      skills={skills}
-      onDetails={onDetails}
-    />
-    <Card
-      user={{ ...user, learningSkillIds: [] }}
-      skills={skills}
-      onDetails={onDetails}
-    />
-  </div>
-);
+export const NoSkills: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 16 }}>
+      <Card
+        user={{ ...user, teachingSkillId: 999 }}
+        skills={skills}
+        onDetails={onDetails}
+      />
+      <Card
+        user={{ ...user, learningSkillIds: [] }}
+        skills={skills}
+        onDetails={onDetails}
+      />
+    </div>
+  )
+};
 
-export const OneLearnSkill = () => (
-  <Card
-    user={{ ...user, learningSkillIds: [2] }}
-    skills={skills}
-    onDetails={onDetails}
-  />
-);
+export const OneSkill: Story = {
+  args: {
+    user: { ...user, learningSkillIds: [2] },
+    skills,
+    onDetails
+  }
+};

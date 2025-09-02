@@ -4,6 +4,7 @@ import { Title } from './Title';
 const meta: Meta<typeof Title> = {
   title: 'UI/Title',
   component: Title,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered'
   },
