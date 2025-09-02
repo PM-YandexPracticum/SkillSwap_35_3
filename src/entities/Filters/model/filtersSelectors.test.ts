@@ -5,17 +5,22 @@ import {
 } from './filtersSelectors';
 import type { RootState } from '@/app/store';
 import type { ISkill } from '@/api/types';
+import { initialState as usersInitialState } from '@/entities/User/slices/usersSlice';
+import { initialState as skillsInitialState } from '@/entities/Skill/slices/skillsSlice';
+import { initialState as authInitialState } from '@/features/auth/slices/authSlice';
 
-const makeState = (categories: string[]): RootState =>
-  ({
-    filters: {
-      mode: 'all',
-      gender: 'any',
-      cities: [],
-      categories,
-      q: ''
-    }
-  }) as unknown as RootState;
+const makeState = (categories: string[]): RootState => ({
+  users: usersInitialState,
+  skills: skillsInitialState,
+  auth: authInitialState,
+  filters: {
+    mode: 'all',
+    gender: 'any',
+    cities: [],
+    categories,
+    q: ''
+  }
+});
 
 describe('filters selectors for Skills', () => {
   test('selectIsCategorySelected: true when all subIds are chosen', () => {
@@ -49,26 +54,25 @@ describe('filters selectors for Skills', () => {
   });
 });
 
-  const makeStateForActive = (
-    filters: Partial<RootState['filters']>,
-    skills: ISkill[] = []
-  ): RootState =>
-    ({
-      filters: {
-      mode: 'all',
-      gender: 'any',
-      cities: [],
-      categories: [],
-      q: '',
-      ...filters
-    },
-      skills: {
-        skills,
-      selected: null,
-      isLoading: false,
-      error: null
-    }
-  }) as unknown as RootState;
+const makeStateForActive = (
+  filters: Partial<RootState['filters']>,
+  skills: ISkill[] = []
+): RootState => ({
+  users: usersInitialState,
+  auth: authInitialState,
+  filters: {
+    mode: 'all',
+    gender: 'any',
+    cities: [],
+    categories: [],
+    q: '',
+    ...filters
+  },
+  skills: {
+    ...skillsInitialState,
+    skills
+  }
+});
 
 describe('selectActiveFilters', () => {
   test('returns active filters with readable labels', () => {
@@ -90,5 +94,5 @@ describe('selectActiveFilters', () => {
       { type: 'category', value: '1', label: 'JS' },
       { type: 'query', value: 'js', label: 'js' }
     ]);
-    });
   });
+});

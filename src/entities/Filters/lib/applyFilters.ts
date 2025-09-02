@@ -5,12 +5,13 @@ import type {
 } from '@/entities/Filters/model/filtersSlice';
 import type { IUser, ISkill } from '@/api/types';
 
-const normalize = (v: unknown) =>
+// --- utils ---
+const normalize = (v: string | number | boolean | null | undefined) =>
   (typeof v === 'string' ? v : String(v ?? '')).trim();
 
 const toLower = (s: string) => s.toLowerCase();
 
-// id -> title
+// Карта id -> title
 const buildIdToTitle = (skills: ISkill[]) => {
   const map = new Map<string, string>();
   for (const s of skills) {
@@ -73,6 +74,7 @@ const matchQuery = (u: IUser, q: string, idToTitle: Map<string, string>) => {
   return haystack.includes(needle);
 };
 
+// --- main ---
 export function applyFilters(
   users: IUser[],
   filters: FiltersState,

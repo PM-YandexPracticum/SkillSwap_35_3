@@ -19,7 +19,7 @@ type MockShape = {
   users: IUser[];
   skills: ISkill[];
 };
-const typed = mock as unknown as MockShape;
+const typed = mock as MockShape;
 
 const users: IUser[] = typed.users;
 const skills: ISkill[] = typed.skills;
@@ -47,7 +47,6 @@ function FeedWithFilters() {
   return <CardsFeed usersData={filtered} skillsData={skills} />;
 }
 
-// ИМЕНОВАННЫЙ декоратор — без displayName-свойств
 const withReduxProvider: Decorator = function WithReduxProvider(Story) {
   return (
     <Provider store={makeStore()}>

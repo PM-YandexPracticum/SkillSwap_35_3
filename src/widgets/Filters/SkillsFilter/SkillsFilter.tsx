@@ -12,29 +12,40 @@ import radioStyles from '@/widgets/Filters/RadioFilter/RadioFilter.module.css';
 import styles from './SkillsFilter.module.css';
 import { Checkbox } from '@/shared/ui/Checkbox';
 
-type Skill = { id: string | number; title: string } & Record<string, unknown>;
+interface Skill {
+  id: string | number;
+  title: string;
+  categoryTitle?: string;
+  category?: string;
+  categoryName?: string;
+  group?: string;
+  categoryId?: string | number;
+  category_id?: string | number;
+  parent?: {
+    id?: string | number;
+    title?: string;
+  };
+}
 type Props = { skills: Skill[] };
 
 function getCategoryTitle(s: Skill): string {
-  const r = s as Record<string, unknown>;
-  const val =
-    r['categoryTitle'] ??
-    r['category'] ??
-    r['categoryName'] ??
-    r['group'] ??
-    (r['parent'] as Record<string, unknown> | undefined)?.['title'] ??
-    'Все навыки';
-  return String(val ?? '');
+  return (
+    s.categoryTitle ??
+    s.category ??
+    s.categoryName ??
+    s.group ??
+    s.parent?.title ??
+    'Все навыки'
+  );
 }
 
 function getCategoryId(s: Skill): string {
-  const r = s as Record<string, unknown>;
-  const id =
-    r['categoryId'] ??
-    r['category_id'] ??
-    (r['parent'] as Record<string, unknown> | undefined)?.['id'] ??
-    getCategoryTitle(s);
-  return String(id ?? '');
+  return String(
+    s.categoryId ??
+    s.category_id ??
+    s.parent?.id ??
+    getCategoryTitle(s)
+  );
 }
 
 export function SkillsFilter({ skills }: Props) {
@@ -49,9 +60,8 @@ export function SkillsFilter({ skills }: Props) {
     >();
 
     for (const raw of skills) {
-      const rr = raw as Record<string, unknown>;
-      const id = String(rr['id']);
-      const title = String(rr['title'] ?? '');
+      const id = String(raw.id);
+      const title = String(raw.title ?? '');
       if (!id || !title) continue;
 
       const catId = getCategoryId(raw);

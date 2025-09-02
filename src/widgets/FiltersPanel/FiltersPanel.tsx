@@ -23,6 +23,7 @@ import { SkillsFilter } from '@/widgets/Filters/SkillsFilter/SkillsFilter';
 
 import styles from './FiltersPanel.module.css';
 import mock from '@/api/mockData.json';
+import type { ISkill } from '@/api/types';
 
 const demoCities = [
   'Москва',
@@ -32,8 +33,10 @@ const demoCities = [
   'Казань'
 ];
 
-type MockShape = { skills: { id: number; title: string }[] };
-const mockTyped = mock as unknown as MockShape;
+interface MockShape {
+  skills: ISkill[];
+}
+const mockTyped: MockShape = mock as MockShape;
 const skills = mockTyped.skills;
 
 const modeOptions = [
@@ -52,15 +55,15 @@ export function FiltersPanel() {
   const dispatch = useAppDispatch();
   const mode = useSelector(selectMode);
   const gender = useSelector(selectGender);
-  const cities = useSelector(selectCities) as string[];
-  const q = useSelector(selectQuery) ?? '';
+  const cities = useSelector(selectCities);
+  const q = useSelector(selectQuery);
   const categories = useSelector(selectCategories);
 
   const activeCount =
     (mode !== 'all' ? 1 : 0) +
     (gender !== 'any' ? 1 : 0) +
     (cities.length > 0 ? 1 : 0) +
-    ((categories?.length ?? 0) > 0 ? 1 : 0) +
+    (categories.length > 0 ? 1 : 0) +
     (q.trim().length > 0 ? 1 : 0);
 
   const hasActiveFilters = activeCount > 0;
