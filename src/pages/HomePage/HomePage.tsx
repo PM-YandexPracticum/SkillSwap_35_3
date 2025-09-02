@@ -1,28 +1,39 @@
-import React, { useEffect } from 'react';
-
+import { useEffect } from 'react';
 import styles from './HomePage.module.css';
 
-import { useAppDispatch } from '@/app/store';
+import { useAppDispatch, useSelector } from '@/app/store';
 import { fetchUsers } from 'src/entities/User/thunks/usersThunks';
 import { fetchSkills } from 'src/entities/Skill/thunks/skillsThunk';
 
-//import { FiltersPanel } from '@/widgets/CardsFeed';
+import { FiltersPanel } from '@/widgets/FiltersPanel/FiltersPanel';
 import { CardsFeed } from '@/widgets/CardsFeed';
+import { AppliedFiltersTabs } from '@/widgets/Filters';
+import { selectActiveFilters } from '@/entities/Filters/model/filtersSelectors';
 
 const HomePage = () => {
   const dispatch = useAppDispatch();
+  const activeFilters = useSelector(selectActiveFilters);
+  const hasActiveFilters = activeFilters.length > 0;
 
   useEffect(() => {
-    dispatch(fetchUsers()); // Загружаем список пользователей при монтировании компонента
-    dispatch(fetchSkills()); // Загружаем список навыков при монтировании компонента
+    dispatch(fetchUsers());
+    dispatch(fetchSkills());
   }, [dispatch]);
 
   return (
     <div className={styles.page}>
-      {/* <FiltersPanel /> */}
-      <div className={styles.main__filters}>Заглушка Фильтры</div>
+      <aside className={styles.main__filters}>
+        <FiltersPanel />
+      </aside>
 
-      <CardsFeed />
+      <section className={styles.main__content}>
+        {hasActiveFilters && (
+          <div className={styles.content__chipsRow}>
+            <AppliedFiltersTabs />
+          </div>
+        )}
+        <CardsFeed />
+      </section>
     </div>
   );
 };
