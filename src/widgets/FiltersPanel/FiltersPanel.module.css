@@ -33,7 +33,9 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: opacity 0.2s ease, color 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease;
 }
 
 .filters-panel__reset:hover {
@@ -50,6 +52,6 @@
   font-size: 1.1em;
 }
 
-.filters-panel > :not(.filters-panel__header):not(:last-child) {
+.filters-panel > :not(:is(.filters-panel__header, :last-child)) {
   margin-bottom: 32px;
 }

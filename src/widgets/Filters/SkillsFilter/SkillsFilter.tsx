@@ -10,7 +10,7 @@ import {
 
 import radioStyles from '@/widgets/Filters/RadioFilter/RadioFilter.module.css';
 import styles from './SkillsFilter.module.css';
-import { Checkbox } from '@/shared/ui/Checkbox';
+import { Checkbox, Icon } from '@/shared/ui';
 
 interface Skill {
   id: string | number;
@@ -138,7 +138,15 @@ export function SkillsFilter({ skills }: Props) {
                       setOpen((s) => ({ ...s, [g.key]: !s[g.key] }))
                     }
                   >
-                    <svg
+                    <Icon
+                      name='arrow-down-icon'
+                      className={[
+                        styles['skills-filter__chevron'],
+                        isOpen ? styles['skills-filter__chevron--open'] : ''
+                      ].join(' ')}
+                      aria-hidden='true'
+                    />
+                    {/* <svg
                       className={[
                         styles['skills-filter__chevron'],
                         isOpen ? styles['skills-filter__chevron--open'] : ''
@@ -155,7 +163,7 @@ export function SkillsFilter({ skills }: Props) {
                         d='M15.3101 7.93308C15.1347 7.93308 14.9594 7.85924 14.8356 7.73545L8.00022 0.900072L1.16484 7.73545C0.917244 7.98305 0.516393 7.98305 0.268796 7.73545C0.0211994 7.48785 0.0211994 7.08699 0.268796 6.8394L7.55271 0.555476C7.8003 0.30788 8.20115 0.30788 8.44875 0.555476L15.7327 6.8394C15.9803 7.08699 15.9803 7.48785 15.7327 7.73545C15.6089 7.85924 15.4335 7.93308 15.2582 7.93308H15.3101Z'
                         fill='#253017'
                       />
-                    </svg>
+                    </svg> */}
                   </button>
                 </div>
 

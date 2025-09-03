@@ -47,3 +47,9 @@ a {
   text-decoration: none; /* Убираем подчёркивание */
   color: inherit;
 }
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
