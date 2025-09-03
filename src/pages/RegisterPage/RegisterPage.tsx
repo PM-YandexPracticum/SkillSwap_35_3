@@ -1,14 +1,24 @@
-import RegisterForm from "@/features/auth/RegistrationForm/RegisterForm"
-import { FullScreenModal } from "@/shared/ui"
-import { RegisterPageProps } from "./type"
+import RegisterForm from '@/features/auth/RegistrationForm/RegisterForm';
+import { RegisterPageProps } from './type';
 
-const RegisterPage = ({isOpen, handleClose, formData, city, gender, skills, subSkills}: RegisterPageProps) => {
+const RegisterPage = ({
+  handleClose,
+  formData,
+  city,
+  gender,
+  skills,
+  subSkills
+}: RegisterPageProps) => {
+  return (
+    <RegisterForm
+      data={formData}
+      cityOption={city}
+      genderOption={gender}
+      skillsOption={skills}
+      subSkillsOption={subSkills}
+      handleCloseModalFull={handleClose}
+    ></RegisterForm>
+  );
+};
 
-   return (
-   <FullScreenModal isOpen={isOpen} onClose={handleClose} closeOnEsc={false}>
-        <RegisterForm data={formData} cityOption={city} genderOption={gender} skillsOption={skills} subSkillsOption={subSkills} handleCloseModalFull={handleClose}></RegisterForm>
-    </FullScreenModal>
-    )
-}
-
-export default RegisterPage
+export default RegisterPage;

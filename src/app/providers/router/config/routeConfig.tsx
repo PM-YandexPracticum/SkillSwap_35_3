@@ -7,7 +7,7 @@ const HomePage = lazy(() => import('@/pages/HomePage'));
 const ErrorPage = lazy(() => import('@/pages/ErrorPage'));
 
 const LoginPage = lazy(() => import('@/pages/LoginPage'));
-// const RegistrationPage = lazy(() => import('@/pages/RegistrationPage'));
+const RegistrationPage = lazy(() => import('@/pages/RegisterPage'));
 // const CardDetailPage = lazy(() => import('@/pages/CardDetailedPage'));
 // const ProfilePage = lazy(() => import('@/pages/ProfilePage'));
 // const ProfileFavoritesPage = lazy (() => import('@/pages/ProfileFavoritesPage));
@@ -85,6 +85,33 @@ export const modalRoutesConfig: RouteObject[] = [
   },
   {
     path: pathConstants.REGISTER,
-    element: <OnlyUnAuth component={<Placeholder />} /> // Заменить на реальную страницу
+    element: (
+      <OnlyUnAuth
+        component={
+          <RegistrationPage
+            handleClose={() => console.log(1)}
+            formData={{
+              email: '',
+              password: '',
+              name: '',
+              gender: '',
+              date: '',
+              city: '',
+              skills: [],
+              subSkills: [],
+              abilityTitle: '',
+              abilityOption: '',
+              subAbilityOption: '',
+              description: '',
+              files: []
+            }}
+            city={[]}
+            gender={[]}
+            skills={[]}
+            subSkills={[]}
+          />
+        }
+      />
+    ) // Заменить на реальную страницу
   }
 ];

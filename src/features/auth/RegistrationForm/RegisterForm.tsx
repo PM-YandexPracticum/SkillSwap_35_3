@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { RegisterFormProps } from './type';
-import renderStep1 from './RegisterFormStep1';
-import renderStep2 from './RegisterFormStep2';
-import renderStep3 from './RegisterFormStep3';
 import { DropdownOption } from '@/shared/ui';
+import RegisterFormStep3 from './RegisterFormStep3';
+import RegisterFormStep2 from './RegisterFormStep2';
+import RegisterFormStep1 from './RegisterFormStep1';
 
 const RegisterForm = ({
   data,
@@ -16,27 +16,6 @@ const RegisterForm = ({
   const [step, setStep] = useState(1);
 
   const [formData, setFormData] = useState(data);
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const [isModalSuccessOpen, setIsModalSuccessOpen] = useState(false);
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
-
-  const handleOpenModalSuccess = () => {
-    setIsModalSuccessOpen(true);
-  };
-
-  const handleCloseModalSuccess = () => {
-    setIsModalSuccessOpen(false);
-  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -67,39 +46,41 @@ const RegisterForm = ({
   const renderStep = () => {
     switch (step) {
       case 1:
-        return renderStep1({ step, handleChange, formData, nextStep });
+        return (
+          <RegisterFormStep1
+            handleChange={handleChange}
+            formData={formData}
+            nextStep={nextStep}
+          />
+        );
       case 2:
-        return renderStep2({
-          handleChange,
-          step,
-          formData,
-          setFormData,
-          genderOption,
-          cityOption,
-          skillsOption,
-          subSkillsOption,
-          prevStep,
-          nextStep
-        });
+        return (
+          <RegisterFormStep2
+            handleChange={handleChange}
+            formData={formData}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            cityOption={cityOption}
+            genderOption={genderOption}
+            skillsOption={skillsOption}
+            subSkillsOption={subSkillsOption}
+            setFormData={setFormData}
+          />
+        );
       case 3:
-        return renderStep3({
-          step,
-          handleChange,
-          formData,
-          setFormData,
-          skillsOption,
-          subSkillsOption,
-          prevStep,
-          handleOpenModal,
-          handleCloseModal,
-          isModalOpen,
-          abilityLabel,
-          subAbilityLabel,
-          handleOpenModalSuccess,
-          handleCloseModalSuccess,
-          isModalSuccessOpen,
-          handleCloseModalFull
-        });
+        return (
+          <RegisterFormStep3
+            handleChange={handleChange}
+            formData={formData}
+            setFormData={setFormData}
+            skillsOption={skillsOption}
+            subSkillsOption={subSkillsOption}
+            prevStep={prevStep}
+            abilityLabel={abilityLabel}
+            subAbilityLabel={subAbilityLabel}
+            handleCloseModalFull={handleCloseModalFull}
+          />
+        );
       default:
         return <div>Ошибка: неверный шаг</div>;
     }

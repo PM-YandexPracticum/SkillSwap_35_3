@@ -17,12 +17,9 @@ import { loadLikesFromStorage } from '@/features/favorites/middleware/likesMiddl
 import { AppLayout } from './AppLayout';
 import { FullScreenModal } from '@/shared/ui';
 import LoginPage from '@/pages/LoginPage';
+import RegisterPage from '@/pages/RegisterPage';
 
 import './styles/index.css';
-
-const RegistrationPage = () => (
-  <div style={{ padding: '40px' }}>Содержимое страницы регистрации</div>
-);
 
 export const App = () => {
   const location = useLocation();
@@ -92,7 +89,28 @@ export const App = () => {
             path='/register'
             element={
               <FullScreenModal isOpen={true} onClose={handleCloseModal}>
-                <RegistrationPage />
+                <RegisterPage
+                  handleClose={handleCloseModal}
+                  formData={{
+                    email: '',
+                    password: '',
+                    name: '',
+                    gender: '',
+                    date: '',
+                    city: '',
+                    skills: [],
+                    subSkills: [],
+                    abilityTitle: '',
+                    abilityOption: '',
+                    subAbilityOption: '',
+                    description: '',
+                    files: []
+                  }}
+                  city={[]}
+                  gender={[]}
+                  skills={[]}
+                  subSkills={[]}
+                />
               </FullScreenModal>
             }
           />

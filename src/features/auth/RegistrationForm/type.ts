@@ -7,7 +7,7 @@ export interface RegisterFormProps {
   genderOption: DropdownOption[];
   skillsOption: DropdownOption[];
   subSkillsOption: DropdownOption[];
-  handleCloseModalFull: () => void
+  handleCloseModalFull: () => void;
 }
 
 export interface formData {
@@ -27,7 +27,6 @@ export interface formData {
 }
 
 export interface RegisterFormStep1Props {
-  step: number;
   handleChange: (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
@@ -36,7 +35,6 @@ export interface RegisterFormStep1Props {
 }
 
 export interface RegisterFormStep2Props {
-  step: number;
   handleChange: (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
@@ -51,7 +49,6 @@ export interface RegisterFormStep2Props {
 }
 
 export interface RegisterFormStep3Props {
-  step: number;
   handleChange: (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
@@ -60,13 +57,7 @@ export interface RegisterFormStep3Props {
   skillsOption: DropdownOption[];
   subSkillsOption: DropdownOption[];
   prevStep: () => void;
-  handleOpenModal: () => void;
-  handleCloseModal: () => void;
-  isModalOpen: boolean;
   abilityLabel: string;
   subAbilityLabel: string;
-  handleOpenModalSuccess: () => void;
-  handleCloseModalSuccess: () => void;
-  isModalSuccessOpen: boolean;
-  handleCloseModalFull: () => void
+  handleCloseModalFull: () => void;
 }
