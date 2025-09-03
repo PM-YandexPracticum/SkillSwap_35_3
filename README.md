@@ -10,11 +10,11 @@
 
 - Стилизация: CSS Modules + глобальные переменные
 
-- Управление состоянием: Redux Toolkit (+ RTK Query для будущей интеграции с API)
+- Управление состоянием: Redux Toolkit
 
 - Роутинг: React Router DOM v6
 
-- Линтинг: ESLint (с конфигурацией Airbnb), Prettier, Stylelint
+- Линтинг: ESLint, Prettier, Stylelint
 
 ## Как запустить проект
 ### Установите зависимости:
