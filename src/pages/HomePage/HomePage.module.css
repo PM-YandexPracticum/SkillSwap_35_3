@@ -9,13 +9,13 @@
 .main__filters {
   border-radius: 12px;
   width: 325px;
-  height: 100vh;
+  min-height: 100vh;
   background: var(--background-color-secondary);
   flex-shrink: 0;
 }
 
 .content__chipsRow {
-  margin: 24px 0 12px;
+  margin-bottom: 12px;
 }
 
 .main__content {

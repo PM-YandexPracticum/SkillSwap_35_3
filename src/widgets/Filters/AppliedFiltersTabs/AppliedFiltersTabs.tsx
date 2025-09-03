@@ -69,7 +69,8 @@ export function AppliedFiltersTabs() {
             style={{
               backgroundColor: 'var(--background-color-secondary)',
               borderRadius: '12px',
-              padding: '12px 44px 12px 24px'
+              padding: '12px 44px 12px 24px',
+              fontSize: '16px'
             }}
           />
           <button

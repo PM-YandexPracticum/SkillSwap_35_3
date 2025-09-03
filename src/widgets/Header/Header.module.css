@@ -58,7 +58,7 @@
 }
 
 .header__arrow--rotated {
-  transform: rotate(180deg);
+  transform: rotate(-180deg);
 }
 
 .header__register-button {
