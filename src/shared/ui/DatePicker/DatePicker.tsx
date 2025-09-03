@@ -32,7 +32,7 @@ export function BirthDatePicker({
   className,
   inputClassName,
   popperClassName,
-  placeholder = 'дд.мм.гггг',
+  placeholder = 'дд.мм.гггг'
 }: BirthDatePickerProps) {
   const dpRef = useRef<DatePickerRef | null>(null);
   const [temp, setTemp] = useState<Date | null>(value ?? null);
@@ -43,14 +43,25 @@ export function BirthDatePicker({
 
   const years = useMemo(() => {
     const arr: number[] = [];
-    for (let y = maxDate.getFullYear(); y >= minDate.getFullYear(); y--) arr.push(y);
+    for (let y = maxDate.getFullYear(); y >= minDate.getFullYear(); y--)
+      arr.push(y);
     return arr;
   }, [minDate, maxDate]);
 
   const months = useMemo(
     () => [
-      'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
-      'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
+      'Январь',
+      'Февраль',
+      'Март',
+      'Апрель',
+      'Май',
+      'Июнь',
+      'Июль',
+      'Август',
+      'Сентябрь',
+      'Октябрь',
+      'Ноябрь',
+      'Декабрь'
     ],
     []
   );
@@ -78,17 +89,15 @@ export function BirthDatePicker({
         onClickOutside={cancel}
         shouldCloseOnSelect={false}
         showPopperArrow={false}
-        popperPlacement="bottom-start"
-        dateFormat="dd.MM.yyyy"
+        popperPlacement='bottom-start'
+        dateFormat='dd.MM.yyyy'
         locale={ru}
         minDate={minDate}
         maxDate={maxDate}
         disabled={disabled}
         placeholderText={placeholder}
         customInput={
-          <PickerInputAdapter
-            className={clsx(styles.input, inputClassName)}
-          />
+          <PickerInputAdapter className={clsx(styles.input, inputClassName)} />
         }
         popperClassName={clsx(styles.popper, popperClassName)}
         renderCustomHeader={({ date, changeYear, changeMonth }) => (
@@ -99,10 +108,12 @@ export function BirthDatePicker({
                   className={styles.select}
                   value={date.getMonth()}
                   onChange={(e) => changeMonth(Number(e.target.value))}
-                  aria-label="Выбрать месяц"
+                  aria-label='Выбрать месяц'
                 >
                   {months.map((m, i) => (
-                    <option key={m} value={i}>{m}</option>
+                    <option key={m} value={i}>
+                      {m}
+                    </option>
                   ))}
                 </select>
                 <ChevronDown />
@@ -113,10 +124,12 @@ export function BirthDatePicker({
                   className={styles.select}
                   value={date.getFullYear()}
                   onChange={(e) => changeYear(Number(e.target.value))}
-                  aria-label="Выбрать год"
+                  aria-label='Выбрать год'
                 >
                   {years.map((y) => (
-                    <option key={y} value={y}>{y}</option>
+                    <option key={y} value={y}>
+                      {y}
+                    </option>
                   ))}
                 </select>
                 <ChevronDown />
@@ -136,14 +149,14 @@ export function BirthDatePicker({
             {children}
             <div className={styles.footer}>
               <button
-                type="button"
+                type='button'
                 className={clsx(styles.btn, styles['ghost-btn'])}
                 onClick={cancel}
               >
                 Отменить
               </button>
               <button
-                type="button"
+                type='button'
                 className={clsx(styles.btn, styles['primary-btn'])}
                 onClick={confirm}
               >
@@ -168,8 +181,8 @@ const PickerInputAdapter = forwardRef<HTMLInputElement, Partial<InputProps>>(
       placeholder={placeholder}
       readOnly
       disabled={disabled}
-      icon={<Icon name="calendar-icon" />}
-      iconPosition="right"
+      icon={<Icon name='calendar-icon' />}
+      iconPosition='right'
       className={className}
     />
   )

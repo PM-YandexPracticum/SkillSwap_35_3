@@ -11,19 +11,19 @@ const meta: Meta<typeof BirthDatePicker> = {
     docs: {
       description: {
         component:
-          'Поле выбора даты рождения с попап-календарём, RU-локаль, кнопки Отменить/Выбрать.',
-      },
-    },
+          'Поле выбора даты рождения с попап-календарём, RU-локаль, кнопки Отменить/Выбрать.'
+      }
+    }
   },
   args: {
     value: null,
     placeholder: 'ДД.ММ.ГГГГ',
     minDate: new Date(1900, 0, 1),
     maxDate: new Date(),
-    disabled: false,
+    disabled: false
   },
   argTypes: {
-    onChange: { action: 'changed', table: { category: 'Events' } },
+    onChange: { action: 'changed', table: { category: 'Events' } }
   },
   decorators: [
     (Story) => (
@@ -33,8 +33,8 @@ const meta: Meta<typeof BirthDatePicker> = {
           <Story />
         </label>
       </div>
-    ),
-  ],
+    )
+  ]
 };
 export default meta;
 type Story = StoryObj<typeof BirthDatePicker>;
@@ -56,15 +56,15 @@ function Local(props: BirthDatePickerProps) {
 
 export const Basic: Story = {
   name: 'Базовый',
-  render: (args) => <Local {...args} />,
+  render: (args) => <Local {...args} />
 };
 
 export const WithInitialValue: Story = {
   name: 'С предустановленной датой',
-  render: (args) => <Local {...args} value={new Date(2025, 8, 2)} />,
+  render: (args) => <Local {...args} value={new Date(2025, 8, 2)} />
 };
 
 export const Disabled: Story = {
   name: 'Заблокирован',
-  render: (args) => <Local {...args} disabled />,
+  render: (args) => <Local {...args} disabled />
 };
