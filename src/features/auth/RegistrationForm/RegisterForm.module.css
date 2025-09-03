@@ -66,10 +66,10 @@
     height: 72px;
 }
 
-.reqister__form-add-avatar {
+.register__form-add-avatar {
     position: absolute;
-    right: 0;
     bottom: 5px;
+    right: 0px;
 }
 
 .line {

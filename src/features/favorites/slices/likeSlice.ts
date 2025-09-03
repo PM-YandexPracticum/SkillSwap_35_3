@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit';
 import { RootState } from '@/app/store';
 import { logout } from '@/features/auth/slices/authSlice';
 
@@ -53,9 +53,10 @@ export const selectIsLiked = (id: string) => (state: RootState) =>
 export const selectTotalLikes = (state: RootState) =>
   Object.keys(state.likes.likes).filter((id) => state.likes.likes[id]).length;
 
-export const selectLikedItems = (state: RootState) =>
-  Object.entries(state.likes.likes)
+export const selectLikedItems = createSelector([selectLikes], (likes) =>
+  Object.entries(likes)
     .filter(([, isLiked]) => isLiked)
-    .map(([id]) => id);
+    .map(([id]) => id)
+);
 
 export default likeSlice.reducer;

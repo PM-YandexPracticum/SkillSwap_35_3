@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { RegisterFormProps } from './type';
+import { formData, RegisterFormProps } from './type';
 import { DropdownOption } from '@/shared/ui';
 import RegisterFormStep3 from './RegisterFormStep3';
 import RegisterFormStep2 from './RegisterFormStep2';
@@ -15,7 +15,7 @@ const RegisterForm = ({
 }: RegisterFormProps) => {
   const [step, setStep] = useState(1);
 
-  const [formData, setFormData] = useState(data);
+  const [formData, setFormData] = useState<formData>(data);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

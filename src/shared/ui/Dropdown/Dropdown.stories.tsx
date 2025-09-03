@@ -8,7 +8,8 @@ const meta: Meta<typeof Dropdown> = {
   component: Dropdown,
   parameters: {
     layout: 'centered'
-  }
+  },
+  tags: ['autodocs']
 };
 export default meta;
 type Story = StoryObj<typeof Dropdown>;

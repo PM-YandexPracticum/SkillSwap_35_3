@@ -1,24 +1,26 @@
 import { DropdownOption } from '@/shared/ui';
 import RegisterForm from './RegisterForm';
 import { useState } from 'react';
+import { formData } from './type';
 
 export default {
   title: 'UI/RegisterForm',
   component: RegisterForm
 };
 
-const [isOpen, setIsOpen] = useState(false)
+const [, setIsOpen] = useState(false);
 
 export const Register = () => {
-  const formData = {
+  const formData: formData = {
     email: '',
+    avatar: '',
     password: '',
     name: '',
-    gender: '',
+    gender: 'male',
     date: '',
     city: '',
     skills: [],
-    subSkills: [],
+    subSkills: '',
     abilityTitle: '',
     abilityOption: '',
     subAbilityOption: '',
@@ -28,8 +30,8 @@ export const Register = () => {
 
   const genderOptions: DropdownOption[] = [
     { value: 'Не указан', label: 'Не указан' },
-    { value: 'Мужской', label: 'Мужской' },
-    { value: 'Женский', label: 'Женский' }
+    { value: 'male', label: 'Мужской' },
+    { value: 'famele', label: 'Женский' }
   ];
 
   const cities: DropdownOption[] = [

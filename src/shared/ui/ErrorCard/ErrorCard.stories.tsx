@@ -13,6 +13,7 @@ import error404 from '@/shared/assets/images/error404.png';
 export default {
   title: 'UI/ErrorCard',
   component: ErrorCard,
+  tags: ['autodocs'],
   argTypes: {
     onRetry: { action: 'retry clicked' },
     onGoHome: { action: 'go home clicked' }

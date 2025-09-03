@@ -1,6 +1,3 @@
-@import '../../../app//styles/_variables.css';
-@import '../../../app//styles/_fonts.css';
-
 .title {
   color: var(--title-color, var(--font-color-primary));
   font-family: var(--title-font-family, var(--font-family-title));

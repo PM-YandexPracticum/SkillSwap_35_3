@@ -1,0 +1,76 @@
+.textarea__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 500px;
+}
+
+.textarea {
+  border-radius: 12px;
+  border: 1px solid var(--font-color-secondary);
+  width: 100%;
+  padding: 12px 40px 12px 20px;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-light);
+  font-style: normal;
+  font-size: var(--font-size-sm);
+  line-height: var(--font-line-sm-md);
+  color: var(--font-color-primary);
+}
+
+.textarea::placeholder {
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-light);
+  font-style: normal;
+  font-size: var(--font-size-sm);
+  line-height: var(--font-line-sm-md);
+  letter-spacing: 2%;
+  color: var(--font-color-secondary);
+}
+
+.textarea:focus {
+  border-color: #007bff;
+}
+
+.textarea_search {
+  padding-left: 40px;
+}
+
+.textarea__icon_container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.textarea__icon_left {
+  left: 12px;
+}
+
+.textarea__icon_right {
+  right: 12px;
+}
+
+.textarea {
+  resize: none;
+  min-height: 40px;
+  overflow-y: hidden;
+}
+
+.textarea_resize_vertical {
+  resize: vertical;
+}
+
+.textarea_resize_horizontal {
+  resize: horizontal;
+}
+
+.textarea_resize_both {
+  resize: both;
+}
+
+.textarea__wrapper {
+  position: relative;
+  width: 100%;
+}

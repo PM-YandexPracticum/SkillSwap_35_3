@@ -15,6 +15,22 @@ const RegisterFormStep2 = ({
   prevStep,
   nextStep
 }: RegisterFormStep2Props) => {
+  const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      // Создаем URL для файла и сохраняем в formData
+      const avatarUrl = URL.createObjectURL(file);
+      setFormData((prev) => ({
+        ...prev,
+        avatar: avatarUrl // сохраняем ссылку на файл
+      }));
+    }
+  };
+
+  const handleAvatarClick = () => {
+    document.getElementById('avatar-input')?.click();
+  };
+
   return (
     <div className={styles['register__form-step-1']}>
       <Title as='h2' size='lg' className={styles['regiter__form-steps']}>
@@ -37,16 +53,42 @@ const RegisterFormStep2 = ({
             onSubmit={(e) => e.preventDefault()}
           >
             <div className={styles['register__form-inputs-wrapper']}>
-              <div className={styles['register__form-add-avatar-wrapper']}>
-                <Icon
-                  className={styles['register__form-user-avatar']}
-                  fill='#fff'
-                  name='user-circle-icon'
-                ></Icon>
+              <input
+                id='avatar-input'
+                type='file'
+                accept='image/*'
+                onChange={handleAvatarChange}
+                style={{ display: 'none' }}
+              />
+              <div
+                className={styles['register__form-add-avatar-wrapper']}
+                onClick={handleAvatarClick}
+                style={{ cursor: 'pointer' }}
+              >
+                {formData.avatar ? (
+                  <img
+                    src={formData.avatar}
+                    alt='Avatar'
+                    className={styles['register__form-user-avatar']}
+                    style={{
+                      width: '70px',
+                      height: '70px',
+                      borderRadius: '50%',
+                      objectFit: 'cover'
+                    }}
+                  />
+                ) : (
+                  <Icon
+                    className={styles['register__form-user-avatar']}
+                    fill='#fff'
+                    name='user-circle-icon'
+                  />
+                )}
+
                 <Icon
                   fill='#ABD27A'
                   name='add-avatar-icon'
-                  className={styles['reqister__form-add-avatar']}
+                  className={styles['register__form-add-avatar']}
                 />
               </div>
               <div className={styles['register__form-input-wrapper']}>
@@ -93,8 +135,14 @@ const RegisterFormStep2 = ({
                     options={genderOption}
                     value={formData.gender}
                     onChange={(v) => {
-                      if (typeof v === 'string') {
-                        setFormData((prev) => ({ ...prev, gender: v }));
+                      if (
+                        typeof v === 'string' &&
+                        (v === 'male' || v === 'female')
+                      ) {
+                        setFormData((prev) => ({
+                          ...prev,
+                          gender: v as 'male' | 'female'
+                        }));
                       }
                     }}
                   />
@@ -132,16 +180,15 @@ const RegisterFormStep2 = ({
               </div>
               <div className={styles['register__form-input-wrapper']}>
                 <Dropdown
-                  multiple
                   label='Подкатегория навыка, которому хотите научиться'
                   placeholder='Выберите подкатегорию'
                   options={subSkillsOption}
                   value={formData.subSkills}
                   onChange={(v) => {
-                    if (Array.isArray(v)) {
+                    if (typeof v === 'string') {
                       setFormData((prev) => ({
                         ...prev,
-                        subSkills: v
+                        subSkills: v // ← сохраняем одиночное значение
                       }));
                     }
                   }}

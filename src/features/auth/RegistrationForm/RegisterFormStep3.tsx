@@ -6,6 +6,9 @@ import { StepCard } from '@/shared/ui/StepCard';
 import { DragAndDrop } from '@/shared/ui/DragAndDrop';
 import { AsideGallery } from '@/shared/ui/Modal/ModalAsideGallery';
 import { useState } from 'react';
+import { registerUserThunk } from '../thunks';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/app/store';
 
 const RegisterFormStep3 = ({
   handleChange,
@@ -18,8 +21,10 @@ const RegisterFormStep3 = ({
   subAbilityLabel,
   handleCloseModalFull
 }: RegisterFormStep3Props) => {
+  const dispatch = useDispatch<AppDispatch>();
   const [modalIsOpenSkills, setModalIsOpenSkills] = useState(false);
   const [modalIsOpenSuccess, setModalIsOpenSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSkillsModalOpen = () => {
     setModalIsOpenSkills(true);
@@ -35,6 +40,37 @@ const RegisterFormStep3 = ({
 
   const handleSuccessModalClose = () => {
     setModalIsOpenSuccess(false);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      await dispatch(
+        registerUserThunk({
+          name: formData.name,
+          email: formData.email,
+          gender: formData.gender,
+          about: formData.description,
+          password: formData.password,
+          city: formData.city,
+          birthDate: formData.date,
+          avatar: formData.avatar,
+          teachingSkillId: parseInt(formData.abilityOption) || 1,
+          learningSkillIds:
+            formData.skills.length > 0
+              ? formData.skills.map((skill) => parseInt(skill))
+              : []
+        })
+      ).unwrap();
+      console.log(formData);
+      handleSuccessModalOpen();
+    } catch (error) {
+      console.error('Registration failed:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -57,13 +93,13 @@ const RegisterFormStep3 = ({
         <div className={styles['register__form-wrapper']}>
           <form
             className={styles['register__form']}
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleSubmit}
             noValidate
           >
             <div className={styles['register__form-inputs-wrapper']}>
               <div className={styles['register__form-input-wrapper']}>
                 <label
-                  htmlFor='ability'
+                  htmlFor='abilityTitle'
                   className={styles['register__form-label']}
                 >
                   Название навыка
@@ -72,8 +108,8 @@ const RegisterFormStep3 = ({
                   onChange={handleChange}
                   value={formData.abilityTitle}
                   type='text'
-                  name='ability'
-                  id='ability'
+                  name='abilityTitle'
+                  id='abilityTitle'
                   placeholder='Введите название вашего навыка'
                   required
                 />
@@ -127,7 +163,7 @@ const RegisterFormStep3 = ({
                 onFilesSelected={(files) =>
                   setFormData((prev) => ({
                     ...prev,
-                    files: files
+                    files: [...files]
                   }))
                 }
               ></DragAndDrop>
@@ -179,13 +215,13 @@ const RegisterFormStep3 = ({
                     Редактировать
                   </Button>
                   <Button
-                    htmlType='button'
+                    htmlType='submit'
                     onClick={() => {
                       handleSkillsModalOpen();
-                      handleSuccessModalOpen();
                     }}
                     type='primary'
                     size='small'
+                    disabled={isLoading}
                   >
                     Готово
                   </Button>

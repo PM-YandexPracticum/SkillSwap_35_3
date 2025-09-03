@@ -11,14 +11,15 @@ export interface RegisterFormProps {
 }
 
 export interface formData {
+  avatar: string;
   email: string;
   password: string;
   name: string;
-  gender: string;
+  gender: 'male' | 'female' | 'default';
   date: string;
   city: string;
   skills: string[];
-  subSkills: string[];
+  subSkills: string;
   abilityTitle: string;
   abilityOption: string;
   subAbilityOption: string;

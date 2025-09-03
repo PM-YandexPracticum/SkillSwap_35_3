@@ -1,5 +1,3 @@
-@import '@/app/styles/_variables.css';
-
 .checkbox {
   display: grid;
   gap: 12px;

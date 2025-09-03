@@ -2,15 +2,15 @@ import { type RouteObject, Navigate } from 'react-router-dom';
 import { lazy } from 'react';
 import { OnlyAuth, OnlyUnAuth } from '../ProtectedRoute';
 import { pathConstants } from '@/shared/lib/constants/paths';
+import ProfileForm from '@/features/auth/ProfileForm/ProfileForm';
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const ErrorPage = lazy(() => import('@/pages/ErrorPage'));
-
+const ProfilePage = lazy(() => import('@/pages/ProfilePage'));
+const ProfileFavoritesPage = lazy(() => import('@/pages/ProfileFavoritesPage'));
 const LoginPage = lazy(() => import('@/pages/LoginPage'));
 const RegistrationPage = lazy(() => import('@/pages/RegisterPage'));
 // const CardDetailPage = lazy(() => import('@/pages/CardDetailedPage'));
-// const ProfilePage = lazy(() => import('@/pages/ProfilePage'));
-// const ProfileFavoritesPage = lazy (() => import('@/pages/ProfileFavoritesPage));
 
 const placeholderStyles: React.CSSProperties = {
   display: 'flex',
@@ -48,11 +48,11 @@ export const routeConfig: RouteObject[] = [
   },
   {
     path: pathConstants.PROFILE,
-    element: <OnlyAuth component={<Placeholder />} />, // Заменить на реальную страницу
+    element: <OnlyAuth component={<ProfilePage />} />,
     children: [
       {
         index: true,
-        element: <Placeholder /> // Заменить на реальную страницу
+        element: <ProfileForm />
       },
       {
         path: pathConstants.PROFILE_APPLICATIONS,
@@ -64,7 +64,7 @@ export const routeConfig: RouteObject[] = [
       },
       {
         path: pathConstants.PROFILE_FAVORITES,
-        element: <Placeholder /> // Заменить на реальную страницу
+        element: <ProfileFavoritesPage />
       },
       {
         path: pathConstants.PROFILE_SKILLS,
@@ -94,21 +94,45 @@ export const modalRoutesConfig: RouteObject[] = [
               email: '',
               password: '',
               name: '',
-              gender: '',
+              gender: 'default',
               date: '',
               city: '',
               skills: [],
-              subSkills: [],
+              subSkills: '',
               abilityTitle: '',
               abilityOption: '',
               subAbilityOption: '',
               description: '',
-              files: []
+              files: [],
+              avatar: ''
             }}
-            city={[]}
-            gender={[]}
-            skills={[]}
-            subSkills={[]}
+            city={[
+              { value: 'spb', label: 'Санкт-Петербург' },
+              { value: 'samara', label: 'Самара' },
+              { value: 'saratov', label: 'Саратов' }
+            ]}
+            gender={[
+              { value: 'default', label: 'Не указан' },
+              { value: 'male', label: 'Мужской' },
+              { value: 'female', label: 'Женский' }
+            ]}
+            skills={[
+              { value: '1', label: 'Бизнес и карьера' },
+              { value: '2', label: 'Творчество и искусство' },
+              { value: '3', label: 'Иностранные языки' },
+              { value: '4', label: 'Здоровье и лайфстайл' },
+              { value: '5', label: 'Дом и уют' }
+            ]}
+            subSkills={[
+              { value: '1', label: 'Рисование и иллюстрация' },
+              { value: '2', label: 'Фотография' },
+              { value: '3', label: 'Видеомонтаж' },
+              { value: '4', label: 'Музыка и звук' },
+              { value: '5', label: 'Актёрское мастерство' },
+              { value: '6', label: 'Креативное письмо' },
+              { value: '7', label: 'Арт-терапия' },
+              { value: '8', label: 'Декор и DIY' }
+            ]}
           />
         }
       />

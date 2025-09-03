@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Slider } from '@/widgets';
+import { Slider } from '@/shared/ui';
 import { GalleryProps } from './types';
 import styles from './Gallery.module.css';
 

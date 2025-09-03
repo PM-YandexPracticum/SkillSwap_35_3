@@ -1,7 +1,3 @@
-@import '@/app/styles/_variables.css';
-@import '@/app/styles/_typography.css';
-@import '@/app/styles/index.css';
-
 /* Блок: ErrorCard */
 .error-card {
   display: flex;
