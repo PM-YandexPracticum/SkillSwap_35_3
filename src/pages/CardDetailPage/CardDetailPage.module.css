@@ -20,34 +20,3 @@
 .users_title {
   margin-bottom: 32px;
 }
-
-.users_cards {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.users_panel {
-  position: relative;
-}
-
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--button-color-disabled);
-  padding: 0;
-}
-
-.arrow__left {
-  left: -12px;
-  transform: translateY(-50%) rotate(180deg);
-}
-
-.arrow__right {
-  right: -12px;
-}

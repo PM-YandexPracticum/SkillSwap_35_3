@@ -1,16 +1,9 @@
-import React, { useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from './CardDetailPage.module.css';
 import { useAppDispatch, useSelector } from '@/app/store';
-import {
-  fetchUsers,
-  fetchUserByID
-} from 'src/entities/User/thunks/usersThunks';
-import {
-  fetchSkills,
-  fetchSkillById
-} from 'src/entities/Skill/thunks/skillsThunk';
-
+import { fetchUserByID } from 'src/entities/User/thunks/usersThunks';
+import { fetchSkillById } from 'src/entities/Skill/thunks/skillsThunk';
 import {
   selectUsers,
   selectCurrentUser
@@ -19,13 +12,10 @@ import {
   selectSkills,
   selectSelectedSkill
 } from '@/entities/Skill/selectors/skillsSelectors';
-
 import { Card } from '@/widgets/Card';
 import { CardDetail } from '@/widgets/CardDetail';
-import { Title, Button } from '@/shared/ui';
-import { useSlider } from '@/shared/hooks/useSlider';
-
-const VISIBLE = 4;
+import { Title } from '@/shared/ui';
+import { Slider } from '@/widgets/Slider';
 
 const CardDetailPage = () => {
   const { id: idParam } = useParams();
@@ -39,61 +29,58 @@ const CardDetailPage = () => {
   const selectedSkill = useSelector(selectSelectedSkill);
 
   useEffect(() => {
-    dispatch(fetchUsers());
-    dispatch(fetchSkills());
-    if (Number.isFinite(id)) {
-      dispatch(fetchUserByID(id));
-      dispatch(fetchSkillById(id));
-    }
+    if (Number.isFinite(id)) dispatch(fetchUserByID(id));
   }, [dispatch, id]);
 
-  const handleDetails = (uid: number) => navigate(`/card/${uid}`);
+  useEffect(() => {
+    if (currentUser?.teachingSkillId) {
+      dispatch(fetchSkillById(currentUser.teachingSkillId));
+    }
+  }, [dispatch, currentUser?.teachingSkillId]);
 
-  const children = users
-    .filter((user) => user.id !== id)
-    .map((user) => (
-      <Card
-        key={user.id}
-        user={user}
-        skills={skills}
-        onDetails={handleDetails}
-        className={styles.cardItem}
-      />
-    ));
+  const onDetails = useCallback(
+    (uid: number) => navigate(`/card/${uid}`),
+    [navigate]
+  );
 
-  const {
-    visibleChildren,
-    canScrollNext,
-    canScrollPrev,
-    handleNext,
-    handlePrev
-  } = useSlider({ visible: VISIBLE, children });
+  const offerCards = useMemo(
+    () =>
+      users
+        .filter((user) => user.id !== id)
+        .map((user) => (
+          <Card
+            key={user.id}
+            user={user}
+            skills={skills}
+            onDetails={onDetails}
+          />
+        )),
+    [users, skills, id, onDetails]
+  );
 
   return (
     <div className={styles.page}>
       <div className={styles.details}>
         <aside>
-          {currentUser && skills.length ? (
+          {currentUser ? (
             <Card
               user={currentUser}
               skills={skills}
-              onDetails={handleDetails}
+              onDetails={onDetails}
               showAbout
-              className={styles.details_user}
               hideDetailsButton
+              className={styles.details_user}
             />
           ) : (
             <div>Загрузка профиля…</div>
           )}
         </aside>
 
-        <main className={styles.main}>
-          {selectedSkill ? (
-            <CardDetail skill={selectedSkill} />
-          ) : (
-            <div>Загрузка навыка…</div>
-          )}
-        </main>
+        {selectedSkill ? (
+          <CardDetail skill={selectedSkill} />
+        ) : (
+          <div>Загрузка навыка…</div>
+        )}
       </div>
 
       <section className={styles.users}>
@@ -103,29 +90,19 @@ const CardDetailPage = () => {
           </Title>
         </div>
 
-        <div className={styles.users_panel}>
-          {canScrollPrev && (
-            <Button
-              type='ghost'
-              iconName='arrow-right-icon'
-              className={`${styles.arrow} ${styles.arrow__left}`}
-              aria-label='Назад'
-              onClick={handlePrev}
-            />
-          )}
-
-          <div className={styles.users_cards}>{visibleChildren}</div>
-
-          {canScrollNext && (
-            <Button
-              type='ghost'
-              iconName='arrow-right-icon'
-              className={`${styles.arrow} ${styles.arrow__right}`}
-              aria-label='Вперёд'
-              onClick={handleNext}
-            />
-          )}
-        </div>
+        {offerCards.length > 0 ? (
+          <Slider
+            visible={4}
+            buttonPosition='edges'
+            ariaLabel='Слайдер похожих предложений'
+            ariaLabelPrev='Назад'
+            ariaLabelNext='Вперёд'
+          >
+            {offerCards}
+          </Slider>
+        ) : (
+          <div>Похожие предложения не найдены…</div>
+        )}
       </section>
     </div>
   );
