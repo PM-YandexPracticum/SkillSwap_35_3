@@ -8,6 +8,7 @@ import { steps } from '@/shared/lib/constants/steps'; // путь к вашим 
 export default {
   title: 'UI/StepCard',
   component: StepCard,
+  tags: ['autodocs'],
   argTypes: {
     title: { control: 'text' },
     description: { control: 'text' },

@@ -6,10 +6,11 @@
   background: var(--background-color-secondary);
   padding: 60px;
   height: 752px;
+  width: 100%;
 }
 
 .profile-form__wrapper {
-  width: 460px;
+  width: 100%;
 }
 
 .profile-form {
@@ -80,7 +81,6 @@
   width: 56px;
   height: 56px;
   background: var(--button-color-hover);
-  background-color: var(--button-color-primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -90,7 +90,7 @@
 }
 
 .avatar-container:hover .avatar-overlay {
-  background-color: var(--button-color-hover);
+  background: var(--button-color-hover);
 }
 
 .avatar-input {

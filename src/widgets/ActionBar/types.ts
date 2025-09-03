@@ -10,6 +10,7 @@ export interface ActionBarButtonConfig {
   type?: ButtonType;
   className?: string;
   ariaLabel: string;
+  path?: string;
 }
 
 export interface ActionBarProps {

@@ -6,6 +6,7 @@ import type { IRadioOption } from './types';
 const meta: Meta<typeof RadioUI> = {
   title: 'UI/Radio',
   component: RadioUI,
+  tags: ['autodocs'],
   args: {
     name: 'demo',
     options: [

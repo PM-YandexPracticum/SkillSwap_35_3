@@ -2,7 +2,7 @@ import { Loader } from './Loader';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-  title: 'Example/Loader',
+  title: 'UI/Loader',
   component: Loader,
   tags: ['autodocs'],
   parameters: {
