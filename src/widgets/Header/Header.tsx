@@ -14,10 +14,10 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useClickOutside, useActionBarButtons } from '@/shared/hooks';
 import { ActionBar } from '@/widgets';
 import { selectIsAuthenticated, selectAuthUser } from '@/features/auth';
+import { useAppDispatch, useSelector } from '@/app/store';
+import { selectQuery } from '@/entities/Filters/model/filtersSelectors';
+import { setQuery } from '@/entities/Filters/model/filtersSlice';
 import { logout } from '@/features/auth/slices/authSlice';
-import { useSelector } from '@/app/store';
-import { pathConstants } from '@/shared/lib/constants/paths';
-import { useDispatch } from 'react-redux';
 
 export const Header = ({
   className = '',
@@ -28,64 +28,53 @@ export const Header = ({
 }: HeaderProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+
   const userMenuRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
 
-  //  refs, клик по которым не должен закрывать модалку
+  // закрываем модалку «Все навыки» по клику вне
   useClickOutside([modalRef, skillsRef], {
-    onClickOutside: () => {
-      setIsModalOpen(false);
-    }
+    onClickOutside: () => setIsModalOpen(false)
   });
 
+  // закрываем меню пользователя по клику вне
   useClickOutside([userMenuRef], {
-    onClickOutside: () => {
-      setIsUserMenuOpen(false);
-    }
+    onClickOutside: () => setIsUserMenuOpen(false)
   });
 
-  const handleSkillsClick = () => {
-    setIsModalOpen(!isModalOpen);
-  };
-
-  const handleAvatarClick = () => setIsUserMenuOpen((prev) => !prev);
-
+  const handleSkillsClick = () => setIsModalOpen((v) => !v);
+  const handleAvatarClick = () => setIsUserMenuOpen((v) => !v);
   const handleProfileClick = () => {
-    navigate('/profile');
     setIsUserMenuOpen(false);
+    navigate('/profile');
   };
+  const handleLogoutClick = () => {
+    setIsUserMenuOpen(false);
+    dispatch(logout());
+    navigate('/login');
+  };
+  const handleLoginClick = () => navigate('/login');
+  const handleRegisterClick = () => navigate('/register');
 
-  // Используем селекторы для получения состояния аутентификации
+  // auth
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const user = useSelector(selectAuthUser);
 
-  // Используем хук для получения конфигурации кнопок
+  // кнопки экшн-бара
   const actionBarButtons = useActionBarButtons();
 
-  const handleLoginClick = () => {
-    navigate(pathConstants.LOGIN, { state: { background: location } });
-  };
-
-  const handleRegisterClick = () => {
-    navigate(pathConstants.REGISTER, { state: { background: location } });
-  };
-
-  const handleLogoutClick = () => {
-    dispatch(logout());
-    setIsUserMenuOpen(false);
-  };
+  // поиск: связываем инпут в хедере с фильтрами (q) через Redux
+  const q = useSelector(selectQuery) ?? '';
 
   return (
     <header
       aria-label={ariaLabel}
-      className={`${styles['header']} ${className} ${
-        isSticky ? styles['header--sticky'] : ''
-      }`}
+      className={`${styles['header']} ${className} ${isSticky ? styles['header--sticky'] : ''}`}
       data-cy={dataCy}
     >
       <div className={styles['header__logo']} onClick={() => navigate('/')}>
@@ -96,6 +85,8 @@ export const Header = ({
         <Link to='/404' className={styles['header__link']}>
           О проекте
         </Link>
+
+        {/* Кнопка «Все навыки» + модалка */}
         <div
           className={styles['header__skills-wrapper']}
           ref={skillsRef}
@@ -104,7 +95,7 @@ export const Header = ({
           <div className={styles['header__skills']}>
             Все навыки
             <Icon
-              name={'arrow-down-icon'}
+              name='arrow-down-icon'
               size={24}
               className={`${styles['header__arrow']} ${isModalOpen ? styles['header__arrow--rotated'] : ''}`}
             />
@@ -113,12 +104,17 @@ export const Header = ({
         </div>
       </div>
 
+      {/* Поисковая строка в хедере: контролируемое значение из Redux */}
       <Input
         placeholder='Искать навык'
-        search={true}
+        search
         icon={<Icon name='search-icon' fill='#69735D' />}
         iconPosition='left'
         className={styles['header__input']}
+        value={q}
+        onChange={(e) => dispatch(setQuery(e.target.value))}
+        aria-label='Поиск по имени и навыкам'
+        data-cy='header-search'
       />
 
       <ActionBar
@@ -126,6 +122,7 @@ export const Header = ({
         className={styles['header__action-bar']}
       />
 
+      {/* Блок авторизации: имя + аватар или кнопки «Войти/Зарегистрироваться» */}
       {isAuthenticated ? (
         <div className={styles['header__user']}>
           <p className={styles['header__user-name']}>{user?.name}</p>
@@ -154,6 +151,7 @@ export const Header = ({
           </Button>
         </div>
       )}
+
       {children}
     </header>
   );

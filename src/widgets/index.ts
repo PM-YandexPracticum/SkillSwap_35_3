@@ -4,4 +4,3 @@ export * from './CardsFeed';
 export * from './ActionBar';
 export * from './Filters';
 export * from './Header';
-export * from './Slider';

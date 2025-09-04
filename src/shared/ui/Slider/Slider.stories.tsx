@@ -1,11 +1,34 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Slider } from './Slider';
-import { Card } from '../Card/Card';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Card } from '@/widgets';
+import { Avatar } from '@/shared/ui';
+
+import usersReducer from '@/entities/User/slices/usersSlice';
+import skillsReducer from '@/entities/Skill/slices/skillsSlice';
+import favoritesReducer from '@/features/favorites/slices/likeSlice';
+import authReducer from '@/features/auth/slices/authSlice';
+import { likesReducer } from '@/features/favorites';
+
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
+
+const store = configureStore({
+  reducer: {
+    users: usersReducer,
+    skills: skillsReducer,
+    favorites: favoritesReducer,
+    auth: authReducer,
+    likes: likesReducer
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false })
+});
 
 const meta: Meta<typeof Slider> = {
   title: 'Widgets/Slider',
   component: Slider,
+  tags: ['autodocs'],
   argTypes: {
     visible: {
       control: { type: 'number', min: 1, max: 4, step: 1 },
@@ -19,7 +42,16 @@ const meta: Meta<typeof Slider> = {
   },
   parameters: {
     layout: 'centered'
-  }
+  },
+  decorators: [
+    (Story) => (
+      <Provider store={store}>
+        <MemoryRouter>
+          <Story />
+        </MemoryRouter>
+      </Provider>
+    )
+  ]
 };
 
 export default meta;

@@ -22,7 +22,8 @@ const meta: Meta<typeof Checkbox> = {
           'Минимальные сторисы для CheckboxUI (варианты: галочка и тире).'
       }
     }
-  }
+  },
+  tags: ['autodocs']
 };
 export default meta;
 

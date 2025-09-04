@@ -1,29 +1,57 @@
 .filters-panel {
-  padding: 16px;
-  max-width: 360px;
-  display: grid;
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
 }
 
 .filters-panel__header {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 40px;
 }
 
 .filters-panel__title {
   margin: 0;
-  font-weight: 600;
-  line-height: 1.2;
+  font-family: var(--font-family-title);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+  line-height: var(--font-line-lg);
+  color: var(--font-color-primary);
 }
 
 .filters-panel__reset {
-  margin-left: auto;
   background: none;
   border: none;
   padding: 0;
-  color: #4caf50;
-  text-decoration: underline;
-  cursor: pointer;
+  margin: 0;
   font: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--font-color-accent);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease;
+}
+
+.filters-panel__reset:hover {
+  opacity: 0.9;
+}
+
+.filters-panel__reset:focus {
+  outline: none;
+  text-decoration: underline;
+}
+
+.filters-panel__resetIcon {
+  line-height: 1;
+  font-size: 1.1em;
+}
+
+.filters-panel > :not(:is(.filters-panel__header, :last-child)) {
+  margin-bottom: 32px;
 }

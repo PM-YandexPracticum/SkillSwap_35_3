@@ -5,7 +5,7 @@ import { Button } from '@/shared/ui';
 import styles from './AuthCredentialsForm.module.css';
 
 const meta: Meta<typeof AuthCredentialsForm> = {
-  title: 'UI/Auth/AuthCredentialsForm',
+  title: 'UI/AuthCredentialsForm',
   component: AuthCredentialsForm,
   parameters: { layout: 'centered' },
   argTypes: {
@@ -15,7 +15,8 @@ const meta: Meta<typeof AuthCredentialsForm> = {
   args: {
     disabled: false,
     loading: false
-  }
+  },
+  tags: ['autodocs']
 };
 export default meta;
 

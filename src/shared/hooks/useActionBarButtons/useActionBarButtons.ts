@@ -1,7 +1,7 @@
 import { useSelector } from '@/app/store';
 import { selectIsAuthenticated } from '@/features/auth';
 import { ActionBarButtonConfig } from '@/widgets/ActionBar/types';
-
+import { useNavigate } from 'react-router-dom';
 /**
  * Хук для формирования конфигурации кнопок ActionBar
  * Возвращает массив кнопок в зависимости от статуса аутентификации пользователя
@@ -9,6 +9,7 @@ import { ActionBarButtonConfig } from '@/widgets/ActionBar/types';
 
 export const useActionBarButtons = (): ActionBarButtonConfig[] => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
+  const navigate = useNavigate();
 
   const baseButtons: ActionBarButtonConfig[] = [
     {
@@ -34,7 +35,7 @@ export const useActionBarButtons = (): ActionBarButtonConfig[] => {
     {
       iconName: 'heart-icon',
       type: 'ghost',
-      onClick: () => console.log('Избранное'),
+      onClick: () => navigate('/profile/favorites'),
       ariaLabel: 'Избранное'
     }
   ];
