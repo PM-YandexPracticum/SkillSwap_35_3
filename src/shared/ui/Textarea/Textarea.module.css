@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   max-width: 500px;
+  width: 100%;
 }
 
 .textarea {
@@ -16,6 +17,9 @@
   font-size: var(--font-size-sm);
   line-height: var(--font-line-sm-md);
   color: var(--font-color-primary);
+  resize: none;
+  min-height: 40px;
+  overflow-y: hidden;
 }
 
 .textarea::placeholder {
@@ -52,12 +56,6 @@
   right: 12px;
 }
 
-.textarea {
-  resize: none;
-  min-height: 40px;
-  overflow-y: hidden;
-}
-
 .textarea_resize_vertical {
   resize: vertical;
 }
@@ -68,9 +66,4 @@
 
 .textarea_resize_both {
   resize: both;
-}
-
-.textarea__wrapper {
-  position: relative;
-  width: 100%;
 }

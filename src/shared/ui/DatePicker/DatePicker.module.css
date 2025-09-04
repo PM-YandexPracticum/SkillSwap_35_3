@@ -8,7 +8,7 @@
 
 .calendar {
   background: #fff;
-  border: 1px solid #69735D;
+  border: 1px solid #69735d;
   border-radius: 12px;
   overflow: hidden;
   width: 280px;
@@ -21,7 +21,7 @@
 .header {
   display: flex;
   justify-content: center;
-  padding: 24px 32px 0px;
+  padding: 24px 32px 0;
 }
 
 .headerControls {
@@ -50,19 +50,19 @@
 
 .input {
   width: 208px;
-  border: 1px solid #69735D;
+  border: 1px solid #69735d;
   border-radius: 12px;
   color: #253017;
   cursor: pointer;
 }
 
 .input :global(input)::placeholder {
-  opacity: .6;
+  opacity: 0.6;
   text-transform: lowercase;
 }
 
 .input:disabled {
-  opacity: .6;
+  opacity: 0.6;
   cursor: not-allowed;
 }
 
@@ -78,7 +78,7 @@
   width: 125px;
   height: 48px;
   border-radius: 12px;
-  border: 1px solid #ABD27A;
+  border: 1px solid #abd27a;
   cursor: pointer;
 }
 
@@ -88,7 +88,7 @@
 
 .ghost-btn:hover {
   border-color: #fff;
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .ghost-btn:active {
@@ -97,12 +97,12 @@
 
 .primary-btn {
   max-width: 115px;
-  background-color: #ABD27A;
+  background-color: #abd27a;
 }
 
 .primary-btn:hover {
-  background-color: #DEEBC5;
-  border-color: #DEEBC5;
+  background-color: #deebc5;
+  border-color: #deebc5;
 }
 
 .primary-btn:active {
@@ -147,12 +147,12 @@
 
 :global(.react-datepicker__day--selected),
 :global(.react-datepicker__day--keyboard-selected) {
-  background: #ABD27A;
+  background: #abd27a;
   color: #253017;
 }
 
 :global(.react-datepicker__day--outside-month) {
   color: #253017;
-  opacity: .6;
+  opacity: 0.6;
   pointer-events: none;
 }

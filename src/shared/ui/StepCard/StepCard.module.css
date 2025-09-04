@@ -5,7 +5,7 @@
   justify-content: center;
   gap: 40px;
   padding: 132px 60px;
-  min-width: 555px;  
+  min-width: 555px;
   min-height: 692px;
   background-color: var(--background-color-secondary);
   border-radius: 12px;
@@ -26,7 +26,7 @@
   gap: 12px;
 }
 
-.step-card__text-title { 
+.step-card__text-title {
   font-family: var(--font-family-title);
   text-align: center;
   font-size: var(--font-size-lg);
@@ -34,7 +34,8 @@
   color: var(--font-color-primary);
 }
 
-.step-card__text-description { /*  по макету */
+.step-card__text-description {
+  /*  по макету */
   font-family: var(--font-family-text);
   font-size: var(--font-size-sm);
   text-align: center;
