@@ -9,7 +9,7 @@ const ErrorPage = lazy(() => import('@/pages/ErrorPage'));
 const ProfilePage = lazy(() => import('@/pages/ProfilePage'));
 const ProfileFavoritesPage = lazy(() => import('@/pages/ProfileFavoritesPage'));
 const LoginPage = lazy(() => import('@/pages/LoginPage'));
-// const RegistrationPage = lazy(() => import('@/pages/RegistrationPage'));
+const RegistrationPage = lazy(() => import('@/pages/RegisterPage'));
 // const CardDetailPage = lazy(() => import('@/pages/CardDetailedPage'));
 
 const placeholderStyles: React.CSSProperties = {
@@ -85,6 +85,57 @@ export const modalRoutesConfig: RouteObject[] = [
   },
   {
     path: pathConstants.REGISTER,
-    element: <OnlyUnAuth component={<Placeholder />} /> // Заменить на реальную страницу
+    element: (
+      <OnlyUnAuth
+        component={
+          <RegistrationPage
+            handleClose={() => console.log(1)}
+            formData={{
+              email: '',
+              password: '',
+              name: '',
+              gender: 'default',
+              date: '',
+              city: '',
+              skills: [],
+              subSkills: '',
+              abilityTitle: '',
+              abilityOption: '',
+              subAbilityOption: '',
+              description: '',
+              files: [],
+              avatar: ''
+            }}
+            city={[
+              { value: 'spb', label: 'Санкт-Петербург' },
+              { value: 'samara', label: 'Самара' },
+              { value: 'saratov', label: 'Саратов' }
+            ]}
+            gender={[
+              { value: 'default', label: 'Не указан' },
+              { value: 'male', label: 'Мужской' },
+              { value: 'female', label: 'Женский' }
+            ]}
+            skills={[
+              { value: '1', label: 'Бизнес и карьера' },
+              { value: '2', label: 'Творчество и искусство' },
+              { value: '3', label: 'Иностранные языки' },
+              { value: '4', label: 'Здоровье и лайфстайл' },
+              { value: '5', label: 'Дом и уют' }
+            ]}
+            subSkills={[
+              { value: '1', label: 'Рисование и иллюстрация' },
+              { value: '2', label: 'Фотография' },
+              { value: '3', label: 'Видеомонтаж' },
+              { value: '4', label: 'Музыка и звук' },
+              { value: '5', label: 'Актёрское мастерство' },
+              { value: '6', label: 'Креативное письмо' },
+              { value: '7', label: 'Арт-терапия' },
+              { value: '8', label: 'Декор и DIY' }
+            ]}
+          />
+        }
+      />
+    ) // Заменить на реальную страницу
   }
 ];

@@ -17,6 +17,7 @@ import { selectIsAuthenticated, selectAuthUser } from '@/features/auth';
 import { useAppDispatch, useSelector } from '@/app/store';
 import { selectQuery } from '@/entities/Filters/model/filtersSelectors';
 import { setQuery } from '@/entities/Filters/model/filtersSlice';
+import { logout } from '@/features/auth/slices/authSlice';
 
 export const Header = ({
   className = '',
@@ -54,7 +55,7 @@ export const Header = ({
   };
   const handleLogoutClick = () => {
     setIsUserMenuOpen(false);
-    // здесь может быть диспатч logout(), если он есть в проекте
+    dispatch(logout());
     navigate('/login');
   };
   const handleLoginClick = () => navigate('/login');

@@ -3,7 +3,7 @@
     z-index: 2;
     inset: 0;
     background-color: var(--background-color-primary);
-    padding: 36px;
+    padding: 36px 36px 170px 36px;
     display: flex;
     flex-direction: column;
     overflow: auto;

@@ -17,12 +17,9 @@ import { loadLikesFromStorage } from '@/features/favorites/middleware/likesMiddl
 import { AppLayout } from './AppLayout';
 import { FullScreenModal } from '@/shared/ui';
 import LoginPage from '@/pages/LoginPage';
+import RegisterPage from '@/pages/RegisterPage';
 
 import './styles/index.css';
-
-const RegistrationPage = () => (
-  <div style={{ padding: '40px' }}>Содержимое страницы регистрации</div>
-);
 
 export const App = () => {
   const location = useLocation();
@@ -92,7 +89,52 @@ export const App = () => {
             path='/register'
             element={
               <FullScreenModal isOpen={true} onClose={handleCloseModal}>
-                <RegistrationPage />
+                <RegisterPage
+                  handleClose={handleCloseModal}
+                  formData={{
+                    email: '',
+                    password: '',
+                    name: '',
+                    gender: 'default',
+                    date: '',
+                    city: '',
+                    skills: [],
+                    subSkills: '',
+                    abilityTitle: '',
+                    abilityOption: '',
+                    subAbilityOption: '',
+                    description: '',
+                    files: [],
+                    avatar: ''
+                  }}
+                  city={[
+                    { value: 'spb', label: 'Санкт-Петербург' },
+                    { value: 'samara', label: 'Самара' },
+                    { value: 'saratov', label: 'Саратов' }
+                  ]}
+                  gender={[
+                    { value: 'default', label: 'Не указан' },
+                    { value: 'male', label: 'Мужской' },
+                    { value: 'female', label: 'Женский' }
+                  ]}
+                  skills={[
+                    { value: '1', label: 'Бизнес и карьера' },
+                    { value: '2', label: 'Творчество и искусство' },
+                    { value: '3', label: 'Иностранные языки' },
+                    { value: '4', label: 'Здоровье и лайфстайл' },
+                    { value: '5', label: 'Дом и уют' }
+                  ]}
+                  subSkills={[
+                    { value: '1', label: 'Рисование и иллюстрация' },
+                    { value: '2', label: 'Фотография' },
+                    { value: '3', label: 'Видеомонтаж' },
+                    { value: '4', label: 'Музыка и звук' },
+                    { value: '5', label: 'Актёрское мастерство' },
+                    { value: '6', label: 'Креативное письмо' },
+                    { value: '7', label: 'Арт-терапия' },
+                    { value: '8', label: 'Декор и DIY' }
+                  ]}
+                />
               </FullScreenModal>
             }
           />
