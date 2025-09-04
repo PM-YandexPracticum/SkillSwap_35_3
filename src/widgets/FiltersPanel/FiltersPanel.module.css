@@ -52,6 +52,6 @@
   font-size: 1.1em;
 }
 
-.filters-panel > :not(:is(.filters-panel__header, :last-child)) {
+.filters-panel > :not(.filters-panel__header, :last-child) {
   margin-bottom: 32px;
 }
