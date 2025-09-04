@@ -1,5 +1,6 @@
 export * from './Footer';
 export * from './Card';
+export * from './CardDetail';
 export * from './CardsFeed';
 export * from './ActionBar';
 export * from './Filters';

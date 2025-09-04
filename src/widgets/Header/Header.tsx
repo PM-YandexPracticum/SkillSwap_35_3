@@ -58,9 +58,10 @@ export const Header = ({
     dispatch(logout());
     navigate('/login');
   };
-  const handleLoginClick = () => navigate('/login');
-  const handleRegisterClick = () => navigate('/register');
-
+  const handleLoginClick = () =>
+    navigate('/login', { state: { background: location } });
+  const handleRegisterClick = () =>
+    navigate('/register', { state: { background: location } });
   // auth
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const user = useSelector(selectAuthUser);

@@ -8,4 +8,5 @@ export interface RegisterPageProps {
   gender: DropdownOption[];
   skills: DropdownOption[];
   subSkills: DropdownOption[];
+  padded: boolean;
 }

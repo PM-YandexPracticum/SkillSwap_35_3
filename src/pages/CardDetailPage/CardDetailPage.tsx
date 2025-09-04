@@ -12,10 +12,8 @@ import {
   selectSkills,
   selectSelectedSkill
 } from '@/entities/Skill/selectors/skillsSelectors';
-import { Card } from '@/widgets/Card';
-import { CardDetail } from '@/widgets/CardDetail';
-import { Title } from '@/shared/ui';
-import { Slider } from '@/widgets/Slider';
+import { Card, CardDetail } from '@/widgets';
+import { Title, Slider } from '@/shared/ui';
 
 const CardDetailPage = () => {
   const { id: idParam } = useParams();

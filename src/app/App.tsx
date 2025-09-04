@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { /* useDispatch, */ useSelector } from 'react-redux';
 import { Suspense, useEffect } from 'react';
 import {
   routeConfig,
@@ -98,6 +98,7 @@ export const App = () => {
             element={
               <FullScreenModal isOpen={true} onClose={handleCloseModal}>
                 <RegisterPage
+                  padded={false}
                   handleClose={handleCloseModal}
                   formData={{
                     email: '',

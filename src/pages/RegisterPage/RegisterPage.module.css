@@ -1,0 +1,10 @@
+.registerpage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.padded {
+  padding: 30px;
+}

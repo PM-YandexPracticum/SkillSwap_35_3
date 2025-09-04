@@ -1,5 +1,7 @@
 import RegisterForm from '@/features/auth/RegistrationForm/RegisterForm';
 import { RegisterPageProps } from './type';
+import styles from './RegisterPage.module.css';
+import cn from 'classnames';
 
 const RegisterPage = ({
   handleClose,
@@ -7,17 +9,20 @@ const RegisterPage = ({
   city,
   gender,
   skills,
-  subSkills
+  subSkills,
+  padded = false
 }: RegisterPageProps) => {
   return (
-    <RegisterForm
-      data={formData}
-      cityOption={city}
-      genderOption={gender}
-      skillsOption={skills}
-      subSkillsOption={subSkills}
-      handleCloseModalFull={handleClose}
-    ></RegisterForm>
+    <div className={cn(styles.registerpage, padded && styles.padded)}>
+      <RegisterForm
+        data={formData}
+        cityOption={city}
+        genderOption={gender}
+        skillsOption={skills}
+        subSkillsOption={subSkills}
+        handleCloseModalFull={handleClose}
+      ></RegisterForm>
+    </div>
   );
 };
 

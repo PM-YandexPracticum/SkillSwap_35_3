@@ -40,7 +40,7 @@ export const CardsFeed = ({ usersData, skillsData }: ICardsFeedProps) => {
   };
 
   const handleDetails = (id: number) => {
-    alert(`Переход к деталям пользователя с id: ${id}`);
+    navigate(`/card/${id}`);
   };
 
   if (hasActiveFilters) {

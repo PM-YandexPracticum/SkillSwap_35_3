@@ -9,10 +9,8 @@ const ErrorPage = lazy(() => import('@/pages/ErrorPage'));
 const ProfilePage = lazy(() => import('@/pages/ProfilePage'));
 const ProfileFavoritesPage = lazy(() => import('@/pages/ProfileFavoritesPage'));
 const LoginPage = lazy(() => import('@/pages/LoginPage'));
-// const RegistrationPage = lazy(() => import('@/pages/RegistrationPage'));
+const RegistrationPage = lazy(() => import('@/pages/RegisterPage'));
 const CardDetailPage = lazy(() => import('@/pages/CardDetailPage'));
-// const ProfileFavoritesPage = lazy (() => import('@/pages/ProfileFavoritesPage));
-
 
 const placeholderStyles: React.CSSProperties = {
   display: 'flex',
@@ -91,6 +89,7 @@ export const modalRoutesConfig: RouteObject[] = [
       <OnlyUnAuth
         component={
           <RegistrationPage
+            padded={true}
             handleClose={() => console.log(1)}
             formData={{
               email: '',
@@ -138,6 +137,6 @@ export const modalRoutesConfig: RouteObject[] = [
           />
         }
       />
-    ) // Заменить на реальную страницу
+    )
   }
 ];
