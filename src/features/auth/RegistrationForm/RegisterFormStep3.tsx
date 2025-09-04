@@ -21,7 +21,9 @@ const RegisterFormStep3 = ({
   subAbilityLabel,
   handleCloseModalFull,
   errors,
-  isNextDisabled
+  isNextDisabled,
+  onBlur,
+  setErrors
 }: RegisterFormStep3Props) => {
   const dispatch = useAppDispatch();
   const [modalIsOpenSkills, setModalIsOpenSkills] = useState(false);
@@ -36,12 +38,24 @@ const RegisterFormStep3 = ({
     setModalIsOpenSkills(false);
   };
 
+  const handleDropdownBlur = (fieldName: string) => {
+    onBlur(fieldName);
+  };
+
   const handleSuccessModalOpen = () => {
     setModalIsOpenSuccess(true);
   };
 
   const handleSuccessModalClose = () => {
     setModalIsOpenSuccess(false);
+  };
+
+  const handleBlurAbilityTitle = () => {
+    onBlur('abilityTitle');
+  };
+
+  const handleBlurDescription = () => {
+    onBlur('description');
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -72,6 +86,20 @@ const RegisterFormStep3 = ({
       console.error('Registration failed:', error);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleAbilityOptionChange = (v: string | string[]) => {
+    if (typeof v === 'string') {
+      setFormData((prev) => ({ ...prev, abilityOption: v }));
+      setErrors((prev) => ({ ...prev, abilityOption: '' }));
+    }
+  };
+
+  const handleSubAbilityOptionChange = (v: string | string[]) => {
+    if (typeof v === 'string') {
+      setFormData((prev) => ({ ...prev, subAbilityOption: v }));
+      setErrors((prev) => ({ ...prev, subAbilityOption: '' }));
     }
   };
 
@@ -112,26 +140,21 @@ const RegisterFormStep3 = ({
                   type='text'
                   name='abilityTitle'
                   id='abilityTitle'
+                  onBlur={handleBlurAbilityTitle}
                   placeholder='Введите название вашего навыка'
                   required
+                  error={Boolean(errors.abilityTitle)}
+                  message={errors.abilityTitle}
                 />
-                {errors.abilityTitle && (
-                  <div id='abilityTitle-error' className={styles.error}>
-                    {errors.abilityTitle}
-                  </div>
-                )}
               </div>
               <div className={styles['register__form-input-wrapper']}>
                 <Dropdown
                   label='Категория навыка'
                   placeholder='Выберите категорию навыка'
                   options={skillsOption}
+                  onBlur={() => handleDropdownBlur('abilityOption')}
                   value={formData.abilityOption}
-                  onChange={(v) => {
-                    if (typeof v === 'string') {
-                      setFormData((prev) => ({ ...prev, abilityOption: v }));
-                    }
-                  }}
+                  onChange={handleAbilityOptionChange}
                 />
                 {errors.abilityOption && (
                   <div id='abilityOption-error' className={styles.error}>
@@ -145,11 +168,8 @@ const RegisterFormStep3 = ({
                   placeholder='Выберите подкатегорию навыка'
                   options={subSkillsOption}
                   value={formData.subAbilityOption}
-                  onChange={(v) => {
-                    if (typeof v === 'string') {
-                      setFormData((prev) => ({ ...prev, subAbilityOption: v }));
-                    }
-                  }}
+                  onBlur={() => handleDropdownBlur('subSkillOption')}
+                  onChange={handleSubAbilityOptionChange}
                 />
                 {errors.subAbilityOption && (
                   <div id='subAbilityOption-error' className={styles.error}>
@@ -170,6 +190,7 @@ const RegisterFormStep3 = ({
                   onChange={handleChange}
                   className={styles['register__form-textarea-description']}
                   id='description'
+                  onBlur={handleBlurDescription}
                   name='description'
                   placeholder='Коротко опишите, чему можете научить'
                 ></textarea>

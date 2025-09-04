@@ -1,6 +1,6 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import cn from 'clsx';
-import { Input, Button, Icon } from '@/shared/ui';
+import { Input, Button } from '@/shared/ui';
 import styles from './AuthCredentialsForm.module.css';
 import type { AuthFormProps } from './types';
 
@@ -27,7 +27,7 @@ export const AuthCredentialsForm = ({
   isFormValid,
   bottomContent
 }: AuthFormProps) => {
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
   const isDisabled = Boolean(disabled || loading);
 
   const handleSubmit = (event: React.FormEvent) => {
@@ -68,14 +68,16 @@ export const AuthCredentialsForm = ({
               autoComplete='email'
               disabled={isDisabled}
               aria-invalid={!!emailError || undefined}
+              error={Boolean(emailError)}
+              message={emailError}
             />
-            <div
+            {/* <div
               className={styles['auth-form__msg']}
               aria-live='polite'
               role={emailError ? 'alert' : undefined}
             >
               {emailError}
-            </div>
+            </div> */}
           </div>
 
           {children}
@@ -95,7 +97,7 @@ export const AuthCredentialsForm = ({
             )}
             <Input
               id='auth-password'
-              type={showPassword ? 'text' : 'password'}
+              type='password'
               placeholder={passwordPlaceholder}
               value={password}
               onChange={(event) =>
@@ -104,29 +106,31 @@ export const AuthCredentialsForm = ({
               name='password'
               autoComplete={passwordAutoComplete}
               disabled={isDisabled}
-              icon={
-                <button
-                  type='button'
-                  aria-label={
-                    showPassword ? 'Скрыть пароль' : 'Показать пароль'
-                  }
-                  onClick={() => setShowPassword((value) => !value)}
-                  className={styles['auth-form__eye-button']}
-                  style={{ all: 'unset', cursor: 'pointer' }}
-                >
-                  <Icon name='eye-icon' size={20} />
-                </button>
-              }
+              // icon={
+              //   <button
+              //     type='button'
+              //     aria-label={
+              //       showPassword ? 'Скрыть пароль' : 'Показать пароль'
+              //     }
+              //     onClick={() => setShowPassword((value) => !value)}
+              //     className={styles['auth-form__eye-button']}
+              //     style={{ all: 'unset', cursor: 'pointer' }}
+              //   >
+              //     <Icon name='eye-icon' size={20} />
+              //   </button>
+              // }
               iconPosition='right'
               aria-invalid={!!passwordError || undefined}
+              error={Boolean(passwordError)}
+              message={passwordError ?? passwordHint}
             />
-            <div
+            {/* <div
               className={styles['auth-form__msg']}
               aria-live='polite'
               role={passwordError ? 'alert' : undefined}
             >
               {passwordError ?? passwordHint}
-            </div>
+            </div> */}
           </div>
 
           <div className={styles['auth-form__actions']}>

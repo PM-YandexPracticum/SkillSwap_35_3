@@ -36,6 +36,7 @@ export interface RegisterFormStep1Props {
   errors: { [key: string]: string };
   onEmailBlur: () => void;
   isNextDisabled: boolean;
+  onBlur: (fiedName: string) => void;
 }
 
 export interface RegisterFormStep2Props {
@@ -52,6 +53,8 @@ export interface RegisterFormStep2Props {
   setFormData: (value: formData | ((prev: formData) => formData)) => void;
   errors: { [key: string]: string };
   isNextDisabled: boolean;
+  onBlur: (fiedName: string) => void;
+  setErrors: React.Dispatch<React.SetStateAction<{ [key: string]: string }>>;
 }
 
 export interface RegisterFormStep3Props {
@@ -68,4 +71,6 @@ export interface RegisterFormStep3Props {
   handleCloseModalFull: () => void;
   errors: { [key: string]: string };
   isNextDisabled: boolean;
+  onBlur: (fiedName: string) => void;
+  setErrors: React.Dispatch<React.SetStateAction<{ [key: string]: string }>>;
 }

@@ -15,22 +15,68 @@ const RegisterFormStep2 = ({
   prevStep,
   nextStep,
   errors,
-  isNextDisabled
+  onBlur,
+  isNextDisabled,
+  setErrors
 }: RegisterFormStep2Props) => {
   const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      // Создаем URL для файла и сохраняем в formData
       const avatarUrl = URL.createObjectURL(file);
       setFormData((prev) => ({
         ...prev,
-        avatar: avatarUrl // сохраняем ссылку на файл
+        avatar: avatarUrl
       }));
     }
   };
 
   const handleAvatarClick = () => {
     document.getElementById('avatar-input')?.click();
+  };
+
+  const handleNameBlur = () => {
+    onBlur('name');
+  };
+
+  const handleDropdownBlur = (fieldName: string) => {
+    onBlur(fieldName);
+  };
+
+  const handleGenderChange = (v: string | string[]) => {
+    if (typeof v === 'string' && (v === 'male' || v === 'female')) {
+      setFormData((prev) => ({
+        ...prev,
+        gender: v as 'male' | 'female'
+      }));
+      setErrors((prev) => ({ ...prev, gender: '' }));
+    }
+  };
+
+  const handleCityChange = (v: string | string[]) => {
+    if (typeof v === 'string') {
+      setFormData((prev) => ({ ...prev, city: v }));
+      setErrors((prev) => ({ ...prev, city: '' }));
+    }
+  };
+
+  const handleSkillsChange = (v: string | string[]) => {
+    if (Array.isArray(v)) {
+      setFormData((prev) => ({
+        ...prev,
+        skills: v
+      }));
+      setErrors((prev) => ({ ...prev, skills: '' }));
+    }
+  };
+
+  const handleSubSkillsChange = (v: string | string[]) => {
+    if (typeof v === 'string') {
+      setFormData((prev) => ({
+        ...prev,
+        subSkills: v
+      }));
+      setErrors((prev) => ({ ...prev, subSkills: '' }));
+    }
   };
 
   return (
@@ -107,13 +153,11 @@ const RegisterFormStep2 = ({
                   type='text'
                   name='name'
                   id='name'
+                  onBlur={handleNameBlur}
                   placeholder='Введите ваше имя'
+                  error={Boolean(errors.name)}
+                  message={errors.name}
                 />
-                {errors.name && (
-                  <div id='name-error' className={styles.error}>
-                    {errors.name}
-                  </div>
-                )}
               </div>
               <div className={styles['register__form-inputs-wrapper-step-2']}>
                 <div className={styles['register__form-input-wrapper']}>
@@ -133,31 +177,24 @@ const RegisterFormStep2 = ({
                     icon={<Icon name='calendar-icon'></Icon>}
                     iconPosition='right'
                     placeholder='дд.мм.гггг'
+                    error={Boolean(errors.date)}
+                    message={errors.date}
                   />
-                  {errors.date && (
-                    <div id='date-error' className={styles.error}>
-                      {errors.date}
-                    </div>
-                  )}
                 </div>
                 <div className={styles['register__form-input-wrapper']}>
                   <Dropdown
                     label='Пол'
+                    onBlur={() => handleDropdownBlur('gender')}
                     placeholder='Не указан'
                     options={genderOption}
                     value={formData.gender}
-                    onChange={(v) => {
-                      if (
-                        typeof v === 'string' &&
-                        (v === 'male' || v === 'female')
-                      ) {
-                        setFormData((prev) => ({
-                          ...prev,
-                          gender: v as 'male' | 'female'
-                        }));
-                      }
-                    }}
+                    onChange={handleGenderChange}
                   />
+                  {errors.gender && (
+                    <div id='gender-error' className={styles.error}>
+                      {errors.gender}
+                    </div>
+                  )}
                 </div>
               </div>
               <div className={styles['register__form-input-wrapper']}>
@@ -166,11 +203,8 @@ const RegisterFormStep2 = ({
                   placeholder='Не указан'
                   options={cityOption}
                   value={formData.city}
-                  onChange={(v) => {
-                    if (typeof v === 'string') {
-                      setFormData((prev) => ({ ...prev, city: v }));
-                    }
-                  }}
+                  onBlur={() => handleDropdownBlur('city')}
+                  onChange={handleCityChange}
                 />
                 {errors.city && (
                   <div id='city-error' className={styles.error}>
@@ -185,15 +219,14 @@ const RegisterFormStep2 = ({
                   placeholder='Выберите категорию'
                   options={skillsOption}
                   value={formData.skills}
-                  onChange={(v) => {
-                    if (Array.isArray(v)) {
-                      setFormData((prev) => ({
-                        ...prev,
-                        skills: v
-                      }));
-                    }
-                  }}
+                  onChange={handleSkillsChange}
+                  onBlur={() => handleDropdownBlur('skills')}
                 />
+                {errors.skills && (
+                  <div id='skills-error' className={styles.error}>
+                    {errors.skills}
+                  </div>
+                )}
               </div>
               <div className={styles['register__form-input-wrapper']}>
                 <Dropdown
@@ -201,15 +234,14 @@ const RegisterFormStep2 = ({
                   placeholder='Выберите подкатегорию'
                   options={subSkillsOption}
                   value={formData.subSkills}
-                  onChange={(v) => {
-                    if (typeof v === 'string') {
-                      setFormData((prev) => ({
-                        ...prev,
-                        subSkills: v // ← сохраняем одиночное значение
-                      }));
-                    }
-                  }}
+                  onChange={handleSubSkillsChange}
+                  onBlur={() => handleDropdownBlur('subSkills')}
                 />
+                {errors.subSkills && (
+                  <div id='subSkills-error' className={styles.error}>
+                    {errors.subSkills}
+                  </div>
+                )}
               </div>
             </div>
             <div className={styles['register__form-buttons-list-step-2']}>
