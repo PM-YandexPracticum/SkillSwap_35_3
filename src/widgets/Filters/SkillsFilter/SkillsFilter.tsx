@@ -2,11 +2,7 @@ import { useMemo, useState } from 'react';
 import { useAppDispatch, useSelector } from '@/app/store';
 
 import { selectCategories } from '@/entities/Filters/model/filtersSelectors';
-import {
-  setCategories,
-  toggleCategory,
-  toggleSkill
-} from '@/entities/Filters/model/filtersSlice';
+import { toggleCategory } from '@/entities/Filters/model/filtersSlice';
 
 import radioStyles from '@/widgets/Filters/RadioFilter/RadioFilter.module.css';
 import styles from './SkillsFilter.module.css';
@@ -15,6 +11,7 @@ import { Checkbox, Icon } from '@/shared/ui';
 interface Skill {
   id: string | number;
   title: string;
+  subcategory?: string;
   categoryTitle?: string;
   category?: string;
   categoryName?: string;
@@ -53,34 +50,40 @@ export function SkillsFilter({ skills }: Props) {
   const groups = useMemo(() => {
     const map = new Map<
       string,
-      { key: string; title: string; subIds: string[]; subTitles: string[] }
+      {
+        key: string;
+        title: string;
+        subs: Map<string, { title: string; ids: string[] }>;
+      }
     >();
 
     for (const raw of skills) {
       const id = String(raw.id);
-      const title = String(raw.title ?? '');
-      if (!id || !title) continue;
+      const subTitle = String(raw.subcategory ?? '');
+      if (!id || !subTitle) continue;
 
       const catId = getCategoryId(raw);
       const catTitle = getCategoryTitle(raw);
 
       if (!map.has(catId)) {
-        map.set(catId, {
-          key: catId,
-          title: catTitle,
-          subIds: [],
-          subTitles: []
-        });
+        map.set(catId, { key: catId, title: catTitle, subs: new Map() });
       }
       const g = map.get(catId)!;
-      g.subIds.push(id);
-      g.subTitles.push(title);
+      if (!g.subs.has(subTitle)) {
+        g.subs.set(subTitle, { title: subTitle, ids: [] });
+      }
+      g.subs.get(subTitle)!.ids.push(id);
     }
 
-    // сортировка категорий по алфавиту
-    return Array.from(map.values()).sort((a, b) =>
-      a.title.localeCompare(b.title, 'ru')
-    );
+    return Array.from(map.values())
+      .map((g) => ({
+        key: g.key,
+        title: g.title,
+        subs: Array.from(g.subs.values()).sort((a, b) =>
+          a.title.localeCompare(b.title, 'ru')
+        )
+      }))
+      .sort((a, b) => a.title.localeCompare(b.title, 'ru'));
   }, [skills]);
 
   const [open, setOpen] = useState<Record<string, boolean>>({});
@@ -92,11 +95,11 @@ export function SkillsFilter({ skills }: Props) {
 
         <div className={radioStyles['radio__filter-container']}>
           {groups.map((g) => {
+            const catIds = g.subs.flatMap((s) => s.ids);
             const allSelected =
-              g.subIds.length > 0 &&
-              g.subIds.every((id) => selected.includes(id));
+              catIds.length > 0 && catIds.every((id) => selected.includes(id));
             const partial =
-              !allSelected && g.subIds.some((id) => selected.includes(id));
+              !allSelected && catIds.some((id) => selected.includes(id));
             const isOpen = !!open[g.key];
 
             return (
@@ -109,7 +112,11 @@ export function SkillsFilter({ skills }: Props) {
                     role='checkbox'
                     aria-checked={partial ? 'mixed' : allSelected}
                     onClick={() =>
-                      dispatch(toggleCategory({ subcategoryIds: g.subIds }))
+                      dispatch(
+                        toggleCategory({
+                          subcategoryIds: catIds
+                        })
+                      )
                     }
                   >
                     <span
@@ -171,18 +178,19 @@ export function SkillsFilter({ skills }: Props) {
                   <div className={styles['skills-filter__sub-list']}>
                     <Checkbox
                       name={`skills-${g.key}`}
-                      options={g.subIds.map((id, i) => ({
-                        label: g.subTitles[i],
-                        value: id
+                      options={g.subs.map((s) => ({
+                        label: s.title,
+                        value: s.title
                       }))}
-                      values={selected}
-                      onChange={(value: string, nextChecked: boolean) => {
-                        const id = String(value);
-                        if (nextChecked) {
-                          const next = Array.from(new Set([...selected, id]));
-                          dispatch(setCategories(next));
-                        } else {
-                          dispatch(toggleSkill(id));
+                      values={g.subs
+                        .filter((s) =>
+                          s.ids.every((id) => selected.includes(id))
+                        )
+                        .map((s) => s.title)}
+                      onChange={(value: string) => {
+                        const sub = g.subs.find((s) => s.title === value);
+                        if (sub) {
+                          dispatch(toggleCategory({ subcategoryIds: sub.ids }));
                         }
                       }}
                     />

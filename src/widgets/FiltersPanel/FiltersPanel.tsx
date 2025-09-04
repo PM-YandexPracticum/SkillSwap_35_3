@@ -23,21 +23,17 @@ import { SkillsFilter } from '@/widgets/Filters/SkillsFilter/SkillsFilter';
 
 import styles from './FiltersPanel.module.css';
 import mock from '@/api/mockData.json';
-import type { ISkill } from '@/api/types';
-
-const demoCities = [
-  'Москва',
-  'Санкт-Петербург',
-  'Новосибирск',
-  'Екатеринбург',
-  'Казань'
-];
+import type { ISkill, IUser } from '@/api/types';
 
 interface MockShape {
   skills: ISkill[];
+  users: IUser[];
 }
 const mockTyped: MockShape = mock as MockShape;
 const skills = mockTyped.skills;
+const citiesList = Array.from(new Set(mockTyped.users.map((u) => u.city))).sort(
+  (a, b) => a.localeCompare(b, 'ru')
+);
 
 const modeOptions = [
   { label: 'Все', value: 'all' },
@@ -109,7 +105,7 @@ export function FiltersPanel() {
 
       <CityFilter
         value={cities}
-        cities={demoCities}
+        cities={citiesList}
         onChange={(arr: string[]) => dispatch(setCities(arr))}
       />
     </aside>
