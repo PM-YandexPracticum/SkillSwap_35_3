@@ -20,11 +20,14 @@ import LoginPage from '@/pages/LoginPage';
 import RegisterPage from '@/pages/RegisterPage';
 
 import './styles/index.css';
+import { fetchUsers } from '@/entities/User/thunks/usersThunks';
+import { fetchSkills } from '@/entities/Skill/thunks/skillsThunk';
+import { useAppDispatch } from '@/app/store';
 
 export const App = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const user = useSelector(selectAuthUser);
 
@@ -47,6 +50,11 @@ export const App = () => {
       dispatch(clearAllLikes());
     }
   }, [isAuthenticated, user?.id, dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+    dispatch(fetchSkills());
+  }, [dispatch]);
 
   const handleCloseModal = () => {
     navigate(-1);
