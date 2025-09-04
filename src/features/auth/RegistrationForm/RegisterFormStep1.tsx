@@ -10,8 +10,17 @@ const RegisterFormStep1 = ({
   nextStep,
   errors,
   onEmailBlur,
-  isNextDisabled
+  isNextDisabled,
+  onBlur
 }: RegisterFormStep1Props) => {
+  const handleEmailBlurCombined = () => {
+    onBlur('email');
+    onEmailBlur();
+  };
+
+  const handlePasswordBlur = () => {
+    onBlur('password');
+  };
   return (
     <div className={styles['register__form-step-1']}>
       <Title as='h2' size='lg' className={styles['regiter__form-steps']}>
@@ -72,18 +81,10 @@ const RegisterFormStep1 = ({
                   name='email'
                   id='email'
                   placeholder='Введите email'
-                  onBlur={onEmailBlur}
+                  onBlur={handleEmailBlurCombined}
+                  error={Boolean(errors.email) || Boolean(errors.server)}
+                  message={errors.email || errors.server}
                 />
-                {errors.email && (
-                  <span id='email-error' className={styles.error}>
-                    {errors.email}
-                  </span>
-                )}
-                {errors.server && (
-                  <span id='email-server-error' className={styles.error}>
-                    {errors.server}
-                  </span>
-                )}
               </div>
               <div className={styles['register__form-input-wrapper']}>
                 <label
@@ -99,14 +100,12 @@ const RegisterFormStep1 = ({
                   type='password'
                   name='password'
                   id='password'
+                  onBlur={handlePasswordBlur}
                   iconPosition='right'
                   placeholder='Придумайте надёжный пароль'
+                  error={Boolean(errors.password)}
+                  message={errors.password}
                 />
-                {errors.password && (
-                  <span id='password-error' className={styles.error}>
-                    {errors.password}
-                  </span>
-                )}
               </div>
             </div>
             <Button

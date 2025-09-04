@@ -14,7 +14,8 @@ export const Dropdown = ({
   onChange,
   multiple = false,
   className = '',
-  fullWidth = false
+  fullWidth = false,
+  onBlur
 }: DropdownProps) => {
   const [open, setOpen] = useState(false);
   const [zIndex, setZIndex] = useState(1);
@@ -82,6 +83,7 @@ export const Dropdown = ({
       className={cn(styles.dropdown, className, {
         [styles.dropdown__fullWidth]: fullWidth
       })}
+      onBlur={onBlur}
       ref={ref}
       style={{ zIndex }}
     >
