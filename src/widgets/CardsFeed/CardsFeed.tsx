@@ -18,6 +18,10 @@ export const CardsFeed = ({ usersData, skillsData }: ICardsFeedProps) => {
   const navigate = useNavigate();
 
   const users = usersData ?? useSelector(selectFilteredUsers);
+  console.log(
+    'Все пользователи из стора:',
+    users.map((u) => ({ id: u.id, name: u.name }))
+  );
   const skills = skillsData ?? useSelector(selectSkills);
   const filters = useSelector(selectFilters);
 

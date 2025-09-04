@@ -1,5 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { loginUser, registerUser, updateUser } from '@/api/mockApi';
+import {
+  loginUser,
+  registerUser,
+  updateUser,
+  checkEmailExists
+} from '@/api/mockApi';
 import type { IUser } from '@/api/types';
 
 export const loginUserThunk = createAsyncThunk(
@@ -21,11 +26,28 @@ export const loginUserThunk = createAsyncThunk(
   }
 );
 
+export const checkEmailThunk = createAsyncThunk(
+  'auth/checkEmail',
+  async (email: string, thunkAPI) => {
+    try {
+      const exists = await checkEmailExists(email);
+      if (exists) {
+        return thunkAPI.rejectWithValue('Email уже используется');
+      }
+      return true;
+    } catch (err) {
+      const error = err as Error;
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const registerUserThunk = createAsyncThunk(
   'auth/register',
   async (newUser: Omit<IUser, 'id'>, thunkAPI) => {
     try {
       await registerUser(newUser);
+
       const { email, password } = newUser;
 
       const result = await thunkAPI.dispatch(
@@ -39,7 +61,6 @@ export const registerUserThunk = createAsyncThunk(
       return thunkAPI.rejectWithValue(result.payload as string);
     } catch (err) {
       const error = err as Error;
-
       return thunkAPI.rejectWithValue(error.message);
     }
   }

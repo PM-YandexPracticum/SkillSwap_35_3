@@ -7,8 +7,8 @@ import { DragAndDrop } from '@/shared/ui/DragAndDrop';
 import { AsideGallery } from '@/shared/ui/Modal/ModalAsideGallery';
 import { useState } from 'react';
 import { registerUserThunk } from '../thunks';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@/app/store';
+import { useAppDispatch } from '@/app/store';
+import { fetchUsers } from 'src/entities/User/thunks/usersThunks';
 
 const RegisterFormStep3 = ({
   handleChange,
@@ -19,9 +19,11 @@ const RegisterFormStep3 = ({
   prevStep,
   abilityLabel,
   subAbilityLabel,
-  handleCloseModalFull
+  handleCloseModalFull,
+  errors,
+  isNextDisabled
 }: RegisterFormStep3Props) => {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
   const [modalIsOpenSkills, setModalIsOpenSkills] = useState(false);
   const [modalIsOpenSuccess, setModalIsOpenSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -64,7 +66,7 @@ const RegisterFormStep3 = ({
               : []
         })
       ).unwrap();
-      console.log(formData);
+      dispatch(fetchUsers());
       handleSuccessModalOpen();
     } catch (error) {
       console.error('Registration failed:', error);
@@ -113,6 +115,11 @@ const RegisterFormStep3 = ({
                   placeholder='Введите название вашего навыка'
                   required
                 />
+                {errors.abilityTitle && (
+                  <div id='abilityTitle-error' className={styles.error}>
+                    {errors.abilityTitle}
+                  </div>
+                )}
               </div>
               <div className={styles['register__form-input-wrapper']}>
                 <Dropdown
@@ -126,6 +133,11 @@ const RegisterFormStep3 = ({
                     }
                   }}
                 />
+                {errors.abilityOption && (
+                  <div id='abilityOption-error' className={styles.error}>
+                    {errors.abilityOption}
+                  </div>
+                )}
               </div>
               <div className={styles['register__form-input-wrapper']}>
                 <Dropdown
@@ -139,6 +151,11 @@ const RegisterFormStep3 = ({
                     }
                   }}
                 />
+                {errors.subAbilityOption && (
+                  <div id='subAbilityOption-error' className={styles.error}>
+                    {errors.subAbilityOption}
+                  </div>
+                )}
               </div>
               <div className={styles['register__form-input-wrapper']}>
                 <label
@@ -156,6 +173,11 @@ const RegisterFormStep3 = ({
                   name='description'
                   placeholder='Коротко опишите, чему можете научить'
                 ></textarea>
+                {errors.description && (
+                  <div id='description-error' className={styles.error}>
+                    {errors.description}
+                  </div>
+                )}
               </div>
               <DragAndDrop
                 multiple={true}
@@ -181,6 +203,7 @@ const RegisterFormStep3 = ({
                 className={styles['register__form-button']}
                 onClick={handleSkillsModalOpen}
                 size='medium'
+                disabled={isNextDisabled}
               >
                 Продолжить
               </Button>
