@@ -3,9 +3,8 @@ import type { ISkill, IUser } from './types';
 
 const { skills, users } = mockData as { skills: ISkill[]; users: IUser[] };
 
-// Создайте изменяемые копии массивов
 export const mockSkills: ISkill[] = [...skills];
-export const mockUsers: IUser[] = [...users]; // ← используйте let и spread оператор
+export const mockUsers: IUser[] = [...users];
 
 export const getSkills = (): Promise<ISkill[]> =>
   new Promise((resolve) => {
@@ -14,7 +13,14 @@ export const getSkills = (): Promise<ISkill[]> =>
 
 export const getUsers = (): Promise<IUser[]> =>
   new Promise((resolve) => {
-    setTimeout(() => resolve([...mockUsers]), 400);
+    setTimeout(() => {
+      const storedUsers = localStorage.getItem('mockUsers');
+      if (storedUsers) {
+        resolve(JSON.parse(storedUsers));
+      } else {
+        resolve([...mockUsers]);
+      }
+    }, 400);
   });
 
 export const getUserById = (id: number): Promise<IUser | null> =>
@@ -33,6 +39,14 @@ export const getSkillById = (id: number): Promise<ISkill | null> =>
     }, 400);
   });
 
+export const checkEmailExists = (email: string): Promise<boolean> =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      const exists = mockUsers.some((u) => u.email === email);
+      resolve(exists);
+    }, 400);
+  });
+
 export const registerUser = (newUser: Omit<IUser, 'id'>): Promise<IUser> =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -44,8 +58,9 @@ export const registerUser = (newUser: Omit<IUser, 'id'>): Promise<IUser> =>
       const id =
         mockUsers.length > 0 ? Math.max(...mockUsers.map((u) => u.id)) + 1 : 1;
       const user: IUser = { ...newUser, id };
+      console.log('Adding new user:', user);
       mockUsers.push(user);
-
+      localStorage.setItem('mockUsers', JSON.stringify(mockUsers));
       resolve({ ...user });
     }, 400);
   });

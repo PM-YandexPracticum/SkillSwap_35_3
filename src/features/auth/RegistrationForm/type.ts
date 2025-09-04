@@ -33,6 +33,9 @@ export interface RegisterFormStep1Props {
   ) => void;
   formData: formData;
   nextStep: () => void;
+  errors: { [key: string]: string };
+  onEmailBlur: () => void;
+  isNextDisabled: boolean;
 }
 
 export interface RegisterFormStep2Props {
@@ -47,6 +50,8 @@ export interface RegisterFormStep2Props {
   skillsOption: DropdownOption[];
   subSkillsOption: DropdownOption[];
   setFormData: (value: formData | ((prev: formData) => formData)) => void;
+  errors: { [key: string]: string };
+  isNextDisabled: boolean;
 }
 
 export interface RegisterFormStep3Props {
@@ -61,4 +66,6 @@ export interface RegisterFormStep3Props {
   abilityLabel: string;
   subAbilityLabel: string;
   handleCloseModalFull: () => void;
+  errors: { [key: string]: string };
+  isNextDisabled: boolean;
 }

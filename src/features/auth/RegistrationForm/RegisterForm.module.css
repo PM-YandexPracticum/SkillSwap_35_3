@@ -156,3 +156,7 @@
   line-height: var(--font-line-sm-md);
   letter-spacing: var(--letter-spacing-tight);
 }
+
+.error {
+  color: var(--error-color);
+}

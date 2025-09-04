@@ -13,7 +13,9 @@ const RegisterFormStep2 = ({
   skillsOption,
   subSkillsOption,
   prevStep,
-  nextStep
+  nextStep,
+  errors,
+  isNextDisabled
 }: RegisterFormStep2Props) => {
   const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -107,6 +109,11 @@ const RegisterFormStep2 = ({
                   id='name'
                   placeholder='Введите ваше имя'
                 />
+                {errors.name && (
+                  <div id='name-error' className={styles.error}>
+                    {errors.name}
+                  </div>
+                )}
               </div>
               <div className={styles['register__form-inputs-wrapper-step-2']}>
                 <div className={styles['register__form-input-wrapper']}>
@@ -127,6 +134,11 @@ const RegisterFormStep2 = ({
                     iconPosition='right'
                     placeholder='дд.мм.гггг'
                   />
+                  {errors.date && (
+                    <div id='date-error' className={styles.error}>
+                      {errors.date}
+                    </div>
+                  )}
                 </div>
                 <div className={styles['register__form-input-wrapper']}>
                   <Dropdown
@@ -160,6 +172,11 @@ const RegisterFormStep2 = ({
                     }
                   }}
                 />
+                {errors.city && (
+                  <div id='city-error' className={styles.error}>
+                    {errors.city}
+                  </div>
+                )}
               </div>
               <div className={styles['register__form-input-wrapper']}>
                 <Dropdown
@@ -210,6 +227,7 @@ const RegisterFormStep2 = ({
                 size='medium'
                 onClick={nextStep}
                 htmlType='button'
+                disabled={isNextDisabled}
               >
                 Продолжить
               </Button>

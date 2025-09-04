@@ -7,7 +7,10 @@ import { RegisterFormStep1Props } from './type';
 const RegisterFormStep1 = ({
   handleChange,
   formData,
-  nextStep
+  nextStep,
+  errors,
+  onEmailBlur,
+  isNextDisabled
 }: RegisterFormStep1Props) => {
   return (
     <div className={styles['register__form-step-1']}>
@@ -69,7 +72,18 @@ const RegisterFormStep1 = ({
                   name='email'
                   id='email'
                   placeholder='Введите email'
+                  onBlur={onEmailBlur}
                 />
+                {errors.email && (
+                  <span id='email-error' className={styles.error}>
+                    {errors.email}
+                  </span>
+                )}
+                {errors.server && (
+                  <span id='email-server-error' className={styles.error}>
+                    {errors.server}
+                  </span>
+                )}
               </div>
               <div className={styles['register__form-input-wrapper']}>
                 <label
@@ -88,9 +102,18 @@ const RegisterFormStep1 = ({
                   iconPosition='right'
                   placeholder='Придумайте надёжный пароль'
                 />
+                {errors.password && (
+                  <span id='password-error' className={styles.error}>
+                    {errors.password}
+                  </span>
+                )}
               </div>
             </div>
-            <Button onClick={nextStep} htmlType='button'>
+            <Button
+              onClick={nextStep}
+              htmlType='button'
+              disabled={isNextDisabled}
+            >
               Далее
             </Button>
           </form>
