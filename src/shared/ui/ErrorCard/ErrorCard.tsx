@@ -33,13 +33,16 @@ export const ErrorCard = ({
         )}
       </div>
 
-      {/* Заголовок */}
-      <Title as='h2' size='lg' className={styles['error-card__text-title']}>
-        {title}
-      </Title>
+      {/* Контент */}
 
-      {/* Текст */}
-      <p className={styles['error-card__text-description']}>{description}</p>
+      <div className={styles['error-card__content']}>
+        <Title as='h2' size='lg' className={styles['error-card__text-title']}>
+          {title}
+        </Title>
+
+        {/* Текст */}
+        <p className={styles['error-card__text-description']}>{description}</p>
+      </div>
 
       {/* Блок с кнопками */}
       <div className={styles['error-card__buttons']}>

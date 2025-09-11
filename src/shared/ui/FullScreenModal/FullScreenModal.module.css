@@ -1,0 +1,22 @@
+.modal__fullscreen {
+  position: fixed;
+  z-index: 2;
+  inset: 0;
+  background-color: var(--background-color-primary);
+  padding: 36px 36px 170px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.modal__fullscreen-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.modal__fullscreen-content {
+  max-width: 1150px;
+  align-self: center;
+}

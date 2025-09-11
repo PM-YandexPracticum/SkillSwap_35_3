@@ -1,0 +1,1 @@
+export { useSlider } from './useSlider';

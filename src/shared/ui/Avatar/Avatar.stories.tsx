@@ -8,7 +8,8 @@ const users = mockData.users;
 
 export default {
   title: 'UI/Avatar',
-  component: Avatar
+  component: Avatar,
+  tags: ['autodocs']
 } as Meta;
 
 const Template: StoryFn<typeof Avatar> = (args) => <Avatar {...args} />;

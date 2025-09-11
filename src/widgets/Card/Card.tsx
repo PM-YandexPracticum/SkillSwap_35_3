@@ -1,7 +1,6 @@
 import { CardProps } from './types';
 import { Button, Tag, Avatar } from '@/shared/ui';
-import { useAge } from '@/shared/hooks';
-import { useToggleLike } from '@/shared/hooks';
+import { useAge, useToggleLike } from '@/shared/hooks';
 
 import styles from './Card.module.css';
 
@@ -10,18 +9,13 @@ export const Card = ({
   skills,
   onDetails,
   showAbout,
-  className
+  className,
+  hideDetailsButton
 }: CardProps) => {
   const age = useAge(user.birthDate);
 
-  //const isAuth - проверка авторизации для лайка
-
   const { isLiked, toggle } = useToggleLike({
-    defaultLiked: false, //
-    onToggle: (liked) => {
-      // ЗАМЕНИТЬ потенциально на полноценную реализацию хранения лайков
-      console.log('Card liked:', liked);
-    }
+    itemId: user.id.toString()
   });
 
   const teachSkill = skills.find((s) => s.id === user.teachingSkillId);
@@ -97,11 +91,13 @@ export const Card = ({
           )}
         </div>
       </div>
-      <div className={styles.card__button}>
-        <Button onClick={() => onDetails(user.id)} fullWidth>
-          Подробнее
-        </Button>
-      </div>
+      {!hideDetailsButton && (
+        <div className={styles.card__button}>
+          <Button onClick={() => onDetails(user.id)} fullWidth>
+            Подробнее
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

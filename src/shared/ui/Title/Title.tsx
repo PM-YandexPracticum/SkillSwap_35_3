@@ -1,13 +1,13 @@
 import type { ITitleProps } from './types';
 import styles from './title.module.css';
 
-export const Title = ({
+export function Title({
   as: Tag,
   size,
   className,
   children,
   ...rest
-}: ITitleProps) => {
+}: ITitleProps) {
   const titleClasses = [styles.title, styles[size], className]
     .filter(Boolean)
     .join(' ');
@@ -17,4 +17,4 @@ export const Title = ({
       {children}
     </Tag>
   );
-};
+}

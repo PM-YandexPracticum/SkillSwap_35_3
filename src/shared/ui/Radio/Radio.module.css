@@ -1,5 +1,3 @@
-@import '@/app/styles/_variables.css';
-
 .radio {
   display: grid;
   gap: 12px;

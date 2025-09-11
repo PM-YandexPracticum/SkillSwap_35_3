@@ -9,17 +9,47 @@
   user-select: none;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-family: var(--font-family-text);
-  font-size: 12px;
+  font-size: var(--font-size-sm);
   line-height: 16px;
   letter-spacing: 0.02em;
   font-weight: var(--font-weight-light);
   color: var(--font-color-primary);
   background-color: var(--background-color-primary);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1 0 auto;
+  width: 100%;
 }
 
 a {
   text-decoration: none; /* Убираем подчёркивание */
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
   color: inherit;
 }

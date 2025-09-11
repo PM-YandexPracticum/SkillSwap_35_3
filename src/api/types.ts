@@ -3,13 +3,14 @@ export interface ISkill {
   title: string;
   category: string;
   subcategory: string;
+  description: string;
   images: string[];
 }
 
 export interface IUser {
   id: number;
   name: string;
-  gender: 'male' | 'female';
+  gender: 'male' | 'female' | 'default';
   about: string;
   email: string;
   password: string;

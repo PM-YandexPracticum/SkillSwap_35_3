@@ -3,7 +3,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import { ModalOverlayUI } from './ModalOverlay';
 
 export default {
-  title: 'Components/ModalOverlay',
+  title: 'UI/ModalOverlay',
   component: ModalOverlayUI,
   argTypes: {
     onClose: { action: 'closed' },

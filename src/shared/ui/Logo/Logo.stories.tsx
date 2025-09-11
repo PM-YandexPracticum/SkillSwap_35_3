@@ -4,6 +4,7 @@ import { Logo } from './Logo'; // путь к вашему компоненту
 const meta: Meta<typeof Logo> = {
   title: 'UI/Logo',
   component: Logo,
+  tags: ['autodocs'],
   args: {
     size: 160
   },

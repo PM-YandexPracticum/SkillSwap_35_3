@@ -11,8 +11,9 @@ import error404 from '@/shared/assets/images/error404.png';
 
 // Настройка метаданных для Storybook
 export default {
-  title: 'Components/ErrorCard',
+  title: 'UI/ErrorCard',
   component: ErrorCard,
+  tags: ['autodocs'],
   argTypes: {
     onRetry: { action: 'retry clicked' },
     onGoHome: { action: 'go home clicked' }

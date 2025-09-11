@@ -5,7 +5,7 @@ import { Footer } from './Footer';
 import { FooterProps } from './types';
 
 export default {
-  title: 'Components/Footer',
+  title: 'widgets/Footer',
   component: Footer,
   argTypes: {
     show: { control: 'boolean' },

@@ -22,4 +22,5 @@ export type CardProps = {
   onDetails: (id: number) => void;
   showAbout?: boolean;
   className?: string;
+  hideDetailsButton?: boolean;
 };

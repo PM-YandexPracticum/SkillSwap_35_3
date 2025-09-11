@@ -1,0 +1,158 @@
+.wrapper {
+  display: inline-block;
+}
+
+.popper {
+  border: 0;
+}
+
+.calendar {
+  background: #fff;
+  border: 1px solid #69735d;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 280px;
+  height: 340px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 24px 32px 0;
+}
+
+.headerControls {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.selectWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.select {
+  background: #fff;
+  appearance: none;
+  border: none;
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: none;
+}
+
+.input {
+  width: 208px;
+  border: 1px solid #69735d;
+  border-radius: 12px;
+  color: #253017;
+  cursor: pointer;
+}
+
+.input :global(input)::placeholder {
+  opacity: 0.6;
+  text-transform: lowercase;
+}
+
+.input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.footer {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 5px 16px;
+  height: 64px;
+}
+
+.btn {
+  width: 125px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid #abd27a;
+  cursor: pointer;
+}
+
+.ghost-btn {
+  background-color: #fff;
+}
+
+.ghost-btn:hover {
+  border-color: #fff;
+  opacity: 0.6;
+}
+
+.ghost-btn:active {
+  border-color: #508826;
+}
+
+.primary-btn {
+  max-width: 115px;
+  background-color: #abd27a;
+}
+
+.primary-btn:hover {
+  background-color: #deebc5;
+  border-color: #deebc5;
+}
+
+.primary-btn:active {
+  background-color: #508826;
+  border-color: #508826;
+}
+
+.weekday {
+  color: #508826;
+  font-weight: 600;
+}
+
+.day {
+  border-radius: 50%;
+}
+
+:global(.react-datepicker) {
+  border: 0;
+}
+
+:global(.react-datepicker__triangle) {
+  display: none;
+}
+
+:global(.react-datepicker__header) {
+  padding: 0;
+  border-bottom: 0;
+}
+
+:global(.react-datepicker__month-container) {
+  padding: 0 18px;
+}
+
+:global(.react-datepicker__day-names) {
+  margin: 0;
+  padding: 0 6px;
+}
+
+:global(.react-datepicker__day:hover) {
+  background: #f2f7eb;
+}
+
+:global(.react-datepicker__day--selected),
+:global(.react-datepicker__day--keyboard-selected) {
+  background: #abd27a;
+  color: #253017;
+}
+
+:global(.react-datepicker__day--outside-month) {
+  color: #253017;
+  opacity: 0.6;
+  pointer-events: none;
+}

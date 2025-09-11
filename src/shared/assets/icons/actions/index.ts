@@ -5,6 +5,7 @@ import LikeIcon from './like.svg?react';
 import LikeIconFilled from './like-filled.svg?react';
 import MoreSquareIcon from './more-square.svg?react';
 import ShareIcon from './share.svg?react';
+import LogoutIcon from './logout.svg?react';
 
 export {
   ClockIcon,
@@ -13,5 +14,6 @@ export {
   LikeIcon,
   LikeIconFilled,
   MoreSquareIcon,
-  ShareIcon
+  ShareIcon,
+  LogoutIcon
 };

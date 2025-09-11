@@ -1,0 +1,67 @@
+.container {
+  width: fit-content;
+  margin: 0 auto;
+  position: relative;
+  max-width: 100%;
+}
+
+.slider {
+  overflow: hidden;
+  margin: 0 16px;
+}
+
+.items {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+
+.button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 100px;
+  padding: 8px;
+  background: var(--button-color-disabled);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: background-color 0.2s ease;
+  margin-bottom: 168px;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button-prev {
+  left: 0;
+}
+
+.button-next {
+  right: 0;
+}
+
+.button-prev-inside {
+  left: 32px;
+}
+
+.button-next-inside {
+  right: 32px;
+}
+
+.chevron-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.button-prev .chevron-icon,
+.button-prev-inside .chevron-icon {
+  transform: rotate(-180deg);
+}

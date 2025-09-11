@@ -3,24 +3,31 @@ import type { ISkill, IUser } from './types';
 
 const { skills, users } = mockData as { skills: ISkill[]; users: IUser[] };
 
-export const mockSkills: ISkill[] = skills;
-export const mockUsers: IUser[] = users;
+export const mockSkills: ISkill[] = [...skills];
+export const mockUsers: IUser[] = [...users];
 
 export const getSkills = (): Promise<ISkill[]> =>
   new Promise((resolve) => {
-    setTimeout(() => resolve(mockSkills), 400);
+    setTimeout(() => resolve([...mockSkills]), 400);
   });
 
 export const getUsers = (): Promise<IUser[]> =>
   new Promise((resolve) => {
-    setTimeout(() => resolve(mockUsers), 400);
+    setTimeout(() => {
+      const storedUsers = localStorage.getItem('mockUsers');
+      if (storedUsers) {
+        resolve(JSON.parse(storedUsers));
+      } else {
+        resolve([...mockUsers]);
+      }
+    }, 400);
   });
 
 export const getUserById = (id: number): Promise<IUser | null> =>
   new Promise((resolve) => {
     setTimeout(() => {
       const user = mockUsers.find((u) => u.id === id);
-      resolve(user || null);
+      resolve(user ? { ...user } : null);
     }, 400);
   });
 
@@ -28,7 +35,15 @@ export const getSkillById = (id: number): Promise<ISkill | null> =>
   new Promise((resolve) => {
     setTimeout(() => {
       const skill = mockSkills.find((s) => s.id === id);
-      resolve(skill || null);
+      resolve(skill ? { ...skill } : null);
+    }, 400);
+  });
+
+export const checkEmailExists = (email: string): Promise<boolean> =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      const exists = mockUsers.some((u) => u.email === email);
+      resolve(exists);
     }, 400);
   });
 
@@ -43,8 +58,10 @@ export const registerUser = (newUser: Omit<IUser, 'id'>): Promise<IUser> =>
       const id =
         mockUsers.length > 0 ? Math.max(...mockUsers.map((u) => u.id)) + 1 : 1;
       const user: IUser = { ...newUser, id };
+      console.log('Adding new user:', user);
       mockUsers.push(user);
-      resolve(user);
+      localStorage.setItem('mockUsers', JSON.stringify(mockUsers));
+      resolve({ ...user });
     }, 400);
   });
 
@@ -58,7 +75,7 @@ export const loginUser = (email: string, password: string): Promise<IUser> =>
         reject(new Error('Неверный email или пароль'));
         return;
       }
-      resolve(user);
+      resolve({ ...user });
     }, 400);
   });
 
@@ -84,8 +101,11 @@ export const updateUser = (
         }
       }
 
-      mockUsers[userIndex] = { ...mockUsers[userIndex], ...updatedData };
+      mockUsers[userIndex] = {
+        ...mockUsers[userIndex],
+        ...updatedData
+      };
 
-      resolve(mockUsers[userIndex]);
+      resolve({ ...mockUsers[userIndex] });
     }, 400);
   });
